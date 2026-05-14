@@ -35,6 +35,11 @@
 
     a { color: inherit; }
 
+    /* scroll offset for sticky nav */
+    #episodes, #about, #subscribe {
+      scroll-margin-top: 62px;
+    }
+
     /* NAV */
     nav {
       display: flex;
@@ -46,6 +51,7 @@
       top: 0;
       background: var(--white);
       z-index: 100;
+      height: 62px;
     }
 
     .wordmark {
@@ -78,9 +84,12 @@
       text-decoration: none;
       color: var(--grey);
       transition: color 0.15s;
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
     }
 
     .nav-anchors a:hover { color: var(--black); }
+    .nav-anchors a.active { color: var(--black); border-bottom-color: var(--black); }
 
     .nav-icons {
       display: flex;
@@ -106,9 +115,9 @@
 
     .hero-eyebrow {
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 600;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--grey);
       margin-bottom: 24px;
@@ -124,7 +133,6 @@
 
     .hero h1 em { font-style: italic; }
 
-    /* social proof bar */
     .proof-bar {
       display: flex;
       align-items: center;
@@ -152,7 +160,6 @@
       font-family: Arial, Helvetica, sans-serif;
       font-size: 12px;
       color: var(--grey);
-      letter-spacing: 0.03em;
     }
 
     .cta-row {
@@ -179,6 +186,7 @@
     }
 
     .btn-primary:hover { opacity: 0.8; }
+    .btn-primary:focus-visible { outline: 2px solid var(--black); outline-offset: 3px; }
     .btn-primary svg { width: 15px; height: 15px; flex-shrink: 0; }
 
     .btn-ghost {
@@ -198,6 +206,7 @@
     }
 
     .btn-ghost:hover { background: var(--light); }
+    .btn-ghost:focus-visible { outline: 2px solid var(--black); outline-offset: 3px; }
     .btn-ghost svg { width: 15px; height: 15px; flex-shrink: 0; }
 
     /* TICKER */
@@ -211,7 +220,7 @@
 
     .ticker-track {
       display: inline-flex;
-      animation: slide 50s linear infinite;
+      animation: slide 32s linear infinite;
       white-space: nowrap;
     }
 
@@ -219,7 +228,7 @@
       font-family: Arial, Helvetica, sans-serif;
       font-size: 9px;
       letter-spacing: 0.18em;
-      color: #ccc;
+      color: #aaa;
       text-transform: uppercase;
       padding: 0 36px;
       border-right: 1px solid var(--border);
@@ -251,20 +260,6 @@
       color: var(--grey);
     }
 
-    .episodes-all {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--grey);
-      text-decoration: none;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 1px;
-      transition: color 0.15s, border-color 0.15s;
-    }
-
-    .episodes-all:hover { color: var(--black); border-color: var(--black); }
-
     .episodes-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -282,10 +277,11 @@
     }
 
     .episode-card:hover { background: var(--light); }
+    .episode-card:focus-visible { outline: 2px solid var(--black); outline-offset: -2px; }
     .episode-card:last-child { border-right: none; padding-right: 0; }
     .episode-card:not(:first-child) { padding-left: 36px; }
 
-    .episode-label {
+    .episode-tag {
       font-family: Arial, Helvetica, sans-serif;
       font-size: 9px;
       font-weight: 700;
@@ -295,7 +291,7 @@
       margin-bottom: 14px;
     }
 
-    .episode-label.featured {
+    .episode-tag.featured {
       color: var(--black);
     }
 
@@ -303,12 +299,12 @@
       font-size: 18px;
       font-weight: 400;
       line-height: 1.28;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .episode-guest {
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -357,6 +353,26 @@
 
     .ep-link:hover { opacity: 0.6; }
     .ep-link svg { width: 11px; height: 11px; flex-shrink: 0; }
+
+    .episodes-view-all {
+      padding: 32px 48px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .view-all-link {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--black);
+      border-bottom: 1px solid var(--black);
+      padding-bottom: 1px;
+    }
+
+    .view-all-link:hover { opacity: 0.6; }
 
     /* ABOUT */
     #about {
@@ -423,21 +439,11 @@
       text-align: center;
     }
 
-    .subscribe-eyebrow {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--grey);
-      margin-bottom: 20px;
-    }
-
     #subscribe h2 {
       font-size: clamp(30px, 3.8vw, 48px);
       font-weight: 400;
       line-height: 1.1;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     #subscribe h2 em { font-style: italic; }
@@ -474,7 +480,16 @@
     }
 
     .platform-btn:hover { background: var(--light); }
+    .platform-btn:focus-visible { outline: 2px solid var(--black); outline-offset: 3px; }
     .platform-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    .rss-wrap {
+      margin-top: 28px;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
 
     .rss-link {
       display: inline-flex;
@@ -486,7 +501,6 @@
       text-transform: uppercase;
       color: var(--grey);
       text-decoration: none;
-      margin-top: 24px;
       border-bottom: 1px solid var(--border);
       padding-bottom: 1px;
       transition: color 0.15s, border-color 0.15s;
@@ -527,7 +541,7 @@
     .footer-right {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 16px;
     }
 
     footer p {
@@ -548,9 +562,15 @@
 
     .footer-link:hover { color: var(--black); }
 
+    .footer-sep {
+      width: 1px;
+      height: 12px;
+      background: var(--border);
+    }
+
     /* RESPONSIVE */
     @media (max-width: 860px) {
-      nav { padding: 16px 24px; }
+      nav { padding: 16px 24px; height: auto; }
       .nav-anchors { display: none; }
       .hero { padding: 56px 24px 44px; }
       .episodes-header { padding: 36px 24px 24px; }
@@ -558,6 +578,7 @@
       .episode-card { border-right: none; border-bottom: 1px solid var(--border); padding: 36px 0; }
       .episode-card:last-child { border-bottom: none; }
       .episode-card:not(:first-child) { padding-left: 0; }
+      .episodes-view-all { padding: 28px 24px; }
       #about { grid-template-columns: 1fr; }
       .about-left { padding: 56px 24px 36px; border-right: none; border-bottom: 1px solid var(--border); gap: 32px; }
       .about-right { padding: 36px 24px 56px; }
@@ -565,7 +586,7 @@
       footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
       .footer-left { flex-direction: column; gap: 12px; }
       .footer-right { flex-direction: column; gap: 8px; }
-      .proof-bar { gap: 14px; }
+      .proof-bar { gap: 12px; }
     }
   </style>
 </head>
@@ -598,16 +619,16 @@
     <div class="proof-bar">
       <span class="proof-stat">50+ episodes</span>
       <div class="proof-divider"></div>
-      <span class="proof-names">Guests from DCG, Generative Ventures, Yuma, Nova, and leading Bittensor founders</span>
+      <span class="proof-names">Guests from DCG, Generative Ventures, Yuma, and Nova</span>
     </div>
     <div class="cta-row">
       <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="btn-primary">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        Watch on YouTube
+        Watch
       </a>
       <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="btn-ghost">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-        Listen on Spotify
+        Listen
       </a>
     </div>
   </section>
@@ -640,13 +661,12 @@
   <section id="episodes">
     <div class="episodes-header">
       <span class="episodes-label">Featured Episodes</span>
-      <a class="episodes-all" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">All episodes &rarr;</a>
     </div>
     <div class="episodes-grid">
 
       <!-- Card 1: Micaela / Nova -->
       <a class="episode-card" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
-        <div class="episode-label featured">Start Here</div>
+        <div class="episode-tag featured">Start Here</div>
         <h3 class="episode-title">Nova's Bet: Drug Discovery on a Bittensor Subnet</h3>
         <div class="episode-guest">Micaela Zanella</div>
         <div class="episode-meta">Co-Founder, Nova &nbsp;&middot;&nbsp; Drug Discovery</div>
@@ -665,11 +685,11 @@
 
       <!-- Card 2: Greg / Yuma -->
       <a class="episode-card" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
-        <div class="episode-label">Episode</div>
-        <h3 class="episode-title">Bittensor: The Only Credible Alternative to Captured AI</h3>
+        <div class="episode-tag">Bittensor</div>
+        <h3 class="episode-title">The Only Credible Alternative to Captured AI</h3>
         <div class="episode-guest">Greg Waisman</div>
         <div class="episode-meta">CEO, Yuma (DCG) &nbsp;&middot;&nbsp; Bittensor</div>
-        <p class="episode-quote">"AI has passed the point of no return. Bittensor is the only credible alternative that exists at scale."</p>
+        <p class="episode-quote">"Bittensor is the only credible alternative that exists at scale."</p>
         <div class="episode-links">
           <span class="ep-link">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
@@ -684,11 +704,11 @@
 
       <!-- Card 3: Lex Sokolin / Generative Ventures -->
       <a class="episode-card" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
-        <div class="episode-label">Episode</div>
+        <div class="episode-tag">Venture</div>
         <h3 class="episode-title">Robot Money: The Thesis Institutional Finance Is Chasing</h3>
         <div class="episode-guest">Lex Sokolin</div>
         <div class="episode-meta">GP, Generative Ventures &nbsp;&middot;&nbsp; Machine Economy</div>
-        <p class="episode-quote">"Stripe, Ethereum, Solana, Visa, BlackRock with its tokenized fund — everybody wants to be robot money."</p>
+        <p class="episode-quote">"Stripe, Ethereum, Solana, Visa, BlackRock — everybody wants to be robot money."</p>
         <div class="episode-links">
           <span class="ep-link">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
@@ -702,6 +722,9 @@
       </a>
 
     </div>
+    <div class="episodes-view-all">
+      <a class="view-all-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">View all 50+ episodes &rarr;</a>
+    </div>
   </section>
 
   <!-- ABOUT -->
@@ -711,22 +734,21 @@
       <h2>Token market research.<br><em>Not price calls.</em></h2>
       <div>
         <div class="host-name">Jack Leung</div>
-        <div class="host-cred">Managing Partner, Pylon Partners. Founder, TAO Institute. Institutional investor covering token markets, AI infrastructure, and the Bittensor ecosystem.</div>
+        <div class="host-cred">Managing Partner, Pylon Partners. Founder, TAO Institute. Institutional investor covering token markets and AI infrastructure.</div>
       </div>
     </div>
 
     <div class="about-right">
-      <p>Every conversation is grounded in commercial reality: who is building, what they have shipped, what the incentive structure looks like, and where the money goes.</p>
-      <p>Guests range from <strong>subnet founders</strong> and <strong>enterprise AI builders</strong> to <strong>crossover VCs</strong> who bridge institutional finance and open networks. The common thread: they are operating at the edge of what token markets can do.</p>
+      <p>Every conversation is grounded in commercial reality: who is building, what they have shipped, how incentives are structured, and where the money goes.</p>
+      <p>Guests range from <strong>subnet founders</strong> and <strong>enterprise AI builders</strong> to <strong>crossover VCs</strong> who bridge institutional finance and open networks.</p>
     </div>
 
   </section>
 
   <!-- SUBSCRIBE -->
   <section id="subscribe">
-    <div class="subscribe-eyebrow">Available on Every Platform</div>
-    <h2>Pick your platform.<br><em>New episode every week.</em></h2>
-    <p class="subscribe-note">YouTube, Spotify, Apple Podcasts, and RSS. Free, always.</p>
+    <h2>Every platform.<br><em>Always free.</em></h2>
+    <p class="subscribe-note">New episode every week.</p>
     <div class="platform-links">
       <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="platform-btn">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
@@ -741,10 +763,12 @@
         Apple Podcasts
       </a>
     </div>
-    <a class="rss-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
-      RSS Feed
-    </a>
+    <div class="rss-wrap">
+      <a class="rss-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+        RSS Feed
+      </a>
+    </div>
   </section>
 
   <!-- FOOTER -->
@@ -761,10 +785,36 @@
       </div>
     </div>
     <div class="footer-right">
-      <a href="https://pylon.partners" target="_blank" rel="noopener" class="footer-link">Pylon Partners</a>
-      <p>&copy; 2026 Supercycle</p>
+      <a href="https://pylon.partners" target="_blank" rel="noopener" class="footer-link">A Pylon Partners production</a>
+      <div class="footer-sep"></div>
+      <p>&copy; 2026</p>
     </div>
   </footer>
+
+  <script>
+    // Scroll-spy for active nav state
+    const sections = ['episodes', 'about', 'subscribe'];
+    const navLinks = {};
+    sections.forEach(id => {
+      const link = document.querySelector('.nav-anchors a[href="#' + id + '"]');
+      if (link) navLinks[id] = link;
+    });
+
+    function updateActiveNav() {
+      const scrollY = window.scrollY + 80;
+      let current = '';
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= scrollY) current = id;
+      });
+      Object.keys(navLinks).forEach(id => {
+        navLinks[id].classList.toggle('active', id === current);
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+    updateActiveNav();
+  </script>
 
 </body>
 </html>
