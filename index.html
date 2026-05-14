@@ -129,7 +129,7 @@
     .hero h1 {
       font-size: clamp(42px, 5.8vw, 72px);
       font-weight: 400;
-      line-height: 1.03;
+      line-height: 1.06;
       letter-spacing: -0.02em;
       margin-bottom: 40px;
     }
@@ -242,6 +242,11 @@
     .episode-card {
       padding: 40px 36px 40px 0;
       border-right: 1px solid var(--border);
+    }
+
+    /* "Start Here" card: black top border to signal editorial pick */
+    .episode-card.card-featured {
+      border-top: 2.5px solid var(--black);
     }
 
     .episode-card:last-child { border-right: none; padding-right: 0; }
@@ -432,17 +437,10 @@
       font-size: clamp(30px, 3.8vw, 48px);
       font-weight: 400;
       line-height: 1.1;
-      margin-bottom: 14px;
+      margin-bottom: 48px;
     }
 
     #subscribe h2 em { font-style: italic; }
-
-    .subscribe-note {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 13px;
-      color: var(--grey);
-      margin-bottom: 48px;
-    }
 
     .platform-links {
       display: flex;
@@ -622,13 +620,13 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-eyebrow">Hosted by Jack Leung &middot; Pylon Partners</div>
-    <h1>Conversations with the people<br>building<br><em>token markets.</em></h1>
+    <h1>Token markets,<br>from the people<br><em>building them.</em></h1>
     <div class="proof-bar">
       <span class="proof-stat">50+ episodes</span>
       <div class="proof-divider"></div>
       <span class="proof-label">Publishing weekly since 2024</span>
       <div class="proof-divider"></div>
-      <span class="proof-label">Guests from DCG, Generative Ventures, Yuma, and Nova</span>
+      <span class="proof-label">Guests from DCG, Yuma, and Generative Ventures</span>
     </div>
     <div class="cta-row">
       <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="btn-primary">
@@ -649,14 +647,14 @@
     </div>
     <div class="episodes-grid">
 
-      <!-- Card 1: Micaela / Nova -->
-      <div class="episode-card">
+      <!-- Card 1: Micaela / Nova — featured, black top border -->
+      <div class="episode-card card-featured">
         <div class="episode-tag featured">Start Here</div>
         <a class="episode-title-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
           <h3 class="episode-title">Nova's Bet: Drug Discovery on a Bittensor Subnet</h3>
         </a>
         <div class="episode-guest">Micaela Zanella</div>
-        <div class="episode-meta">Co-Founder, Nova &nbsp;&middot;&nbsp; Drug Discovery</div>
+        <div class="episode-meta">Co-Founder, Nova &nbsp;&middot;&nbsp; Drug Discovery &nbsp;&middot;&nbsp; 2025 &nbsp;&middot;&nbsp; ~60 min</div>
         <p class="episode-quote">"When you're talking about something that impacts health and human experience, there is no ceiling."</p>
         <div class="episode-links">
           <a class="ep-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
@@ -677,7 +675,7 @@
           <h3 class="episode-title">The Only Credible Alternative to Captured AI</h3>
         </a>
         <div class="episode-guest">Greg Waisman</div>
-        <div class="episode-meta">CEO, Yuma (DCG) &nbsp;&middot;&nbsp; Bittensor</div>
+        <div class="episode-meta">CEO, Yuma (DCG) &nbsp;&middot;&nbsp; Bittensor &nbsp;&middot;&nbsp; 2025 &nbsp;&middot;&nbsp; ~60 min</div>
         <p class="episode-quote">"Bittensor is the only credible alternative that exists at scale."</p>
         <div class="episode-links">
           <a class="ep-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
@@ -698,7 +696,7 @@
           <h3 class="episode-title">Robot Money: The Thesis Institutional Finance Is Chasing</h3>
         </a>
         <div class="episode-guest">Lex Sokolin</div>
-        <div class="episode-meta">GP, Generative Ventures &nbsp;&middot;&nbsp; Machine Economy</div>
+        <div class="episode-meta">GP, Generative Ventures &nbsp;&middot;&nbsp; Machine Economy &nbsp;&middot;&nbsp; 2025 &nbsp;&middot;&nbsp; ~60 min</div>
         <p class="episode-quote">"Stripe, Ethereum, Solana, Visa, BlackRock — everybody wants to be robot money."</p>
         <div class="episode-links">
           <a class="ep-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
@@ -725,20 +723,19 @@
       <h2>Token market research.<br><em>Not price calls.</em></h2>
       <div>
         <div class="host-name">Jack Leung</div>
-        <div class="host-cred">Managing Partner, Pylon Partners. Founder, TAO Institute. Institutional investor covering token markets and AI infrastructure.</div>
+        <div class="host-cred">Managing Partner, Pylon Partners. Founder, TAO Institute. Invests in token markets and AI infrastructure.</div>
       </div>
     </div>
 
     <div class="about-right">
-      <p>Every conversation is grounded in commercial reality: who is building, what they have shipped, how incentives are structured, and where the money goes. Guests range from <strong>subnet founders</strong> and <strong>enterprise AI builders</strong> to <strong>crossover VCs</strong> who bridge institutional finance and open networks.</p>
+      <p>Every conversation covers commercial reality: who is building, what they shipped, and where the money goes. Guests range from <strong>subnet founders</strong> and <strong>enterprise AI builders</strong> to <strong>crossover VCs</strong> who have done both.</p>
     </div>
 
   </section>
 
   <!-- SUBSCRIBE -->
   <section id="subscribe">
-    <h2>Every platform.<br><em>Always free.</em></h2>
-    <p class="subscribe-note">New episode every week.</p>
+    <h2>Available everywhere.<br><em>Always free.</em></h2>
     <div class="platform-links">
       <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="platform-btn">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
