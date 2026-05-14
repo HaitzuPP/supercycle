@@ -99,6 +99,16 @@
     .nav-icon:hover { color: var(--black); }
     .nav-icon svg { width: 16px; height: 16px; }
 
+    .hero-eyebrow {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 16px;
+    }
+
     /* ── HERO ── */
     .hero {
       display: grid;
@@ -235,7 +245,7 @@
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--green);
+      color: var(--grey);
     }
 
     .hero-ep-link {
@@ -249,11 +259,12 @@
     }
 
     .hero-ep-title {
-      font-family: 'Georgia', 'Times New Roman', serif;
-      font-size: clamp(20px, 2vw, 26px);
-      font-weight: 400;
-      line-height: 1.22;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.35;
       letter-spacing: -0.01em;
+      color: var(--mid-grey);
     }
 
     .hero-ep-quote {
@@ -890,16 +901,17 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
+    <div class="hero-eyebrow">For fund managers and operators in the Bittensor ecosystem</div>
     <h1>Token markets. <br><em>Firsthand.</em></h1>
-    <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:var(--mid-grey);line-height:1.7;margin-bottom:28px;">Hosted by Jack Leung, Managing Partner at <a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a>.</p>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:var(--mid-grey);line-height:1.7;margin-bottom:28px;">Hosted by Jack Leung of <a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a>, a Bittensor venture fund. Questions built from primary subnet data, not press briefings.</p>
     <div class="hero-stats">
       <div class="hero-stat">
         <div class="hero-stat-num">52</div>
         <div class="hero-stat-label">Episodes</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num" style="font-size:13px;letter-spacing:0;">Free</div>
-        <div class="hero-stat-label">YouTube &amp; Spotify</div>
+        <div class="hero-stat-num" style="font-size:13px;letter-spacing:0;">Since 2022</div>
+        <div class="hero-stat-label">Covering Bittensor</div>
       </div>
     </div>
     <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="btn-primary">Watch on YouTube &rarr;</a>
@@ -998,24 +1010,20 @@
 <section id="about">
   <div class="about-left">
     <h2>The questions come <br><em>from the research.</em></h2>
-    <div>
-      <div class="host-name">Jack Leung</div>
-      <div class="host-cred">Managing Partner, <a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a>. Founder, <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">TAO Institute</a>. Investing in the Bittensor ecosystem since 2022.</div>
-    </div>
-    <div>
-      <a href="mailto:jack@pylon.partners" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);border-bottom:1px solid var(--black);padding-bottom:1px;text-decoration:none;">Pitch your episode &rarr;</a>
-    </div>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:var(--mid-grey);line-height:1.82;">Each episode is built from <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);"><strong>TAO Institute</strong></a>'s subnet scoring dataset: validator performance, emission share, developer activity, and product traction across every active Bittensor subnet. Guests answer for their specific numbers.</p>
   </div>
   <div class="about-right">
-    <p>Each episode is built from <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);"><strong>TAO Institute</strong></a>'s subnet scoring dataset: validator performance, emission share, developer activity, and product traction across every active Bittensor subnet. Guests answer for their specific numbers, not a briefing sheet summary.</p>
+    <div class="host-name">Jack Leung</div>
+    <div class="host-cred">Managing Partner, <a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a>. Founder, <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">TAO Institute</a>. Investing in Bittensor since 2022.</div>
+    <a href="mailto:jack@pylon.partners" style="display:inline-block;margin-top:20px;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);border-bottom:1px solid var(--black);padding-bottom:1px;text-decoration:none;">Pitch your episode &rarr;</a>
   </div>
 </section>
 
 <!-- SUBSCRIBE -->
 <section id="subscribe">
   <div class="subscribe-left">
-    <h2>Get every episode.</h2>
-    <p class="subscribe-sub">New episodes plus subnet research notes.</p>
+    <h2>Research before <br><em>consensus forms.</em></h2>
+    <p class="subscribe-sub">New episodes plus subnet research notes, sent directly.</p>
     <form class="email-form" id="emailForm" action="https://formsubmit.co/jack@pylon.partners" method="POST">
       <input type="hidden" name="_subject" value="Supercycle Newsletter Signup">
       <input type="hidden" name="_captcha" value="false">
