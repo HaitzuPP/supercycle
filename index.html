@@ -76,7 +76,7 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       text-decoration: none;
-      color: var(--grey);
+      color: #555;
       padding-bottom: 2px;
       border-bottom: 1px solid transparent;
       transition: color 0.15s, border-color 0.15s;
@@ -118,7 +118,7 @@
     .hero-stats {
       display: flex;
       gap: 0;
-      margin-bottom: 36px;
+      margin-bottom: 28px;
       border: 1px solid var(--border);
     }
 
@@ -163,7 +163,7 @@
       padding: 14px 28px;
       transition: opacity 0.15s;
       align-self: flex-start;
-      margin-bottom: 32px;
+      margin-bottom: 0;
     }
 
     .btn-primary:hover { opacity: 0.8; }
@@ -257,9 +257,10 @@
 
     /* Archive CTA below grid */
     .archive-cta {
-      padding: 28px 48px;
-      border-top: 1px solid var(--border);
+      padding: 36px 48px;
+      border-top: 2px solid var(--border);
       text-align: center;
+      background: var(--light);
     }
 
     .archive-link {
@@ -761,7 +762,6 @@
   <div class="hero-left">
     <h1>Token markets.<br><em>Firsthand.</em></h1>
     <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:var(--mid-grey);line-height:1.7;margin-bottom:28px;">Weekly conversations with the founders and fund managers building the Bittensor ecosystem. Hosted by Jack Leung of <a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a>.</p>
-    <a href="#subscribe" class="btn-primary">Subscribe &rarr;</a>
     <div class="hero-stats">
       <div class="hero-stat">
         <div class="hero-stat-num">52</div>
@@ -776,13 +776,13 @@
         <div class="hero-stat-label">Subnets scored</div>
       </div>
     </div>
+    <a href="#subscribe" class="btn-primary">Get the newsletter &rarr;</a>
   </div>
   <div class="hero-right">
     <div class="show-art">
       <div class="show-art-eyebrow">Weekly podcast</div>
       <div class="show-art-title">Supercycle</div>
       <div class="show-art-rule"></div>
-      <div class="show-art-sub">52 episodes. Live due diligence. Free on YouTube and Spotify.</div>
     </div>
     <div class="hero-right-label">Recent Guests</div>
     <a class="guest-row" href="https://www.youtube.com/watch?v=py7DgwA1Tf4" target="_blank" rel="noopener">
@@ -811,6 +811,7 @@
   </div>
 
   <!-- Featured card -->
+  <div style="padding: 0 48px 16px; font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--green);">Latest Episode</div>
   <div class="feat-ep-block">
     <div class="feat-ep-info">
       <div class="episode-tag green" style="margin-bottom:0">Drug Discovery</div>
@@ -866,6 +867,7 @@
       <div class="episode-footer">
         <div class="episode-guest">Lex Sokolin</div>
         <div class="episode-meta">GP, Generative Ventures &nbsp;&middot;&nbsp; 61 min</div>
+        <a class="ep-cta" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" style="margin-top:12px;">Browse archive &rarr;</a>
       </div>
     </div>
 
@@ -879,6 +881,7 @@
       <div class="episode-footer">
         <div class="episode-guest">Max &amp; Wei</div>
         <div class="episode-meta">Mataco Labs &nbsp;&middot;&nbsp; Subnet 44 &nbsp;&middot;&nbsp; 55 min</div>
+        <a class="ep-cta" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" style="margin-top:12px;">Browse archive &rarr;</a>
       </div>
     </div>
 
@@ -898,12 +901,12 @@
       <div class="host-cred">Managing Partner, <a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a>. Founder, TAO Institute. Backing projects in the Bittensor ecosystem since 2022.</div>
     </div>
     <div>
-      <p style="font-size:11px;color:var(--grey);line-height:1.7;margin-bottom:12px;">Founders building on Bittensor, or fund managers with a live position in token markets. No PR-managed slots.</p>
-      <a class="pitch-btn" href="mailto:jack@pylon.partners">Pitch your episode &rarr;</a>
+      <p style="font-size:11px;color:var(--grey);line-height:1.7;margin-bottom:6px;">Guests are practitioners with live positions. No PR-managed slots. No guest has seen the questions in advance. No episode has a sponsor.</p>
+      <a href="mailto:jack@pylon.partners" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);border-bottom:1px solid var(--black);padding-bottom:1px;text-decoration:none;">Pitch your episode &rarr;</a>
     </div>
   </div>
   <div class="about-right">
-    <p><strong><a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">TAO Institute</a></strong> independently scores 60+ active Bittensor subnets across governance, tokenomics, technical delivery, and validator quality. That dataset is the foundation of every conversation. When Jack asks about incentive design or validator concentration, the question comes from 18 months of quantitative research. No guest has seen the questions in advance. No episode has a sponsor.</p>
+    <p><strong><a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">TAO Institute</a></strong> independently scores 60+ active Bittensor subnets across governance, tokenomics, technical delivery, and validator quality. That dataset is the foundation of every conversation on the show.</p>
   </div>
 </section>
 
@@ -911,7 +914,7 @@
 <section id="subscribe">
   <div class="subscribe-left">
     <h2>Get every episode.</h2>
-    <p class="subscribe-sub">Every week. One guest. The sharpest argument in token markets.</p>
+    <p class="subscribe-sub">One email per week. No sponsorship content. Unsubscribe any time.</p>
     <form class="email-form" id="emailForm" action="https://formsubmit.co/jack@pylon.partners" method="POST">
       <input type="hidden" name="_subject" value="Supercycle Newsletter Signup">
       <input type="hidden" name="_captcha" value="false">
