@@ -229,70 +229,50 @@
       max-width: 260px;
     }
 
-    /* Hero right: latest episode panel */
+    /* Hero right: guest roster */
     .hero-right {
       padding: 56px 48px 56px 56px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      gap: 20px;
       background: var(--light);
     }
 
-    .hero-ep-label {
+    .hero-right-label {
       font-family: Arial, Helvetica, sans-serif;
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--grey);
+      margin-bottom: 20px;
     }
 
-    .hero-ep-link {
-      text-decoration: none;
+    .hero-guest-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-guest-item {
+      padding: 14px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .hero-guest-item:last-child { border-bottom: 1px solid var(--border); }
+
+    .hero-guest-name {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
       color: var(--black);
+      margin-bottom: 3px;
     }
 
-    .hero-ep-link:hover .hero-ep-title {
-      text-decoration: underline;
-      text-underline-offset: 4px;
-    }
-
-    .hero-ep-title {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      line-height: 1.35;
-      letter-spacing: -0.01em;
-      color: var(--mid-grey);
-    }
-
-    .hero-ep-quote {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 14px;
-      font-style: italic;
-      color: var(--mid-grey);
-      line-height: 1.65;
-      border-left: 3px solid var(--green);
-      padding-left: 16px;
-      margin: 0;
-    }
-
-    .hero-ep-cite {
-      display: block;
-      font-style: normal;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      color: var(--grey);
-      margin-top: 8px;
-    }
-
-    .hero-ep-meta {
+    .hero-guest-org {
       font-family: Arial, Helvetica, sans-serif;
       font-size: 11px;
       color: var(--grey);
-      letter-spacing: 0.04em;
+      line-height: 1.5;
     }
 
     /* Archive CTA below grid */
@@ -862,7 +842,8 @@
 
       .hero { grid-template-columns: 1fr; }
       .hero-left { padding: 48px 24px 40px; border-right: none; border-bottom: 1px solid var(--border); }
-      .hero-right { padding: 40px 24px 44px; }
+      .hero-right { padding: 36px 24px 44px; }
+      .hero-guest-list { padding: 0; }
 
       .feat-ep-block { margin: 0 24px; grid-template-columns: 1fr; }
       .feat-ep-embed { order: -1; padding: 0 0 24px; }
@@ -907,7 +888,7 @@
   <div class="hero-left">
     <div class="hero-eyebrow">Bittensor &nbsp;&middot;&nbsp; Fund Managers &amp; Operators</div>
     <h1>Token markets. <br><em>Firsthand.</em></h1>
-    <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:var(--mid-grey);line-height:1.7;margin-bottom:28px;">Hosted by Jack Leung of <a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a>, a Bittensor venture fund. Questions built from primary subnet data, not press briefings.</p>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:var(--mid-grey);line-height:1.7;margin-bottom:28px;">Hosted by Jack Leung of <a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a>, a Bittensor venture fund.</p>
     <div class="hero-stats" style="display:inline-flex;max-width:200px;">
       <div class="hero-stat" style="flex:none;">
         <div class="hero-stat-num">52</div>
@@ -917,12 +898,25 @@
     <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="btn-primary">Watch on YouTube &rarr;</a>
   </div>
   <div class="hero-right">
-    <div class="hero-ep-label">Latest Episode</div>
-    <a class="hero-ep-link" href="https://www.youtube.com/watch?v=py7DgwA1Tf4" target="_blank" rel="noopener">
-      <div class="hero-ep-title">Nova's Bet: Drug Discovery on a Bittensor Subnet</div>
-    </a>
-    <blockquote class="hero-ep-quote">"Ozempic and Mounjaro sales exceed the total revenue of every major AI company."<cite class="hero-ep-cite">Micaela Zanella, Co-Founder, Nova</cite></blockquote>
-    <div class="hero-ep-meta">Micaela Zanella &nbsp;&middot;&nbsp; Co-Founder, Nova &nbsp;&middot;&nbsp; 52 min</div>
+    <div class="hero-right-label">Recent Guests</div>
+    <div class="hero-guest-list">
+      <div class="hero-guest-item">
+        <div class="hero-guest-name">Micaela Zanella</div>
+        <div class="hero-guest-org">Co-Founder, Nova &nbsp;&middot;&nbsp; Drug discovery on Bittensor</div>
+      </div>
+      <div class="hero-guest-item">
+        <div class="hero-guest-name">Greg Waisman</div>
+        <div class="hero-guest-org">CEO, Yuma &nbsp;&middot;&nbsp; DCG portfolio</div>
+      </div>
+      <div class="hero-guest-item">
+        <div class="hero-guest-name">Lex Sokolin</div>
+        <div class="hero-guest-org">GP, Generative Ventures</div>
+      </div>
+      <div class="hero-guest-item">
+        <div class="hero-guest-name">Max &amp; Wei</div>
+        <div class="hero-guest-org">Mataco Labs &nbsp;&middot;&nbsp; Subnet 44</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -972,7 +966,7 @@
       </div>
       <div class="episode-footer">
         <div class="episode-guest">Greg Waisman</div>
-        <div class="episode-meta">CEO, Yuma &nbsp;&middot;&nbsp; 48 min</div>
+        <div class="episode-meta">CEO, Yuma &nbsp;&middot;&nbsp; Ep. 51 &nbsp;&middot;&nbsp; 48 min</div>
         <a class="ep-cta" href="https://www.youtube.com/watch?v=AOJS1_zT-bs" target="_blank" rel="noopener" style="margin-top:12px;">Watch on YouTube &rarr;</a>
       </div>
     </div>
