@@ -81,8 +81,8 @@
 
     .nav-anchors a {
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.1em;
+      font-size: 12px;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       text-decoration: none;
       color: #555;
@@ -219,48 +219,59 @@
       max-width: 260px;
     }
 
-    /* Hero right: guest roster */
+    /* Hero right: latest episode panel */
     .hero-right {
-      padding: 48px 48px 72px 56px;
+      padding: 56px 48px 56px 56px;
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+      background: var(--light);
     }
 
-    .hero-right-label {
+    .hero-ep-label {
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--grey);
-      margin-bottom: 16px;
+      color: var(--green);
     }
 
-    .guest-row {
-      padding: 14px 0;
-      border-top: 1px solid var(--border);
+    .hero-ep-link {
       text-decoration: none;
-      display: block;
-      transition: opacity 0.15s;
-    }
-
-    .guest-row:last-child { border-bottom: 1px solid var(--border); }
-    .guest-row:hover { opacity: 0.65; }
-
-    .guest-row-name {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
       color: var(--black);
-      margin-bottom: 3px;
     }
 
-    .guest-row-cred {
+    .hero-ep-link:hover .hero-ep-title {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .hero-ep-title {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: clamp(20px, 2vw, 26px);
+      font-weight: 400;
+      line-height: 1.22;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-ep-quote {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      font-style: italic;
+      color: var(--mid-grey);
+      line-height: 1.65;
+      border-left: 3px solid var(--green);
+      padding-left: 16px;
+      margin: 0;
+    }
+
+    .hero-ep-meta {
       font-family: Arial, Helvetica, sans-serif;
       font-size: 11px;
       color: var(--grey);
-      line-height: 1.5;
+      letter-spacing: 0.04em;
     }
 
     /* Archive CTA below grid */
@@ -828,9 +839,7 @@
 
       .hero { grid-template-columns: 1fr; }
       .hero-left { padding: 48px 24px 40px; border-right: none; border-bottom: 1px solid var(--border); }
-      .hero-right { padding: 0 24px 44px; }
-      .hero-right-label { padding-left: 0; }
-      .guest-row { padding-left: 0; padding-right: 0; }
+      .hero-right { padding: 40px 24px 44px; }
 
       .feat-ep-block { margin: 0 24px; grid-template-columns: 1fr; }
       .feat-ep-embed { order: -1; padding: 0 0 24px; }
@@ -894,33 +903,17 @@
       </div>
     </div>
     <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="btn-primary">Watch on YouTube &rarr;</a>
-    <div class="hero-subscribe-wrap">
-      <form class="hero-email-form" id="heroEmailForm" action="https://formsubmit.co/jack@pylon.partners" method="POST">
-        <input type="hidden" name="_subject" value="Supercycle Newsletter Signup">
-        <input type="hidden" name="_captcha" value="false">
-        <input class="hero-email-input" type="email" name="email" placeholder="Get new episodes by email" aria-label="Email address" required>
-        <button class="hero-email-btn" type="submit">Subscribe</button>
-      </form>
-      <p id="heroFormSuccess" style="display:none;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:var(--green);font-weight:700;letter-spacing:0.06em;margin-top:6px;">You're subscribed.</p>
-    </div>
   </div>
   <div class="hero-right">
-    <div class="hero-right-label">Recent Guests</div>
-    <a class="guest-row" href="https://www.youtube.com/watch?v=py7DgwA1Tf4" target="_blank" rel="noopener">
-      <div class="guest-row-name">Micaela Zanella</div>
-      <div class="guest-row-cred">Co-Founder, Nova &nbsp;&middot;&nbsp; Drug discovery on Bittensor</div>
+    <div class="hero-ep-label">Latest Episode &nbsp;&middot;&nbsp; Ep. 52 &nbsp;&middot;&nbsp; May 2025</div>
+    <a class="hero-ep-link" href="https://www.youtube.com/watch?v=py7DgwA1Tf4" target="_blank" rel="noopener">
+      <div class="hero-ep-title">Nova's Bet: Drug Discovery on a Bittensor Subnet</div>
     </a>
-    <a class="guest-row" href="https://www.youtube.com/watch?v=AOJS1_zT-bs" target="_blank" rel="noopener">
-      <div class="guest-row-name">Greg Waisman</div>
-      <div class="guest-row-cred">CEO, Yuma / DCG</div>
-    </a>
-    <a class="guest-row" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
-      <div class="guest-row-name">Lex Sokolin</div>
-      <div class="guest-row-cred">GP, Generative Ventures</div>
-    </a>
-    <a class="guest-row" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
-      <div class="guest-row-name">Max &amp; Wei</div>
-      <div class="guest-row-cred">Mataco Labs &nbsp;&middot;&nbsp; Subnet 44</div>
+    <blockquote class="hero-ep-quote">"Ozempic and Mounjaro sales exceed the total revenue of every major AI company."</blockquote>
+    <div class="hero-ep-meta">Micaela Zanella &nbsp;&middot;&nbsp; Co-Founder, Nova &nbsp;&middot;&nbsp; 52 min</div>
+    <a class="ep-cta" href="https://www.youtube.com/watch?v=py7DgwA1Tf4" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      Watch episode
     </a>
   </div>
 </section>
@@ -1018,7 +1011,7 @@
     </div>
   </div>
   <div class="about-right">
-    <p>Every guest on Supercycle answers for their numbers. Before each episode, Jack reviews the full scoring dataset from <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);"><strong>TAO Institute</strong></a>, which covers validator performance, emission share, developer activity, and product traction across every active Bittensor subnet. The questions come from that data. Guests don't get softballs.</p>
+    <p>Before each episode, Jack reviews the full scoring dataset from <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);"><strong>TAO Institute</strong></a>, which covers validator performance, emission share, developer activity, and product traction across every active Bittensor subnet. Guests field specific questions drawn from that data.</p>
   </div>
 </section>
 
@@ -1104,13 +1097,6 @@
     });
   }
 
-  const heroForm = document.getElementById('heroEmailForm');
-  if (heroForm) {
-    heroForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      handleEmailForm(heroForm, '.hero-email-btn', 'heroFormSuccess');
-    });
-  }
 </script>
 
 </body>
