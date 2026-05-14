@@ -85,19 +85,6 @@
     .nav-anchors a:hover,
     .nav-anchors a.active { color: var(--black); border-bottom-color: var(--black); }
 
-    .nav-subscribe {
-      display: none;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: var(--white);
-      background: var(--black);
-      padding: 8px 16px;
-    }
-
     .nav-icons { display: flex; gap: 16px; align-items: center; }
     .nav-icon { display: flex; align-items: center; color: var(--grey); transition: color 0.15s; }
     .nav-icon:hover { color: var(--black); }
@@ -115,16 +102,6 @@
       border-right: 1px solid var(--border);
       display: flex;
       flex-direction: column;
-    }
-
-    .hero-eyebrow {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--grey);
-      margin-bottom: 24px;
     }
 
     .hero h1 {
@@ -151,7 +128,7 @@
       border-right: 1px solid var(--border);
     }
 
-    .hero-stat:last-child { border-right: none; }
+    .hero-stat:last-child { border-right: none; padding-right: 0; }
 
     .hero-stat-num {
       font-family: 'Georgia', serif;
@@ -192,9 +169,51 @@
     .btn-primary:hover { opacity: 0.8; }
     .btn-primary svg { width: 15px; height: 15px; flex-shrink: 0; }
 
+    /* Show art */
+    .show-art {
+      background: var(--black);
+      padding: 36px 40px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .show-art-eyebrow {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .show-art-title {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: clamp(28px, 3.2vw, 44px);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      line-height: 1.0;
+    }
+
+    .show-art-rule {
+      width: 28px;
+      height: 1.5px;
+      background: var(--green);
+      margin: 4px 0;
+    }
+
+    .show-art-sub {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+      max-width: 260px;
+    }
+
     /* Hero right: guest roster */
     .hero-right {
-      padding: 80px 48px 72px 56px;
+      padding: 48px 48px 72px 56px;
       display: flex;
       flex-direction: column;
     }
@@ -276,21 +295,6 @@
       text-transform: uppercase;
       color: var(--grey);
     }
-
-    .section-link {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: var(--grey);
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 1px;
-      transition: color 0.15s, border-color 0.15s;
-    }
-
-    .section-link:hover { color: var(--black); border-color: var(--black); }
 
     /* Featured card */
     .feat-ep-block {
@@ -457,27 +461,6 @@
       color: var(--grey);
       margin-bottom: 18px;
     }
-
-    .ep-links { display: flex; gap: 14px; }
-
-    .ep-link {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: var(--black);
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      border-bottom: 1px solid var(--black);
-      padding-bottom: 1px;
-      transition: opacity 0.15s;
-    }
-
-    .ep-link:hover { opacity: 0.6; }
-    .ep-link svg { width: 10px; height: 10px; }
 
     /* ── ABOUT ── */
     #about {
@@ -682,11 +665,6 @@
 
     .footer-link:hover { color: var(--black); }
 
-    .footer-social { display: flex; gap: 14px; align-items: center; }
-    .footer-icon { color: var(--grey); transition: color 0.15s; display: flex; align-items: center; }
-    .footer-icon:hover { color: var(--black); }
-    .footer-icon svg { width: 13px; height: 13px; }
-
     footer p {
       font-family: Arial, Helvetica, sans-serif;
       font-size: 11px;
@@ -700,11 +678,13 @@
       .nav-anchors { display: flex; gap: 16px; }
       .nav-anchors a { font-size: 11px; letter-spacing: 0.08em; }
       .nav-icons { display: none; }
-      .nav-subscribe { display: none; }
 
       .hero { grid-template-columns: 1fr; }
       .hero-left { padding: 48px 24px 40px; border-right: none; border-bottom: 1px solid var(--border); }
-      .hero-right { padding: 36px 24px 44px; }
+      .hero-right { padding: 0 0 44px; }
+      .show-art { padding: 28px 24px; margin-bottom: 24px; }
+      .hero-right-label { padding-left: 24px; }
+      .guest-row { padding-left: 24px; padding-right: 24px; }
 
       .feat-ep-block { margin: 0 24px; }
       .feat-ep-info { padding: 32px 0 24px; }
@@ -740,7 +720,6 @@
       <li><a href="#about">About</a></li>
       <li><a href="#subscribe">Subscribe</a></li>
     </ul>
-    <a href="#subscribe" class="nav-subscribe">Subscribe</a>
     <div class="nav-icons">
       <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="nav-icon" aria-label="Spotify">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
@@ -755,21 +734,30 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-eyebrow">Bittensor &middot; Token Markets &middot; Weekly</div>
     <h1>Token markets.<br><em>Firsthand.</em></h1>
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-num">50+</div>
-        <div class="hero-stat-label">Episodes published</div>
+        <div class="hero-stat-num">52</div>
+        <div class="hero-stat-label">Episodes</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num">Weekly</div>
-        <div class="hero-stat-label">Release cadence</div>
+        <div class="hero-stat-num">2022</div>
+        <div class="hero-stat-label">Backing since</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">60+</div>
+        <div class="hero-stat-label">Subnets scored</div>
       </div>
     </div>
     <a href="#subscribe" class="btn-primary">Subscribe &rarr;</a>
   </div>
   <div class="hero-right">
+    <div class="show-art">
+      <div class="show-art-eyebrow">Bittensor &middot; Token Markets &middot; Weekly</div>
+      <div class="show-art-title">Supercycle</div>
+      <div class="show-art-rule"></div>
+      <div class="show-art-sub">Token market research with the founders and fund managers building the open economy.</div>
+    </div>
     <div class="hero-right-label">Recent Guests</div>
     <a class="guest-row" href="https://www.youtube.com/watch?v=py7DgwA1Tf4" target="_blank" rel="noopener">
       <div class="guest-row-name">Micaela Zanella</div>
@@ -875,7 +863,7 @@
     <a class="pitch-btn" href="mailto:jack@pylon.partners">Pitch your episode &rarr;</a>
   </div>
   <div class="about-right">
-    <p>Jack's guests are founders and fund managers he is either backing or actively evaluating. <strong><a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a></strong> backs Bittensor projects; <strong><a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">TAO Institute</a></strong> independently scores 60+ active subnets for institutional risk. The conversations follow from the due diligence.</p>
+    <p>Jack's guests are founders and fund managers he is either backing or actively evaluating. <strong><a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a></strong> backs Bittensor projects; <strong><a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">TAO Institute</a></strong> independently scores 60+ active subnets for institutional risk. Each episode starts from an investment position, not a press release.</p>
   </div>
 </section>
 
@@ -883,7 +871,7 @@
 <section id="subscribe">
   <div class="subscribe-left">
     <h2>Get every episode.</h2>
-    <p class="subscribe-sub">Each episode in your inbox. The guest, the argument, the key data point.</p>
+    <p class="subscribe-sub">Every week. One guest. The sharpest argument in token markets, delivered before it shows up anywhere else.</p>
     <form class="email-form" id="emailForm" action="https://formsubmit.co/jack@pylon.partners" method="POST">
       <input type="hidden" name="_subject" value="Supercycle Newsletter Signup">
       <input type="hidden" name="_captcha" value="false">
@@ -901,10 +889,6 @@
     <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="platform-btn">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
       Spotify
-    </a>
-    <a href="https://podcasts.apple.com/search?term=supercycle+jack+leung" target="_blank" rel="noopener" class="platform-btn">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm0 4.372c4.197 0 7.628 3.431 7.628 7.628S16.197 19.628 12 19.628 4.372 16.197 4.372 12 7.803 4.372 12 4.372zm0 2.186a5.442 5.442 0 1 0 0 10.884A5.442 5.442 0 0 0 12 6.558zm0 1.745a3.697 3.697 0 1 1 0 7.394 3.697 3.697 0 0 1 0-7.394zm0 1.745a1.952 1.952 0 1 0 0 3.904 1.952 1.952 0 0 0 0-3.904z"/></svg>
-      Apple Podcasts
     </a>
   </div>
 </section>
