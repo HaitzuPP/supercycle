@@ -118,6 +118,41 @@
 
     .hero h1 em { font-style: italic; }
 
+    .hero-stats {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 36px;
+    }
+
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .hero-stat-num {
+      font-family: 'Georgia', serif;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-stat-label {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      color: var(--grey);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-stat-sep {
+      width: 1px;
+      background: var(--border);
+      align-self: stretch;
+      margin: 4px 0;
+    }
+
     .hero-cta-stack { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
 
     .btn-primary {
@@ -215,7 +250,7 @@
       gap: 3px;
       height: 32px;
       margin-top: 28px;
-      opacity: 0.22;
+      opacity: 0.45;
     }
 
     .wave-bar {
@@ -249,6 +284,48 @@
     @keyframes wave-pulse {
       0%, 100% { transform: scaleY(0.5); }
       50%       { transform: scaleY(1); }
+    }
+
+    /* ── PULL QUOTE STRIP ── */
+    .pull-quote-strip {
+      background: var(--black);
+      padding: 52px 48px;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .pull-quote-strip blockquote {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: clamp(17px, 1.8vw, 22px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.52;
+      flex: 1;
+    }
+
+    .pull-quote-attr {
+      flex-shrink: 0;
+      text-align: right;
+      min-width: 160px;
+    }
+
+    .pull-quote-name {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .pull-quote-role {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.06em;
+      line-height: 1.5;
     }
 
     /* ── EPISODES ── */
@@ -346,7 +423,7 @@
     .play-card-ep {
       font-family: 'Georgia', serif;
       font-size: 15px;
-      color: rgba(255,255,255,0.85);
+      color: rgba(255,255,255,0.92);
       text-align: center;
       line-height: 1.4;
       max-width: 220px;
@@ -514,14 +591,14 @@
       color: var(--black);
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      border-bottom: 1px solid var(--black);
-      padding-bottom: 2px;
+      gap: 8px;
+      border: 1.5px solid var(--black);
+      padding: 12px 22px;
       width: fit-content;
-      transition: opacity 0.15s;
+      transition: background 0.15s;
     }
 
-    .pitch-link:hover { opacity: 0.6; }
+    .pitch-link:hover { background: var(--light); }
 
     .about-right { padding: 72px 48px 72px 56px; }
 
@@ -620,6 +697,9 @@
       nav { padding: 16px 24px; height: auto; }
       .nav-anchors { display: none; }
 
+      .pull-quote-strip { flex-direction: column; gap: 24px; padding: 40px 24px; }
+      .pull-quote-attr { text-align: left; min-width: 0; }
+
       .hero { grid-template-columns: 1fr; }
       .hero-left { padding: 56px 24px 48px; border-right: none; border-bottom: 1px solid var(--border); }
       .hero-right { padding: 40px 24px 48px; }
@@ -679,6 +759,22 @@
   <div class="hero-left">
     <div class="hero-eyebrow">Hosted by Jack Leung &middot; Pylon Partners</div>
     <h1>Token markets.<br>From the people<br><em>building them.</em></h1>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">50+</span>
+        <span class="hero-stat-label">Episodes</span>
+      </div>
+      <div class="hero-stat-sep"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">Weekly</span>
+        <span class="hero-stat-label">Cadence</span>
+      </div>
+      <div class="hero-stat-sep"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">Free</span>
+        <span class="hero-stat-label">Always</span>
+      </div>
+    </div>
     <div class="hero-cta-stack">
       <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="btn-primary">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
@@ -724,6 +820,15 @@
   </div>
 </section>
 
+<!-- PULL QUOTE STRIP -->
+<div class="pull-quote-strip">
+  <blockquote>"Ozempic and Mounjaro sales exceed the total revenue of every major AI company. That's the size of the market we're entering."</blockquote>
+  <div class="pull-quote-attr">
+    <div class="pull-quote-name">Micaela Zanella</div>
+    <div class="pull-quote-role">Co-Founder, Nova<br>Drug Discovery on Bittensor</div>
+  </div>
+</div>
+
 <!-- EPISODES -->
 <section id="episodes">
   <div class="episodes-header">
@@ -757,7 +862,7 @@
         <div class="play-icon">
           <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
         </div>
-        <div class="play-card-label">Watch on YouTube</div>
+        <div class="play-card-label">Watch this episode</div>
         <div class="play-card-ep">Nova's Bet: Drug Discovery on a Bittensor Subnet</div>
       </a>
     </div>
@@ -845,16 +950,14 @@
     </div>
   </div>
   <div class="about-right">
-    <p>Supercycle covers the token economy from the inside. Every episode goes into commercial detail: what's been shipped, who's paying for it, and where institutional capital is moving.</p>
-    <p>Guests include <strong>Bittensor subnet founders</strong>, <strong>enterprise AI builders</strong>, and <strong>fund managers</strong> writing the first institutional tickets into decentralised AI. Jack brings the investor frame: Pylon Partners backs projects in the Bittensor ecosystem, and <strong>TAO Institute</strong> runs the leading subnet risk scoring framework.</p>
-    <p>No price predictions. No sponsored segments. Every conversation is research.</p>
+    <p>Supercycle covers the token economy from the inside: what's been shipped, who's paying for it, and where institutional capital is moving. Every conversation is primary research, not price commentary.</p>
+    <p>Guests include <strong>Bittensor subnet founders</strong>, <strong>enterprise AI builders</strong>, and <strong>fund managers</strong> writing the first institutional tickets into decentralised AI. No sponsored segments.</p>
   </div>
 </section>
 
 <!-- SUBSCRIBE -->
 <section id="subscribe">
   <h2>Listen <em>anywhere.</em></h2>
-  <p class="subscribe-sub">Free on every platform. New episode every week.</p>
   <div class="platform-links">
     <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="btn-primary">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
