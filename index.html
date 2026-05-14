@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Supercycle — Token Market Research Podcast</title>
-  <meta name="description" content="Token market research conversations with the founders and investors building open networks. Hosted by Jack Leung of Pylon Partners. New episodes weekly, free on all platforms.">
-  <meta property="og:title" content="Supercycle — Token Market Research Podcast">
-  <meta property="og:description" content="Token market research from the founders and investors building open networks. Hosted by Jack Leung of Pylon Partners.">
+  <title>Supercycle: Token Market Research Podcast</title>
+  <meta name="description" content="Token market research with the founders and fund managers building the open economy. Hosted by Jack Leung of Pylon Partners. Free on YouTube, Spotify, and Apple Podcasts.">
+  <meta property="og:title" content="Supercycle: Token Market Research Podcast">
+  <meta property="og:description" content="Token market research with the founders and fund managers building the open economy. Hosted by Jack Leung of Pylon Partners.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://haitzupp.github.io/supercycle/">
   <meta name="twitter:card" content="summary_large_image">
@@ -25,7 +25,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Georgia', 'Times New Roman', serif;
+      font-family: Arial, Helvetica, sans-serif;
       background: var(--white);
       color: var(--black);
       font-size: 16px;
@@ -33,7 +33,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Explicit heading font — Georgia */
     h1, h2, h3 { font-family: 'Georgia', 'Times New Roman', serif; }
 
     a { color: inherit; }
@@ -119,7 +118,7 @@
 
     .hero h1 em { font-style: italic; }
 
-    .cta-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .hero-cta-stack { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
 
     .btn-primary {
       display: inline-flex;
@@ -141,33 +140,40 @@
     .btn-primary:focus-visible { outline: 2px solid var(--black); outline-offset: 3px; }
     .btn-primary svg { width: 15px; height: 15px; flex-shrink: 0; }
 
-    .btn-ghost {
-      display: inline-flex;
+    .hero-secondary-links {
+      display: flex;
+      gap: 16px;
       align-items: center;
-      gap: 10px;
-      color: var(--black);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border: 1.5px solid var(--black);
-      padding: 13px 28px;
-      transition: background 0.15s;
     }
 
-    .btn-ghost:hover { background: var(--light); }
-    .btn-ghost:focus-visible { outline: 2px solid var(--black); outline-offset: 3px; }
-    .btn-ghost svg { width: 15px; height: 15px; flex-shrink: 0; }
+    .hero-secondary-links span {
+      font-size: 11px;
+      color: var(--grey);
+      letter-spacing: 0.06em;
+    }
 
-    /* Hero right: guest roster */
+    .inline-link {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      color: var(--grey);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1px;
+      transition: color 0.15s, border-color 0.15s;
+      letter-spacing: 0.06em;
+    }
+
+    .inline-link:hover { color: var(--black); border-color: var(--black); }
+
+    /* Hero right: guest roster + waveform */
     .hero-right {
       padding: 88px 48px 80px 56px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
     }
+
+    .hero-right-top { flex: 1; }
 
     .hero-right-label {
       font-family: Arial, Helvetica, sans-serif;
@@ -176,13 +182,12 @@
       letter-spacing: 0.24em;
       text-transform: uppercase;
       color: var(--grey);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .guest-row {
-      padding: 18px 0;
+      padding: 16px 0;
       border-top: 1px solid var(--border);
-      min-height: 64px;
     }
 
     .guest-row:last-child { border-bottom: 1px solid var(--border); }
@@ -193,7 +198,7 @@
       font-weight: 700;
       letter-spacing: 0.04em;
       color: var(--black);
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
 
     .guest-row-cred {
@@ -203,134 +208,165 @@
       line-height: 1.5;
     }
 
-    /* ── SIGNAL STRIP ── */
-    .signal-strip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .signal-item {
-      padding: 44px 48px;
-      border-right: 1px solid var(--border);
-    }
-
-    .signal-item:last-child { border-right: none; }
-
-    .signal-number {
-      font-size: clamp(40px, 4.2vw, 56px);
-      font-weight: 400;
-      line-height: 1;
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
-    }
-
-    .signal-label {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 11px;
-      color: var(--grey);
-      letter-spacing: 0.04em;
-      line-height: 1.6;
-    }
-
-    /* ── TICKER (after signal strip — coverage breadth) ── */
-    .ticker-wrap {
-      border-bottom: 1px solid var(--border);
-      overflow: hidden;
-      padding: 12px 0;
-      background: var(--light);
-    }
-
-    .ticker-track {
+    /* Waveform animation */
+    .waveform {
       display: flex;
-      width: max-content;
-      animation: ticker-scroll 40s linear infinite;
+      align-items: flex-end;
+      gap: 3px;
+      height: 32px;
+      margin-top: 28px;
+      opacity: 0.22;
     }
 
-    .ticker-wrap:hover .ticker-track { animation-play-state: paused; }
-
-    @keyframes ticker-scroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
+    .wave-bar {
+      width: 3px;
+      background: var(--black);
+      border-radius: 1px;
+      animation: wave-pulse 1.4s ease-in-out infinite;
     }
 
-    .ticker-item {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--grey);
-      white-space: nowrap;
-      padding: 0 24px;
-    }
+    .wave-bar:nth-child(1)  { height: 40%; animation-delay: 0.0s; }
+    .wave-bar:nth-child(2)  { height: 80%; animation-delay: 0.1s; }
+    .wave-bar:nth-child(3)  { height: 55%; animation-delay: 0.2s; }
+    .wave-bar:nth-child(4)  { height: 90%; animation-delay: 0.3s; }
+    .wave-bar:nth-child(5)  { height: 65%; animation-delay: 0.15s; }
+    .wave-bar:nth-child(6)  { height: 100%; animation-delay: 0.25s; }
+    .wave-bar:nth-child(7)  { height: 45%; animation-delay: 0.05s; }
+    .wave-bar:nth-child(8)  { height: 75%; animation-delay: 0.35s; }
+    .wave-bar:nth-child(9)  { height: 60%; animation-delay: 0.18s; }
+    .wave-bar:nth-child(10) { height: 85%; animation-delay: 0.28s; }
+    .wave-bar:nth-child(11) { height: 50%; animation-delay: 0.08s; }
+    .wave-bar:nth-child(12) { height: 95%; animation-delay: 0.38s; }
+    .wave-bar:nth-child(13) { height: 70%; animation-delay: 0.12s; }
+    .wave-bar:nth-child(14) { height: 40%; animation-delay: 0.22s; }
+    .wave-bar:nth-child(15) { height: 80%; animation-delay: 0.32s; }
+    .wave-bar:nth-child(16) { height: 55%; animation-delay: 0.04s; }
+    .wave-bar:nth-child(17) { height: 65%; animation-delay: 0.14s; }
+    .wave-bar:nth-child(18) { height: 90%; animation-delay: 0.24s; }
+    .wave-bar:nth-child(19) { height: 45%; animation-delay: 0.34s; }
+    .wave-bar:nth-child(20) { height: 75%; animation-delay: 0.16s; }
 
-    .ticker-item.dark { color: var(--black); }
+    @keyframes wave-pulse {
+      0%, 100% { transform: scaleY(0.5); }
+      50%       { transform: scaleY(1); }
+    }
 
     /* ── EPISODES ── */
     #episodes { border-top: 1px solid var(--border); }
 
-    .episodes-header { padding: 56px 48px 36px; }
+    .episodes-header {
+      padding: 48px 48px 32px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
 
-    .episodes-label {
+    .section-label {
       font-family: Arial, Helvetica, sans-serif;
       font-size: 10px;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--grey);
     }
 
-    /* Featured card: full width, 2-col with embed */
+    .section-link {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--black);
+      border-bottom: 1px solid var(--black);
+      padding-bottom: 1px;
+      transition: opacity 0.15s;
+    }
+
+    .section-link:hover { opacity: 0.6; }
+
+    /* Featured card: full width, 2-col with play card */
     .feat-ep-block {
       display: grid;
-      grid-template-columns: 1fr 1.5fr;
+      grid-template-columns: 1fr 1.4fr;
       border-top: 2.5px solid var(--black);
       border-bottom: 1px solid var(--border);
       margin: 0 48px;
     }
 
     .feat-ep-info {
-      padding: 40px 40px 40px 0;
+      padding: 44px 44px 44px 0;
       border-right: 1px solid var(--border);
     }
 
     .feat-ep-player {
-      padding: 40px 0 40px 40px;
+      padding: 44px 0 44px 44px;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .play-card {
+      flex: 1;
+      background: var(--black);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+      padding: 40px;
+      min-height: 240px;
+    }
+
+    .play-card:hover { opacity: 0.86; }
+
+    .play-icon {
+      width: 52px;
+      height: 52px;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
       display: flex;
       align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
 
-    .yt-embed-wrap {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: var(--black);
+    .play-icon svg { width: 18px; height: 18px; fill: white; margin-left: 2px; }
+
+    .play-card-label {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
     }
 
-    .yt-embed-wrap iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
+    .play-card-ep {
+      font-family: 'Georgia', serif;
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+      text-align: center;
+      line-height: 1.4;
+      max-width: 220px;
     }
 
-    /* 2-col grid for remaining cards */
-    .episodes-grid-2col {
+    /* 3-col grid for remaining episodes */
+    .episodes-grid-3col {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       border-top: 1px solid var(--border);
       padding: 0 48px;
     }
 
     .episode-card {
-      padding: 40px 36px 40px 0;
+      padding: 36px 32px 36px 0;
       border-right: 1px solid var(--border);
     }
 
     .episode-card:last-child { border-right: none; padding-right: 0; }
-    .episode-card:not(:first-child) { padding-left: 36px; }
+    .episode-card:not(:first-child) { padding-left: 32px; }
 
     /* Shared episode card elements */
     .episode-tag {
@@ -340,25 +376,34 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--grey);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .episode-tag.featured { color: var(--black); }
+
+    .episode-num {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 12px;
+    }
 
     .episode-title-link {
       text-decoration: none;
       color: var(--black);
       display: block;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .episode-title {
-      font-size: 19px;
+      font-size: 17px;
       font-weight: 400;
-      line-height: 1.26;
+      line-height: 1.28;
     }
 
-    .feat-ep-title { font-size: clamp(20px, 2.2vw, 26px); }
+    .feat-ep-title { font-size: clamp(20px, 2vw, 24px); }
 
     .episode-title-link:hover .episode-title,
     .episode-title-link:hover .feat-ep-title {
@@ -383,21 +428,20 @@
       font-family: Arial, Helvetica, sans-serif;
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      letter-spacing: 0.06em;
       margin-bottom: 2px;
     }
 
     .episode-meta {
       font-family: Arial, Helvetica, sans-serif;
       font-size: 10px;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--grey);
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
-    .episode-links { display: flex; gap: 16px; }
+    .episode-links { display: flex; gap: 14px; }
 
     .ep-link {
       font-family: Arial, Helvetica, sans-serif;
@@ -419,27 +463,6 @@
     .ep-link:focus-visible { outline: 2px solid var(--black); outline-offset: 2px; }
     .ep-link svg { width: 11px; height: 11px; flex-shrink: 0; }
 
-    .episodes-view-all {
-      padding: 32px 48px;
-      border-top: 1px solid var(--border);
-      text-align: center;
-    }
-
-    .view-all-link {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: var(--black);
-      border-bottom: 1px solid var(--black);
-      padding-bottom: 1px;
-      transition: opacity 0.15s;
-    }
-
-    .view-all-link:hover { opacity: 0.6; }
-
     /* ── ABOUT ── */
     #about {
       border-top: 1px solid var(--border);
@@ -453,23 +476,25 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 48px;
+      gap: 40px;
     }
 
     .about-left h2 {
-      font-size: clamp(26px, 2.8vw, 36px);
+      font-size: clamp(26px, 2.6vw, 34px);
       font-weight: 400;
       line-height: 1.18;
     }
 
     .about-left h2 em { font-style: italic; }
 
+    .host-block { display: flex; flex-direction: column; gap: 14px; }
+
     .host-name {
       font-family: Arial, Helvetica, sans-serif;
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.08em;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
 
     .host-cred {
@@ -479,6 +504,25 @@
       line-height: 1.72;
     }
 
+    .pitch-link {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--black);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid var(--black);
+      padding-bottom: 2px;
+      width: fit-content;
+      transition: opacity 0.15s;
+    }
+
+    .pitch-link:hover { opacity: 0.6; }
+
     .about-right { padding: 72px 48px 72px 56px; }
 
     .about-right p {
@@ -486,7 +530,10 @@
       font-size: 15px;
       color: var(--mid-grey);
       line-height: 1.82;
+      margin-bottom: 22px;
     }
+
+    .about-right p:last-child { margin-bottom: 0; }
 
     .about-right strong { color: var(--black); font-weight: 600; }
 
@@ -498,17 +545,24 @@
     }
 
     #subscribe h2 {
-      font-size: clamp(30px, 3.8vw, 48px);
+      font-size: clamp(28px, 3.4vw, 44px);
       font-weight: 400;
       line-height: 1.1;
-      margin-bottom: 48px;
+      margin-bottom: 12px;
     }
 
     #subscribe h2 em { font-style: italic; }
 
+    .subscribe-sub {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      color: var(--grey);
+      margin-bottom: 48px;
+    }
+
     .platform-links {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
@@ -534,61 +588,14 @@
     .platform-btn:focus-visible { outline: 2px solid var(--black); outline-offset: 3px; }
     .platform-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
 
-    .rss-wrap {
-      margin-top: 28px;
-      border-top: 1px solid var(--border);
-      padding-top: 20px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .rss-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--grey);
-      text-decoration: none;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 1px;
-      transition: color 0.15s, border-color 0.15s;
-    }
-
-    .rss-link:hover { color: var(--black); border-color: var(--black); }
-
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
-      padding: 28px 48px;
+      padding: 24px 48px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-
-    .footer-left { display: flex; align-items: center; gap: 28px; }
-
-    .footer-social { display: flex; gap: 20px; }
-
-    .footer-social a {
-      color: var(--grey);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .footer-social a:hover { color: var(--black); }
-    .footer-social svg { width: 13px; height: 13px; flex-shrink: 0; }
-
-    .footer-right { display: flex; align-items: center; gap: 16px; }
 
     footer p {
       font-family: Arial, Helvetica, sans-serif;
@@ -608,8 +615,6 @@
 
     .footer-link:hover { color: var(--black); }
 
-    .footer-sep { width: 1px; height: 12px; background: var(--border); }
-
     /* ── RESPONSIVE ── */
     @media (max-width: 860px) {
       nav { padding: 16px 24px; height: auto; }
@@ -619,21 +624,16 @@
       .hero-left { padding: 56px 24px 48px; border-right: none; border-bottom: 1px solid var(--border); }
       .hero-right { padding: 40px 24px 48px; }
 
-      .signal-strip { grid-template-columns: 1fr 1fr; }
-      .signal-item { padding: 28px 24px; }
-      .signal-item:nth-child(2) { border-right: none; }
-      .signal-item:nth-child(3) { border-right: none; border-top: 1px solid var(--border); grid-column: span 2; }
-
       .feat-ep-block { grid-template-columns: 1fr; margin: 0 24px; }
       .feat-ep-info { padding: 36px 0 28px; border-right: none; border-bottom: 1px solid var(--border); }
-      .feat-ep-player { padding: 28px 0 36px; }
+      .feat-ep-player { padding: 28px 0 0; }
+      .play-card { min-height: 180px; padding: 32px; }
 
-      .episodes-header { padding: 36px 24px 24px; }
-      .episodes-grid-2col { grid-template-columns: 1fr; padding: 0 24px; }
-      .episode-card { border-right: none; border-bottom: 1px solid var(--border); padding: 36px 0; }
+      .episodes-header { padding: 32px 24px 24px; }
+      .episodes-grid-3col { grid-template-columns: 1fr; padding: 0 24px; }
+      .episode-card { border-right: none; border-bottom: 1px solid var(--border); padding: 32px 0; }
       .episode-card:last-child { border-bottom: none; }
       .episode-card:not(:first-child) { padding-left: 0; }
-      .episodes-view-all { padding: 28px 24px; }
 
       #about { grid-template-columns: 1fr; }
       .about-left { padding: 56px 24px 36px; border-right: none; border-bottom: 1px solid var(--border); gap: 32px; }
@@ -641,16 +641,11 @@
 
       #subscribe { padding: 64px 24px; }
 
-      footer { padding: 20px 24px; flex-direction: column; gap: 14px; text-align: center; }
-      .footer-left { flex-direction: column; gap: 12px; }
-      .footer-right { flex-direction: column; gap: 8px; }
+      footer { padding: 18px 24px; flex-direction: column; gap: 8px; text-align: center; }
     }
 
-    @media (max-width: 480px) {
-      .signal-strip { grid-template-columns: 1fr; }
-      .signal-item { border-right: none; border-bottom: 1px solid var(--border); }
-      .signal-item:nth-child(3) { grid-column: span 1; border-top: none; }
-      .signal-item:last-child { border-bottom: none; }
+    @media (max-width: 640px) {
+      .episodes-grid-3col { grid-template-columns: 1fr; }
       .platform-links { flex-direction: column; align-items: stretch; }
       .platform-links .btn-primary,
       .platform-links .platform-btn { justify-content: center; }
@@ -684,87 +679,59 @@
   <div class="hero-left">
     <div class="hero-eyebrow">Hosted by Jack Leung &middot; Pylon Partners</div>
     <h1>Token markets.<br>From the people<br><em>building them.</em></h1>
-    <div class="cta-row">
+    <div class="hero-cta-stack">
       <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="btn-primary">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
         Watch on YouTube
       </a>
-      <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="btn-ghost">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-        Listen on Spotify
-      </a>
+      <div class="hero-secondary-links">
+        <span>Also on</span>
+        <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="inline-link">Spotify</a>
+        <span>&middot;</span>
+        <a href="https://podcasts.apple.com/search?term=supercycle+jack+leung" target="_blank" rel="noopener" class="inline-link">Apple Podcasts</a>
+      </div>
     </div>
   </div>
   <div class="hero-right">
-    <div class="hero-right-label">Recent Guests</div>
-    <div class="guest-row">
-      <div class="guest-row-name">Micaela Zanella</div>
-      <div class="guest-row-cred">Co-Founder, Nova &middot; Drug Discovery on Bittensor</div>
+    <div class="hero-right-top">
+      <div class="hero-right-label">Recent Guests</div>
+      <div class="guest-row">
+        <div class="guest-row-name">Micaela Zanella</div>
+        <div class="guest-row-cred">Co-Founder, Nova &middot; Drug Discovery</div>
+      </div>
+      <div class="guest-row">
+        <div class="guest-row-name">Greg Waisman</div>
+        <div class="guest-row-cred">CEO, Yuma / DCG &middot; Bittensor Infrastructure</div>
+      </div>
+      <div class="guest-row">
+        <div class="guest-row-name">Lex Sokolin</div>
+        <div class="guest-row-cred">GP, Generative Ventures &middot; Machine Economy</div>
+      </div>
+      <div class="guest-row">
+        <div class="guest-row-name">Max</div>
+        <div class="guest-row-cred">CEO, Mataco Labs &middot; Computer Vision / Subnet 44</div>
+      </div>
     </div>
-    <div class="guest-row">
-      <div class="guest-row-name">Greg Waisman</div>
-      <div class="guest-row-cred">CEO, Yuma / DCG &middot; Bittensor Infrastructure</div>
-    </div>
-    <div class="guest-row">
-      <div class="guest-row-name">Lex Sokolin</div>
-      <div class="guest-row-cred">GP, Generative Ventures &middot; Machine Economy</div>
+    <div class="waveform" aria-hidden="true">
+      <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      <div class="wave-bar"></div><div class="wave-bar"></div>
     </div>
   </div>
 </section>
 
-<!-- SIGNAL STRIP -->
-<div class="signal-strip">
-  <div class="signal-item">
-    <div class="signal-number">50+</div>
-    <div class="signal-label">Episodes published</div>
-  </div>
-  <div class="signal-item">
-    <div class="signal-number">$0</div>
-    <div class="signal-label">Cost to access</div>
-  </div>
-  <div class="signal-item">
-    <div class="signal-number">1</div>
-    <div class="signal-label">New episode every week</div>
-  </div>
-</div>
-
-<!-- TICKER (coverage scope, after signals) -->
-<div class="ticker-wrap" aria-hidden="true">
-  <div class="ticker-track">
-    <span class="ticker-item dark">Bittensor</span>
-    <span class="ticker-item">Drug Discovery</span>
-    <span class="ticker-item dark">Machine Economy</span>
-    <span class="ticker-item">AI Infrastructure</span>
-    <span class="ticker-item dark">Token Markets</span>
-    <span class="ticker-item">Open Networks</span>
-    <span class="ticker-item dark">Prop Trading</span>
-    <span class="ticker-item">Decentralized AI</span>
-    <span class="ticker-item dark">Institutional Capital</span>
-    <span class="ticker-item">Protocol Design</span>
-    <span class="ticker-item dark">Venture Capital</span>
-    <span class="ticker-item">Agentic Finance</span>
-    <span class="ticker-item dark">Bittensor</span>
-    <span class="ticker-item">Drug Discovery</span>
-    <span class="ticker-item dark">Machine Economy</span>
-    <span class="ticker-item">AI Infrastructure</span>
-    <span class="ticker-item dark">Token Markets</span>
-    <span class="ticker-item">Open Networks</span>
-    <span class="ticker-item dark">Prop Trading</span>
-    <span class="ticker-item">Decentralized AI</span>
-    <span class="ticker-item dark">Institutional Capital</span>
-    <span class="ticker-item">Protocol Design</span>
-    <span class="ticker-item dark">Venture Capital</span>
-    <span class="ticker-item">Agentic Finance</span>
-  </div>
-</div>
-
 <!-- EPISODES -->
 <section id="episodes">
   <div class="episodes-header">
-    <span class="episodes-label">Featured Episodes</span>
+    <span class="section-label">Recent Episodes</span>
+    <a class="section-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">All 50+ episodes &rarr;</a>
   </div>
 
-  <!-- Featured card: full width, side-by-side with embed -->
+  <!-- Featured card: full width, play card right -->
   <div class="feat-ep-block">
     <div class="feat-ep-info">
       <div class="episode-tag featured">Start Here</div>
@@ -786,20 +753,18 @@
       </div>
     </div>
     <div class="feat-ep-player">
-      <div class="yt-embed-wrap">
-        <iframe
-          src="https://www.youtube.com/embed/AR5h0hmYM64"
-          title="Subnet 8: Vanta And The $20 Billion Prop Trading Disruption — Supercycle"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          loading="lazy">
-        </iframe>
-      </div>
+      <a class="play-card" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" aria-label="Watch this episode on YouTube">
+        <div class="play-icon">
+          <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
+        </div>
+        <div class="play-card-label">Watch on YouTube</div>
+        <div class="play-card-ep">Nova's Bet: Drug Discovery on a Bittensor Subnet</div>
+      </a>
     </div>
   </div>
 
-  <!-- 2-col grid for remaining episodes -->
-  <div class="episodes-grid-2col">
+  <!-- 3-col grid -->
+  <div class="episodes-grid-3col">
 
     <!-- Card 2: Greg / Yuma -->
     <div class="episode-card">
@@ -843,30 +808,53 @@
       </div>
     </div>
 
-  </div>
+    <!-- Card 4: Max / Subnet 44 -->
+    <div class="episode-card">
+      <div class="episode-tag">Computer Vision</div>
+      <a class="episode-title-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
+        <h3 class="episode-title">Selling Enterprise Without Selling Compute: Subnet 44 and the Vision Stack</h3>
+      </a>
+      <p class="episode-quote">"We're talking about tens of tons of chocolate per factory saved using computer vision. That's real value creation."</p>
+      <div class="episode-guest">Max</div>
+      <div class="episode-meta">CEO, Mataco Labs &nbsp;&middot;&nbsp; Subnet 44</div>
+      <div class="episode-links">
+        <a class="ep-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          YouTube
+        </a>
+        <a class="ep-link" href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          Spotify
+        </a>
+      </div>
+    </div>
 
-  <div class="episodes-view-all">
-    <a class="view-all-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">All episodes on YouTube &rarr;</a>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
   <div class="about-left">
-    <h2>Token market research.<br><em>From the source.</em></h2>
-    <div>
-      <div class="host-name">Jack Leung</div>
-      <div class="host-cred">Managing Partner, Pylon Partners. Founder, TAO Institute.</div>
+    <h2>The builders.<br>The investors.<br><em>The real numbers.</em></h2>
+    <div class="host-block">
+      <div>
+        <div class="host-name">Jack Leung</div>
+        <div class="host-cred">Managing Partner, Pylon Partners. Founder, TAO Institute. Investor in the Bittensor ecosystem since 2022.</div>
+      </div>
+      <a class="pitch-link" href="mailto:jack@pylon.partners">Pitch your episode &rarr;</a>
     </div>
   </div>
   <div class="about-right">
-    <p>Every episode covers commercial reality: who is building, what they shipped, and where the money goes. Guests include <strong>Bittensor subnet founders</strong>, <strong>enterprise AI builders</strong>, and <strong>VCs</strong> moving institutional capital into token markets.</p>
+    <p>Supercycle covers the token economy from the inside. Every episode goes into commercial detail: what's been shipped, who's paying for it, and where institutional capital is moving.</p>
+    <p>Guests include <strong>Bittensor subnet founders</strong>, <strong>enterprise AI builders</strong>, and <strong>fund managers</strong> writing the first institutional tickets into decentralised AI. Jack brings the investor frame: Pylon Partners backs projects in the Bittensor ecosystem, and <strong>TAO Institute</strong> runs the leading subnet risk scoring framework.</p>
+    <p>No price predictions. No sponsored segments. Every conversation is research.</p>
   </div>
 </section>
 
 <!-- SUBSCRIBE -->
 <section id="subscribe">
-  <h2>Always free.<br><em>Pick your platform.</em></h2>
+  <h2>Listen <em>anywhere.</em></h2>
+  <p class="subscribe-sub">Free on every platform. New episode every week.</p>
   <div class="platform-links">
     <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="btn-primary">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
@@ -881,34 +869,12 @@
       Apple Podcasts
     </a>
   </div>
-  <div class="rss-wrap">
-    <a class="rss-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
-      RSS Feed
-    </a>
-  </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-left">
-    <a href="/" class="wordmark">Supercycle</a>
-    <div class="footer-social">
-      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        YouTube
-      </a>
-      <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-        Spotify
-      </a>
-    </div>
-  </div>
-  <div class="footer-right">
-    <a href="https://pylon.partners" target="_blank" rel="noopener" class="footer-link">A Pylon Partners production</a>
-    <div class="footer-sep"></div>
-    <p>&copy; 2026</p>
-  </div>
+  <a href="https://pylon.partners" target="_blank" rel="noopener" class="footer-link">A Pylon Partners production</a>
+  <p>&copy; 2026 Supercycle</p>
 </footer>
 
 <script>
