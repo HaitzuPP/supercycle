@@ -824,8 +824,10 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 860px) {
       nav { padding: 0 24px; }
-      .nav-anchors { display: none; }
-      .nav-subscribe { display: inline-flex; }
+      .nav-anchors { display: flex; gap: 14px; }
+      .nav-anchors a { font-size: 9px; letter-spacing: 0.08em; }
+      .nav-icons { display: none; }
+      .nav-subscribe { display: none; }
 
       .hero { grid-template-columns: 1fr; }
       .hero-left { padding: 48px 24px 40px; border-right: none; border-bottom: 1px solid var(--border); }
@@ -894,14 +896,12 @@
       </div>
       <div class="hero-stat">
         <div class="hero-stat-num">2022</div>
-        <div class="hero-stat-label">In market since</div>
+        <div class="hero-stat-label">Since</div>
       </div>
     </div>
     <a href="#subscribe" class="btn-primary">Subscribe &rarr;</a>
-    <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="hero-about-link">Watch on YouTube &rarr;</a>
   </div>
   <div class="hero-right">
-    <div class="hero-right-label">Recent Guests</div>
     <a class="guest-row" href="#episodes">
       <div class="guest-row-name">Micaela Zanella</div>
       <div class="guest-row-cred">Co-Founder, Nova</div>
@@ -930,21 +930,20 @@
   <!-- Featured card -->
   <div class="feat-ep-block">
     <div class="feat-ep-info">
-      <div class="feat-ep-tag">Featured</div>
-      <div class="feat-ep-num">Ep. 52 &nbsp;&middot;&nbsp; May 2025</div>
+      <div class="feat-ep-num">Featured &nbsp;&middot;&nbsp; Ep. 52 &nbsp;&middot;&nbsp; May 2025</div>
       <a class="feat-ep-title-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
         <h3>Nova's Bet: Drug Discovery on a Bittensor Subnet</h3>
       </a>
       <p class="episode-quote">"Ozempic and Mounjaro sales exceed the total revenue of every major AI company. That's the size of the market we're entering."</p>
       <div>
         <div class="feat-ep-guest">Micaela Zanella</div>
-        <div class="feat-ep-meta">Co-Founder, Nova &nbsp;&middot;&nbsp; Drug Discovery</div>
+        <div class="feat-ep-meta">Co-Founder, Nova &nbsp;&middot;&nbsp; Drug Discovery &nbsp;&middot;&nbsp; 52 min</div>
       </div>
     </div>
     <div class="feat-ep-player">
       <a class="play-card" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" aria-label="Watch on YouTube">
         <svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.22)" style="width:44px;height:44px;flex-shrink:0;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        <div style="font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.5);">Watch on YouTube &rarr;</div>
+        <div style="font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.5);">Browse channel &rarr;</div>
       </a>
     </div>
   </div>
@@ -961,11 +960,11 @@
       <p class="episode-quote">"We're seeing intelligence from Bittensor outperforming models from labs with hundreds of millions, if not billions, poured into them."</p>
       <div class="episode-footer">
         <div class="episode-guest">Greg Waisman</div>
-        <div class="episode-meta">CEO, Yuma / DCG &nbsp;&middot;&nbsp; Bittensor</div>
+        <div class="episode-meta">CEO, Yuma / DCG &nbsp;&middot;&nbsp; Bittensor &nbsp;&middot;&nbsp; 48 min</div>
         <div class="ep-links">
           <a class="ep-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            YouTube
+            Watch &rarr;
           </a>
         </div>
       </div>
@@ -980,11 +979,11 @@
       <p class="episode-quote">"Stripe, Ethereum, Solana, Visa, BlackRock. Everybody wants to be robot money."</p>
       <div class="episode-footer">
         <div class="episode-guest">Lex Sokolin</div>
-        <div class="episode-meta">GP, Generative Ventures &nbsp;&middot;&nbsp; Machine Economy</div>
+        <div class="episode-meta">GP, Generative Ventures &nbsp;&middot;&nbsp; Machine Economy &nbsp;&middot;&nbsp; 61 min</div>
         <div class="ep-links">
           <a class="ep-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            YouTube
+            Watch &rarr;
           </a>
         </div>
       </div>
@@ -999,11 +998,11 @@
       <p class="episode-quote">"The clients we're talking to are all above a billion in turnover. The compute question is what they ask first."</p>
       <div class="episode-footer">
         <div class="episode-guest">Max &amp; Wei</div>
-        <div class="episode-meta">Mataco Labs &nbsp;&middot;&nbsp; Subnet 44</div>
+        <div class="episode-meta">Mataco Labs &nbsp;&middot;&nbsp; Subnet 44 &nbsp;&middot;&nbsp; 55 min</div>
         <div class="ep-links">
           <a class="ep-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            YouTube
+            Watch &rarr;
           </a>
         </div>
       </div>
@@ -1019,22 +1018,23 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="about-left">
-    <h2>Why the conversations<br>go <em>deeper.</em></h2>
+    <h2>Built from live<br><em>due diligence.</em></h2>
     <div>
       <div class="host-name">Jack Leung</div>
       <div class="host-cred">Managing Partner, <a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a>. Founder, TAO Institute. Backing projects in the Bittensor ecosystem since 2022.</div>
     </div>
     <a class="pitch-btn" href="mailto:jack@pylon.partners">Pitch your episode &rarr;</a>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:10px;color:var(--grey);line-height:1.7;letter-spacing:0.02em;">We prioritise founders with active subnets and institutional traction.</p>
   </div>
   <div class="about-right">
-    <p>Most podcasts bring guests on to promote a project. Jack brings guests on because he is either putting capital behind them or deciding whether to. <strong><a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a></strong> invests in Bittensor projects. <strong><a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">TAO Institute</a></strong> independently scores 60+ active subnets for institutional risk. The conversations are specific because the due diligence behind them is real.</p>
+    <p>Most podcasts bring guests on to promote a project. Jack brings guests on because he is either putting capital behind them or deciding whether to. <strong><a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a></strong> backs Bittensor projects; <strong><a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">TAO Institute</a></strong> independently scores 60+ active subnets for institutional risk. Every guest is someone Jack is actively researching or monitoring for the portfolio.</p>
   </div>
 </section>
 
 <!-- SUBSCRIBE -->
 <section id="subscribe">
   <div class="subscribe-left">
-    <h2>Get every episode.<br><em>In your inbox.</em></h2>
+    <h2>Get every episode.</h2>
     <p class="subscribe-sub">One email per episode. Founders and fund managers building on Bittensor, in their own words.</p>
     <form class="email-form" id="emailForm" action="https://formsubmit.co/jack@pylon.partners" method="POST">
       <input type="hidden" name="_subject" value="Supercycle Newsletter Signup">
@@ -1045,6 +1045,7 @@
     </form>
   </div>
   <div class="subscribe-right">
+    <div class="subscribe-right-label">Or follow on</div>
     <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="platform-btn primary">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
       YouTube
