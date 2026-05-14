@@ -47,6 +47,10 @@
 
     #episodes, #about, #subscribe { scroll-margin-top: 62px; }
 
+    /* Skip link */
+    .skip-link { position: absolute; top: -40px; left: 0; background: var(--black); color: var(--white); padding: 8px 16px; font-size: 11px; font-weight: 700; font-family: Arial, Helvetica, sans-serif; text-decoration: none; z-index: 200; transition: top 0.15s; }
+    .skip-link:focus { top: 0; }
+
     /* ── NAV ── */
     nav {
       display: flex;
@@ -836,28 +840,32 @@
 <section class="hero">
   <div class="hero-left">
     <h1>Token markets. <br><em>Firsthand.</em></h1>
-    <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:var(--mid-grey);line-height:1.7;margin-bottom:28px;">Weekly conversations with the founders and fund managers building the Bittensor ecosystem. Hosted by Jack Leung of <a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a>.</p>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:var(--mid-grey);line-height:1.7;margin-bottom:28px;">Every guest has a live position in Bittensor. Every question starts with independent research. Hosted by Jack Leung of <a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a>.</p>
     <div class="hero-stats">
       <div class="hero-stat">
         <div class="hero-stat-num">52</div>
         <div class="hero-stat-label">Episodes</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num">4</div>
-        <div class="hero-stat-label">Years running</div>
+        <div class="hero-stat-num" style="font-size:14px;letter-spacing:-0.01em;">Since 2022</div>
+        <div class="hero-stat-label">Bittensor</div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-num">0</div>
         <div class="hero-stat-label">Sponsors</div>
       </div>
     </div>
-    <a href="#subscribe" class="btn-primary">Get the newsletter &rarr;</a>
+    <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start;">
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="btn-primary">Watch on YouTube &rarr;</a>
+      <a href="#subscribe" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;color:var(--grey);border-bottom:1px solid var(--border);padding-bottom:1px;">Get the newsletter &rarr;</a>
+    </div>
   </div>
   <div class="hero-right">
     <div class="show-art">
-      <div class="show-art-eyebrow">Weekly podcast</div>
+      <div class="show-art-eyebrow">Token markets podcast</div>
       <div class="show-art-title">Supercycle</div>
       <div class="show-art-rule"></div>
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:10px;color:rgba(255,255,255,0.45);letter-spacing:0.08em;line-height:1.8;">Jack Leung &nbsp;&middot;&nbsp; Pylon Partners<br>Research by <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.55);text-decoration:underline;">TAO Institute</a></div>
     </div>
   </div>
 </section>
@@ -873,9 +881,7 @@
     <div class="feat-ep-info">
       <div class="episode-tag green" style="margin-bottom:0">Drug Discovery</div>
       <div class="feat-ep-num">Ep. 52 &nbsp;&middot;&nbsp; May 2025</div>
-      <a class="feat-ep-title-link" href="https://www.youtube.com/watch?v=py7DgwA1Tf4" target="_blank" rel="noopener">
-        <h3 style="font-size:clamp(20px,2.2vw,27px);font-weight:400;line-height:1.22;font-family:'Georgia','Times New Roman',serif;">Nova's Bet: Drug Discovery on a Bittensor Subnet</h3>
-      </a>
+      <h3 style="font-size:clamp(20px,2.2vw,27px);font-weight:400;line-height:1.22;font-family:'Georgia','Times New Roman',serif;">Nova's Bet: Drug Discovery on a Bittensor Subnet</h3>
       <p class="episode-quote">"Ozempic and Mounjaro sales exceed the total revenue of every major AI company."<br><span style="font-style:normal;font-weight:700;color:var(--black);">— Micaela Zanella, Nova</span></p>
       <div>
         <div class="feat-ep-guest">Micaela Zanella</div>
@@ -924,7 +930,7 @@
       <div class="episode-footer">
         <div class="episode-guest">Lex Sokolin</div>
         <div class="episode-meta">GP, Generative Ventures &nbsp;&middot;&nbsp; 61 min</div>
-        <a class="ep-cta" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" style="margin-top:12px;">Find on YouTube &rarr;</a>
+        <a class="ep-cta" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" style="margin-top:12px;">Watch on YouTube &rarr;</a>
       </div>
     </div>
 
@@ -937,7 +943,7 @@
       <div class="episode-footer">
         <div class="episode-guest">Max &amp; Wei</div>
         <div class="episode-meta">Mataco Labs &nbsp;&middot;&nbsp; Subnet 44 &nbsp;&middot;&nbsp; 55 min</div>
-        <a class="ep-cta" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" style="margin-top:12px;">Find on YouTube &rarr;</a>
+        <a class="ep-cta" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" style="margin-top:12px;">Watch on YouTube &rarr;</a>
       </div>
     </div>
 
@@ -957,7 +963,7 @@
       <div class="host-cred">Managing Partner, <a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a>. Founder, TAO Institute. Backing projects in the Bittensor ecosystem since 2022.</div>
     </div>
     <div>
-      <p style="font-size:11px;color:var(--grey);line-height:1.7;margin-bottom:6px;">Guests are practitioners with live positions. No briefed questions. No sponsors.</p>
+      <p style="font-size:11px;color:var(--grey);line-height:1.7;margin-bottom:6px;">Guests are practitioners with live positions. No briefed questions.</p>
       <a href="mailto:jack@pylon.partners" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);border-bottom:1px solid var(--black);padding-bottom:1px;text-decoration:none;">Pitch your episode &rarr;</a>
     </div>
   </div>
@@ -970,7 +976,7 @@
 <section id="subscribe">
   <div class="subscribe-left">
     <h2>Get every episode.</h2>
-    <p class="subscribe-sub">One email per week. No sponsors.</p>
+    <p class="subscribe-sub">One email per week.</p>
     <form class="email-form" id="emailForm" action="https://formsubmit.co/jack@pylon.partners" method="POST">
       <input type="hidden" name="_subject" value="Supercycle Newsletter Signup">
       <input type="hidden" name="_captcha" value="false">
