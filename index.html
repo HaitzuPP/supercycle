@@ -163,7 +163,7 @@
       padding: 14px 28px;
       transition: opacity 0.15s;
       align-self: flex-start;
-      margin-bottom: 14px;
+      margin-bottom: 32px;
     }
 
     .btn-primary:hover { opacity: 0.8; }
@@ -301,13 +301,37 @@
       border-top: 2.5px solid var(--green);
       border-bottom: 1px solid var(--border);
       margin: 0 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
     }
 
     .feat-ep-info {
-      padding: 40px 0;
+      padding: 40px 48px 40px 0;
       display: flex;
       flex-direction: column;
       gap: 16px;
+      border-right: 1px solid var(--border);
+    }
+
+    .feat-ep-embed {
+      padding: 40px 0 40px 48px;
+      display: flex;
+      align-items: center;
+    }
+
+    .ep-iframe-wrap {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--black);
+      overflow: hidden;
+    }
+
+    .ep-iframe-wrap iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: none;
     }
 
     .feat-ep-num {
@@ -686,8 +710,9 @@
       .hero-right-label { padding-left: 24px; }
       .guest-row { padding-left: 24px; padding-right: 24px; }
 
-      .feat-ep-block { margin: 0 24px; }
-      .feat-ep-info { padding: 32px 0 24px; }
+      .feat-ep-block { margin: 0 24px; grid-template-columns: 1fr; }
+      .feat-ep-info { padding: 32px 0 24px; border-right: none; border-bottom: 1px solid var(--border); }
+      .feat-ep-embed { padding: 24px 0 32px; }
 
       .section-header { padding: 32px 24px 20px; }
       .episodes-grid-3col { grid-template-columns: 1fr; padding: 0 24px; }
@@ -735,6 +760,8 @@
 <section class="hero">
   <div class="hero-left">
     <h1>Token markets.<br><em>Firsthand.</em></h1>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:var(--mid-grey);line-height:1.7;margin-bottom:28px;">Weekly conversations with the founders and fund managers building the Bittensor ecosystem. Hosted by Jack Leung of <a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a>.</p>
+    <a href="#subscribe" class="btn-primary">Subscribe &rarr;</a>
     <div class="hero-stats">
       <div class="hero-stat">
         <div class="hero-stat-num">52</div>
@@ -742,18 +769,17 @@
       </div>
       <div class="hero-stat">
         <div class="hero-stat-num">2022</div>
-        <div class="hero-stat-label">Backing since</div>
+        <div class="hero-stat-label">Since</div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-num">60+</div>
         <div class="hero-stat-label">Subnets scored</div>
       </div>
     </div>
-    <a href="#subscribe" class="btn-primary">Subscribe &rarr;</a>
   </div>
   <div class="hero-right">
     <div class="show-art">
-      <div class="show-art-eyebrow">Bittensor &middot; Token Markets &middot; Weekly</div>
+      <div class="show-art-eyebrow">Weekly podcast</div>
       <div class="show-art-title">Supercycle</div>
       <div class="show-art-rule"></div>
       <div class="show-art-sub">Token market research with the founders and fund managers building the open economy.</div>
@@ -787,10 +813,9 @@
   <!-- Featured card -->
   <div class="feat-ep-block">
     <div class="feat-ep-info">
-      <div class="feat-ep-num">Ep. 52 &nbsp;&middot;&nbsp; May 2025 &nbsp;&middot;&nbsp; Drug Discovery</div>
-      <a class="feat-ep-title-link" href="https://www.youtube.com/watch?v=py7DgwA1Tf4" target="_blank" rel="noopener">
-        <h3>Nova's Bet: Drug Discovery on a Bittensor Subnet</h3>
-      </a>
+      <div class="episode-tag green" style="margin-bottom:0">Drug Discovery</div>
+      <div class="feat-ep-num">Ep. 52 &nbsp;&middot;&nbsp; May 2025</div>
+      <h3 class="feat-ep-title-link" style="font-size:clamp(20px,2.2vw,27px);font-weight:400;line-height:1.22;font-family:'Georgia','Times New Roman',serif;">Nova's Bet: Drug Discovery on a Bittensor Subnet</h3>
       <p class="episode-quote">"Ozempic and Mounjaro sales exceed the total revenue of every major AI company."</p>
       <div>
         <div class="feat-ep-guest">Micaela Zanella</div>
@@ -800,6 +825,16 @@
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
         Watch on YouTube
       </a>
+    </div>
+    <div class="feat-ep-embed">
+      <div class="ep-iframe-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/py7DgwA1Tf4"
+          title="Supercycle Ep.52: Nova's Bet: Drug Discovery on a Bittensor Subnet"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
     </div>
   </div>
 
@@ -860,10 +895,13 @@
       <div class="host-name">Jack Leung</div>
       <div class="host-cred">Managing Partner, <a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a>. Founder, TAO Institute. Backing projects in the Bittensor ecosystem since 2022.</div>
     </div>
-    <a class="pitch-btn" href="mailto:jack@pylon.partners">Pitch your episode &rarr;</a>
+    <div>
+      <p style="font-size:11px;color:var(--grey);line-height:1.7;margin-bottom:12px;">Founders building on Bittensor, or fund managers with a live position in token markets. No PR-managed slots.</p>
+      <a class="pitch-btn" href="mailto:jack@pylon.partners">Pitch your episode &rarr;</a>
+    </div>
   </div>
   <div class="about-right">
-    <p>Jack's guests are founders and fund managers he is either backing or actively evaluating. <strong><a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a></strong> backs Bittensor projects; <strong><a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">TAO Institute</a></strong> independently scores 60+ active subnets for institutional risk. Each episode starts from an investment position, not a press release.</p>
+    <p>Jack's guests are founders and fund managers he is either backing or actively evaluating. Every conversation starts from a position in the market, not a PR brief. <strong><a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">TAO Institute</a></strong> independently scores 60+ active subnets for institutional risk. The research informs the questions.</p>
   </div>
 </section>
 
@@ -871,7 +909,7 @@
 <section id="subscribe">
   <div class="subscribe-left">
     <h2>Get every episode.</h2>
-    <p class="subscribe-sub">Every week. One guest. The sharpest argument in token markets, delivered before it shows up anywhere else.</p>
+    <p class="subscribe-sub">Every week. One guest. The sharpest argument in token markets.</p>
     <form class="email-form" id="emailForm" action="https://formsubmit.co/jack@pylon.partners" method="POST">
       <input type="hidden" name="_subject" value="Supercycle Newsletter Signup">
       <input type="hidden" name="_captcha" value="false">
