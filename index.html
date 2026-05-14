@@ -243,47 +243,28 @@
       line-height: 1.5;
     }
 
-    /* Waveform animation */
-    .waveform {
+    /* Archive signal line */
+    .hero-ep-count {
       display: flex;
-      align-items: flex-end;
-      gap: 3px;
-      height: 32px;
+      align-items: center;
+      gap: 8px;
       margin-top: 28px;
-      opacity: 0.45;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
     }
 
-    .wave-bar {
-      width: 3px;
-      background: var(--black);
-      border-radius: 1px;
-      animation: wave-pulse 1.4s ease-in-out infinite;
+    .hero-ep-tick {
+      font-size: 7px;
+      color: var(--black);
+      letter-spacing: 0;
     }
 
-    .wave-bar:nth-child(1)  { height: 40%; animation-delay: 0.0s; }
-    .wave-bar:nth-child(2)  { height: 80%; animation-delay: 0.1s; }
-    .wave-bar:nth-child(3)  { height: 55%; animation-delay: 0.2s; }
-    .wave-bar:nth-child(4)  { height: 90%; animation-delay: 0.3s; }
-    .wave-bar:nth-child(5)  { height: 65%; animation-delay: 0.15s; }
-    .wave-bar:nth-child(6)  { height: 100%; animation-delay: 0.25s; }
-    .wave-bar:nth-child(7)  { height: 45%; animation-delay: 0.05s; }
-    .wave-bar:nth-child(8)  { height: 75%; animation-delay: 0.35s; }
-    .wave-bar:nth-child(9)  { height: 60%; animation-delay: 0.18s; }
-    .wave-bar:nth-child(10) { height: 85%; animation-delay: 0.28s; }
-    .wave-bar:nth-child(11) { height: 50%; animation-delay: 0.08s; }
-    .wave-bar:nth-child(12) { height: 95%; animation-delay: 0.38s; }
-    .wave-bar:nth-child(13) { height: 70%; animation-delay: 0.12s; }
-    .wave-bar:nth-child(14) { height: 40%; animation-delay: 0.22s; }
-    .wave-bar:nth-child(15) { height: 80%; animation-delay: 0.32s; }
-    .wave-bar:nth-child(16) { height: 55%; animation-delay: 0.04s; }
-    .wave-bar:nth-child(17) { height: 65%; animation-delay: 0.14s; }
-    .wave-bar:nth-child(18) { height: 90%; animation-delay: 0.24s; }
-    .wave-bar:nth-child(19) { height: 45%; animation-delay: 0.34s; }
-    .wave-bar:nth-child(20) { height: 75%; animation-delay: 0.16s; }
-
-    @keyframes wave-pulse {
-      0%, 100% { transform: scaleY(0.5); }
-      50%       { transform: scaleY(1); }
+    .hero-ep-label {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      color: var(--grey);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
 
     /* ── PULL QUOTE STRIP ── */
@@ -808,14 +789,9 @@
         <div class="guest-row-cred">CEO, Mataco Labs &middot; Computer Vision / Subnet 44</div>
       </div>
     </div>
-    <div class="waveform" aria-hidden="true">
-      <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
-      <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
-      <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
-      <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
-      <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
-      <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
-      <div class="wave-bar"></div><div class="wave-bar"></div>
+    <div class="hero-ep-count" aria-hidden="true">
+      <span class="hero-ep-tick">&#9632;</span>
+      <span class="hero-ep-label">50+ episodes in the archive</span>
     </div>
   </div>
 </section>
@@ -840,10 +816,10 @@
   <div class="feat-ep-block">
     <div class="feat-ep-info">
       <div class="episode-tag featured">Start Here</div>
+      <div class="episode-num">Ep. 52 &nbsp;&middot;&nbsp; May 2025</div>
       <a class="episode-title-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
         <h3 class="episode-title feat-ep-title">Nova's Bet: Drug Discovery on a Bittensor Subnet</h3>
       </a>
-      <p class="episode-quote">"Ozempic and Mounjaro sales exceed the total revenue of every major AI company. That's the size of the market we're entering."</p>
       <div class="episode-guest">Micaela Zanella</div>
       <div class="episode-meta">Co-Founder, Nova &nbsp;&middot;&nbsp; Drug Discovery</div>
       <div class="episode-links">
@@ -874,6 +850,7 @@
     <!-- Card 2: Greg / Yuma -->
     <div class="episode-card">
       <div class="episode-tag">Bittensor</div>
+      <div class="episode-num">Ep. 51 &nbsp;&middot;&nbsp; Apr 2025</div>
       <a class="episode-title-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
         <h3 class="episode-title">The Only Credible Alternative to Captured AI</h3>
       </a>
@@ -895,6 +872,7 @@
     <!-- Card 3: Lex Sokolin -->
     <div class="episode-card">
       <div class="episode-tag">Venture</div>
+      <div class="episode-num">Ep. 50 &nbsp;&middot;&nbsp; Apr 2025</div>
       <a class="episode-title-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
         <h3 class="episode-title">Robot Money: The Thesis Institutional Finance Is Chasing</h3>
       </a>
@@ -916,6 +894,7 @@
     <!-- Card 4: Max / Subnet 44 -->
     <div class="episode-card">
       <div class="episode-tag">Computer Vision</div>
+      <div class="episode-num">Ep. 49 &nbsp;&middot;&nbsp; Mar 2025</div>
       <a class="episode-title-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
         <h3 class="episode-title">Selling Enterprise Without Selling Compute: Subnet 44 and the Vision Stack</h3>
       </a>
@@ -950,8 +929,7 @@
     </div>
   </div>
   <div class="about-right">
-    <p>Supercycle covers the token economy from the inside: what's been shipped, who's paying for it, and where institutional capital is moving. Every conversation is primary research, not price commentary.</p>
-    <p>Guests include <strong>Bittensor subnet founders</strong>, <strong>enterprise AI builders</strong>, and <strong>fund managers</strong> writing the first institutional tickets into decentralised AI. No sponsored segments.</p>
+    <p>Supercycle covers the token economy from the inside: what's been shipped, who's paying for it, and where institutional capital is moving. Guests include <strong>Bittensor subnet founders</strong>, <strong>enterprise AI builders</strong>, and <strong>fund managers</strong> writing the first institutional tickets into decentralised AI. Every episode is primary research. No sponsored segments.</p>
   </div>
 </section>
 
