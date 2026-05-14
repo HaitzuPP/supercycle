@@ -75,7 +75,7 @@
       text-decoration: none;
       color: var(--white);
       background: var(--black);
-      padding: 8px 16px;
+      padding: 10px 22px;
       transition: opacity 0.15s;
     }
     .nav-cta:hover { opacity: 0.8; }
@@ -162,6 +162,15 @@
       margin-bottom: 12px;
     }
 
+    .hero-ep-title {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+
     .hero-ep-caption {
       font-family: Arial, Helvetica, sans-serif;
       font-size: 12px;
@@ -179,39 +188,6 @@
     }
 
     .hero h1 em { font-style: italic; }
-
-    .hero-stats {
-      display: flex;
-      gap: 0;
-      margin-bottom: 28px;
-      border: 1px solid var(--border);
-    }
-
-    .hero-stat {
-      flex: 1;
-      padding: 14px 18px;
-      border-right: 1px solid var(--border);
-    }
-
-    .hero-stat:last-child { border-right: none; padding-right: 0; }
-
-    .hero-stat-num {
-      font-family: 'Georgia', serif;
-      font-size: 20px;
-      font-weight: 400;
-      line-height: 1;
-      letter-spacing: -0.01em;
-      margin-bottom: 4px;
-      color: var(--black);
-    }
-
-    .hero-stat-label {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 10px;
-      color: var(--grey);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
 
     .btn-primary {
       display: inline-flex;
@@ -232,94 +208,6 @@
 
     .btn-primary:hover { opacity: 0.8; }
     .btn-primary svg { width: 15px; height: 15px; flex-shrink: 0; }
-
-    /* Show art */
-    .show-art {
-      background: var(--black);
-      padding: 36px 40px 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 32px;
-    }
-
-    .show-art-eyebrow {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.45);
-    }
-
-    .show-art-title {
-      font-family: 'Georgia', 'Times New Roman', serif;
-      font-size: clamp(28px, 3.2vw, 44px);
-      font-weight: 400;
-      letter-spacing: -0.01em;
-      color: var(--white);
-      line-height: 1.0;
-    }
-
-    .show-art-rule {
-      width: 56px;
-      height: 2px;
-      background: var(--green);
-      margin: 4px 0;
-    }
-
-    .show-art-sub {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 11px;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.7;
-      max-width: 260px;
-    }
-
-    /* Hero right: guest roster */
-    .hero-right {
-      padding: 56px 48px 56px 56px;
-      display: flex;
-      flex-direction: column;
-      background: var(--light);
-    }
-
-    .hero-right-label {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--grey);
-      margin-bottom: 20px;
-    }
-
-    .hero-guest-list {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .hero-guest-item {
-      padding: 14px 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .hero-guest-item:last-child { border-bottom: 1px solid var(--border); }
-
-    .hero-guest-name {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      color: var(--black);
-      margin-bottom: 3px;
-    }
-
-    .hero-guest-org {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 11px;
-      color: var(--grey);
-      line-height: 1.5;
-    }
 
     /* Archive CTA below grid */
     .archive-cta {
@@ -362,30 +250,6 @@
       color: var(--grey);
     }
 
-    /* Featured card */
-    .feat-ep-block {
-      border-top: 2.5px solid var(--green);
-      border-bottom: 1px solid var(--border);
-      margin: 0 48px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-    }
-
-    .feat-ep-info {
-      padding: 40px 48px 40px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      border-right: 1px solid var(--border);
-    }
-
-    .feat-ep-embed {
-      padding: 40px 0 40px 48px;
-      display: flex;
-      align-items: center;
-    }
-
     .ep-iframe-wrap {
       width: 100%;
       aspect-ratio: 16/9;
@@ -424,48 +288,6 @@
       z-index: 1;
     }
 
-    .feat-ep-num {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--grey);
-      margin-top: -8px;
-    }
-
-    .feat-ep-title-link {
-      text-decoration: none;
-      color: var(--black);
-    }
-
-    .feat-ep-title-link:hover h3 {
-      text-decoration: underline;
-      text-underline-offset: 4px;
-    }
-
-    .feat-ep-title-link h3 {
-      font-size: clamp(20px, 2.2vw, 27px);
-      font-weight: 400;
-      line-height: 1.22;
-    }
-
-    .feat-ep-guest {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      margin-bottom: 2px;
-    }
-
-    .feat-ep-meta {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--grey);
-      margin-top: -12px;
-    }
-
     .ep-cta {
       display: inline-flex;
       align-items: center;
@@ -486,12 +308,6 @@
     .ep-cta:hover { opacity: 0.6; }
     .ep-cta svg { width: 12px; height: 12px; }
 
-    /* episode list */
-    .episodes-grid-3col {
-      border-top: 1px solid var(--border);
-      padding: 0 48px;
-    }
-
     .episode-card {
       max-width: 560px;
       padding: 36px 0;
@@ -501,18 +317,6 @@
     }
 
     .episode-card:last-child { border-bottom: none; }
-
-    .episode-tag {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--grey);
-      margin-bottom: 6px;
-    }
-
-    .episode-tag.green { color: var(--mid-grey); }
 
     .episode-num {
       font-family: Arial, Helvetica, sans-serif;
@@ -541,17 +345,6 @@
       font-weight: 400;
       line-height: 1.22;
       letter-spacing: -0.01em;
-    }
-
-    .episode-quote {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 11px;
-      color: var(--mid-grey);
-      line-height: 1.7;
-      font-style: italic;
-      margin-bottom: 16px;
-      padding-left: 10px;
-      border-left: 2px solid var(--border);
     }
 
     .episode-footer {
@@ -634,25 +427,6 @@
       line-height: 1.7;
       margin-bottom: 20px;
     }
-
-    .pitch-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: var(--black);
-      border: 1.5px solid var(--black);
-      padding: 12px 22px;
-      transition: background 0.15s;
-      width: fit-content;
-    }
-
-    .pitch-btn:hover { background: var(--light); }
 
     .about-right { padding: 64px 48px 64px 56px; }
 
@@ -776,97 +550,6 @@
 
     .platform-btn.primary:hover { opacity: 0.85; background: var(--black); }
 
-    /* ── HERO PLATFORM BUTTONS (hero-right) ── */
-    .hero-listen-label {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--grey);
-      margin-bottom: 14px;
-    }
-
-    .hero-platform-row {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-
-    .hero-plat-btn {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      padding: 13px 22px;
-      border: 1.5px solid var(--black);
-      color: var(--black);
-      transition: background 0.15s;
-    }
-
-    .hero-plat-btn:hover { background: var(--light); }
-
-    .hero-plat-btn.primary {
-      background: var(--black);
-      color: var(--white);
-    }
-
-    .hero-plat-btn.primary:hover { opacity: 0.85; background: var(--black); }
-
-    .hero-platform-note {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 11px;
-      color: var(--grey);
-      line-height: 1.6;
-    }
-
-    /* ── HERO INLINE EMAIL ── */
-    .hero-subscribe-wrap { margin-top: 20px; }
-
-    .hero-email-form {
-      display: flex;
-      gap: 0;
-      border: 1.5px solid var(--border);
-      max-width: 340px;
-    }
-
-    .hero-email-input {
-      flex: 1;
-      border: none;
-      outline: none;
-      padding: 10px 14px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 12px;
-      background: var(--white);
-      color: var(--black);
-      min-width: 0;
-    }
-
-    .hero-email-input::placeholder { color: var(--grey-light); }
-
-    .hero-email-btn {
-      flex-shrink: 0;
-      background: var(--mid-grey);
-      color: var(--white);
-      border: none;
-      padding: 10px 16px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: opacity 0.15s;
-    }
-
-    .hero-email-btn:hover { opacity: 0.8; }
-
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
@@ -950,10 +633,11 @@
     <div class="hero-left">
       <p class="hero-eyebrow">Bittensor Research Podcast &nbsp;&middot;&nbsp; <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">TAO Institute</a></p>
       <h1>Data before<br><em>narrative.</em></h1>
-      <p class="hero-desc">Each episode, one subnet founder is questioned against their live TAO Institute score. 52 episodes. Past guests from DCG, Nova, and the leading Bittensor subnet teams.</p>
+      <p class="hero-desc">Each episode, one subnet founder is questioned against their live TAO Institute score. Guests who show up unprepared find out on air.</p>
     </div>
     <div class="hero-right">
       <div class="hero-ep-label">Latest Episode</div>
+      <div class="hero-ep-title">Nova's Bet: Drug Discovery on a Bittensor Subnet</div>
       <div class="ep-iframe-wrap" id="ytThumb52">
         <img
           src="https://img.youtube.com/vi/py7DgwA1Tf4/maxresdefault.jpg"
@@ -1016,7 +700,7 @@
   </div>
 
   <div class="archive-cta">
-    <a class="archive-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">Archive on YouTube &rarr;</a>
+    <a class="archive-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">All episodes on YouTube &rarr;</a>
   </div>
 </section>
 
@@ -1051,6 +735,7 @@
     </form>
     <p style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:var(--grey);margin-top:12px;">New episode alerts. No spam.</p>
     <p id="formSuccess" style="display:none;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:var(--green);font-weight:700;margin-top:12px;">You're subscribed.</p>
+    <p class="form-error" style="display:none;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:var(--red);margin-top:12px;">Something went wrong. Please try again.</p>
   </div>
   <div class="subscribe-right">
     <div class="subscribe-right-label">Listen on:</div>
@@ -1085,7 +770,7 @@
     iframe.src = 'https://www.youtube.com/embed/py7DgwA1Tf4?autoplay=1';
     iframe.title = 'Supercycle Ep.52: Nova\'s Bet: Drug Discovery on a Bittensor Subnet';
     iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-    iframe.allowFullscreen = true;
+    iframe.setAttribute('allowfullscreen', '');
     iframe.style.cssText = 'width:100%;height:100%;display:block;border:none;position:absolute;top:0;left:0;';
     wrapper.innerHTML = '';
     wrapper.style.position = 'relative';
@@ -1120,15 +805,20 @@
     if (btn) { btn.textContent = 'Sending...'; btn.disabled = true; }
     try {
       const data = new FormData(form);
-      await fetch('https://formsubmit.co/ajax/jack@pylon.partners', {
+      const res = await fetch('https://formsubmit.co/ajax/jack@pylon.partners', {
         method: 'POST',
         headers: { 'Accept': 'application/json' },
         body: data
       });
-    } catch(err) { /* silent — show success regardless */ }
-    form.style.display = 'none';
-    const success = document.getElementById(successId);
-    if (success) success.style.display = 'block';
+      if (!res.ok) throw new Error('Network error');
+      form.style.display = 'none';
+      const success = document.getElementById(successId);
+      if (success) success.style.display = 'block';
+    } catch(err) {
+      if (btn) { btn.textContent = 'Try again'; btn.disabled = false; }
+      const errMsg = form.parentNode.querySelector('.form-error');
+      if (errMsg) errMsg.style.display = 'block';
+    }
   }
 
   const form = document.getElementById('emailForm');
