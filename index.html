@@ -172,7 +172,6 @@
       padding: 14px 28px;
       transition: opacity 0.15s;
       align-self: flex-start;
-      margin-bottom: 0;
     }
 
     .btn-primary:hover { opacity: 0.8; }
@@ -750,6 +749,47 @@
       line-height: 1.6;
     }
 
+    /* ── HERO INLINE EMAIL ── */
+    .hero-subscribe-wrap { margin-top: 20px; }
+
+    .hero-email-form {
+      display: flex;
+      gap: 0;
+      border: 1.5px solid var(--border);
+      max-width: 340px;
+    }
+
+    .hero-email-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 10px 14px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      background: var(--white);
+      color: var(--black);
+      min-width: 0;
+    }
+
+    .hero-email-input::placeholder { color: var(--grey-light); }
+
+    .hero-email-btn {
+      flex-shrink: 0;
+      background: var(--mid-grey);
+      color: var(--white);
+      border: none;
+      padding: 10px 16px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .hero-email-btn:hover { opacity: 0.8; }
+
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
@@ -852,14 +892,16 @@
         <div class="hero-stat-num">2022</div>
         <div class="hero-stat-label">Active Since</div>
       </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num" style="font-size:14px;letter-spacing:-0.01em;">Monthly</div>
-        <div class="hero-stat-label">New Episodes</div>
-      </div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start;">
-      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="btn-primary">Watch on YouTube &rarr;</a>
-      <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;color:var(--grey);border-bottom:1px solid var(--border);padding-bottom:1px;">Listen on Spotify &rarr;</a>
+    <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="btn-primary">Watch on YouTube &rarr;</a>
+    <div class="hero-subscribe-wrap">
+      <form class="hero-email-form" id="heroEmailForm" action="https://formsubmit.co/jack@pylon.partners" method="POST">
+        <input type="hidden" name="_subject" value="Supercycle Newsletter Signup">
+        <input type="hidden" name="_captcha" value="false">
+        <input class="hero-email-input" type="email" name="email" placeholder="Get new episodes by email" aria-label="Email address" required>
+        <button class="hero-email-btn" type="submit">Subscribe</button>
+      </form>
+      <p id="heroFormSuccess" style="display:none;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:var(--green);font-weight:700;letter-spacing:0.06em;margin-top:6px;">You're subscribed.</p>
     </div>
   </div>
   <div class="hero-right">
@@ -976,7 +1018,7 @@
     </div>
   </div>
   <div class="about-right">
-    <p><a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);"><strong>TAO Institute</strong></a> has scored every active Bittensor subnet across validator performance, emission share, developer activity, and product traction. Jack works through that dataset before each episode. Guests field specific questions drawn from primary data, not from a comms briefing sheet.</p>
+    <p>Every guest on Supercycle answers for their numbers. Before each episode, Jack reviews the full scoring dataset from <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);"><strong>TAO Institute</strong></a>, which covers validator performance, emission share, developer activity, and product traction across every active Bittensor subnet. The questions come from that data. Guests don't get softballs.</p>
   </div>
 </section>
 
@@ -1037,24 +1079,36 @@
   window.addEventListener('scroll', updateActiveNav, { passive: true });
   updateActiveNav();
 
-  // Email form — AJAX with inline success
+  // Email form helper
+  async function handleEmailForm(form, btnSelector, successId) {
+    const btn = form.querySelector(btnSelector);
+    if (btn) { btn.textContent = 'Sending...'; btn.disabled = true; }
+    try {
+      const data = new FormData(form);
+      await fetch('https://formsubmit.co/ajax/jack@pylon.partners', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: data
+      });
+    } catch(err) { /* silent — show success regardless */ }
+    form.style.display = 'none';
+    const success = document.getElementById(successId);
+    if (success) success.style.display = 'block';
+  }
+
   const form = document.getElementById('emailForm');
   if (form) {
-    form.addEventListener('submit', async function(e) {
+    form.addEventListener('submit', function(e) {
       e.preventDefault();
-      const btn = form.querySelector('.email-btn');
-      if (btn) { btn.textContent = 'Sending...'; btn.disabled = true; }
-      try {
-        const data = new FormData(form);
-        await fetch('https://formsubmit.co/ajax/jack@pylon.partners', {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: data
-        });
-      } catch(err) { /* silent — show success regardless */ }
-      form.style.display = 'none';
-      const success = document.getElementById('formSuccess');
-      if (success) success.style.display = 'block';
+      handleEmailForm(form, '.email-btn', 'formSuccess');
+    });
+  }
+
+  const heroForm = document.getElementById('heroEmailForm');
+  if (heroForm) {
+    heroForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      handleEmailForm(heroForm, '.hero-email-btn', 'heroFormSuccess');
     });
   }
 </script>
