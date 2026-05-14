@@ -174,24 +174,18 @@
     .btn-primary:hover { opacity: 0.8; }
     .btn-primary svg { width: 15px; height: 15px; flex-shrink: 0; }
 
-    .hero-secondary {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .hero-secondary a {
+    .hero-about-link {
       font-family: Arial, Helvetica, sans-serif;
       font-size: 11px;
       color: var(--grey);
       text-decoration: none;
       border-bottom: 1px solid var(--border);
       padding-bottom: 1px;
+      letter-spacing: 0.06em;
       transition: color 0.15s, border-color 0.15s;
     }
 
-    .hero-secondary a:hover { color: var(--black); border-color: var(--black); }
-    .hero-secondary span { font-size: 10px; color: var(--border); }
+    .hero-about-link:hover { color: var(--black); border-color: var(--black); }
 
     /* Hero right: guest roster */
     .hero-right {
@@ -236,6 +230,36 @@
       color: var(--grey);
       line-height: 1.5;
     }
+
+    /* Email success */
+    .email-success {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      color: var(--mid-grey);
+      padding: 14px 0;
+    }
+
+    /* Archive CTA below grid */
+    .archive-cta {
+      padding: 28px 48px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .archive-link {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--black);
+      border-bottom: 1px solid var(--black);
+      padding-bottom: 1px;
+      transition: opacity 0.15s;
+    }
+
+    .archive-link:hover { opacity: 0.6; }
 
     /* ── EPISODES ── */
     #episodes { border-top: 1px solid var(--border); }
@@ -854,41 +878,37 @@
         <div class="hero-stat-label">Episodes</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num">Weekly</div>
-        <div class="hero-stat-label">Cadence</div>
+        <div class="hero-stat-num">2022</div>
+        <div class="hero-stat-label">In market since</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num">Free</div>
-        <div class="hero-stat-label">Always</div>
+        <div class="hero-stat-num">1x</div>
+        <div class="hero-stat-label">Per week</div>
       </div>
     </div>
     <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="btn-primary">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
       Watch on YouTube
     </a>
-    <div class="hero-secondary">
-      <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener">Spotify</a>
-      <span>|</span>
-      <a href="https://podcasts.apple.com/search?term=supercycle+jack+leung" target="_blank" rel="noopener">Apple Podcasts</a>
-    </div>
+    <a href="#about" class="hero-about-link">About the show &darr;</a>
   </div>
   <div class="hero-right">
     <div class="hero-right-label">Recent Guests</div>
     <a class="guest-row" href="#episodes">
       <div class="guest-row-name">Micaela Zanella</div>
-      <div class="guest-row-cred">Co-Founder, Nova &middot; Drug Discovery on Bittensor</div>
+      <div class="guest-row-cred">Co-Founder, Nova</div>
     </a>
     <a class="guest-row" href="#episodes">
       <div class="guest-row-name">Greg Waisman</div>
-      <div class="guest-row-cred">CEO, Yuma / DCG &middot; Bittensor Infrastructure</div>
+      <div class="guest-row-cred">CEO, Yuma / DCG</div>
     </a>
     <a class="guest-row" href="#episodes">
       <div class="guest-row-name">Lex Sokolin</div>
-      <div class="guest-row-cred">GP, Generative Ventures &middot; Machine Economy</div>
+      <div class="guest-row-cred">GP, Generative Ventures</div>
     </a>
     <a class="guest-row" href="#episodes">
       <div class="guest-row-name">Max</div>
-      <div class="guest-row-cred">CEO, Mataco Labs &middot; Computer Vision / Subnet 44</div>
+      <div class="guest-row-cred">CEO, Mataco Labs</div>
     </a>
   </div>
 </section>
@@ -897,17 +917,17 @@
 <section id="episodes">
   <div class="section-header">
     <span class="section-label">Recent Episodes</span>
-    <a class="section-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">Full archive &rarr;</a>
   </div>
 
   <!-- Featured card -->
   <div class="feat-ep-block">
     <div class="feat-ep-info">
-      <div class="feat-ep-tag">Start Here</div>
+      <div class="feat-ep-tag">Featured</div>
       <div class="feat-ep-num">Ep. 52 &nbsp;&middot;&nbsp; May 2025</div>
       <a class="feat-ep-title-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
         <h3>Nova's Bet: Drug Discovery on a Bittensor Subnet</h3>
       </a>
+      <p class="episode-quote">"Ozempic and Mounjaro sales exceed the total revenue of every major AI company. That's the size of the market we're entering."</p>
       <div>
         <div class="feat-ep-guest">Micaela Zanella</div>
         <div class="feat-ep-meta">Co-Founder, Nova &nbsp;&middot;&nbsp; Drug Discovery</div>
@@ -924,15 +944,6 @@
         </div>
         <div class="play-card-title">Nova's Bet: Drug Discovery on a Bittensor Subnet</div>
       </a>
-    </div>
-  </div>
-
-  <!-- Pull quote strip — after featured, before grid -->
-  <div class="pull-quote-strip">
-    <blockquote>"Ozempic and Mounjaro sales exceed the total revenue of every major AI company. That's the size of the market we're entering."</blockquote>
-    <div class="pull-quote-attr">
-      <div class="pull-quote-name">Micaela Zanella</div>
-      <div class="pull-quote-role">Co-Founder, Nova<br>Drug Discovery on Bittensor</div>
     </div>
   </div>
 
@@ -1009,12 +1020,16 @@
     </div>
 
   </div>
+
+  <div class="archive-cta">
+    <a class="archive-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">All 50+ episodes on YouTube &rarr;</a>
+  </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
   <div class="about-left">
-    <h2>Primary research.<br><em>No price commentary.</em></h2>
+    <h2>Token market research.<br><em>From inside the network.</em></h2>
     <div>
       <div class="host-name">Jack Leung</div>
       <div class="host-cred">Managing Partner, Pylon Partners. Founder, TAO Institute. Investing in the Bittensor ecosystem since 2022.</div>
@@ -1030,14 +1045,13 @@
 <section id="subscribe">
   <div class="subscribe-left">
     <h2>Get every episode.<br><em>In your inbox.</em></h2>
-    <p class="subscribe-sub">New episodes weekly. No price calls. Unsubscribe any time.</p>
-    <form class="email-form" onsubmit="return false;">
+    <p class="subscribe-sub">New episodes every week. No price calls. No spam.</p>
+    <form class="email-form" id="emailForm">
       <input class="email-input" type="email" placeholder="Your email address" aria-label="Email address">
       <button class="email-btn" type="submit">Subscribe</button>
     </form>
   </div>
   <div class="subscribe-right">
-    <div class="subscribe-right-label">Also available on</div>
     <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="platform-btn primary">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
       YouTube
@@ -1092,6 +1106,18 @@
 
   window.addEventListener('scroll', updateActiveNav, { passive: true });
   updateActiveNav();
+
+  // Email form success
+  const emailForm = document.getElementById('emailForm');
+  if (emailForm) {
+    emailForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input[type="email"]').value;
+      if (email && email.includes('@')) {
+        this.innerHTML = '<p class="email-success">Thanks. New episodes will land in your inbox.</p>';
+      }
+    });
+  }
 </script>
 
 </body>
