@@ -129,8 +129,45 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .hero-left {
-      max-width: 640px;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .hero-left { max-width: none; }
+
+    .hero-desc {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      color: var(--mid-grey);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      padding-top: 4px;
+    }
+
+    .hero-ep-label {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 12px;
+    }
+
+    .hero-ep-caption {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      color: var(--mid-grey);
+      line-height: 1.6;
+      margin-top: 12px;
     }
 
     .hero h1 {
@@ -538,6 +575,26 @@
       margin-bottom: 18px;
     }
 
+    /* ── EPISODES LIST ── */
+    .episodes-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 0 48px;
+      border-top: 1px solid var(--border);
+    }
+
+    .episodes-list .episode-card {
+      max-width: none;
+      padding: 40px 40px 40px 0;
+      border-bottom: none;
+      border-right: 1px solid var(--border);
+    }
+
+    .episodes-list .episode-card:last-child {
+      border-right: none;
+      padding: 40px 0 40px 40px;
+    }
+
     /* ── ABOUT ── */
     #about {
       border-top: 1px solid var(--border);
@@ -843,25 +900,17 @@
     @media (max-width: 860px) {
       nav { padding: 0 24px; }
       .nav-anchors { display: flex; gap: 16px; }
-      .nav-anchors a { font-size: 11px; letter-spacing: 0.08em; }
+      .nav-anchors a { font-size: 11px; }
       .nav-icons { display: none; }
-    }
-    @media (max-width: 520px) {
-      .nav-anchors { display: none; }
-    }
-    @media (max-width: 860px) {
 
       .hero { padding: 48px 24px 44px; }
-
-      .feat-ep-block { margin: 0 24px; grid-template-columns: 1fr; }
-      .feat-ep-embed { order: -1; padding: 0 0 24px; }
-      .feat-ep-info { padding: 0 0 32px; border-right: none; border-top: 1px solid var(--border); padding-top: 24px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-right { display: none; }
 
       .section-header { padding: 32px 24px 20px; }
-      .episodes-grid-3col { grid-template-columns: 1fr; padding: 0 24px; }
-      .episode-card:last-child { border-bottom: 1px solid var(--border); }
-      .episode-card { border-right: none; border-bottom: 1px solid var(--border); padding: 28px 0; padding-left: 0 !important; }
-      .episode-card:last-child { border-bottom: none; }
+      .episodes-list { grid-template-columns: 1fr; padding: 0 24px; }
+      .episodes-list .episode-card { padding: 28px 0; border-right: none; border-bottom: 1px solid var(--border); }
+      .episodes-list .episode-card:last-child { border-bottom: none; padding: 28px 0; }
 
       #about { grid-template-columns: 1fr; }
       .about-left { padding: 48px 24px 32px; border-right: none; border-bottom: 1px solid var(--border); gap: 28px; }
@@ -874,6 +923,9 @@
 
       footer { padding: 18px 24px; flex-direction: column; gap: 10px; text-align: center; }
       .footer-left { flex-direction: column; gap: 10px; }
+    }
+    @media (max-width: 520px) {
+      .nav-anchors { display: none; }
     }
   </style>
 </head>
@@ -893,20 +945,31 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-left">
-    <p class="hero-eyebrow">Bittensor Research Podcast &nbsp;&middot;&nbsp; <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">TAO Institute</a></p>
-    <h1>Data before<br><em>narrative.</em></h1>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-num">52</div>
-        <div class="hero-stat-label">Episodes</div>
-      </div>
-      <div class="hero-stat" style="border-right:none;">
-        <div class="hero-stat-num">~1/mo</div>
-        <div class="hero-stat-label">Cadence</div>
-      </div>
+  <div class="hero-grid">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Bittensor Research Podcast &nbsp;&middot;&nbsp; <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">TAO Institute</a></p>
+      <h1>Data before<br><em>narrative.</em></h1>
+      <p class="hero-desc">One subnet founder. One live data pull. One unscripted conversation. 52 episodes.</p>
+      <a href="#episodes" class="btn-primary">See Latest Episodes &rarr;</a>
     </div>
-    <a href="#episodes" class="btn-primary">Browse Episodes &rarr;</a>
+    <div class="hero-right">
+      <div class="hero-ep-label">Latest Episode</div>
+      <div class="ep-iframe-wrap" id="ytThumb52">
+        <img
+          src="https://img.youtube.com/vi/py7DgwA1Tf4/maxresdefault.jpg"
+          alt="Watch Supercycle Ep.52: Nova's Bet"
+          style="width:100%;height:100%;object-fit:cover;display:block;cursor:pointer;"
+          onclick="loadYT52()"
+          loading="eager">
+        <button
+          onclick="loadYT52()"
+          aria-label="Play episode"
+          style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.75);border:none;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.15s;">
+          <svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </div>
+      <p class="hero-ep-caption">Ep. 52 &nbsp;&middot;&nbsp; Nova's Bet: Drug Discovery on a Bittensor Subnet</p>
+    </div>
   </div>
 </section>
 
@@ -916,64 +979,51 @@
     <span class="section-label">Recent Episodes</span>
   </div>
 
-  <!-- Featured card -->
-  <div class="feat-ep-block">
-    <div class="feat-ep-info">
-      <div class="feat-ep-num">Ep. 52 &nbsp;&middot;&nbsp; May 2025</div>
-      <h3 style="font-size:clamp(20px,2.2vw,27px);font-weight:400;line-height:1.22;font-family:'Georgia','Times New Roman',serif;">Nova's Bet: Drug Discovery on a Bittensor Subnet</h3>
-      <p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:var(--mid-grey);line-height:1.7;margin-top:-4px;">A biotech co-founder's argument for building drug discovery infrastructure on a public compute network, and what the emissions curve says about real demand.</p>
-      <div class="feat-ep-meta" style="margin-top:0;">Micaela Zanella &nbsp;&middot;&nbsp; Co-Founder, Nova &nbsp;&middot;&nbsp; 52 min</div>
-      <a class="ep-cta" href="https://www.youtube.com/watch?v=py7DgwA1Tf4" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        Watch &rarr;
+  <div class="episodes-list">
+
+    <div class="episode-card">
+      <div class="episode-num">Ep. 52 &nbsp;&middot;&nbsp; May 2025 &nbsp;&middot;&nbsp; 52 min</div>
+      <a class="episode-title-link" href="https://www.youtube.com/watch?v=py7DgwA1Tf4" target="_blank" rel="noopener">
+        <h3>Nova's Bet: Drug Discovery on a Bittensor Subnet</h3>
       </a>
-    </div>
-    <div class="feat-ep-embed">
-      <div class="ep-iframe-wrap" id="ytThumb52">
-        <img
-          src="https://img.youtube.com/vi/py7DgwA1Tf4/maxresdefault.jpg"
-          alt="Watch Supercycle Ep.52: Nova's Bet"
-          style="width:100%;height:100%;object-fit:cover;display:block;cursor:pointer;"
-          onclick="loadYT52()"
-          loading="lazy">
-        <button
-          onclick="loadYT52()"
-          aria-label="Play episode"
-          style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.75);border:none;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.15s;">
-          <svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M8 5v14l11-7z"/></svg>
-        </button>
+      <p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:var(--mid-grey);line-height:1.7;margin-bottom:16px;">A biotech co-founder's case for building drug discovery infrastructure on a public compute network. The emissions curve is the evidence.</p>
+      <div class="episode-footer">
+        <div class="episode-guest">Micaela Zanella</div>
+        <div class="episode-meta">Co-Founder, Nova</div>
+        <a class="ep-cta" href="https://www.youtube.com/watch?v=py7DgwA1Tf4" target="_blank" rel="noopener" style="margin-top:12px;">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          Watch &rarr;
+        </a>
       </div>
     </div>
-  </div>
-
-  <!-- episode grid -->
-  <div class="episodes-grid-3col">
 
     <div class="episode-card">
       <div class="episode-num">Ep. 51 &nbsp;&middot;&nbsp; Apr 2025 &nbsp;&middot;&nbsp; 48 min</div>
       <a class="episode-title-link" href="https://www.youtube.com/watch?v=AOJS1_zT-bs" target="_blank" rel="noopener">
         <h3>Yuma's Case Against Captured AI</h3>
       </a>
-      <p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:var(--mid-grey);line-height:1.7;margin-bottom:16px;">Greg Waisman's case that decentralized compute is the only structural check on centralized AI control, and what Yuma's validator data says about real adoption.</p>
+      <p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:var(--mid-grey);line-height:1.7;margin-bottom:16px;">Why Big Tech's grip on AI compute is the defining structural problem, and how Yuma is betting decentralized infrastructure breaks it.</p>
       <div class="episode-footer">
         <div class="episode-guest">Greg Waisman</div>
         <div class="episode-meta">CEO, Yuma &nbsp;&middot;&nbsp; DCG</div>
-        <a class="ep-cta" href="https://www.youtube.com/watch?v=AOJS1_zT-bs" target="_blank" rel="noopener" style="margin-top:12px;">Watch &rarr;</a>
+        <a class="ep-cta" href="https://www.youtube.com/watch?v=AOJS1_zT-bs" target="_blank" rel="noopener" style="margin-top:12px;">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          Watch &rarr;
+        </a>
       </div>
     </div>
-
 
   </div>
 
   <div class="archive-cta">
-    <a class="archive-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">All 52 episodes on YouTube &rarr;</a>
+    <a class="archive-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">Full archive on YouTube &rarr;</a>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
   <div class="about-left">
-    <h2>The live score<br><em>is the brief.</em></h2>
+    <h2>No softballs.<br><em>The data decides.</em></h2>
     <div style="margin-top:20px;">
       <div class="host-name">Jack Leung</div>
       <div class="host-cred">Managing Partner, <a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a> &nbsp;&middot;&nbsp; Founder, <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">TAO Institute</a></div>
@@ -981,7 +1031,7 @@
     <a href="mailto:jack@pylon.partners" style="display:inline-block;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);border-bottom:1px solid var(--black);padding-bottom:1px;text-decoration:none;">Apply to be a guest &rarr;</a>
   </div>
   <div class="about-right">
-    <p>Before the interview, Jack pulls each guest's subnet from the live <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);"><strong>TAO Institute</strong></a> score: a real-time ranking of every active Bittensor subnet by validator health, emissions trajectory, and commercial traction. Know your numbers, or the interview shows it.</p>
+    <p>Before each interview, Jack pulls the guest's subnet from the <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);"><strong>TAO Institute</strong></a> score: a live ranking of every active Bittensor subnet by validator health, emissions trajectory, and commercial traction. That score is the interview brief. Guests who arrive unprepared find out on air.</p>
   </div>
 </section>
 
@@ -1018,6 +1068,8 @@
 <footer>
   <div class="footer-left">
     <a href="https://pylon.partners" target="_blank" rel="noopener" class="footer-link">Pylon Partners</a>
+    <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" class="footer-link">TAO Institute</a>
+    <a href="#subscribe" class="footer-link">Subscribe</a>
   </div>
   <p>&copy; 2026 Supercycle</p>
 </footer>
