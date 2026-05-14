@@ -81,6 +81,19 @@
     .nav-anchors a:hover,
     .nav-anchors a.active { color: var(--black); border-bottom-color: var(--black); }
 
+    .nav-subscribe {
+      display: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--white);
+      background: var(--black);
+      padding: 8px 16px;
+    }
+
     .nav-icons { display: flex; gap: 16px; align-items: center; }
     .nav-icon { display: flex; align-items: center; color: var(--grey); transition: color 0.15s; }
     .nav-icon:hover { color: var(--black); }
@@ -519,9 +532,9 @@
     }
 
     .episode-title-link h3 {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 400;
-      line-height: 1.28;
+      line-height: 1.26;
     }
 
     .episode-quote {
@@ -812,6 +825,7 @@
     @media (max-width: 860px) {
       nav { padding: 0 24px; }
       .nav-anchors { display: none; }
+      .nav-subscribe { display: inline-flex; }
 
       .hero { grid-template-columns: 1fr; }
       .hero-left { padding: 48px 24px 40px; border-right: none; border-bottom: 1px solid var(--border); }
@@ -856,6 +870,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#subscribe">Subscribe</a></li>
     </ul>
+    <a href="#subscribe" class="nav-subscribe">Subscribe</a>
     <div class="nav-icons">
       <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="nav-icon" aria-label="Spotify">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
@@ -900,8 +915,8 @@
       <div class="guest-row-cred">GP, Generative Ventures</div>
     </a>
     <a class="guest-row" href="#episodes">
-      <div class="guest-row-name">Max</div>
-      <div class="guest-row-cred">CEO, Mataco Labs</div>
+      <div class="guest-row-name">Max &amp; Wei</div>
+      <div class="guest-row-cred">Mataco Labs &middot; Subnet 44</div>
     </a>
   </div>
 </section>
@@ -925,17 +940,11 @@
         <div class="feat-ep-guest">Micaela Zanella</div>
         <div class="feat-ep-meta">Co-Founder, Nova &nbsp;&middot;&nbsp; Drug Discovery</div>
       </div>
-      <a class="ep-cta" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        Watch on YouTube
-      </a>
     </div>
     <div class="feat-ep-player">
-      <a class="play-card" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" aria-label="Watch Nova episode on YouTube">
-        <div class="play-icon">
-          <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
-        </div>
-        <div style="font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:4px;">Watch on YouTube &rarr;</div>
+      <a class="play-card" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" aria-label="Watch on YouTube">
+        <svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.22)" style="width:44px;height:44px;flex-shrink:0;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        <div style="font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.5);">Watch on YouTube &rarr;</div>
       </a>
     </div>
   </div>
@@ -989,8 +998,8 @@
       </a>
       <p class="episode-quote">"The clients we're talking to are all above a billion in turnover. The compute question is what they ask first."</p>
       <div class="episode-footer">
-        <div class="episode-guest">Max</div>
-        <div class="episode-meta">CEO, Mataco Labs &nbsp;&middot;&nbsp; Subnet 44</div>
+        <div class="episode-guest">Max &amp; Wei</div>
+        <div class="episode-meta">Mataco Labs &nbsp;&middot;&nbsp; Subnet 44</div>
         <div class="ep-links">
           <a class="ep-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
@@ -1003,7 +1012,7 @@
   </div>
 
   <div class="archive-cta">
-    <a class="archive-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">All 50+ episodes on YouTube &rarr;</a>
+    <a class="archive-link" href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">Full archive on YouTube &rarr;</a>
   </div>
 </section>
 
@@ -1018,7 +1027,7 @@
     <a class="pitch-btn" href="mailto:jack@pylon.partners">Pitch your episode &rarr;</a>
   </div>
   <div class="about-right">
-    <p>Pylon Partners invests in Bittensor projects. <strong>TAO Institute</strong> independently scores 60+ active subnets for institutional risk. Every guest on Supercycle is someone Jack is actively researching, considering for investment, or monitoring for the portfolio.</p>
+    <p>Most podcasts bring guests on to promote a project. Jack brings guests on because he is either putting capital behind them or deciding whether to. <strong><a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a></strong> invests in Bittensor projects. <strong><a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">TAO Institute</a></strong> independently scores 60+ active subnets for institutional risk. The conversations are specific because the due diligence behind them is real.</p>
   </div>
 </section>
 
@@ -1026,9 +1035,12 @@
 <section id="subscribe">
   <div class="subscribe-left">
     <h2>Get every episode.<br><em>In your inbox.</em></h2>
-    <p class="subscribe-sub">New episodes every week. No price calls. No spam.</p>
-    <form class="email-form" id="emailForm">
-      <input class="email-input" type="email" placeholder="Your email address" aria-label="Email address">
+    <p class="subscribe-sub">One email per episode. Founders and fund managers building on Bittensor, in their own words.</p>
+    <form class="email-form" id="emailForm" action="https://formsubmit.co/jack@pylon.partners" method="POST">
+      <input type="hidden" name="_subject" value="Supercycle Newsletter Signup">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://haitzupp.github.io/supercycle/">
+      <input class="email-input" type="email" name="email" placeholder="Your email address" aria-label="Email address" required>
       <button class="email-btn" type="submit">Subscribe</button>
     </form>
   </div>
@@ -1045,7 +1057,6 @@
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm0 4.372c4.197 0 7.628 3.431 7.628 7.628S16.197 19.628 12 19.628 4.372 16.197 4.372 12 7.803 4.372 12 4.372zm0 2.186a5.442 5.442 0 1 0 0 10.884A5.442 5.442 0 0 0 12 6.558zm0 1.745a3.697 3.697 0 1 1 0 7.394 3.697 3.697 0 0 1 0-7.394zm0 1.745a1.952 1.952 0 1 0 0 3.904 1.952 1.952 0 0 0 0-3.904z"/></svg>
       Apple Podcasts
     </a>
-    <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="rss-link">RSS Feed &rarr;</a>
   </div>
 </section>
 
@@ -1089,16 +1100,6 @@
   updateActiveNav();
 
   // Email form success
-  const emailForm = document.getElementById('emailForm');
-  if (emailForm) {
-    emailForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const email = this.querySelector('input[type="email"]').value;
-      if (email && email.includes('@')) {
-        this.innerHTML = '<p class="email-success">Thanks. New episodes will land in your inbox.</p>';
-      }
-    });
-  }
 </script>
 
 </body>
