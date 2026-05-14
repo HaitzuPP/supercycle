@@ -68,9 +68,9 @@
 
     .wordmark {
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 700;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       text-decoration: none;
       color: var(--black);
@@ -367,6 +367,8 @@
       overflow: hidden;
       position: relative;
     }
+
+    .ep-iframe-wrap button:hover { background: rgba(0,0,0,0.9) !important; }
 
     .ep-iframe-fallback {
       position: absolute;
@@ -903,7 +905,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-eyebrow">For fund managers and operators in the Bittensor ecosystem</div>
+    <div class="hero-eyebrow">Bittensor &nbsp;&middot;&nbsp; Fund Managers &amp; Operators</div>
     <h1>Token markets. <br><em>Firsthand.</em></h1>
     <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:var(--mid-grey);line-height:1.7;margin-bottom:28px;">Hosted by Jack Leung of <a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a>, a Bittensor venture fund. Questions built from primary subnet data, not press briefings.</p>
     <div class="hero-stats" style="display:inline-flex;max-width:200px;">
@@ -915,7 +917,7 @@
     <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="btn-primary">Watch on YouTube &rarr;</a>
   </div>
   <div class="hero-right">
-    <div class="hero-ep-label">Latest Episode &nbsp;&middot;&nbsp; Ep. 52 &nbsp;&middot;&nbsp; May 2025</div>
+    <div class="hero-ep-label">Latest Episode</div>
     <a class="hero-ep-link" href="https://www.youtube.com/watch?v=py7DgwA1Tf4" target="_blank" rel="noopener">
       <div class="hero-ep-title">Nova's Bet: Drug Discovery on a Bittensor Subnet</div>
     </a>
@@ -938,17 +940,23 @@
       <div class="feat-ep-meta" style="margin-top:0;">Micaela Zanella &nbsp;&middot;&nbsp; Co-Founder, Nova &nbsp;&middot;&nbsp; 52 min</div>
       <a class="ep-cta" href="https://www.youtube.com/watch?v=py7DgwA1Tf4" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        Watch on YouTube
+        Watch Ep. 52
       </a>
     </div>
     <div class="feat-ep-embed">
-      <div class="ep-iframe-wrap">
-        <iframe
-          src="https://www.youtube.com/embed/py7DgwA1Tf4"
-          title="Supercycle Ep.52: Nova's Bet: Drug Discovery on a Bittensor Subnet"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
+      <div class="ep-iframe-wrap" id="ytThumb52">
+        <img
+          src="https://img.youtube.com/vi/py7DgwA1Tf4/maxresdefault.jpg"
+          alt="Watch Supercycle Ep.52: Nova's Bet"
+          style="width:100%;height:100%;object-fit:cover;display:block;cursor:pointer;"
+          onclick="loadYT52()"
+          loading="lazy">
+        <button
+          onclick="loadYT52()"
+          aria-label="Play episode"
+          style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.75);border:none;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.15s;">
+          <svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M8 5v14l11-7z"/></svg>
+        </button>
       </div>
     </div>
   </div>
@@ -1006,11 +1014,11 @@
 <section id="about">
   <div class="about-left">
     <h2>The questions come <br><em>from the research.</em></h2>
-    <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:var(--mid-grey);line-height:1.82;">Each episode is built from <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);"><strong>TAO Institute</strong></a>'s subnet scoring dataset: validator performance, emission share, developer activity, and product traction across every active Bittensor subnet. Guests answer for their specific numbers.</p>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:var(--mid-grey);line-height:1.82;">Each episode is built from <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);"><strong>TAO Institute</strong></a>'s subnet scoring dataset. Guests answer for their specific numbers, drawn from primary data across every active subnet.</p>
   </div>
   <div class="about-right">
     <div class="host-name">Jack Leung</div>
-    <div class="host-cred">Managing Partner, <a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a>. Founder, <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">TAO Institute</a>. Investing in Bittensor since 2022.</div>
+    <div class="host-cred">Managing Partner, <a href="https://pylon.partners" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">Pylon Partners</a>. Founder, <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">TAO Institute</a>.</div>
     <a href="mailto:jack@pylon.partners" style="display:inline-block;margin-top:20px;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);border-bottom:1px solid var(--black);padding-bottom:1px;text-decoration:none;">Pitch your episode &rarr;</a>
   </div>
 </section>
@@ -1044,15 +1052,25 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-left">
-    <a href="#episodes" class="footer-link">Episodes</a>
-    <a href="#about" class="footer-link">About</a>
-    <a href="#subscribe" class="footer-link">Subscribe</a>
     <a href="https://pylon.partners" target="_blank" rel="noopener" class="footer-link">Pylon Partners</a>
   </div>
-  <p>&copy; 2026 Supercycle</p>
+  <p>&copy; 2025 Supercycle</p>
 </footer>
 
 <script>
+  function loadYT52() {
+    const wrapper = document.getElementById('ytThumb52');
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube.com/embed/py7DgwA1Tf4?autoplay=1';
+    iframe.title = 'Supercycle Ep.52: Nova\'s Bet: Drug Discovery on a Bittensor Subnet';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    iframe.allowFullscreen = true;
+    iframe.style.cssText = 'width:100%;height:100%;display:block;border:none;position:absolute;top:0;left:0;';
+    wrapper.innerHTML = '';
+    wrapper.style.position = 'relative';
+    wrapper.appendChild(iframe);
+  }
+
   const sectionIds = ['episodes', 'about', 'subscribe'];
   const navLinks = {};
   sectionIds.forEach(id => {
