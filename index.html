@@ -212,7 +212,7 @@
     /* Archive CTA below grid */
     .archive-cta {
       padding: 36px 48px;
-      border-top: 2px solid var(--border);
+      border-top: 1px solid var(--border);
       text-align: center;
     }
 
@@ -589,6 +589,7 @@
       .hero { padding: 48px 24px 44px; }
       .hero-grid { grid-template-columns: 1fr; gap: 40px; }
       .hero-right { padding-top: 0; }
+      .proof-strip { padding: 16px 24px; gap: 12px; }
 
       .section-header { padding: 32px 24px 20px; }
       .episodes-list { grid-template-columns: 1fr; padding: 0 24px; }
@@ -631,9 +632,13 @@
 <section class="hero">
   <div class="hero-grid">
     <div class="hero-left">
-      <p class="hero-eyebrow">Bittensor Research Podcast &nbsp;&middot;&nbsp; <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">TAO Institute</a></p>
+      <p class="hero-eyebrow">52 Episodes &nbsp;&middot;&nbsp; Bittensor Research &nbsp;&middot;&nbsp; <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">TAO Institute</a></p>
       <h1>Data before<br><em>narrative.</em></h1>
-      <p class="hero-desc">Each episode, one subnet founder is questioned against their live TAO Institute score. Guests who show up unprepared find out on air.</p>
+      <p class="hero-desc">Each episode, one subnet founder is questioned against their live TAO Institute score.</p>
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="btn-primary">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        Watch on YouTube
+      </a>
     </div>
     <div class="hero-right">
       <div class="hero-ep-label">Latest Episode</div>
@@ -656,6 +661,16 @@
     </div>
   </div>
 </section>
+
+<!-- PROOF STRIP -->
+<div class="proof-strip" style="border-bottom:1px solid var(--border);padding:18px 48px;display:flex;align-items:center;gap:32px;flex-wrap:wrap;">
+  <span style="font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--grey);">Past guests include</span>
+  <span style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:var(--mid-grey);">Micaela Zanella, Co-Founder Nova</span>
+  <span style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:var(--grey);">&middot;</span>
+  <span style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:var(--mid-grey);">Greg Waisman, CEO Yuma &amp; DCG</span>
+  <span style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:var(--grey);">&middot;</span>
+  <span style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:var(--mid-grey);">52 episodes and counting</span>
+</div>
 
 <!-- EPISODES -->
 <section id="episodes">
@@ -718,7 +733,7 @@
     </div>
   </div>
   <div class="about-right">
-    <p>Before each interview, Jack pulls the guest's subnet from the <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);"><strong>TAO Institute</strong></a> score: a live ranking of every active Bittensor subnet by activity, emissions, and adoption. The data is public. The conversation is not rehearsed.</p>
+    <p>Before each interview, Jack pulls the guest's subnet from the <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);"><strong>TAO Institute</strong></a> score: a live ranking of every active Bittensor subnet by emissions, activity, and adoption, updated in real time. Guests arrive knowing the score exists. They answer for it on air.</p>
   </div>
 </section>
 
@@ -726,19 +741,19 @@
 <section id="subscribe">
   <div class="subscribe-left">
     <p style="font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--grey);margin-bottom:20px;">Subscribe</p>
-    <h2>Stay first on<br><em>every subnet move.</em></h2>
+    <h2>New episode.<br><em>In your inbox.</em></h2>
     <form class="email-form" id="emailForm" action="https://formsubmit.co/jack@pylon.partners" method="POST">
       <input type="hidden" name="_subject" value="Supercycle Newsletter Signup">
       <input type="hidden" name="_captcha" value="false">
       <input class="email-input" type="email" name="email" placeholder="Your email address" aria-label="Email address" required>
       <button class="email-btn" type="submit">Subscribe</button>
     </form>
-    <p style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:var(--grey);margin-top:12px;">New episode alerts. No spam.</p>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:var(--grey);margin-top:12px;">Delivered when it drops.</p>
     <p id="formSuccess" style="display:none;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:var(--green);font-weight:700;margin-top:12px;">You're subscribed.</p>
     <p class="form-error" style="display:none;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:var(--red);margin-top:12px;">Something went wrong. Please try again.</p>
   </div>
   <div class="subscribe-right">
-    <div class="subscribe-right-label">Listen on:</div>
+    <div class="subscribe-right-label">Listen free on:</div>
     <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="platform-btn primary">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
       YouTube
