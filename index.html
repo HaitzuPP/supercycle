@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Supercycle – AI, Robotics &amp; Science</title>
 <meta name="description" content="Five investment themes drawn from twelve conversations with founders and investors at the frontier of AI, robotics, and science.">
+<meta property="og:title" content="Supercycle — AI, Robotics &amp; Science">
+<meta property="og:description" content="Five investment themes from twelve conversations with founders and investors at the frontier of AI, robotics, and science.">
+<meta property="og:image" content="https://haitzupp.github.io/supercycle/og-image.jpg">
+<meta property="og:url" content="https://haitzupp.github.io/supercycle/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://haitzupp.github.io/supercycle/og-image.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -182,15 +189,16 @@ nav {
 .theme-section {
   padding: 80px 0;
   border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
 }
-.theme-num {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--ink4);
-  margin-bottom: 12px;
-}
+.theme-num  { order: 1; font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink4); margin-bottom: 12px; }
+.theme-h    { order: 2; }
+.theme-signals { order: 3; }
+.theme-viz  { order: 4; margin-bottom: 32px; }
+.theme-body { order: 5; }
+.pull-quote { order: 6; }
+.theme-read-link { order: 7; }
 .theme-h {
   font-family: var(--bask);
   font-size: clamp(28px, 3.5vw, 40px);
@@ -481,6 +489,7 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
     <li><a href="index.html" class="active">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="episodes.html">Episodes</a></li>
+    <li><a href="research.html">Research</a></li>
   </ul>
   <div class="topbar-right">
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
@@ -496,7 +505,7 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
   <div class="hero-inner">
     <div class="hero-eyebrow">AI &middot; Robotics &middot; Science</div>
     <h1>Five themes.<br>Twelve conversations.</h1>
-    <p class="hero-deck">A podcast on the investment case for AI, robotics, and science. Founders and investors answer to the data in real time. Each episode has a companion research note.</p>
+    <p class="hero-deck">Founders and investors at the frontier of AI, robotics, and science answer to the data in real time. Each episode publishes a companion research note.</p>
     <div class="hero-ctas" style="display:flex;gap:12px;margin-top:32px;">
       <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:#FF0000;color:#fff;font-family:var(--geist);font-size:13px;font-weight:600;border-radius:4px;text-decoration:none;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>YouTube</a>
       <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:#1DB954;color:#fff;font-family:var(--geist);font-size:13px;font-weight:600;border-radius:4px;text-decoration:none;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>Spotify</a>
@@ -523,21 +532,12 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
 
   <!-- Intro -->
   <div class="chapter-intro">
-    <p>Five patterns that showed up across twelve conversations with founders and investors. Not predictions. Each has a companion research note with the full argument.</p>
+    <p>Five patterns that showed up across twelve conversations. Not predictions. Each has a companion research note with the full argument.</p>
   </div>
 
   <!-- ── 01 DECENTRALIZED AI ── -->
   <div class="theme-section reveal" id="theme-01">
     <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><circle cx="16" cy="6" r="2.5"/><circle cx="5" cy="26" r="2.5"/><circle cx="27" cy="26" r="2.5"/><circle cx="16" cy="16" r="2"/><line x1="16" y1="8.5" x2="16" y2="14"/><line x1="14.2" y1="17.5" x2="7" y2="23.5"/><line x1="17.8" y1="17.5" x2="25" y2="23.5"/><line x1="7.5" y1="26" x2="24.5" y2="26"/></svg>01 · Decentralized AI</div>
-    <div class="theme-viz" data-viz="v01">
-      <svg class="viz-lines"></svg>
-      <div class="tn hub"    data-id="tao"       style="left:42%;top:45%;--dur:6s;--delay:0s">   <div class="tn-chip"><span class="tn-sym" style="color:var(--ink)">&#964;</span><span class="tn-lbl">Bittensor</span></div></div>
-      <div class="tn"        data-id="subnet"    style="left:18%;top:25%;--dur:5.2s;--delay:-1s"> <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#11041;</span><span class="tn-lbl">Subnet</span></div></div>
-      <div class="tn"        data-id="validator" style="left:20%;top:70%;--dur:4.8s;--delay:-.5s"><div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#10568;</span><span class="tn-lbl">Validator</span></div></div>
-      <div class="tn accent" data-id="compute"   style="left:66%;top:20%;--dur:5.5s;--delay:-2s"> <div class="tn-chip"><span class="tn-sym" style="color:#5b8dd9">&#9633;</span><span class="tn-lbl">Compute</span></div></div>
-      <div class="tn accent" data-id="model"     style="left:76%;top:60%;--dur:5.8s;--delay:-.8s"><div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#9673;</span><span class="tn-lbl">Foundation<br>Model</span></div></div>
-      <div class="tn"        data-id="miner"     style="left:55%;top:80%;--dur:5s;--delay:-1.5s"> <div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#9670;</span><span class="tn-lbl">Miner</span></div></div>
-    </div>
     <h2 class="theme-h">The major labs have locked up the model layer. The infrastructure beneath it is still open.</h2>
 
     <div class="theme-signals">
@@ -557,6 +557,15 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
         <span class="signal-val">DCG</span>
         <span class="signal-lbl">Institutional backing via Yuma</span>
       </div>
+    </div>
+    <div class="theme-viz" data-viz="v01">
+      <svg class="viz-lines"></svg>
+      <div class="tn hub"    data-id="tao"       style="left:42%;top:45%;--dur:6s;--delay:0s">   <div class="tn-chip"><span class="tn-sym" style="color:var(--ink)">&#964;</span><span class="tn-lbl">Bittensor</span></div></div>
+      <div class="tn"        data-id="subnet"    style="left:18%;top:25%;--dur:5.2s;--delay:-1s"> <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#11041;</span><span class="tn-lbl">Subnet</span></div></div>
+      <div class="tn"        data-id="validator" style="left:20%;top:70%;--dur:4.8s;--delay:-.5s"><div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#10568;</span><span class="tn-lbl">Validator</span></div></div>
+      <div class="tn accent" data-id="compute"   style="left:66%;top:20%;--dur:5.5s;--delay:-2s"> <div class="tn-chip"><span class="tn-sym" style="color:#5b8dd9">&#9633;</span><span class="tn-lbl">Compute</span></div></div>
+      <div class="tn accent" data-id="model"     style="left:76%;top:60%;--dur:5.8s;--delay:-.8s"><div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#9673;</span><span class="tn-lbl">Foundation<br>Model</span></div></div>
+      <div class="tn"        data-id="miner"     style="left:55%;top:80%;--dur:5s;--delay:-1.5s"> <div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#9670;</span><span class="tn-lbl">Miner</span></div></div>
     </div>
 
     <div class="theme-body">
