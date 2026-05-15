@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research: Supercycle Episode Memos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F3EEE3;--parch:#EAE4D4;--ink:#0D0C09;--ink2:rgba(13,12,9,.78);--ink3:rgba(13,12,9,.58);--ink4:rgba(13,12,9,.10);--orange:#D94F2A;--cyan:#0A9FB8;--border:rgba(13,12,9,.14);--dark:#1C1914;--bask:'Baskervville',Georgia,serif;--crim:'Crimson Text',Georgia,serif;--geist:'Geist',-apple-system,sans-serif;--mono:'Geist Mono',monospace}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--crim);font-size:20px;line-height:1.65;background:var(--cream);color:var(--ink)}
+a{color:inherit;text-decoration:none}
+
+.topbar{position:sticky;top:0;height:52px;background:rgba(243,238,227,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:100}
+.topbar-logo{font-family:var(--bask);font-size:18px;letter-spacing:-.3px;color:var(--ink)}
+.topbar-logo span{color:var(--orange)}
+.topbar-nav{display:flex;align-items:center;gap:32px;list-style:none}
+.topbar-nav a{font-family:var(--geist);font-size:13px;color:var(--ink3);transition:color .15s}
+.topbar-nav a:hover{color:var(--ink)}
+.topbar-cta{font-family:var(--geist);font-size:13px;font-weight:500;color:var(--cream);background:var(--ink);padding:7px 16px;border-radius:4px;transition:background .15s}
+.topbar-cta:hover{background:var(--orange)}
+
+.page-hero{background:var(--parch);border-bottom:1px solid var(--border);padding:64px 64px 56px}
+.page-hero-inner{max-width:1100px;margin:0 auto}
+.page-eyebrow{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+.page-hero h1{font-family:var(--bask);font-size:48px;font-weight:400;letter-spacing:-.4px;line-height:1.1;margin-bottom:16px}
+.page-hero p{font-size:19px;color:var(--ink2);max-width:560px;line-height:1.6}
+
+.research-main{padding:64px 64px 80px;max-width:1100px;margin:0 auto}
+
+.filter-bar{display:flex;align-items:center;gap:12px;margin-bottom:48px;flex-wrap:wrap}
+.filter-label{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink3);margin-right:4px}
+.filter-chip{font-family:var(--mono);font-size:11px;letter-spacing:.6px;padding:5px 14px;border-radius:20px;border:1px solid var(--border);color:var(--ink2);cursor:pointer;transition:all .15s;background:transparent}
+.filter-chip.active,.filter-chip:hover{border-color:var(--orange);color:var(--orange)}
+
+.memo-list{display:flex;flex-direction:column;gap:0}
+
+.memo-row{display:grid;grid-template-columns:80px 1fr auto;gap:24px;align-items:start;padding:28px 0;border-bottom:1px solid var(--border)}
+.memo-row:first-child{border-top:1px solid var(--border)}
+
+.memo-ep-col{padding-top:4px}
+.memo-ep-num{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--ink3)}
+.memo-date{font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:.4px;margin-top:4px}
+
+.memo-content h2{font-family:var(--bask);font-size:24px;font-weight:400;letter-spacing:-.2px;line-height:1.25;color:var(--ink);margin-bottom:8px}
+.memo-content h2 a:hover{color:var(--orange)}
+.memo-guest{font-family:var(--geist);font-size:13px;color:var(--ink3);margin-bottom:10px}
+.memo-excerpt{font-size:17px;color:var(--ink2);line-height:1.55}
+.memo-tags{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.memo-tag{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;padding:3px 9px;border-radius:2px;background:var(--ink4);color:var(--ink2)}
+
+.memo-cta-col{padding-top:6px;white-space:nowrap}
+.memo-read{font-family:var(--geist);font-size:13px;font-weight:500;color:var(--orange)}
+.memo-read:hover{opacity:.75}
+
+.footer{background:var(--dark);padding:40px 64px 32px}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.footer-brand{font-family:var(--bask);font-size:18px;color:rgba(255,255,255,.7)}
+.footer-brand span{color:var(--orange)}
+.footer-copy{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.22);letter-spacing:.4px}
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <a href="/" class="topbar-logo">Super<span>cycle</span></a>
+  <ul class="topbar-nav">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/research.html" style="color:var(--ink)">Research</a></li>
+    <li><a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">Episodes</a></li>
+  </ul>
+  <a href="https://www.youtube.com/watch?v=oSFu8IZ5RaE" target="_blank" rel="noopener" class="topbar-cta">Watch Latest</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">Supercycle Research</div>
+    <h1>Episode memos</h1>
+    <p>Independent research memos produced from each episode. Built from the transcript, the live score data, and the conversation.</p>
+  </div>
+</div>
+
+<div class="research-main">
+  <div class="filter-bar">
+    <span class="filter-label">Filter</span>
+    <span class="filter-chip active">All</span>
+    <span class="filter-chip">Drug Discovery</span>
+    <span class="filter-chip">AI Infrastructure</span>
+    <span class="filter-chip">FinTech</span>
+    <span class="filter-chip">Computer Vision</span>
+  </div>
+
+  <div class="memo-list">
+
+    <div class="memo-row">
+      <div class="memo-ep-col">
+        <div class="memo-ep-num">Ep. 52</div>
+        <div class="memo-date">May 2025</div>
+      </div>
+      <div class="memo-content">
+        <h2><a href="/ep-52-nova.html">Nova's Bet: Drug Discovery on a Bittensor Subnet</a></h2>
+        <div class="memo-guest">Micaela Zanella, Co-Founder, Nova</div>
+        <p class="memo-excerpt">Isomorphic Labs raised $2B. No AI-discovered drug has cleared the FDA yet. Nova is running decentralized drug discovery competitions on Bittensor, rewarding miners for molecule candidates, and closing in on lab validation. The efficiency thesis examined.</p>
+        <div class="memo-tags">
+          <span class="memo-tag">Drug Discovery</span>
+          <span class="memo-tag">Nova</span>
+          <span class="memo-tag">Bittensor</span>
+          <span class="memo-tag">Biotech</span>
+        </div>
+      </div>
+      <div class="memo-cta-col">
+        <a href="/ep-52-nova.html" class="memo-read">Read &rarr;</a>
+      </div>
+    </div>
+
+    <div class="memo-row">
+      <div class="memo-ep-col">
+        <div class="memo-ep-num">Ep. 51</div>
+        <div class="memo-date">Apr 2025</div>
+      </div>
+      <div class="memo-content">
+        <h2><a href="/ep-51-yuma.html">Yuma's Case Against Captured AI</a></h2>
+        <div class="memo-guest">Greg Waisman, CEO, Yuma / DCG</div>
+        <p class="memo-excerpt">DCG's operating arm inside Bittensor. Greg's thesis: intelligence is for the first time moving toward non-human functions, and centralized AI is structurally captured. TradeBlock, Axani, and now the credibility argument for decentralized AI.</p>
+        <div class="memo-tags">
+          <span class="memo-tag">AI Infrastructure</span>
+          <span class="memo-tag">Yuma</span>
+          <span class="memo-tag">DCG</span>
+          <span class="memo-tag">Decentralization</span>
+        </div>
+      </div>
+      <div class="memo-cta-col">
+        <a href="/ep-51-yuma.html" class="memo-read">Read &rarr;</a>
+      </div>
+    </div>
+
+    <div class="memo-row">
+      <div class="memo-ep-col">
+        <div class="memo-ep-num">Ep. 50</div>
+        <div class="memo-date">Mar 2025</div>
+      </div>
+      <div class="memo-content">
+        <h2><a href="/ep-lex.html">The Robot Money Thesis</a></h2>
+        <div class="memo-guest">Lex Sokolin, Managing Partner, Generative Ventures</div>
+        <p class="memo-excerpt">Stripe wants to be robot money. Ethereum wants to be robot money. So does Solana, Visa, MasterCard, and BlackRock. Former chief economist at Consensys explains why financial infrastructure for the machine economy is the only real play, and why the differentiation window is closing fast.</p>
+        <div class="memo-tags">
+          <span class="memo-tag">FinTech</span>
+          <span class="memo-tag">Robot Money</span>
+          <span class="memo-tag">Venture Capital</span>
+          <span class="memo-tag">Machine Economy</span>
+        </div>
+      </div>
+      <div class="memo-cta-col">
+        <a href="/ep-lex.html" class="memo-read">Read &rarr;</a>
+      </div>
+    </div>
+
+    <div class="memo-row">
+      <div class="memo-ep-col">
+        <div class="memo-ep-num">Ep. 49</div>
+        <div class="memo-date">Feb 2025</div>
+      </div>
+      <div class="memo-content">
+        <h2><a href="/ep-max-wei.html">Score SN44: Computer Vision at Scale</a></h2>
+        <div class="memo-guest">Max, CEO Mataco Labs; Wei, Reinforcement Learning Research</div>
+        <p class="memo-excerpt">Subnet 44 converts CCTV and broadcast footage into structured, queryable data. PwC co-selling partnership live. A chocolate factory client about to go public at Viva Tech Paris. The question is whether horizontal computer vision can win when every major cloud provider already owns a vertical.</p>
+        <div class="memo-tags">
+          <span class="memo-tag">Computer Vision</span>
+          <span class="memo-tag">Score SN44</span>
+          <span class="memo-tag">Mataco Labs</span>
+          <span class="memo-tag">Manufacturing</span>
+        </div>
+      </div>
+      <div class="memo-cta-col">
+        <a href="/ep-max-wei.html" class="memo-read">Read &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">Super<span>cycle</span></div>
+    <span class="footer-copy">&copy; 2025 Supercycle. A Pylon Partners production.</span>
+  </div>
+</footer>
+
+</body>
+</html>
