@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nova's Bet: Drug Discovery on a Bittensor Subnet - Supercycle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F3EEE3;--parch:#EAE4D4;--ink:#0D0C09;--ink2:rgba(13,12,9,.78);--ink3:rgba(13,12,9,.58);--ink4:rgba(13,12,9,.10);--orange:#D94F2A;--cyan:#0A9FB8;--border:rgba(13,12,9,.14);--dark:#1C1914;--bask:'Baskervville',Georgia,serif;--crim:'Crimson Text',Georgia,serif;--geist:'Geist',-apple-system,sans-serif;--mono:'Geist Mono',monospace}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--crim);font-size:20px;line-height:1.7;background:var(--cream);color:var(--ink)}
+a{color:inherit;text-decoration:none}
+
+/* Progress bar */
+#progress{position:fixed;top:0;left:0;height:2px;background:var(--orange);width:0%;z-index:200;transition:width .1s}
+
+.topbar{position:sticky;top:0;height:52px;background:rgba(243,238,227,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:100}
+.topbar-logo{font-family:var(--bask);font-size:18px;letter-spacing:-.3px}
+.topbar-logo span{color:var(--orange)}
+.topbar-back{font-family:var(--geist);font-size:13px;color:var(--ink3);display:flex;align-items:center;gap:6px}
+.topbar-back:hover{color:var(--ink)}
+
+/* ARTICLE HERO */
+.article-hero{background:var(--dark);padding:72px 64px 64px;position:relative;overflow:hidden}
+.article-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 80%,rgba(217,79,42,.12) 0%,transparent 60%);pointer-events:none}
+.hero-inner{max-width:1000px;margin:0 auto;position:relative;z-index:1}
+.hero-eyebrow{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+.hero-title{font-family:var(--bask);font-size:52px;font-weight:400;letter-spacing:-.5px;line-height:1.1;color:rgba(255,255,255,.9);margin-bottom:20px;max-width:700px}
+.hero-deck{font-family:var(--crim);font-size:20px;color:rgba(255,255,255,.55);line-height:1.6;max-width:600px;margin-bottom:40px}
+.hero-meta{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.hero-meta-item{display:flex;align-items:center;gap:8px}
+.hero-meta-label{font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.28)}
+.hero-meta-val{font-family:var(--geist);font-size:13px;color:rgba(255,255,255,.55)}
+.hero-divider{width:1px;height:20px;background:rgba(255,255,255,.12)}
+
+/* STATS SIDEBAR STRIP */
+.stats-bar{background:var(--orange);padding:20px 64px}
+.stats-bar-inner{max-width:1000px;margin:0 auto;display:flex;gap:48px}
+.stat-item{color:rgba(255,255,255,.9)}
+.stat-num{font-family:var(--bask);font-size:28px;font-weight:400;line-height:1}
+.stat-label{font-family:var(--mono);font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:2px}
+
+/* LAYOUT */
+.article-layout{display:grid;grid-template-columns:220px 1fr;gap:64px;max-width:1000px;margin:0 auto;padding:56px 64px 80px;align-items:start}
+
+/* TOC */
+.toc{position:sticky;top:72px}
+.toc-label{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink3);margin-bottom:16px}
+.toc a{display:block;font-family:var(--geist);font-size:13px;color:var(--ink3);padding:6px 0 6px 12px;border-left:2px solid transparent;line-height:1.4;transition:color .15s,border-color .15s;margin-bottom:2px}
+.toc a:hover,.toc a.active{color:var(--orange);border-left-color:var(--orange)}
+.toc-back{font-family:var(--geist);font-size:12px;color:var(--ink3);margin-top:28px;padding-top:20px;border-top:1px solid var(--border)}
+.toc-back a:hover{color:var(--orange)}
+
+/* ARTICLE BODY */
+.article-body h2{font-family:var(--bask);font-size:30px;font-weight:400;letter-spacing:-.2px;line-height:1.2;color:var(--ink);margin:48px 0 16px;scroll-margin-top:80px}
+.article-body h3{font-family:var(--bask);font-size:22px;font-weight:400;letter-spacing:-.1px;color:var(--ink);margin:32px 0 12px}
+.article-body p{margin-bottom:20px;color:var(--ink2)}
+.article-body strong{color:var(--ink);font-weight:600}
+.article-body a{color:var(--orange);border-bottom:1px solid rgba(217,79,42,.25)}
+.article-body a:hover{border-bottom-color:var(--orange)}
+
+.takeaways{background:var(--dark);border-radius:6px;margin:40px 0;overflow:hidden}
+.takeaways-header{padding:16px 24px;background:rgba(0,0,0,.2)}
+.takeaways-header h3{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.45);margin:0}
+.takeaways-body{padding:24px 24px 20px}
+.takeaway-item{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start}
+.takeaway-item:last-child{margin-bottom:0}
+.takeaway-num{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--orange);min-width:20px;padding-top:2px}
+.takeaway-text{font-family:var(--crim);font-size:17px;color:rgba(255,255,255,.72);line-height:1.55}
+
+.note-box{background:var(--parch);border-left:3px solid var(--orange);padding:18px 20px;border-radius:0 4px 4px 0;margin:28px 0}
+.note-box p{margin:0;font-size:17px;color:var(--ink2)}
+.note-label{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+
+.pullquote{border-left:3px solid var(--orange);padding:12px 0 12px 24px;margin:32px 0}
+.pullquote p{font-family:var(--bask);font-size:24px;font-style:italic;color:var(--ink);line-height:1.35;margin:0}
+.pullquote cite{display:block;font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.6px;margin-top:10px}
+
+.footer{background:var(--dark);padding:40px 64px 32px}
+.footer-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.footer-brand{font-family:var(--bask);font-size:18px;color:rgba(255,255,255,.7)}
+.footer-brand span{color:var(--orange)}
+.footer-copy{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.22);letter-spacing:.4px}
+
+@media(max-width:900px){
+  .article-layout{grid-template-columns:1fr;padding:40px 28px 60px}
+  .toc{display:none}
+  .article-hero{padding:48px 28px 48px}
+  .hero-title{font-size:36px}
+  .stats-bar{padding:20px 28px}
+  .stats-bar-inner{flex-wrap:wrap;gap:24px}
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<nav class="topbar">
+  <a href="/" class="topbar-logo">Super<span>cycle</span></a>
+  <a href="/research.html" class="topbar-back">&larr; All memos</a>
+</nav>
+
+<div class="article-hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Episode 52 &middot; Drug Discovery &middot; May 2025</div>
+    <h1 class="hero-title">Nova's Bet: Drug Discovery on a Bittensor Subnet</h1>
+    <p class="hero-deck">Isomorphic Labs just raised $2B. No AI-discovered drug has cleared the FDA. Nova is running the competition model on Bittensor and closing in on lab validation.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Guest</span>
+        <span class="hero-meta-val">Micaela Zanella, Co-Founder Nova</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Duration</span>
+        <span class="hero-meta-val">49 min</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Subnet</span>
+        <span class="hero-meta-val">Nova / MetaNova</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stat-item">
+      <div class="stat-num">$2B</div>
+      <div class="stat-label">Isomorphic Labs raise</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">0</div>
+      <div class="stat-label">FDA-approved AI drugs</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">61B</div>
+      <div class="stat-label">Molecule combinations</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">175 yr</div>
+      <div class="stat-label">Brute-force time</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Incentive mechanisms live</div>
+    </div>
+  </div>
+</div>
+
+<div class="article-layout">
+  <nav class="toc">
+    <div class="toc-label">Contents</div>
+    <a href="#setup">The setup</a>
+    <a href="#market">The market</a>
+    <a href="#model">The competition model</a>
+    <a href="#scale">Scale problem</a>
+    <a href="#team">The team</a>
+    <a href="#outlook">2026 outlook</a>
+    <div class="toc-back"><a href="/research.html">&larr; All memos</a></div>
+  </nav>
+
+  <div class="article-body">
+
+    <div class="takeaways">
+      <div class="takeaways-header"><h3>Key takeaways</h3></div>
+      <div class="takeaways-body">
+        <div class="takeaway-item">
+          <span class="takeaway-num">01</span>
+          <span class="takeaway-text">GLP-1 drug sales (Ozempic, Monjaro) exceed the combined revenue of the largest AI companies. The pharma market dwarfs anything in tech.</span>
+        </div>
+        <div class="takeaway-item">
+          <span class="takeaway-num">02</span>
+          <span class="takeaway-text">Brute-forcing 61 billion molecule combinations would take 175 years on standard infrastructure. Nova's competition model incentivizes smarter search, not more compute.</span>
+        </div>
+        <div class="takeaway-item">
+          <span class="takeaway-num">03</span>
+          <span class="takeaway-text">The efficiency edge is structural: Nova only pays for submissions that beat the benchmark. Centralized labs burn capital on all attempts.</span>
+        </div>
+        <div class="takeaway-item">
+          <span class="takeaway-num">04</span>
+          <span class="takeaway-text">A miner applied an energy supply arbitrage optimization to the drug search problem and beat a well-published technique (Thompson sampling) on a hard oncology target. Interdisciplinary competition works.</span>
+        </div>
+        <div class="takeaway-item">
+          <span class="takeaway-num">05</span>
+          <span class="takeaway-text">2026 target: wet lab validation of small molecule and nanobody candidates. That would be the first independent verification of a Bittensor drug discovery output.</span>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="setup">The setup</h2>
+
+    <p><a href="https://taoinstitute.com" target="_blank" rel="noopener">Nova, also known as MetaNova</a>, is running what may be the most ambitious real-world application of the Bittensor network: a decentralized drug discovery competition. The goal is to outsource the early-stage chemical search problem that big pharma spends hundreds of millions on, and run it as an incentivized mining competition.</p>
+
+    <p>The core problem Nova is attacking is virtual screening: given a protein target associated with a disease, identify which molecules from a vast chemical space are most likely to bind to it. That shortlist then goes to a physical lab for verification. Traditional pharma does this process slowly, expensively, and with no incentive to share results. Nova does it in the open, with adversarial competition driving continuous improvement.</p>
+
+    <p>Founder <strong>Micaela Zanella</strong> came from urban design and Google's ecology program. Her co-founder <strong>Pedro</strong> had prior work verified in lab environments. <strong>Brayden</strong>, head of engineering, had rare dual expertise in biomedical research and Bittensor infrastructure. The team launched March 1, 2025.</p>
+
+    <h2 id="market">The market</h2>
+
+    <p>The framing matters here. Zanella made a point on the show that resets the scale of the opportunity: Ozempic and Monjaro, the two dominant GLP-1 drugs, generate more revenue than the combined revenue of the largest AI companies. Not valuation. Revenue. Pharma's willingness-to-pay ceiling is not set by capital markets. It is set by what people will pay out of pocket to avoid suffering.</p>
+
+    <div class="pullquote">
+      <p>"There's an infinite ceiling. The market is so big. People will pay out of pocket without insurance."</p>
+      <cite>Micaela Zanella, Co-Founder Nova</cite>
+    </div>
+
+    <p>The competitive landscape includes <a href="https://www.isomorphiclabs.com" target="_blank" rel="noopener">Isomorphic Labs</a> (Google DeepMind spinout, recently raised $2B), <a href="https://insilico.com" target="_blank" rel="noopener">Insilico Medicine</a> (IPO'd, clinical-stage assets), and a field of well-funded centralized AI drug discovery companies. No one in the field has yet produced an FDA-approved drug discovered by an AI platform. The race is real, the finish line is visible, and the capital flowing in confirms the expected value at the other side.</p>
+
+    <div class="note-box">
+      <div class="note-label">Context</div>
+      <p>Average drug development cost: $2.6 billion over 10 years. The discovery funnel fails at every stage. Most capital is spent on the wrong candidates. Nova is attacking step one of that funnel.</p>
+    </div>
+
+    <h2 id="model">The competition model</h2>
+
+    <p>Nova runs three incentive mechanisms on the Bittensor network. The first covers small molecule screening: miners search a space of approximately 61 billion synthesizable compounds to find candidates with the highest binding affinity to a target protein. An oracle model scores submissions and assigns rewards to the winning approach, not all attempts.</p>
+
+    <p>The second mechanism is open-sourced algorithm competition: miners publish their search techniques, creating a public record of what works on which target types. This is deliberately uncommon in pharma, where labs treat methodology as proprietary.</p>
+
+    <p>The third mechanism, launched in partnership with Chinese biotech <strong>Yalutane</strong>, covers nanobody screening. Nanobodies are a class of biologics known for precision targeting of hard-to-drug proteins. Nova is one of the only groups running both small molecule and nanobody competition in parallel.</p>
+
+    <p>The anomaly that validates the model: a miner with no drug discovery background applied an <strong>energy supply arbitrage optimization algorithm</strong> to the molecular search problem. It outperformed Thompson sampling, a well-published Bayesian optimization technique, on an oncology target. That kind of cross-domain insight does not emerge from closed-team research.</p>
+
+    <h2 id="scale">The scale problem</h2>
+
+    <p>Brayden ran the numbers on the chemical space Nova works with. Five combinatorial reactions generate approximately 61 billion possible molecules. To brute-force evaluate all of them on standard infrastructure would take around 175 years. The nanobody search space is orders of magnitude larger: 10 to the power of a very large number, per Zanella's description on the show.</p>
+
+    <p>This is why the problem requires intelligent search rather than exhaustive search. Nova's incentive mechanism is designed to reward miners who find better <em>strategies</em> for navigating the space, not just more compute. The result is a cost structure that centralized labs cannot replicate: Nova only pays for submissions that beat a benchmark. Failed approaches cost the miner, not Nova.</p>
+
+    <div class="note-box">
+      <div class="note-label">Commercial context</div>
+      <p>Nova's target clients are organizations that want to run drug discovery but lack the capacity to build an AI platform. Cost neutral competitive compute (miners handle their own infrastructure) removes the main barrier to entry for mid-tier pharma and biotech.</p>
+    </div>
+
+    <h2 id="team">The team</h2>
+
+    <p>Zanella trained as an urban designer and landscape architect, did large-scale master planning for Google, and published peer-reviewed research on urban ecology and human health. She connected with Pedro after talking to roughly 70 people in the drug R+D space. Pedro had prior lab-verified work in drug design but limited access to North American capital networks. Amanda brought computer vision expertise applied to rare disease diagnostics in children. Brayden combined biomedical research training with operational Bittensor experience.</p>
+
+    <p>The geographic distribution (South American founders, global miners, partnerships in China and Canada and the US) is not incidental to the thesis. It is a live demonstration of the model: distributed talent, rewarded on output, not origin.</p>
+
+    <h2 id="outlook">2026 outlook</h2>
+
+    <p>The milestone Nova is building toward in 2026 is wet lab validation. Specifically: physical testing of small molecule candidates (targeting dopamine, serotonin, and norepinephrine triple reuptake inhibitors, with potential application to depression, ADHD, obesity, and PTSD) and nanobody candidates from the Yalutane partnership.</p>
+
+    <p>Lab validation would represent the first time a Bittensor subnet's output crosses from virtual benchmark to physical scientific result. Nova also announced a partnership with <strong>OnePot AI</strong>, a robotic lab, as the infrastructure layer for eventually automating the testing pipeline.</p>
+
+    <p>A fourth incentive mechanism is in development. The platform has three live and functional after 14 months of operation. The near-term argument is straightforward: if the lab results hold, the skepticism from traditional CROs (contract research organizations) falls away. That unlocks co-development and screening-as-a-service revenue at scale.</p>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">Super<span>cycle</span></div>
+    <span class="footer-copy">&copy; 2025 Supercycle. A Pylon Partners production.</span>
+  </div>
+</footer>
+
+<script>
+const bar = document.getElementById('progress');
+const toc = document.querySelectorAll('.toc a');
+const sections = document.querySelectorAll('.article-body h2');
+
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  bar.style.width = (window.scrollY / total * 100) + '%';
+  sections.forEach((s, i) => {
+    if (window.scrollY >= s.offsetTop - 100) {
+      toc.forEach(a => a.classList.remove('active'));
+      if (toc[i]) toc[i].classList.add('active');
+    }
+  });
+});
+</script>
+</body>
+</html>
