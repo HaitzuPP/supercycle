@@ -839,6 +839,28 @@ html[data-theme="dark"] .ep-stack-more:hover { background: rgba(255,255,255,.04)
   .footer { padding: 40px 32px 28px; }
   .footer-links { gap: 32px; }
 }
+@media (max-width: 640px) {
+  .hero { padding: 80px 20px 40px; gap: 32px; }
+  .hero h1 { font-size: 32px; letter-spacing: -.3px; }
+  .hero-deck { font-size: 16px; }
+  .hero-actions { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .hero-actions a { width: 100%; justify-content: center; }
+  .ep-stack { padding: 20px; }
+  .ep-stack-title { font-size: 13px; }
+  .stats-strip { grid-template-columns: 1fr 1fr; gap: 0; }
+  .ep-cards { grid-template-columns: 1fr; }
+  .research-grid { gap: 12px; }
+  .footer-top { flex-direction: column; gap: 32px; }
+  .footer-links { flex-direction: column; gap: 24px; }
+  .footer-col { flex-direction: row; flex-wrap: wrap; gap: 12px; align-items: baseline; }
+  .footer-col-label { width: 100%; }
+  .section-inner { padding: 0 20px; }
+  .thesis, .ep-strip-section { padding: 48px 20px; }
+  .research-preview, .host-section { padding: 48px 20px; }
+  .host-section > div { grid-template-columns: 1fr !important; }
+  .host-section img { width: 100% !important; height: auto !important; }
+  .topbar { padding: 0 16px; }
+}
 
 /* Theme toggle */
 .theme-toggle {
@@ -861,12 +883,12 @@ html[data-theme="dark"] .ep-stack-more:hover { background: rgba(255,255,255,.04)
 .topbar-right { display: flex; align-items: center; gap: 20px; }
 
 /* Micro-animations */
-.research-card-featured { transition: border-color .2s, transform .2s, box-shadow .2s; }
-.research-card-featured:hover { border-color: var(--orange); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.08); }
+.research-card-featured { transition: border-color .25s, transform .25s, box-shadow .25s; box-shadow: 0 2px 8px rgba(0,0,0,.04), 0 0 0 0 rgba(217,79,42,0); }
+.research-card-featured:hover { border-color: var(--orange); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,.12), 0 0 0 1px rgba(217,79,42,.15); }
+.ep-card:hover { border-color: var(--orange); background: rgba(217,79,42,.04); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.18); }
 .queue-card { transition: border-color .2s, background .2s, transform .15s; }
 .queue-card:hover { border-color: var(--orange); background: var(--parch); transform: translateY(-1px); }
 .ep-card { transition: border-color .2s, background .2s, transform .15s; }
-.ep-card:hover { border-color: var(--orange); background: rgba(217,79,42,.05); transform: translateY(-2px); }
 .btn-primary, .btn-ghost { transition: background .15s, transform .12s; }
 .btn-primary:hover { transform: translateY(-1px); }
 .btn-ghost:hover { transform: translateY(-1px); }
@@ -922,9 +944,71 @@ html[data-theme="dark"] .ep-stack-more:hover { background: rgba(255,255,255,.04)
   gap: 6px;
 }
 
+
+.topbar-nav-wrap { display: flex; align-items: center; gap: 28px; }
+.hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  padding: 4px; color: var(--ink3); flex-direction: column;
+  justify-content: center; align-items: center; gap: 5px;
+}
+.hamburger span {
+  display: block; width: 20px; height: 1.5px; background: currentColor;
+  transition: transform .2s, opacity .2s;
+}
+.mobile-nav {
+  display: none; position: fixed; inset: 52px 0 0;
+  background: var(--cream); z-index: 99;
+  flex-direction: column; padding: 32px 24px; gap: 4px;
+  border-top: 1px solid var(--border);
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-family: var(--geist); font-size: 22px; font-weight: 500;
+  color: var(--ink); padding: 14px 0; border-bottom: 1px solid var(--border);
+  text-decoration: none;
+}
+.mobile-nav-platforms { display: flex; gap: 12px; margin-top: 24px; }
+@media (max-width: 640px) {
+  .topbar-nav { display: none; }
+  .hamburger { display: flex; }
+  .topbar-icon-btn { display: none; }
+}
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+
+.ticker-wrap {
+  overflow: hidden; background: var(--dark); border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06); padding: 14px 0;
+}
+.ticker-track {
+  display: inline-flex; gap: 40px; white-space: nowrap;
+  animation: ticker 28s linear infinite;
+}
+.ticker-track span {
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 1.8px; text-transform: uppercase;
+  color: rgba(237,232,223,.45);
+}
+.ticker-dot { color: var(--orange) !important; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+.hero { position: relative; overflow: hidden; }
+.hero::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(circle, rgba(217,79,42,.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+  z-index: 0;
+}
+.hero-left, .hero-right { position: relative; z-index: 1; }
+
 </style>
 </head>
 <body>
+<div id="sc-progress" style="position:fixed;top:0;left:0;height:2px;width:0%;background:var(--orange);z-index:9999;transition:width .1s linear;"></div>
 
 <!-- TOPBAR -->
 <nav class="topbar">
@@ -935,6 +1019,9 @@ html[data-theme="dark"] .ep-stack-more:hover { background: rgba(255,255,255,.04)
     <li><a href="research.html">Themes</a></li>
   </ul>
   <div class="topbar-right">
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
     <div class="topbar-platform">
     <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="topbar-icon-btn" title="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FF0000" style="flex-shrink:0"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
@@ -942,6 +1029,15 @@ html[data-theme="dark"] .ep-stack-more:hover { background: rgba(255,255,255,.04)
   </div>
   </div>
 </nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="episodes.html">Episodes</a>
+  <a href="research.html">Themes</a>
+  <div class="mobile-nav-platforms">
+    <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="platform-btn-yt" style="font-size:13px;padding:10px 16px;">YouTube</a>
+    <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="platform-btn-sp" style="font-size:13px;padding:10px 16px;">Spotify</a>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1000,26 +1096,26 @@ html[data-theme="dark"] .ep-stack-more:hover { background: rgba(255,255,255,.04)
 <section class="thesis" id="about">
   <div class="section-inner">
     <div class="section-label">The show</div>
-    <h2>Built on the premise that founders should answer to data, not narrative.</h2>
+    <h2 class="reveal">Built on the premise that founders should answer to data, not narrative.</h2>
     <p class="thesis-deck">Every guest is asked the hard questions in real time. No prepared deck, no PR filter. Jack brings institutional-grade research into each conversation and pushes until the numbers make sense.</p>
     <div style="font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink3);margin-bottom:16px;">Guests from</div>
     <div class="stats-strip">
-      <div class="stat-item">
+      <div class="stat-item reveal reveal-delay-1">
         <img src="https://logo.clearbit.com/multicoin.capital" alt="Multicoin Capital" style="height:28px;width:auto;margin-bottom:10px;display:block;opacity:.85;" onerror="this.style.display='none'">
         <div class="stat-num" style="font-size:16px;letter-spacing:-.2px;line-height:1.2;font-family:var(--geist);font-weight:600;">Multicoin<br>Capital</div>
         <div class="stat-label" style="margin-top:6px;">$5.9B AUM</div>
       </div>
-      <div class="stat-item">
+      <div class="stat-item reveal reveal-delay-2">
         <img src="https://logo.clearbit.com/dcg.co" alt="DCG" style="height:28px;width:auto;margin-bottom:10px;display:block;opacity:.85;" onerror="this.style.display='none'">
         <div class="stat-num" style="font-size:16px;letter-spacing:-.2px;line-height:1.2;font-family:var(--geist);font-weight:600;">DCG &amp;<br>Yuma Group</div>
         <div class="stat-label" style="margin-top:6px;">Bittensor accelerator</div>
       </div>
-      <div class="stat-item">
+      <div class="stat-item reveal reveal-delay-2">
         <img src="https://logo.clearbit.com/moonrockcapital.io" alt="Moonrock Capital" style="height:28px;width:auto;margin-bottom:10px;display:block;opacity:.85;" onerror="this.style.display='none'">
         <div class="stat-num" style="font-size:16px;letter-spacing:-.2px;line-height:1.2;font-family:var(--geist);font-weight:600;">Moonrock<br>Capital</div>
         <div class="stat-label" style="margin-top:6px;">Crypto VC</div>
       </div>
-      <div class="stat-item">
+      <div class="stat-item reveal reveal-delay-3">
         <img src="https://logo.clearbit.com/gradient.network" alt="Gradient Network" style="height:28px;width:auto;margin-bottom:10px;display:block;opacity:.85;" onerror="this.style.display='none'">
         <div class="stat-num" style="font-size:16px;letter-spacing:-.2px;line-height:1.2;font-family:var(--geist);font-weight:600;">Karis &amp;<br>Gradient</div>
         <div class="stat-label" style="margin-top:6px;">AI infrastructure</div>
@@ -1027,6 +1123,24 @@ html[data-theme="dark"] .ep-stack-more:hover { background: rgba(255,255,255,.04)
     </div>
   </div>
 </section>
+
+<!-- TICKER -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Decentralized AI</span><span class="ticker-dot">·</span>
+    <span>Robotics</span><span class="ticker-dot">·</span>
+    <span>AI Biotech</span><span class="ticker-dot">·</span>
+    <span>Agent Economy</span><span class="ticker-dot">·</span>
+    <span>Crypto VC</span><span class="ticker-dot">·</span>
+    <span>12 Episodes</span><span class="ticker-dot">·</span>
+    <span>Decentralized AI</span><span class="ticker-dot">·</span>
+    <span>Robotics</span><span class="ticker-dot">·</span>
+    <span>AI Biotech</span><span class="ticker-dot">·</span>
+    <span>Agent Economy</span><span class="ticker-dot">·</span>
+    <span>Crypto VC</span><span class="ticker-dot">·</span>
+    <span>12 Episodes</span><span class="ticker-dot">·</span>
+  </div>
+</div>
 
 <!-- RESEARCH PREVIEW -->
 <section style="padding: 80px 0; background: var(--cream);">
@@ -1038,7 +1152,7 @@ html[data-theme="dark"] .ep-stack-more:hover { background: rgba(255,255,255,.04)
       </div>
       <a href="research.html" class="section-link">All themes &rarr;</a>
     </div>
-    <div class="research-grid">
+    <div class="research-grid reveal">
       <!-- Featured: Decentralized AI -->
       <a href="research-decentralized-ai.html" class="research-card-featured">
         <div class="card-hero-img">
@@ -1085,7 +1199,7 @@ html[data-theme="dark"] .ep-stack-more:hover { background: rgba(255,255,255,.04)
   <div class="ep-strip-inner">
     <div class="section-label">Recent episodes</div>
     <h2>Latest from the show</h2>
-    <div class="ep-cards">
+    <div class="ep-cards reveal">
       <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-card">
         <div class="ep-card-num">Ep. 12 &middot; May 2025</div>
         <div class="ep-card-title">Bittensor Subnets Cost 500k+ to Register</div>
@@ -1205,6 +1319,26 @@ document.addEventListener('DOMContentLoaded',function(){
     scUpdateIcon();
   });
 });
+
+window.addEventListener('scroll',function(){
+  var s=document.documentElement,b=document.body;
+  var pct=(s.scrollTop||b.scrollTop)/((s.scrollHeight||b.scrollHeight)-s.clientHeight)*100;
+  var el=document.getElementById('sc-progress');
+  if(el)el.style.width=Math.min(pct,100)+'%';
+});
+
+var hb=document.getElementById('hamburger');
+var mn=document.getElementById('mobileNav');
+if(hb&&mn){hb.addEventListener('click',function(){
+  mn.classList.toggle('open');
+  hb.setAttribute('aria-expanded',mn.classList.contains('open'));
+});}
+
+var revealEls = document.querySelectorAll('.reveal');
+var ro = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); ro.unobserve(e.target); }});
+},{threshold:0.12});
+revealEls.forEach(function(el){ ro.observe(el); });
 </script>
 </body>
 </html>
