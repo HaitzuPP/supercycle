@@ -4,27 +4,14 @@
 <script>(function(){var t=localStorage.getItem('sc-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Research: Supercycle Episode Memos</title>
+<title>Research: Supercycle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--cream:#F3EEE3;--parch:#EAE4D4;--ink:#0D0C09;--ink2:rgba(13,12,9,.78);--ink3:rgba(13,12,9,.58);--ink4:rgba(13,12,9,.10);--orange:#D94F2A;--cyan:#0A9FB8;--border:rgba(13,12,9,.14);--dark:#1C1914;--bask:'Baskervville',Georgia,serif;--crim:'Crimson Text',Georgia,serif;--geist:'Geist',-apple-system,sans-serif;--mono:'Geist Mono',monospace}
-
-/* Dark mode */
-:root { --topbar-bg: rgba(243,238,227,.88); }
-html[data-theme="dark"] {
-  --cream: #0D0C09;
-  --parch: #161310;
-  --ink: rgba(255,255,255,.88);
-  --ink2: rgba(255,255,255,.65);
-  --ink3: rgba(255,255,255,.4);
-  --ink4: rgba(255,255,255,.08);
-  --border: rgba(255,255,255,.1);
-  --bmed: rgba(255,255,255,.1);
-  --topbar-bg: rgba(13,12,9,.92);
-}
-
+:root{--cream:#F3EEE3;--parch:#EAE4D4;--ink:#0D0C09;--ink2:rgba(13,12,9,.78);--ink3:rgba(13,12,9,.58);--ink4:rgba(13,12,9,.10);--orange:#D94F2A;--border:rgba(13,12,9,.14);--dark:#1C1914;--bask:'Baskervville',Georgia,serif;--crim:'Crimson Text',Georgia,serif;--geist:'Geist',-apple-system,sans-serif;--mono:'Geist Mono',monospace}
+:root{--topbar-bg:rgba(243,238,227,.88)}
+html[data-theme="dark"]{--cream:#0D0C09;--parch:#161310;--ink:rgba(255,255,255,.88);--ink2:rgba(255,255,255,.65);--ink3:rgba(255,255,255,.4);--ink4:rgba(255,255,255,.08);--border:rgba(255,255,255,.1);--topbar-bg:rgba(13,12,9,.92)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--crim);font-size:20px;line-height:1.65;background:var(--cream);color:var(--ink)}
 a{color:inherit;text-decoration:none}
@@ -37,70 +24,69 @@ a{color:inherit;text-decoration:none}
 .topbar-nav a:hover,.topbar-nav a.active{color:var(--ink)}
 .topbar-cta{font-family:var(--geist);font-size:13px;font-weight:500;color:var(--cream);background:var(--ink);padding:7px 16px;border-radius:4px;transition:background .15s}
 .topbar-cta:hover{background:var(--orange)}
+.topbar-right{display:flex;align-items:center;gap:20px}
+.theme-toggle{width:32px;height:32px;border:none;background:transparent;cursor:pointer;color:var(--ink3);display:flex;align-items:center;justify-content:center;border-radius:4px;transition:color .15s,background .15s;padding:0;flex-shrink:0}
+.theme-toggle:hover{color:var(--ink);background:var(--ink4)}
 
-.page-hero{background:var(--parch);border-bottom:1px solid var(--border);padding:64px 64px 56px}
-.page-hero-inner{max-width:1100px;margin:0 auto}
+.page-hero{background:var(--parch);border-bottom:1px solid var(--border);padding:72px 64px 60px}
+.page-hero-inner{max-width:1160px;margin:0 auto}
 .page-eyebrow{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
-.page-hero h1{font-family:var(--bask);font-size:48px;font-weight:400;letter-spacing:-.4px;line-height:1.1;margin-bottom:16px}
-.page-hero p{font-size:19px;color:var(--ink2);max-width:560px;line-height:1.6}
+.page-hero h1{font-family:var(--bask);font-size:52px;font-weight:400;letter-spacing:-.4px;line-height:1.1;margin-bottom:16px}
+.page-hero p{font-size:19px;color:var(--ink2);max-width:600px;line-height:1.6}
 
-.research-main{padding:64px 64px 80px;max-width:1100px;margin:0 auto}
+.research-main{padding:72px 64px 96px;max-width:1160px;margin:0 auto}
 
-.filter-bar{display:flex;align-items:center;gap:12px;margin-bottom:48px;flex-wrap:wrap}
-.filter-label{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink3);margin-right:4px}
-.filter-chip{font-family:var(--mono);font-size:11px;letter-spacing:.6px;padding:5px 14px;border-radius:20px;border:1px solid var(--border);color:var(--ink2);cursor:pointer;transition:all .15s;background:transparent}
-.filter-chip.active,.filter-chip:hover{border-color:var(--orange);color:var(--orange)}
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:72px}
 
-.memo-list{display:flex;flex-direction:column;gap:0}
+.cat-card{background:var(--parch);border:1px solid var(--border);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s,transform .18s,box-shadow .18s}
+.cat-card:hover{border-color:var(--orange);transform:translateY(-2px);box-shadow:0 8px 32px rgba(13,12,9,.07)}
 
-.memo-row{display:grid;grid-template-columns:80px 1fr auto;gap:24px;align-items:start;padding:28px 0;border-bottom:1px solid var(--border)}
-.memo-row:first-child{border-top:1px solid var(--border)}
+.cat-card-header{background:var(--dark);padding:32px 32px 28px;position:relative;min-height:140px;display:flex;flex-direction:column;justify-content:flex-end}
+.cat-card-header::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 100% 0%,rgba(217,79,42,.12) 0%,transparent 60%);pointer-events:none}
+.cat-eyebrow{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.6px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;position:relative;z-index:1}
+.cat-title{font-family:var(--bask);font-size:26px;font-weight:400;color:rgba(255,255,255,.9);line-height:1.25;letter-spacing:-.2px;position:relative;z-index:1}
 
-.memo-ep-col{padding-top:4px}
-.memo-ep-num{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--ink3)}
-.memo-date{font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:.4px;margin-top:4px}
+.cat-card-body{padding:28px 32px 24px;flex:1;display:flex;flex-direction:column}
+.cat-desc{font-size:17px;color:var(--ink2);line-height:1.55;margin-bottom:20px;flex:1}
+.cat-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.cat-tag{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;padding:3px 9px;border-radius:2px;background:var(--ink4);color:var(--ink2)}
+.cat-footer{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid var(--border)}
+.cat-ep-count{font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:.6px}
+.cat-read{font-family:var(--geist);font-size:13px;font-weight:500;color:var(--orange)}
+.cat-read:hover{opacity:.75}
 
-.memo-content h2{font-family:var(--bask);font-size:24px;font-weight:400;letter-spacing:-.2px;line-height:1.25;color:var(--ink);margin-bottom:8px}
-.memo-content h2 a:hover{color:var(--orange)}
-.memo-guest{font-family:var(--geist);font-size:13px;color:var(--ink3);margin-bottom:10px}
-.memo-excerpt{font-size:17px;color:var(--ink2);line-height:1.55}
-.memo-tags{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
-.memo-tag{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;padding:3px 9px;border-radius:2px;background:var(--ink4);color:var(--ink2)}
+.cat-card-featured{grid-column:1/-1;display:grid;grid-template-columns:1.2fr 1fr;min-height:260px}
+.cat-card-featured .cat-card-header{padding:40px 40px 36px;min-height:unset}
+.cat-card-featured .cat-title{font-size:32px}
+.cat-card-featured .cat-card-body{padding:36px 40px 32px}
 
-.memo-cta-col{padding-top:6px;white-space:nowrap}
-.memo-read{font-family:var(--geist);font-size:13px;font-weight:500;color:var(--orange)}
-.memo-read:hover{opacity:.75}
+.section-divider{display:flex;align-items:center;gap:20px;margin-bottom:40px}
+.section-divider h2{font-family:var(--bask);font-size:28px;font-weight:400;letter-spacing:-.2px;white-space:nowrap}
+.section-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.recent-eps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ep-mini{background:var(--parch);border:1px solid var(--border);border-radius:6px;padding:20px 22px;transition:border-color .2s}
+.ep-mini:hover{border-color:var(--orange)}
+.ep-mini-num{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+.ep-mini-title{font-family:var(--bask);font-size:17px;font-weight:400;line-height:1.3;color:var(--ink);margin-bottom:6px}
+.ep-mini-guest{font-family:var(--geist);font-size:12px;color:var(--ink3)}
 
 .footer{background:var(--dark);padding:40px 64px 32px}
-.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.footer-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
 .footer-brand{font-family:var(--bask);font-size:18px;color:rgba(255,255,255,.7)}
 .footer-brand span{color:var(--orange)}
 .footer-copy{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.22);letter-spacing:.4px}
 
-/* Theme toggle */
-.theme-toggle {
-  width: 32px;
-  height: 32px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  color: var(--ink3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  transition: color .15s, background .15s;
-  padding: 0;
-  flex-shrink: 0;
+@media(max-width:960px){
+  .topbar{padding:0 24px}
+  .page-hero{padding:48px 28px 48px}
+  .page-hero h1{font-size:38px}
+  .research-main{padding:48px 28px 60px}
+  .cat-grid{grid-template-columns:1fr}
+  .cat-card-featured{grid-template-columns:1fr}
+  .recent-eps{grid-template-columns:1fr 1fr}
+  .footer{padding:32px 28px 24px}
 }
-.theme-toggle:hover { color: var(--ink); background: var(--ink4); }
-.topbar-right { display: flex; align-items: center; gap: 20px; }
-
-/* Micro-animations */
-.memo-row { transition: background .15s; }
-.memo-row:hover { background: var(--parch); }
-.memo-content h2 a { transition: color .15s; }
-.memo-content h2 a:hover { color: var(--orange); }
 </style>
 </head>
 <body>
@@ -121,114 +107,164 @@ a{color:inherit;text-decoration:none}
 <div class="page-hero">
   <div class="page-hero-inner">
     <div class="page-eyebrow">Supercycle Research</div>
-    <h1>Episode memos</h1>
-    <p>Independent research memos produced from each episode. Built from the transcript and the conversation.</p>
+    <h1>Five investment opportunities.<br>12 conversations.</h1>
+    <p>Each brief synthesizes insights from multiple episodes into a single investment thesis. Where is the money? What makes it structural? What does early look like?</p>
   </div>
 </div>
 
 <div class="research-main">
-  <div class="filter-bar">
-    <span class="filter-label">Filter</span>
-    <span class="filter-chip active">All</span>
-    <span class="filter-chip">Drug Discovery</span>
-    <span class="filter-chip">AI Infrastructure</span>
-    <span class="filter-chip">FinTech</span>
-    <span class="filter-chip">Computer Vision</span>
+
+  <div class="cat-grid">
+
+    <!-- Featured: Decentralized AI -->
+    <a href="research-decentralized-ai.html" class="cat-card cat-card-featured">
+      <div class="cat-card-header">
+        <div class="cat-eyebrow">AI Infrastructure &middot; 7 episodes</div>
+        <div class="cat-title">Centralized AI is captured.<br>The infrastructure layer is open.</div>
+      </div>
+      <div class="cat-card-body">
+        <p class="cat-desc">Anthropic, OpenAI, and Google own the model layer. The compute, incentive, and validation infrastructure beneath them is still being built. Bittensor is the leading attempt to build it in the open. Seven conversations, one thesis: the open infrastructure layer wins because it cannot be captured.</p>
+        <div class="cat-tags">
+          <span class="cat-tag">Bittensor</span>
+          <span class="cat-tag">TAO</span>
+          <span class="cat-tag">DCG / Yuma</span>
+          <span class="cat-tag">Compute</span>
+          <span class="cat-tag">Subnets</span>
+        </div>
+        <div class="cat-footer">
+          <span class="cat-ep-count">Karis &middot; DCG &middot; NRN &middot; Stillcore &middot; Gradient &middot; Score</span>
+          <span class="cat-read">Read memo &rarr;</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Robotics -->
+    <a href="research-robotics.html" class="cat-card">
+      <div class="cat-card-header">
+        <div class="cat-eyebrow">Robotics &middot; 2 episodes</div>
+        <div class="cat-title">Hardware costs just broke.<br>The robotics window is open.</div>
+      </div>
+      <div class="cat-card-body">
+        <p class="cat-desc">Industrial robot costs are following the solar panel cost curve. The question is not whether robots proliferate: it is who owns them. Decentralized robot ownership and spatial computing infrastructure are the early bets on that answer.</p>
+        <div class="cat-tags">
+          <span class="cat-tag">XMAQUINA</span>
+          <span class="cat-tag">Auki</span>
+          <span class="cat-tag">BitRobot</span>
+          <span class="cat-tag">Moonrock Capital</span>
+        </div>
+        <div class="cat-footer">
+          <span class="cat-ep-count">Eps. 9 &middot; 3</span>
+          <span class="cat-read">Read memo &rarr;</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- AI Biotech -->
+    <a href="research-ai-biotech.html" class="cat-card">
+      <div class="cat-card-header">
+        <div class="cat-eyebrow">AI Biotech &middot; 2 episodes</div>
+        <div class="cat-title">No AI-discovered drug has<br>cleared the FDA. That changes soon.</div>
+      </div>
+      <div class="cat-card-body">
+        <p class="cat-desc">AI is compressing drug discovery timelines from 12-15 years toward 2-3 years. Isomorphic Labs raised $2B for the centralized approach. The open-competition model has not been priced yet. The first FDA approval re-rates the category.</p>
+        <div class="cat-tags">
+          <span class="cat-tag">Nova</span>
+          <span class="cat-tag">Drug Discovery</span>
+          <span class="cat-tag">AlphaFold</span>
+          <span class="cat-tag">Open Network</span>
+        </div>
+        <div class="cat-footer">
+          <span class="cat-ep-count">Nova &middot; Generative Ventures</span>
+          <span class="cat-read">Read memo &rarr;</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Agent Economy -->
+    <a href="research-agent-economy.html" class="cat-card">
+      <div class="cat-card-header">
+        <div class="cat-eyebrow">AI Agents &middot; 1 episode</div>
+        <div class="cat-title">The internet is being rebuilt<br>for agents, not humans.</div>
+      </div>
+      <div class="cat-card-body">
+        <p class="cat-desc">AI agents already generate the majority of internet traffic. The authentication, payment, and discovery infrastructure built for browsers will be rebuilt for machines. The window to build that agent-native infrastructure is now.</p>
+        <div class="cat-tags">
+          <span class="cat-tag">Agent Identity</span>
+          <span class="cat-tag">Agent Payments</span>
+          <span class="cat-tag">Protocol Layer</span>
+        </div>
+        <div class="cat-footer">
+          <span class="cat-ep-count">Ep. 1 &middot; 0xSammy</span>
+          <span class="cat-read">Read memo &rarr;</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Crypto VC Playbook -->
+    <a href="research-crypto-vc.html" class="cat-card">
+      <div class="cat-card-header">
+        <div class="cat-eyebrow">Venture Capital &middot; 1 episode</div>
+        <div class="cat-title">Most DePIN is uninvestable.<br>Early protocol infrastructure is not.</div>
+      </div>
+      <div class="cat-card-body">
+        <p class="cat-desc">Multicoin built $5.9B in AUM by making concentrated bets on protocol infrastructure before the market understood it. The playbook is specific: find structural advantage over the centralized incumbent, size before institutions move, hold through the development cycle.</p>
+        <div class="cat-tags">
+          <span class="cat-tag">Multicoin Capital</span>
+          <span class="cat-tag">DePIN</span>
+          <span class="cat-tag">Protocol Infrastructure</span>
+        </div>
+        <div class="cat-footer">
+          <span class="cat-ep-count">Ep. 4 &middot; Shayon / Multicoin</span>
+          <span class="cat-read">Read memo &rarr;</span>
+        </div>
+      </div>
+    </a>
+
   </div>
 
-  <div class="memo-list">
-
-    <div class="memo-row">
-      <div class="memo-ep-col">
-        <div class="memo-ep-num">Ep. 52</div>
-        <div class="memo-date">May 2025</div>
-      </div>
-      <div class="memo-content">
-        <h2><a href="ep-52-nova.html">Nova's Bet: AI-Powered Drug Discovery</a></h2>
-        <div class="memo-guest">Micaela Bazo, Co-Founder, Nova</div>
-        <p class="memo-excerpt">Isomorphic Labs raised $2B. No AI-discovered drug has cleared the FDA yet. Nova runs an open competition model for drug discovery, rewarding contributors for molecule candidates, and is closing in on lab validation. The efficiency thesis examined.</p>
-        <div class="memo-tags">
-          <span class="memo-tag">Drug Discovery</span>
-          <span class="memo-tag">Nova</span>
-          <span class="memo-tag">AI</span>
-          <span class="memo-tag">Biotech</span>
-        </div>
-      </div>
-      <div class="memo-cta-col">
-        <a href="ep-52-nova.html" class="memo-read">Read &rarr;</a>
-      </div>
-    </div>
-
-    <div class="memo-row">
-      <div class="memo-ep-col">
-        <div class="memo-ep-num">Ep. 51</div>
-        <div class="memo-date">Apr 2025</div>
-      </div>
-      <div class="memo-content">
-        <h2><a href="ep-51-yuma.html">Yuma's Case Against Captured AI</a></h2>
-        <div class="memo-guest">Greg Schvey, CEO, Yuma / DCG</div>
-        <p class="memo-excerpt">Greg Schvey built TradeBlock and Axani, then joined DCG. His thesis: intelligence is for the first time moving toward non-human functions, and centralized AI is structurally captured. The credibility argument for decentralized AI infrastructure.</p>
-        <div class="memo-tags">
-          <span class="memo-tag">AI Infrastructure</span>
-          <span class="memo-tag">Yuma</span>
-          <span class="memo-tag">DCG</span>
-          <span class="memo-tag">Decentralization</span>
-        </div>
-      </div>
-      <div class="memo-cta-col">
-        <a href="ep-51-yuma.html" class="memo-read">Read &rarr;</a>
-      </div>
-    </div>
-
-    <div class="memo-row">
-      <div class="memo-ep-col">
-        <div class="memo-ep-num">Ep. 50</div>
-        <div class="memo-date">Mar 2025</div>
-      </div>
-      <div class="memo-content">
-        <h2><a href="ep-lex.html">The Robot Money Thesis</a></h2>
-        <div class="memo-guest">Lex Sokolin, Managing Partner, Generative Ventures</div>
-        <p class="memo-excerpt">Stripe wants to be robot money. Ethereum wants to be robot money. So does Solana, Visa, MasterCard, and BlackRock. Former chief economist at Consensys explains why financial infrastructure for the machine economy is the only real play, and why the differentiation window is closing fast.</p>
-        <div class="memo-tags">
-          <span class="memo-tag">FinTech</span>
-          <span class="memo-tag">Robot Money</span>
-          <span class="memo-tag">Venture Capital</span>
-          <span class="memo-tag">Machine Economy</span>
-        </div>
-      </div>
-      <div class="memo-cta-col">
-        <a href="ep-lex.html" class="memo-read">Read &rarr;</a>
-      </div>
-    </div>
-
-    <div class="memo-row">
-      <div class="memo-ep-col">
-        <div class="memo-ep-num">Ep. 49</div>
-        <div class="memo-date">Feb 2025</div>
-      </div>
-      <div class="memo-content">
-        <h2><a href="ep-max-wei.html">Score: Computer Vision at Scale</a></h2>
-        <div class="memo-guest">Max Sebti, CEO Mataco Labs; Wei, Reinforcement Learning Research</div>
-        <p class="memo-excerpt">Score converts CCTV and broadcast footage into structured, queryable data. PwC co-selling partnership live. A chocolate factory client about to go public at Viva Tech Paris. The question is whether horizontal computer vision can win when every major cloud provider already owns a vertical.</p>
-        <div class="memo-tags">
-          <span class="memo-tag">Computer Vision</span>
-          <span class="memo-tag">Score SN44</span>
-          <span class="memo-tag">Mataco Labs</span>
-          <span class="memo-tag">Manufacturing</span>
-        </div>
-      </div>
-      <div class="memo-cta-col">
-        <a href="ep-max-wei.html" class="memo-read">Read &rarr;</a>
-      </div>
-    </div>
-
+  <div class="section-divider">
+    <h2>Recent episodes</h2>
   </div>
+
+  <div class="recent-eps">
+    <a href="episodes.html" class="ep-mini">
+      <div class="ep-mini-num">Ep. 12 &middot; May 2025</div>
+      <div class="ep-mini-title">Bittensor Subnets Cost 500k+ to Register</div>
+      <div class="ep-mini-guest">Michael White, Karis Capital</div>
+    </a>
+    <a href="episodes.html" class="ep-mini">
+      <div class="ep-mini-num">Ep. 11 &middot; May 2025</div>
+      <div class="ep-mini-title">Market Speedrun: Bittensor, Situational Awareness and Sports RWAs</div>
+      <div class="ep-mini-guest">Wei Xie + Jack Leung</div>
+    </a>
+    <a href="episodes.html" class="ep-mini">
+      <div class="ep-mini-num">Ep. 10 &middot; Apr 2025</div>
+      <div class="ep-mini-title">Can One Subnet Destroy Bittensor's Ecosystem?</div>
+      <div class="ep-mini-guest">Max (Score), Gyles (Tensora Group)</div>
+    </a>
+    <a href="episodes.html" class="ep-mini">
+      <div class="ep-mini-num">Ep. 9 &middot; Apr 2025</div>
+      <div class="ep-mini-title">Why the Robotics Gold Rush is Just Getting Started</div>
+      <div class="ep-mini-guest">Mauricio (XMAQUINA), Simon (Moonrock Capital)</div>
+    </a>
+    <a href="episodes.html" class="ep-mini">
+      <div class="ep-mini-num">Ep. 8 &middot; Apr 2025</div>
+      <div class="ep-mini-title">How Bittensor is Challenging the AI Status Quo</div>
+      <div class="ep-mini-guest">Wei Xie, NRN Agents</div>
+    </a>
+    <a href="episodes.html" class="ep-mini">
+      <div class="ep-mini-num">Ep. 4 &middot; Jan 2025</div>
+      <div class="ep-mini-title">Inside Multicoin's $5.9B Crypto Investment Playbook</div>
+      <div class="ep-mini-guest">Shayon, Multicoin Capital</div>
+    </a>
+  </div>
+
 </div>
 
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">Super<span>cycle</span></div>
-    <span class="footer-copy">&copy; 2025 Supercycle. A Pylon Partners production.</span>
+    <span class="footer-copy">&copy; 2025 Supercycle. A <a href="https://pylon.partners" style="color:rgba(255,255,255,.38)">Pylon Partners</a> production.</span>
   </div>
 </footer>
 
