@@ -199,10 +199,16 @@ nav {
 .theme-body { order: 5; }
 .pull-quote { order: 6; }
 .theme-read-note {
-  color: var(--ink4);
+  color: var(--ink3);
   font-style: italic;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
   cursor: default;
   pointer-events: none;
+  display: block;
+  padding: 16px 0 4px;
+  opacity: 0.6;
 }
 .theme-read-link { order: 7; }
 .theme-h {
@@ -276,10 +282,16 @@ nav {
 
 /* Read full link */
 .theme-read-note {
-  color: var(--ink4);
+  color: var(--ink3);
   font-style: italic;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
   cursor: default;
   pointer-events: none;
+  display: block;
+  padding: 16px 0 4px;
+  opacity: 0.6;
 }
 .theme-read-link {
   display: inline-flex;
@@ -650,11 +662,19 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
   <div class="hero-inner">
     <div class="hero-eyebrow">AI &middot; Robotics &middot; Science</div>
     <h1>Five themes.<br>Twelve conversations.</h1>
-    <p class="hero-deck">Founders and investors at the frontier of AI, robotics, and science answer to the data in real time. Each episode publishes a companion research note.</p>
-    <div class="hero-ctas" style="display:flex;gap:12px;margin-top:32px;">
+    <p class="hero-deck">Founders and investors at the frontier of AI, robotics, and science. Twelve conversations, five investment theses, on the record.</p>
+    <div class="hero-ctas" style="display:flex;gap:12px;margin-top:32px;flex-wrap:wrap;">
       <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:#FF0000;color:#fff;font-family:var(--geist);font-size:13px;font-weight:600;border-radius:4px;text-decoration:none;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>YouTube</a>
       <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:#1DB954;color:#fff;font-family:var(--geist);font-size:13px;font-weight:600;border-radius:4px;text-decoration:none;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>Spotify</a>
     </div>
+    <form style="display:flex;gap:0;margin-top:20px;max-width:340px;" action="https://formsubmit.co/jack@pylon.partners" method="POST">
+      <input type="hidden" name="_subject" value="Supercycle Subscribe">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://haitzupp.github.io/supercycle/">
+      <input type="email" name="email" placeholder="Get new episode alerts" required
+        style="flex:1;padding:10px 14px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;font-family:var(--geist);font-size:13px;border-radius:4px 0 0 4px;outline:none;min-width:0;">
+      <button type="submit" style="padding:10px 16px;background:var(--orange);color:#fff;border:none;font-family:var(--geist);font-size:13px;font-weight:600;cursor:pointer;border-radius:0 4px 4px 0;white-space:nowrap;">Subscribe</button>
+    </form>
     <div class="hero-meta">
       <div class="hero-stat">
         <strong>12</strong>
@@ -677,7 +697,7 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
 
   <!-- Intro -->
   <div class="chapter-intro">
-    <p>Five bets on what the next decade of AI, robotics, and science actually looks like, drawn from twelve conversations with the people putting capital behind them.</p>
+    <p>Five bets on what the next decade of AI, robotics, and science actually looks like, drawn from twelve conversations with the people putting capital behind them. New episodes weekly.</p>
   </div>
 
   <!-- ── 01 DECENTRALIZED AI ── -->
@@ -699,24 +719,19 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
         <span class="signal-lbl">TAO to register a subnet</span>
       </div>
       <div class="theme-signal-item">
-        <span class="signal-val">DCG</span>
-        <span class="signal-lbl">Institutional backing via Yuma</span>
+        <span class="signal-val">$21B</span>
+        <span class="signal-lbl">DCG AUM (Grayscale, Genesis)</span>
       </div>
-    </div>      <div class="tn"        data-id="subnet"    style="left:18%;top:25%;--dur:5.2s;--delay:-1s"> <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#11041;</span><span class="tn-lbl">Subnet</span></div></div>
-      <div class="tn"        data-id="validator" style="left:20%;top:70%;--dur:4.8s;--delay:-.5s"><div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#10568;</span><span class="tn-lbl">Validator</span></div></div>
-      <div class="tn accent" data-id="compute"   style="left:66%;top:20%;--dur:5.5s;--delay:-2s"> <div class="tn-chip"><span class="tn-sym" style="color:#5b8dd9">&#9633;</span><span class="tn-lbl">Compute</span></div></div>
-      <div class="tn accent" data-id="model"     style="left:76%;top:60%;--dur:5.8s;--delay:-.8s"><div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#9673;</span><span class="tn-lbl">Foundation<br>Model</span></div></div>
-      <div class="tn"        data-id="miner"     style="left:55%;top:80%;--dur:5s;--delay:-1.5s"> <div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#9670;</span><span class="tn-lbl">Miner</span></div></div>
     </div>
 
     <div class="pull-quote">
-      <div class="pull-quote-text">"Intelligence is moving toward non-human functions for the first time in history. Centralized AI is structurally captured by the same corporate dynamics that captured cloud computing. The open incentive layer wins because it cannot be captured by any single entity."</div>
+      <div class="pull-quote-text">"The open incentive layer wins because it cannot be captured by any single entity."</div>
       <div class="pull-quote-attr">DCG / Yuma Group · Ep. 11</div>
     </div>
 
     <div class="theme-case">
       <div class="theme-case-header">The Case</div>
-      <div class="case-item">
+      <div class="case-item open">
         <button class="case-toggle" onclick="scToggleCase(this)">
           <span class="case-num">01</span>
           <span class="case-title">The model layer race is over. The infrastructure race hasn't started.</span>
@@ -753,12 +768,8 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
 
   <!-- ── 02 ROBOTICS ── -->
   <div class="theme-section reveal" id="theme-02">
-    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="3" y="14" width="9" height="10" rx="1.5"/><rect x="12" y="9" width="8" height="7" rx="1.5"/><rect x="20" y="12" width="9" height="10" rx="1.5"/><line x1="12" y1="14" x2="20" y2="14"/><line x1="9" y1="22" x2="12" y2="22"/><line x1="20" y1="20" x2="23" y2="20"/><circle cx="6" cy="27" r="2"/><circle cx="26" cy="27" r="2"/></svg>02 · Robotics</div>      <div class="tn accent" data-id="spatial" style="left:18%;top:26%;--dur:5.1s;--delay:-1.2s"> <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#9678;</span><span class="tn-lbl">Spatial<br>Map</span></div></div>
-      <div class="tn"        data-id="task"    style="left:18%;top:70%;--dur:4.9s;--delay:-.6s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#8801;</span><span class="tn-lbl">Task<br>Protocol</span></div></div>
-      <div class="tn"        data-id="fleet"   style="left:66%;top:22%;--dur:5.4s;--delay:-1.8s"> <div class="tn-chip"><span class="tn-sym" style="color:#5b8dd9">&#9638;</span><span class="tn-lbl">Fleet</span></div></div>
-      <div class="tn accent" data-id="own"     style="left:75%;top:58%;--dur:5.7s;--delay:-.4s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">$</span><span class="tn-lbl">Ownership</span></div></div>
-      <div class="tn"        data-id="ai"      style="left:62%;top:78%;--dur:5.3s;--delay:-2.2s"> <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#9673;</span><span class="tn-lbl">AI Layer</span></div></div>
-    </div>
+    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="3" y="14" width="9" height="10" rx="1.5"/><rect x="12" y="9" width="8" height="7" rx="1.5"/><rect x="20" y="12" width="9" height="10" rx="1.5"/><line x1="12" y1="14" x2="20" y2="14"/><line x1="9" y1="22" x2="12" y2="22"/><line x1="20" y1="20" x2="23" y2="20"/><circle cx="6" cy="27" r="2"/><circle cx="26" cy="27" r="2"/></svg>02 · Robotics</div>
+
     <h2 class="theme-h">Robot hardware has fallen from $1M to under $100k in five years. The ownership infrastructure has not been built.</h2>
 
     <div class="theme-signals">
@@ -788,7 +799,7 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
 
     <div class="theme-case">
       <div class="theme-case-header">The Case</div>
-      <div class="case-item">
+      <div class="case-item open">
         <button class="case-toggle" onclick="scToggleCase(this)">
           <span class="case-num">01</span>
           <span class="case-title">The hardware cost collapse is structural. It follows solar, LIDAR, and genomics.</span>
@@ -825,12 +836,8 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
 
   <!-- ── 03 AI BIOTECH ── -->
   <div class="theme-section reveal" id="theme-03">
-    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><path d="M11 3 Q20 9 11 16 Q2 23 11 29"/><path d="M21 3 Q12 9 21 16 Q30 23 21 29"/><line x1="11" y1="9" x2="21" y2="9"/><line x1="11" y1="16" x2="21" y2="16"/><line x1="11" y1="23" x2="21" y2="23"/></svg>03 · AI Biotech</div>      <div class="tn accent" data-id="aimodel"  style="left:18%;top:24%;--dur:5.3s;--delay:-.8s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#9673;</span><span class="tn-lbl">AI Model</span></div></div>
-      <div class="tn"        data-id="molecule" style="left:18%;top:70%;--dur:4.7s;--delay:-1.4s"> <div class="tn-chip"><span class="tn-sym" style="color:#5b8dd9">&#9670;</span><span class="tn-lbl">Molecule</span></div></div>
-      <div class="tn accent" data-id="alpha"    style="left:66%;top:22%;--dur:5.6s;--delay:-2s">   <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">A</span><span class="tn-lbl">AlphaFold</span></div></div>
-      <div class="tn"        data-id="clinical" style="left:74%;top:58%;--dur:5.2s;--delay:-.3s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#8801;</span><span class="tn-lbl">Clinical</span></div></div>
-      <div class="tn accent" data-id="opennet"  style="left:58%;top:78%;--dur:5.9s;--delay:-1.7s"> <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#11041;</span><span class="tn-lbl">Open Net</span></div></div>
-    </div>
+    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><path d="M11 3 Q20 9 11 16 Q2 23 11 29"/><path d="M21 3 Q12 9 21 16 Q30 23 21 29"/><line x1="11" y1="9" x2="21" y2="9"/><line x1="11" y1="16" x2="21" y2="16"/><line x1="11" y1="23" x2="21" y2="23"/></svg>03 · AI Biotech</div>
+
     <h2 class="theme-h">No AI-discovered drug has cleared the FDA. The first that does re-rates the entire category.</h2>
 
     <div class="theme-signals">
@@ -864,7 +871,7 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
 
     <div class="theme-case">
       <div class="theme-case-header">The Case</div>
-      <div class="case-item">
+      <div class="case-item open">
         <button class="case-toggle" onclick="scToggleCase(this)">
           <span class="case-num">01</span>
           <span class="case-title">AlphaFold removed the structural bottleneck. Candidate generation is the next one.</span>
@@ -901,12 +908,8 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
 
   <!-- ── 04 AGENT ECONOMY ── -->
   <div class="theme-section reveal" id="theme-04">
-    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="11" y="11" width="10" height="10" rx="1.5"/><line x1="16" y1="3" x2="16" y2="11"/><line x1="16" y1="21" x2="16" y2="29"/><line x1="3" y1="16" x2="11" y2="16"/><line x1="21" y1="16" x2="29" y2="16"/><circle cx="16" cy="3" r="2"/><circle cx="16" cy="29" r="2"/><circle cx="3" cy="16" r="2"/><circle cx="29" cy="16" r="2"/></svg>04 · Agent Economy</div>      <div class="tn"        data-id="identity" style="left:18%;top:25%;--dur:5.1s;--delay:-1s">   <div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#9670;</span><span class="tn-lbl">Identity</span></div></div>
-      <div class="tn accent" data-id="payment"  style="left:20%;top:70%;--dur:4.8s;--delay:-.5s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">$</span><span class="tn-lbl">Payment</span></div></div>
-      <div class="tn"        data-id="api"      style="left:66%;top:20%;--dur:5.5s;--delay:-2s">   <div class="tn-chip"><span class="tn-sym" style="color:#5b8dd9">&#8801;</span><span class="tn-lbl">API</span></div></div>
-      <div class="tn accent" data-id="protocol" style="left:76%;top:60%;--dur:5.8s;--delay:-.8s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#11041;</span><span class="tn-lbl">Protocol</span></div></div>
-      <div class="tn"        data-id="auth"     style="left:55%;top:80%;--dur:5s;--delay:-1.5s">   <div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#10568;</span><span class="tn-lbl">Auth</span></div></div>
-    </div>
+    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="11" y="11" width="10" height="10" rx="1.5"/><line x1="16" y1="3" x2="16" y2="11"/><line x1="16" y1="21" x2="16" y2="29"/><line x1="3" y1="16" x2="11" y2="16"/><line x1="21" y1="16" x2="29" y2="16"/><circle cx="16" cy="3" r="2"/><circle cx="16" cy="29" r="2"/><circle cx="3" cy="16" r="2"/><circle cx="29" cy="16" r="2"/></svg>04 · Agent Economy</div>
+
     <h2 class="theme-h">AI agents generate the majority of internet traffic. The infrastructure was built for browsers.</h2>
 
     <div class="theme-signals">
@@ -921,7 +924,7 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
     </div>
 
     <div class="pull-quote">
-      <div class="pull-quote-text">"Most internet infrastructure assumes a human is making decisions at the other end of every request. That assumption is breaking down. The protocols that survive the transition will be those that assume agents are the primary user, not a special case."</div>
+      <div class="pull-quote-text">"The protocols that survive will be those that assume agents are the primary user, not a special case."</div>
       <div class="pull-quote-attr">0xSammy · Ep. 1</div>
     </div>
 
@@ -932,7 +935,7 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
 
     <div class="theme-case">
       <div class="theme-case-header">The Case</div>
-      <div class="case-item">
+      <div class="case-item open">
         <button class="case-toggle" onclick="scToggleCase(this)">
           <span class="case-num">01</span>
           <span class="case-title">Agent traffic already exceeds human traffic. The transition is not a forecast.</span>
@@ -969,12 +972,8 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
 
   <!-- ── 05 CRYPTO VC ── -->
   <div class="theme-section reveal" id="theme-05">
-    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="2" y="11" width="11" height="10" rx="5"/><rect x="19" y="11" width="11" height="10" rx="5"/><line x1="13" y1="16" x2="19" y2="16"/><line x1="7" y1="11" x2="7" y2="6"/><line x1="25" y1="21" x2="25" y2="26"/></svg>05 · Crypto VC</div>      <div class="tn"        data-id="dev"    style="left:18%;top:25%;--dur:5.2s;--delay:-1.1s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#9670;</span><span class="tn-lbl">Developers</span></div></div>
-      <div class="tn accent" data-id="cap"    style="left:20%;top:70%;--dur:4.9s;--delay:-.7s">   <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">$</span><span class="tn-lbl">Capital</span></div></div>
-      <div class="tn"        data-id="token"  style="left:66%;top:22%;--dur:5.4s;--delay:-1.8s">  <div class="tn-chip"><span class="tn-sym" style="color:#5b8dd9">&#11041;</span><span class="tn-lbl">Token</span></div></div>
-      <div class="tn accent" data-id="infra"  style="left:74%;top:58%;--dur:5.7s;--delay:-.4s">   <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#9633;</span><span class="tn-lbl">Infra</span></div></div>
-      <div class="tn"        data-id="net"    style="left:58%;top:78%;--dur:5.3s;--delay:-2.1s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#9678;</span><span class="tn-lbl">Network</span></div></div>
-    </div>
+    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="2" y="11" width="11" height="10" rx="5"/><rect x="19" y="11" width="11" height="10" rx="5"/><line x1="13" y1="16" x2="19" y2="16"/><line x1="7" y1="11" x2="7" y2="6"/><line x1="25" y1="21" x2="25" y2="26"/></svg>05 · Crypto VC</div>
+
     <h2 class="theme-h">Most DePIN has no structural advantage over centralized alternatives. Early protocol infrastructure is a different bet.</h2>
 
     <div class="theme-signals">
@@ -1004,7 +1003,7 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
 
     <div class="theme-case">
       <div class="theme-case-header">The Case</div>
-      <div class="case-item">
+      <div class="case-item open">
         <button class="case-toggle" onclick="scToggleCase(this)">
           <span class="case-num">01</span>
           <span class="case-title">Most DePIN fails one test: a structural advantage over the centralized alternative.</span>
