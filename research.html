@@ -1,270 +1,707 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>(function(){var t=localStorage.getItem('sc-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Research: Supercycle</title>
+<title>Supercycle – Themes</title>
+<meta name="description" content="Five investment themes drawn from twelve conversations with founders and investors at the frontier of AI, robotics, and science.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script>
+(function(){var t=localStorage.getItem('sc-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+</script>
+
 <style>
-:root{--cream:#F3EEE3;--parch:#EAE4D4;--ink:#0D0C09;--ink2:rgba(13,12,9,.78);--ink3:rgba(13,12,9,.58);--ink4:rgba(13,12,9,.10);--orange:#D94F2A;--border:rgba(13,12,9,.14);--dark:#1C1914;--bask:'Baskervville',Georgia,serif;--crim:'Crimson Text',Georgia,serif;--geist:'Geist',-apple-system,sans-serif;--mono:'Geist Mono',monospace}
-:root{--topbar-bg:rgba(243,238,227,.88)}
-html[data-theme="dark"]{--cream:#0D0C09;--parch:#161310;--ink:rgba(255,255,255,.88);--ink2:rgba(255,255,255,.65);--ink3:rgba(255,255,255,.4);--ink4:rgba(255,255,255,.08);--border:rgba(255,255,255,.1);--topbar-bg:rgba(13,12,9,.92)}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--crim);font-size:20px;line-height:1.65;background:var(--cream);color:var(--ink)}
-a{color:inherit;text-decoration:none}
+:root {
+  --cream: #F3EEE3;
+  --parch: #EAE4D4;
+  --ink:   #0D0C09;
+  --ink2:  #1C1914;
+  --ink3:  #5a5650;
+  --ink4:  #8a8680;
+  --orange:#D94F2A;
+  --dark:  #1C1914;
+  --border:#ddd8cc;
+  --bask:  'Baskervville', serif;
+  --crim:  'Crimson Text', serif;
+  --geist: 'Geist', sans-serif;
+  --mono:  'Geist Mono', monospace;
+  --col:   680px;
+}
+html[data-theme="dark"] {
+  --cream: #1a1814;
+  --parch: #141210;
+  --ink:   #ede8df;
+  --ink2:  #c8c2b8;
+  --ink3:  #8a8480;
+  --ink4:  #5a5550;
+  --dark:  #0d0c09;
+  --border:#2e2b26;
+}
 
-.topbar{position:sticky;top:0;height:52px;background:var(--topbar-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:100}
-.topbar-logo{font-family:var(--bask);font-size:18px;letter-spacing:-.3px;color:var(--ink)}
-.topbar-logo span{color:var(--orange)}
-.topbar-nav{display:flex;align-items:center;gap:32px;list-style:none}
-.topbar-nav a{font-family:var(--geist);font-size:13px;color:var(--ink3);transition:color .15s}
-.topbar-nav a:hover,.topbar-nav a.active{color:var(--ink)}
-.topbar-cta{font-family:var(--geist);font-size:13px;font-weight:500;color:var(--cream);background:var(--ink);padding:7px 16px;border-radius:4px;transition:background .15s}
-.topbar-cta:hover{background:var(--orange)}
-.topbar-right{display:flex;align-items:center;gap:20px}
-.theme-toggle{width:32px;height:32px;border:none;background:transparent;cursor:pointer;color:var(--ink3);display:flex;align-items:center;justify-content:center;border-radius:4px;transition:color .15s,background .15s;padding:0;flex-shrink:0}
-.theme-toggle:hover{color:var(--ink);background:var(--ink4)}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 18px; scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--crim);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
 
-.page-hero{background:var(--parch);border-bottom:1px solid var(--border);padding:72px 64px 60px}
-.page-hero-inner{max-width:1160px;margin:0 auto}
-.page-eyebrow{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
-.page-hero h1{font-family:var(--bask);font-size:52px;font-weight:400;letter-spacing:-.4px;line-height:1.1;margin-bottom:16px}
-.page-hero p{font-size:19px;color:var(--ink2);max-width:600px;line-height:1.6}
+/* ── TOPBAR ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px; height: 52px;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+.topbar-brand {
+  font-family: var(--geist);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -.2px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.topbar-brand span { color: var(--orange); }
+.topbar-nav { display: flex; gap: 28px; list-style: none; }
+.topbar-nav a {
+  font-family: var(--geist);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink3);
+  text-decoration: none;
+  transition: color .15s;
+}
+.topbar-nav a:hover, .topbar-nav a.active { color: var(--ink); }
+.topbar-right { display: flex; align-items: center; gap: 10px; }
+.theme-toggle {
+  background: none; border: 1px solid var(--border); border-radius: 4px;
+  width: 30px; height: 30px; cursor: pointer; color: var(--ink3);
+  display: flex; align-items: center; justify-content: center;
+  transition: color .15s;
+}
+.theme-toggle:hover { color: var(--ink); }
+.topbar-platform { display: flex; align-items: center; gap: 8px; }
+.topbar-icon-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 4px;
+  border: 1.5px solid var(--border); background: transparent;
+  transition: opacity .15s; text-decoration: none;
+}
+.topbar-icon-btn:hover { opacity: .7; }
 
-.research-main{padding:72px 64px 96px;max-width:1160px;margin:0 auto}
+/* ── HERO ── */
+.hero {
+  background: var(--dark);
+  padding: 140px 40px 96px;
+  min-height: 52vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.hero-inner {
+  max-width: var(--col);
+  margin: 0 auto;
+  width: 100%;
+}
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-family: var(--bask);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #ede8df;
+  margin-bottom: 28px;
+}
+.hero-deck {
+  font-family: var(--crim);
+  font-size: 20px;
+  line-height: 1.65;
+  color: rgba(237,232,223,.7);
+  max-width: 540px;
+}
+.hero-meta {
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(237,232,223,.12);
+  display: flex;
+  gap: 40px;
+}
+.hero-stat {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(237,232,223,.45);
+}
+.hero-stat strong {
+  display: block;
+  font-family: var(--bask);
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -.5px;
+  color: rgba(237,232,223,.88);
+  margin-bottom: 4px;
+  font-style: italic;
+}
 
-.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:72px}
+/* ── RUNNING PAGE ── */
+.running {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 0 40px;
+}
 
-.cat-card{background:var(--parch);border:1px solid var(--border);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s,transform .18s,box-shadow .18s}
-.cat-card:hover{border-color:var(--orange);transform:translateY(-2px);box-shadow:0 8px 32px rgba(13,12,9,.07)}
+/* Chapter intro */
+.chapter-intro {
+  padding: 80px 0 0;
+  font-family: var(--crim);
+  font-size: 19px;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.chapter-intro p + p { margin-top: 20px; }
 
-.cat-card-header{background:var(--dark);padding:32px 32px 28px;position:relative;min-height:140px;display:flex;flex-direction:column;justify-content:flex-end}
-.cat-card-header::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 100% 0%,rgba(217,79,42,.12) 0%,transparent 60%);pointer-events:none}
-.cat-eyebrow{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.6px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;position:relative;z-index:1}
-.cat-title{font-family:var(--bask);font-size:26px;font-weight:400;color:rgba(255,255,255,.9);line-height:1.25;letter-spacing:-.2px;position:relative;z-index:1}
+/* Theme sections */
+.theme-section {
+  padding: 80px 0;
+  border-top: 1px solid var(--border);
+}
+.theme-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink4);
+  margin-bottom: 12px;
+}
+.theme-h {
+  font-family: var(--bask);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 32px;
+}
+.theme-body {
+  font-family: var(--crim);
+  font-size: 19px;
+  line-height: 1.8;
+  color: var(--ink);
+}
+.theme-body p + p { margin-top: 22px; }
 
-.cat-card-body{padding:28px 32px 24px;flex:1;display:flex;flex-direction:column}
-.cat-desc{font-size:17px;color:var(--ink2);line-height:1.55;margin-bottom:20px;flex:1}
-.cat-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
-.cat-tag{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;padding:3px 9px;border-radius:2px;background:var(--ink4);color:var(--ink2)}
-.cat-footer{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid var(--border)}
-.cat-ep-count{font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:.6px}
-.cat-read{font-family:var(--geist);font-size:13px;font-weight:500;color:var(--orange)}
-.cat-read:hover{opacity:.75}
+/* Pull quote */
+.pull-quote {
+  margin: 40px 0;
+  padding: 28px 32px;
+  border-left: 3px solid var(--orange);
+  background: var(--parch);
+}
+.pull-quote-text {
+  font-family: var(--bask);
+  font-size: 21px;
+  line-height: 1.5;
+  font-style: italic;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+.pull-quote-attr {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--ink3);
+}
 
-.cat-card-featured{grid-column:1/-1;display:grid;grid-template-columns:1.2fr 1fr;min-height:260px}
-.cat-card-featured .cat-card-header{padding:40px 40px 36px;min-height:unset}
-.cat-card-featured .cat-title{font-size:32px}
-.cat-card-featured .cat-card-body{padding:36px 40px 32px}
+/* Signals strip inline */
+.theme-signals {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin: 36px 0;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.theme-signal-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.signal-val {
+  font-family: var(--bask);
+  font-size: 24px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink);
+}
+.signal-lbl {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--ink4);
+}
 
-.section-divider{display:flex;align-items:center;gap:20px;margin-bottom:40px}
-.section-divider h2{font-family:var(--bask);font-size:28px;font-weight:400;letter-spacing:-.2px;white-space:nowrap}
-.section-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+/* Read full link */
+.theme-read-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+  font-family: var(--geist);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .3px;
+  color: var(--orange);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color .15s;
+}
+.theme-read-link:hover { border-bottom-color: var(--orange); }
 
-.recent-eps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.ep-mini{background:var(--parch);border:1px solid var(--border);border-radius:6px;padding:20px 22px;transition:border-color .2s}
-.ep-mini:hover{border-color:var(--orange)}
-.ep-mini-num{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
-.ep-mini-title{font-family:var(--bask);font-size:17px;font-weight:400;line-height:1.3;color:var(--ink);margin-bottom:6px}
-.ep-mini-guest{font-family:var(--geist);font-size:12px;color:var(--ink3)}
+/* Episodes grid at bottom */
+.episodes-footer {
+  border-top: 1px solid var(--border);
+  padding: 80px 0 100px;
+}
+.episodes-footer h2 {
+  font-family: var(--bask);
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 40px;
+  color: var(--ink);
+}
+.ep-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  border: 1px solid var(--border);
+}
+.ep-row {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--ink);
+  transition: background .15s;
+}
+.ep-row:hover { background: var(--parch); }
+.ep-row-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--ink4);
+}
+.ep-row-title {
+  font-family: var(--geist);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.ep-row-arrow {
+  font-size: 12px;
+  color: var(--ink4);
+}
 
-.footer{background:var(--dark);padding:40px 64px 32px}
-.footer-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
-.footer-brand{font-family:var(--bask);font-size:18px;color:rgba(255,255,255,.7)}
-.footer-brand span{color:var(--orange)}
-.footer-copy{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.22);letter-spacing:.4px}
+/* Footer */
+footer {
+  background: var(--dark);
+  padding: 64px 40px;
+}
+.footer-inner {
+  max-width: var(--col);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+.footer-brand {
+  font-family: var(--geist);
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(237,232,223,.88);
+}
+.footer-brand span { color: var(--orange); }
+.footer-sub {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(237,232,223,.35);
+  margin-top: 8px;
+}
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: right;
+}
+.footer-links a {
+  font-family: var(--geist);
+  font-size: 13px;
+  color: rgba(237,232,223,.5);
+  text-decoration: none;
+  transition: color .15s;
+}
+.footer-links a:hover { color: rgba(237,232,223,.88); }
 
-@media(max-width:960px){
-  .topbar{padding:0 24px}
-  .page-hero{padding:48px 28px 48px}
-  .page-hero h1{font-size:38px}
-  .research-main{padding:48px 28px 60px}
-  .cat-grid{grid-template-columns:1fr}
-  .cat-card-featured{grid-template-columns:1fr}
-  .recent-eps{grid-template-columns:1fr 1fr}
-  .footer{padding:32px 28px 24px}
+@media (max-width: 680px) {
+  nav { padding: 0 20px; }
+  .hero { padding: 100px 20px 64px; }
+  .running { padding: 0 20px; }
+  .hero-meta { flex-direction: column; gap: 20px; }
+  .ep-grid { grid-template-columns: 1fr; }
+  footer { padding: 48px 20px; }
+  .footer-inner { flex-direction: column; gap: 24px; }
+  .footer-links { text-align: left; }
 }
 </style>
 </head>
 <body>
 
-<nav class="topbar">
-  <a href="index.html" class="topbar-logo">Super<span>cycle</span></a>
+<!-- TOPBAR -->
+<nav>
+  <a href="index.html" class="topbar-brand">Super<span>cycle</span></a>
   <ul class="topbar-nav">
     <li><a href="index.html">Home</a></li>
     <li><a href="episodes.html">Episodes</a></li>
-    <li><a href="research.html" class="active">Research</a></li>
+    <li><a href="research.html" class="active">Themes</a></li>
   </ul>
   <div class="topbar-right">
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
-    <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="topbar-cta">Watch Latest</a>
+    <div class="topbar-platform">
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="topbar-icon-btn" title="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FF0000" style="flex-shrink:0"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+      <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="topbar-icon-btn" title="Spotify"><svg width="16" height="16" viewBox="0 0 24 24" fill="#1DB954" style="flex-shrink:0"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
+    </div>
   </div>
 </nav>
 
-<div class="page-hero">
-  <div class="page-hero-inner">
-    <div class="page-eyebrow">Supercycle Research</div>
-    <h1>Five investment opportunities.<br>12 conversations.</h1>
-    <p>Each brief synthesizes insights from multiple episodes into a single investment thesis. Where is the money? What makes it structural? What does early look like?</p>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Supercycle &middot; Research</div>
+    <h1>Five themes.<br>Twelve conversations.</h1>
+    <p class="hero-deck">After each episode, Pylon Partners publishes a note on the investment theme behind the conversation. This page collects those notes in full.</p>
+    <div class="hero-meta">
+      <div class="hero-stat">
+        <strong>12</strong>
+        Episodes
+      </div>
+      <div class="hero-stat">
+        <strong>5</strong>
+        Themes
+      </div>
+      <div class="hero-stat">
+        <strong>2025</strong>
+        Vintage
+      </div>
+    </div>
   </div>
+</section>
+
+<!-- RUNNING PAGE -->
+<div class="running">
+
+  <!-- Intro -->
+  <div class="chapter-intro">
+    <p>These are the themes we kept returning to across twelve conversations. They are not predictions. They are patterns that showed up repeatedly when we asked founders and investors to explain their bets in plain terms, with real numbers, on the record.</p>
+    <p>Each theme has a full research note. What follows here is the summary version: the core argument, the key data points, and a quote or two from the conversation that made the thesis concrete.</p>
+  </div>
+
+  <!-- ── 01 DECENTRALIZED AI ── -->
+  <div class="theme-section">
+    <div class="theme-num">01 · Decentralized AI</div>
+    <h2 class="theme-h">Anthropic, OpenAI, and Google control the model layer. The compute and validation infrastructure underneath them is still being built in the open.</h2>
+
+    <div class="theme-signals">
+      <div class="theme-signal-item">
+        <span class="signal-val">$18B+</span>
+        <span class="signal-lbl">TAO peak market cap</span>
+      </div>
+      <div class="theme-signal-item">
+        <span class="signal-val">50+</span>
+        <span class="signal-lbl">Active subnets</span>
+      </div>
+      <div class="theme-signal-item">
+        <span class="signal-val">500k+</span>
+        <span class="signal-lbl">TAO to register a subnet</span>
+      </div>
+      <div class="theme-signal-item">
+        <span class="signal-val">DCG</span>
+        <span class="signal-lbl">Institutional backing via Yuma</span>
+      </div>
+    </div>
+
+    <div class="theme-body">
+      <p>The model layer of AI is consolidating quickly. Three companies are spending more on compute than most governments spend on defense, and they are the ones who will own the foundation models. That race is largely run for this cycle.</p>
+      <p>The infrastructure underneath them is a different question. Compute at the edges, incentive systems for independent model developers, validation of AI outputs without trusting a single entity: none of this has a clear incumbent. Bittensor is the most developed attempt to build it, with a token mechanism that routes rewards to the best-performing subnets and a registration cost high enough to filter out noise.</p>
+    </div>
+
+    <div class="pull-quote">
+      <div class="pull-quote-text">"Intelligence is moving toward non-human functions for the first time in history. Centralized AI is structurally captured by the same corporate dynamics that captured cloud computing. The open incentive layer wins because it cannot be captured by any single entity."</div>
+      <div class="pull-quote-attr">DCG / Yuma Group · Ep. 11</div>
+    </div>
+
+    <div class="theme-body">
+      <p>The investment case is not that Bittensor replaces OpenAI. It is that the infrastructure layer beneath all large models is underpriced, because the market is still pricing TAO like speculative crypto rather than AI infrastructure. The comparable to early AWS holds: picks-and-shovels on a compute market that has not yet been valued as compute.</p>
+    </div>
+
+    <a href="research-decentralized-ai.html" class="theme-read-link">Read the full research note &rarr;</a>
+  </div>
+
+  <!-- ── 02 ROBOTICS ── -->
+  <div class="theme-section">
+    <div class="theme-num">02 · Robotics</div>
+    <h2 class="theme-h">Industrial robot hardware has fallen below $100k for general-purpose units, down from over $1M five years ago. The infrastructure for decentralized ownership does not exist yet.</h2>
+
+    <div class="theme-signals">
+      <div class="theme-signal-item">
+        <span class="signal-val">553k</span>
+        <span class="signal-lbl">Robot installations (IFR 2023)</span>
+      </div>
+      <div class="theme-signal-item">
+        <span class="signal-val">$675M</span>
+        <span class="signal-lbl">Figure AI Series B</span>
+      </div>
+      <div class="theme-signal-item">
+        <span class="signal-val">&lt;$100k</span>
+        <span class="signal-lbl">General-purpose unit cost</span>
+      </div>
+    </div>
+
+    <div class="theme-body">
+      <p>The hardware cost curve and the AI capability curve broke at the same time. Boston Dynamics, Agility, Figure, and 1X are all producing general-purpose robots at prices that make industrial deployment viable. Five years ago the same units cost over $1M. That deflationary pressure is structural, not cyclical: it follows the same pattern as solar panels, LIDAR, and genome sequencing.</p>
+      <p>The question that follows is not whether robots proliferate. It is who captures the economic upside when they do. Amazon, Tesla, and Foxconn buying robot fleets means the upside accrues to their equity holders. Decentralized robot ownership is a different architecture: productive robot infrastructure that individuals or collectives can own, deploy, and earn from.</p>
+    </div>
+
+    <div class="pull-quote">
+      <div class="pull-quote-text">"Spatial computing is the operating system for robots in shared environments. Without a shared map, every robot is working blind. The infrastructure needs to exist before the deployment wave, not after."</div>
+      <div class="pull-quote-attr">Auki Labs · Ep. 3</div>
+    </div>
+
+    <div class="theme-body">
+      <p>The infrastructure picks: spatial computing networks (shared maps for robots operating in the same environment), on-chain ownership and task coordination protocols, and decentralized robot fleet financing. The market is pricing the humanoid robotics story as a 10-year outcome. The infrastructure enabling that story needs to be built in the next 3 years.</p>
+    </div>
+
+    <a href="research-robotics.html" class="theme-read-link">Read the full research note &rarr;</a>
+  </div>
+
+  <!-- ── 03 AI BIOTECH ── -->
+  <div class="theme-section">
+    <div class="theme-num">03 · AI Biotech</div>
+    <h2 class="theme-h">No AI-discovered drug has cleared FDA Phase III as of 2025. Multiple candidates are in active trials. The first approval re-rates the entire category.</h2>
+
+    <div class="theme-signals">
+      <div class="theme-signal-item">
+        <span class="signal-val">$2B</span>
+        <span class="signal-lbl">Isomorphic Labs raise</span>
+      </div>
+      <div class="theme-signal-item">
+        <span class="signal-val">200M+</span>
+        <span class="signal-lbl">AlphaFold2 protein structures</span>
+      </div>
+      <div class="theme-signal-item">
+        <span class="signal-val">12-15yr</span>
+        <span class="signal-lbl">Traditional discovery timeline</span>
+      </div>
+      <div class="theme-signal-item">
+        <span class="signal-val">2-3yr</span>
+        <span class="signal-lbl">AI-compressed target</span>
+      </div>
+    </div>
+
+    <div class="theme-body">
+      <p>The drug discovery pipeline has been structurally unchanged for 50 years. Screen millions of compounds, identify candidates, run trials, file for approval. The bottleneck has always been candidate identification, and that is exactly where AI has the clearest advantage. AlphaFold2's resolution of 200 million protein structures effectively removed the structural biology bottleneck. Candidate generation is next.</p>
+      <p>The binary risk is real and it is also the opportunity. No AI-discovered compound has cleared Phase III. The first one that does will shift the entire market's assessment of what AI drug discovery is worth. Investors who wait for that confirmation will pay a significant premium over current entry prices.</p>
+    </div>
+
+    <div class="pull-quote">
+      <div class="pull-quote-text">"An open-competition network for molecule candidates produces better predictions than any closed team at a fraction of the cost. The same reason NumerAI's open hedge fund outperforms closed quant funds. Distributed signal beats concentrated effort when the problem is fundamentally one of search."</div>
+      <div class="pull-quote-attr">Nova · AI Drug Discovery</div>
+    </div>
+
+    <div class="theme-body">
+      <p>The open-competition model is the structural bet. Rather than spending $2B on internal researchers running the same process, an open network rewards contributors for results rather than effort. The economics are the same reason prediction markets consistently outperform expert panels. The question is whether the same principle holds when the validation moves from digital prediction to wet lab confirmation.</p>
+    </div>
+
+    <a href="research-ai-biotech.html" class="theme-read-link">Read the full research note &rarr;</a>
+  </div>
+
+  <!-- ── 04 AGENT ECONOMY ── -->
+  <div class="theme-section">
+    <div class="theme-num">04 · Agent Economy</div>
+    <h2 class="theme-h">AI agents now generate the majority of internet traffic. The authentication, payment, and discovery infrastructure was built for browsers, not machines.</h2>
+
+    <div class="theme-signals">
+      <div class="theme-signal-item">
+        <span class="signal-val">50%+</span>
+        <span class="signal-lbl">Non-human internet traffic (Cloudflare)</span>
+      </div>
+      <div class="theme-signal-item">
+        <span class="signal-val">$2B+</span>
+        <span class="signal-lbl">Agent infrastructure funding (2024)</span>
+      </div>
+    </div>
+
+    <div class="theme-body">
+      <p>The shift is not coming. It is underway. Cloudflare's network data shows bot and agent traffic constitutes the majority of HTTP requests across the internet. Most of that traffic hits infrastructure designed for browsers, not programmatic clients. The friction is real and commercial at each layer where it exists.</p>
+      <p>The analogy to the early mobile internet is instructive. In 2008, web infrastructure was built for desktop browsers. The teams that built mobile-native infrastructure captured outsized value: Stripe for mobile payments, Twilio for mobile messaging. The constraint was not demand. It was the absence of the infrastructure itself.</p>
+    </div>
+
+    <div class="pull-quote">
+      <div class="pull-quote-text">"Most internet infrastructure assumes a human is making decisions at the other end of every request. That assumption is breaking down. The protocols that survive the transition will be those that assume agents are the primary user, not a special case."</div>
+      <div class="pull-quote-attr">0xSammy · Ep. 1</div>
+    </div>
+
+    <div class="theme-body">
+      <p>The infrastructure bets: agent identity (how does a service know which agent is calling, the SSL certificate equivalent), autonomous payment rails (an agent that cannot pay cannot act in the world), and agent-native APIs built for programmatic consumption with structured schemas and machine-readable documentation. The window to set these standards is the next two to three years.</p>
+    </div>
+
+    <a href="research-agent-economy.html" class="theme-read-link">Read the full research note &rarr;</a>
+  </div>
+
+  <!-- ── 05 CRYPTO VC ── -->
+  <div class="theme-section">
+    <div class="theme-num">05 · Crypto VC</div>
+    <h2 class="theme-h">Most DePIN projects have weak adoption and no durable advantage over centralized alternatives. Early-stage protocol infrastructure with genuine structural advantages is a different category.</h2>
+
+    <div class="theme-signals">
+      <div class="theme-signal-item">
+        <span class="signal-val">$5.9B</span>
+        <span class="signal-lbl">Multicoin AUM</span>
+      </div>
+      <div class="theme-signal-item">
+        <span class="signal-val">$0.04</span>
+        <span class="signal-lbl">Early Solana seed price</span>
+      </div>
+      <div class="theme-signal-item">
+        <span class="signal-val">12-18mo</span>
+        <span class="signal-lbl">Developer activity lead time</span>
+      </div>
+    </div>
+
+    <div class="theme-body">
+      <p>Multicoin built $5.9B in AUM by making concentrated bets on protocol infrastructure before the market understood it. The Solana position started at $0.04 per token in 2018. The playbook is specific: find a protocol with a structural advantage over the centralized incumbent, size the position before institutions can move, and hold through the development cycle. Being early to the wrong protocol is not the same bet.</p>
+      <p>The filter Shayon uses for DePIN is direct: does this protocol have a structural advantage over the centralized alternative, or is it decentralization for its own sake? Most DePIN fails that test. The failure modes are speculative token economics, no path to adoption beyond the initial community, and no technical moat once a well-funded centralized competitor decides to compete. Solana passed the test because the throughput advantage over Ethereum was real and measurable before the market priced it.</p>
+    </div>
+
+    <div class="pull-quote">
+      <div class="pull-quote-text">"Developer ecosystem is the leading indicator. Track GitHub commits and hackathon participation. Where developers build is where users follow, consistently, by 12 to 18 months."</div>
+      <div class="pull-quote-attr">Shayon Sengupta, Multicoin Capital · Ep. 4</div>
+    </div>
+
+    <div class="theme-body">
+      <p>The current window: AI infrastructure protocols, including Bittensor and comparable networks, are at a comparable stage to Solana in 2018 to 2019. Growing developer activity, increasing subnet registrations, and rising validator counts are the leading metrics. These precede price discovery. Institutions have not established meaningful positions yet. The window closes with the first major institutional announcement.</p>
+    </div>
+
+    <a href="research-crypto-vc.html" class="theme-read-link">Read the full research note &rarr;</a>
+  </div>
+
+  <!-- Episodes at bottom -->
+  <div class="episodes-footer">
+    <h2>All 12 episodes</h2>
+    <div class="ep-grid">
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-row">
+        <span class="ep-row-num">Ep. 12</span>
+        <span class="ep-row-title">Bittensor Subnets Cost 500k+ to Register · Karis Capital</span>
+        <span class="ep-row-arrow">↗</span>
+      </a>
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-row">
+        <span class="ep-row-num">Ep. 11</span>
+        <span class="ep-row-title">Market Speedrun: Bittensor, Situational Awareness &amp; Sports RWAs</span>
+        <span class="ep-row-arrow">↗</span>
+      </a>
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-row">
+        <span class="ep-row-num">Ep. 10</span>
+        <span class="ep-row-title">Can One Subnet Destroy Bittensor? · Score, Tensora Group</span>
+        <span class="ep-row-arrow">↗</span>
+      </a>
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-row">
+        <span class="ep-row-num">Ep. 9</span>
+        <span class="ep-row-title">Why the Robotics Gold Rush Is Just Starting · XMAQUINA, Moonrock</span>
+        <span class="ep-row-arrow">↗</span>
+      </a>
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-row">
+        <span class="ep-row-num">Ep. 8</span>
+        <span class="ep-row-title">Reinforcement Learning on Bittensor · NRN</span>
+        <span class="ep-row-arrow">↗</span>
+      </a>
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-row">
+        <span class="ep-row-num">Ep. 7</span>
+        <span class="ep-row-title">Building a Subnet from Scratch · Stillcore</span>
+        <span class="ep-row-arrow">↗</span>
+      </a>
+      <a href="https://www.youtube.com/watch?v=46SGE01NO0Q" target="_blank" rel="noopener" class="ep-row">
+        <span class="ep-row-num">Ep. 6</span>
+        <span class="ep-row-title">Distributed Compute at the Edge · Gradient Network</span>
+        <span class="ep-row-arrow">↗</span>
+      </a>
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-row">
+        <span class="ep-row-num">Ep. 5</span>
+        <span class="ep-row-title">AI Drug Discovery · Micaela Bazo, Nova</span>
+        <span class="ep-row-arrow">↗</span>
+      </a>
+      <a href="https://www.youtube.com/watch?v=lXxyZaduCNA" target="_blank" rel="noopener" class="ep-row">
+        <span class="ep-row-num">Ep. 4</span>
+        <span class="ep-row-title">DePIN &amp; Crypto VC · Shayon Sengupta, Multicoin Capital</span>
+        <span class="ep-row-arrow">↗</span>
+      </a>
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-row">
+        <span class="ep-row-num">Ep. 3</span>
+        <span class="ep-row-title">Spatial Computing &amp; Robot Infrastructure · Auki, BitRobot</span>
+        <span class="ep-row-arrow">↗</span>
+      </a>
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-row">
+        <span class="ep-row-num">Ep. 2</span>
+        <span class="ep-row-title">The Generative Ventures Thesis · Lex Sokolin</span>
+        <span class="ep-row-arrow">↗</span>
+      </a>
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-row">
+        <span class="ep-row-num">Ep. 1</span>
+        <span class="ep-row-title">Agent Infrastructure · 0xSammy</span>
+        <span class="ep-row-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+
 </div>
 
-<div class="research-main">
-
-  <div class="cat-grid">
-
-    <!-- Featured: Decentralized AI -->
-    <a href="research-decentralized-ai.html" class="cat-card cat-card-featured">
-      <div class="cat-card-header">
-        <div class="cat-eyebrow">AI Infrastructure &middot; 7 episodes</div>
-        <div class="cat-title">Centralized AI is captured.<br>The infrastructure layer is open.</div>
-      </div>
-      <div class="cat-card-body">
-        <p class="cat-desc">Anthropic, OpenAI, and Google own the model layer. The compute, incentive, and validation infrastructure beneath them is still being built. Bittensor is the leading attempt to build it in the open. Seven conversations, one thesis: the open infrastructure layer wins because it cannot be captured.</p>
-        <div class="cat-tags">
-          <span class="cat-tag">Bittensor</span>
-          <span class="cat-tag">TAO</span>
-          <span class="cat-tag">DCG / Yuma</span>
-          <span class="cat-tag">Compute</span>
-          <span class="cat-tag">Subnets</span>
-        </div>
-        <div class="cat-footer">
-          <span class="cat-ep-count">Karis &middot; DCG &middot; NRN &middot; Stillcore &middot; Gradient &middot; Score</span>
-          <span class="cat-read">Read memo &rarr;</span>
-        </div>
-      </div>
-    </a>
-
-    <!-- Robotics -->
-    <a href="research-robotics.html" class="cat-card">
-      <div class="cat-card-header">
-        <div class="cat-eyebrow">Robotics &middot; 2 episodes</div>
-        <div class="cat-title">Hardware costs just broke.<br>The robotics window is open.</div>
-      </div>
-      <div class="cat-card-body">
-        <p class="cat-desc">Industrial robot costs are following the solar panel cost curve. The question is not whether robots proliferate: it is who owns them. Decentralized robot ownership and spatial computing infrastructure are the early bets on that answer.</p>
-        <div class="cat-tags">
-          <span class="cat-tag">XMAQUINA</span>
-          <span class="cat-tag">Auki</span>
-          <span class="cat-tag">BitRobot</span>
-          <span class="cat-tag">Moonrock Capital</span>
-        </div>
-        <div class="cat-footer">
-          <span class="cat-ep-count">Eps. 9 &middot; 3</span>
-          <span class="cat-read">Read memo &rarr;</span>
-        </div>
-      </div>
-    </a>
-
-    <!-- AI Biotech -->
-    <a href="research-ai-biotech.html" class="cat-card">
-      <div class="cat-card-header">
-        <div class="cat-eyebrow">AI Biotech &middot; 2 episodes</div>
-        <div class="cat-title">No AI-discovered drug has<br>cleared the FDA. That changes soon.</div>
-      </div>
-      <div class="cat-card-body">
-        <p class="cat-desc">AI is compressing drug discovery timelines from 12-15 years toward 2-3 years. Isomorphic Labs raised $2B for the centralized approach. The open-competition model has not been priced yet. The first FDA approval re-rates the category.</p>
-        <div class="cat-tags">
-          <span class="cat-tag">Nova</span>
-          <span class="cat-tag">Drug Discovery</span>
-          <span class="cat-tag">AlphaFold</span>
-          <span class="cat-tag">Open Network</span>
-        </div>
-        <div class="cat-footer">
-          <span class="cat-ep-count">Nova &middot; Generative Ventures</span>
-          <span class="cat-read">Read memo &rarr;</span>
-        </div>
-      </div>
-    </a>
-
-    <!-- Agent Economy -->
-    <a href="research-agent-economy.html" class="cat-card">
-      <div class="cat-card-header">
-        <div class="cat-eyebrow">AI Agents &middot; 1 episode</div>
-        <div class="cat-title">The internet is being rebuilt<br>for agents, not humans.</div>
-      </div>
-      <div class="cat-card-body">
-        <p class="cat-desc">AI agents already generate the majority of internet traffic. The authentication, payment, and discovery infrastructure built for browsers will be rebuilt for machines. The window to build that agent-native infrastructure is now.</p>
-        <div class="cat-tags">
-          <span class="cat-tag">Agent Identity</span>
-          <span class="cat-tag">Agent Payments</span>
-          <span class="cat-tag">Protocol Layer</span>
-        </div>
-        <div class="cat-footer">
-          <span class="cat-ep-count">Ep. 1 &middot; 0xSammy</span>
-          <span class="cat-read">Read memo &rarr;</span>
-        </div>
-      </div>
-    </a>
-
-    <!-- Crypto VC Playbook -->
-    <a href="research-crypto-vc.html" class="cat-card">
-      <div class="cat-card-header">
-        <div class="cat-eyebrow">Venture Capital &middot; 1 episode</div>
-        <div class="cat-title">Most DePIN is uninvestable.<br>Early protocol infrastructure is not.</div>
-      </div>
-      <div class="cat-card-body">
-        <p class="cat-desc">Multicoin built $5.9B in AUM by making concentrated bets on protocol infrastructure before the market understood it. The playbook is specific: find structural advantage over the centralized incumbent, size before institutions move, hold through the development cycle.</p>
-        <div class="cat-tags">
-          <span class="cat-tag">Multicoin Capital</span>
-          <span class="cat-tag">DePIN</span>
-          <span class="cat-tag">Protocol Infrastructure</span>
-        </div>
-        <div class="cat-footer">
-          <span class="cat-ep-count">Ep. 4 &middot; Shayon / Multicoin</span>
-          <span class="cat-read">Read memo &rarr;</span>
-        </div>
-      </div>
-    </a>
-
-  </div>
-
-  <div class="section-divider">
-    <h2>Recent episodes</h2>
-  </div>
-
-  <div class="recent-eps">
-    <a href="episodes.html" class="ep-mini">
-      <div class="ep-mini-num">Ep. 12 &middot; May 2025</div>
-      <div class="ep-mini-title">Bittensor Subnets Cost 500k+ to Register</div>
-      <div class="ep-mini-guest">Michael White, Karis Capital</div>
-    </a>
-    <a href="episodes.html" class="ep-mini">
-      <div class="ep-mini-num">Ep. 11 &middot; May 2025</div>
-      <div class="ep-mini-title">Market Speedrun: Bittensor, Situational Awareness and Sports RWAs</div>
-      <div class="ep-mini-guest">Wei Xie + Jack Leung</div>
-    </a>
-    <a href="episodes.html" class="ep-mini">
-      <div class="ep-mini-num">Ep. 10 &middot; Apr 2025</div>
-      <div class="ep-mini-title">Can One Subnet Destroy Bittensor's Ecosystem?</div>
-      <div class="ep-mini-guest">Max (Score), Gyles (Tensora Group)</div>
-    </a>
-    <a href="episodes.html" class="ep-mini">
-      <div class="ep-mini-num">Ep. 9 &middot; Apr 2025</div>
-      <div class="ep-mini-title">Why the Robotics Gold Rush is Just Getting Started</div>
-      <div class="ep-mini-guest">Mauricio (XMAQUINA), Simon (Moonrock Capital)</div>
-    </a>
-    <a href="episodes.html" class="ep-mini">
-      <div class="ep-mini-num">Ep. 8 &middot; Apr 2025</div>
-      <div class="ep-mini-title">How Bittensor is Challenging the AI Status Quo</div>
-      <div class="ep-mini-guest">Wei Xie, NRN Agents</div>
-    </a>
-    <a href="episodes.html" class="ep-mini">
-      <div class="ep-mini-num">Ep. 4 &middot; Jan 2025</div>
-      <div class="ep-mini-title">Inside Multicoin's $5.9B Crypto Investment Playbook</div>
-      <div class="ep-mini-guest">Shayon, Multicoin Capital</div>
-    </a>
-  </div>
-
-</div>
-
-<footer class="footer">
+<!-- FOOTER -->
+<footer>
   <div class="footer-inner">
-    <div class="footer-brand">Super<span>cycle</span></div>
-    <span class="footer-copy">&copy; 2025 Supercycle. A <a href="https://pylon.partners" style="color:rgba(255,255,255,.38)">Pylon Partners</a> production.</span>
+    <div>
+      <div class="footer-brand">Super<span>cycle</span></div>
+      <div class="footer-sub">A Pylon Partners production</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener">Spotify</a>
+      <a href="episodes.html">Episodes</a>
+      <a href="research.html">Themes</a>
+      <a href="https://pylon.partners" target="_blank" rel="noopener">Pylon Partners</a>
+    </div>
   </div>
 </footer>
 
