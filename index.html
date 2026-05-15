@@ -195,7 +195,7 @@ nav {
 .theme-num  { order: 1; font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink4); margin-bottom: 12px; }
 .theme-h    { order: 2; }
 .theme-signals { order: 3; }
-.theme-viz  { order: 4; margin-bottom: 32px; }
+
 .theme-body { order: 5; }
 .pull-quote { order: 6; }
 .theme-read-note {
@@ -436,72 +436,17 @@ footer {
 
 
 /* __ Network Viz __ */
-.theme-viz {
-  position: relative;
-  width: 100%;
-  height: 280px;
-  margin: 24px 0 32px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: rgba(243,238,227,.5);
-}
-html[data-theme="dark"] .theme-viz { background: rgba(28,25,20,.4); }
-.theme-viz svg.viz-lines {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  pointer-events: none;
-}
-.tn {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  transform: translate(-50%, -50%);
-  animation: tn-float var(--dur, 5s) ease-in-out infinite;
-  animation-delay: var(--delay, 0s);
-  z-index: 5;
-  cursor: default;
-}
-@keyframes tn-float {
-  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+
   50%       { transform: translate(-50%, -50%) translateY(-6px); }
 }
-.tn-chip {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 60px; height: 60px;
-  border: 1px solid var(--border);
-  background: rgba(243,238,227,.92);
-  gap: 2px;
-  transition: border-color .2s;
-}
-html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color: rgba(255,255,255,.12); }
-.tn:hover .tn-chip { border-color: var(--orange); }
-.tn.hub .tn-chip { width: 76px; height: 76px; border-color: rgba(13,12,9,.2); }
-.tn.accent .tn-chip { border-color: rgba(217,79,42,.25); background: rgba(217,79,42,.04); }
-.tn-sym {
-  font-family: var(--bask);
-  font-size: 22px;
-  line-height: 1;
-  display: block;
-}
-.tn.hub .tn-sym { font-size: 28px; }
-.tn-lbl {
-  font-family: var(--mono);
-  font-size: 8px;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--ink3);
-  text-align: center;
-  line-height: 1.3;
-  display: block;
-}
+
+html[data-theme="dark"] 
+
+
+
+
+
+
 
 /* ── MOBILE NAV ── */
 .hamburger {
@@ -662,7 +607,7 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
   <div class="hero-inner">
     <div class="hero-eyebrow">AI &middot; Robotics &middot; Science</div>
     <h1>Five themes.<br>Twelve conversations.</h1>
-    <p class="hero-deck">Founders and investors at the frontier of AI, robotics, and science. Twelve conversations, five investment theses, on the record.</p>
+    <p class="hero-deck">Founders and investors at the frontier of AI, robotics, and science. Five investment theses, on the record.</p>
     <div class="hero-ctas" style="display:flex;gap:12px;margin-top:32px;flex-wrap:wrap;">
       <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:#FF0000;color:#fff;font-family:var(--geist);font-size:13px;font-weight:600;border-radius:4px;text-decoration:none;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>YouTube</a>
       <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:#1DB954;color:#fff;font-family:var(--geist);font-size:13px;font-weight:600;border-radius:4px;text-decoration:none;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>Spotify</a>
@@ -702,7 +647,7 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
 
   <!-- ── 01 DECENTRALIZED AI ── -->
   <div class="theme-section reveal" id="theme-01">
-    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><circle cx="16" cy="6" r="2.5"/><circle cx="5" cy="26" r="2.5"/><circle cx="27" cy="26" r="2.5"/><circle cx="16" cy="16" r="2"/><line x1="16" y1="8.5" x2="16" y2="14"/><line x1="14.2" y1="17.5" x2="7" y2="23.5"/><line x1="17.8" y1="17.5" x2="25" y2="23.5"/><line x1="7.5" y1="26" x2="24.5" y2="26"/></svg>01 · Decentralized AI</div>
+    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--ink3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><circle cx="16" cy="6" r="2.5"/><circle cx="5" cy="26" r="2.5"/><circle cx="27" cy="26" r="2.5"/><circle cx="16" cy="16" r="2"/><line x1="16" y1="8.5" x2="16" y2="14"/><line x1="14.2" y1="17.5" x2="7" y2="23.5"/><line x1="17.8" y1="17.5" x2="25" y2="23.5"/><line x1="7.5" y1="26" x2="24.5" y2="26"/></svg>01 · Decentralized AI</div>
     <h2 class="theme-h">The major labs have locked up the model layer. The infrastructure beneath it is still open.</h2>
 
     <div class="theme-signals">
@@ -768,7 +713,7 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
 
   <!-- ── 02 ROBOTICS ── -->
   <div class="theme-section reveal" id="theme-02">
-    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="3" y="14" width="9" height="10" rx="1.5"/><rect x="12" y="9" width="8" height="7" rx="1.5"/><rect x="20" y="12" width="9" height="10" rx="1.5"/><line x1="12" y1="14" x2="20" y2="14"/><line x1="9" y1="22" x2="12" y2="22"/><line x1="20" y1="20" x2="23" y2="20"/><circle cx="6" cy="27" r="2"/><circle cx="26" cy="27" r="2"/></svg>02 · Robotics</div>
+    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--ink3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="3" y="14" width="9" height="10" rx="1.5"/><rect x="12" y="9" width="8" height="7" rx="1.5"/><rect x="20" y="12" width="9" height="10" rx="1.5"/><line x1="12" y1="14" x2="20" y2="14"/><line x1="9" y1="22" x2="12" y2="22"/><line x1="20" y1="20" x2="23" y2="20"/><circle cx="6" cy="27" r="2"/><circle cx="26" cy="27" r="2"/></svg>02 · Robotics</div>
 
     <h2 class="theme-h">Robot hardware has fallen from $1M to under $100k in five years. The ownership infrastructure has not been built.</h2>
 
@@ -788,12 +733,8 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
     </div>
 
     <div class="pull-quote">
-      <div class="pull-quote-text">"Spatial computing is the operating system for robots in shared environments. Without a shared map, every robot is working blind. The infrastructure needs to exist before the deployment wave, not after."</div>
+      <div class="pull-quote-text">"Without a shared map, every robot is working blind."</div>
       <div class="pull-quote-attr">Auki Labs · Ep. 3</div>
-    </div>
-
-    <div class="theme-body">
-      <p>The infrastructure picks: spatial computing networks (shared maps for robots operating in the same environment), on-chain ownership and task coordination protocols, and decentralized robot fleet financing. The market is pricing the humanoid robotics story as a 10-year outcome. The infrastructure enabling that story needs to be built in the next 3 years.</p>
     </div>
 
 
@@ -836,7 +777,7 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
 
   <!-- ── 03 AI BIOTECH ── -->
   <div class="theme-section reveal" id="theme-03">
-    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><path d="M11 3 Q20 9 11 16 Q2 23 11 29"/><path d="M21 3 Q12 9 21 16 Q30 23 21 29"/><line x1="11" y1="9" x2="21" y2="9"/><line x1="11" y1="16" x2="21" y2="16"/><line x1="11" y1="23" x2="21" y2="23"/></svg>03 · AI Biotech</div>
+    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--ink3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><path d="M11 3 Q20 9 11 16 Q2 23 11 29"/><path d="M21 3 Q12 9 21 16 Q30 23 21 29"/><line x1="11" y1="9" x2="21" y2="9"/><line x1="11" y1="16" x2="21" y2="16"/><line x1="11" y1="23" x2="21" y2="23"/></svg>03 · AI Biotech</div>
 
     <h2 class="theme-h">No AI-discovered drug has cleared the FDA. The first that does re-rates the entire category.</h2>
 
@@ -860,12 +801,8 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
     </div>
 
     <div class="pull-quote">
-      <div class="pull-quote-text">"An open-competition network for molecule candidates produces better predictions than any closed team at a fraction of the cost. The same reason NumerAI's open hedge fund outperforms closed quant funds. Distributed signal beats concentrated effort when the problem is fundamentally one of search."</div>
+      <div class="pull-quote-text">"An open-competition network for molecule candidates produces better predictions than any closed team at a fraction of the cost."</div>
       <div class="pull-quote-attr">Nova · AI Drug Discovery</div>
-    </div>
-
-    <div class="theme-body">
-      <p>The open-competition model is the structural bet. Rather than spending $2B on internal researchers running the same process, an open network rewards contributors for results rather than effort. The economics are the same reason prediction markets consistently outperform expert panels. The question is whether the same principle holds when the validation moves from digital prediction to wet lab confirmation.</p>
     </div>
 
 
@@ -908,7 +845,7 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
 
   <!-- ── 04 AGENT ECONOMY ── -->
   <div class="theme-section reveal" id="theme-04">
-    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="11" y="11" width="10" height="10" rx="1.5"/><line x1="16" y1="3" x2="16" y2="11"/><line x1="16" y1="21" x2="16" y2="29"/><line x1="3" y1="16" x2="11" y2="16"/><line x1="21" y1="16" x2="29" y2="16"/><circle cx="16" cy="3" r="2"/><circle cx="16" cy="29" r="2"/><circle cx="3" cy="16" r="2"/><circle cx="29" cy="16" r="2"/></svg>04 · Agent Economy</div>
+    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--ink3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="11" y="11" width="10" height="10" rx="1.5"/><line x1="16" y1="3" x2="16" y2="11"/><line x1="16" y1="21" x2="16" y2="29"/><line x1="3" y1="16" x2="11" y2="16"/><line x1="21" y1="16" x2="29" y2="16"/><circle cx="16" cy="3" r="2"/><circle cx="16" cy="29" r="2"/><circle cx="3" cy="16" r="2"/><circle cx="29" cy="16" r="2"/></svg>04 · Agent Economy</div>
 
     <h2 class="theme-h">AI agents generate the majority of internet traffic. The infrastructure was built for browsers.</h2>
 
@@ -926,10 +863,6 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
     <div class="pull-quote">
       <div class="pull-quote-text">"The protocols that survive will be those that assume agents are the primary user, not a special case."</div>
       <div class="pull-quote-attr">0xSammy · Ep. 1</div>
-    </div>
-
-    <div class="theme-body">
-      <p>The infrastructure bets: agent identity (how does a service know which agent is calling, the SSL certificate equivalent), autonomous payment rails (an agent that cannot pay cannot act in the world), and agent-native APIs built for programmatic consumption with structured schemas and machine-readable documentation. The window to set these standards is the next two to three years.</p>
     </div>
 
 
@@ -972,7 +905,7 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
 
   <!-- ── 05 CRYPTO VC ── -->
   <div class="theme-section reveal" id="theme-05">
-    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="2" y="11" width="11" height="10" rx="5"/><rect x="19" y="11" width="11" height="10" rx="5"/><line x1="13" y1="16" x2="19" y2="16"/><line x1="7" y1="11" x2="7" y2="6"/><line x1="25" y1="21" x2="25" y2="26"/></svg>05 · Crypto VC</div>
+    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--ink3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="2" y="11" width="11" height="10" rx="5"/><rect x="19" y="11" width="11" height="10" rx="5"/><line x1="13" y1="16" x2="19" y2="16"/><line x1="7" y1="11" x2="7" y2="6"/><line x1="25" y1="21" x2="25" y2="26"/></svg>05 · Crypto VC</div>
 
     <h2 class="theme-h">Most DePIN has no structural advantage over centralized alternatives. Early protocol infrastructure is a different bet.</h2>
 
@@ -992,18 +925,14 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
     </div>
 
     <div class="pull-quote">
-      <div class="pull-quote-text">"Developer ecosystem is the leading indicator. Track GitHub commits and hackathon participation. Where developers build is where users follow, consistently, by 12 to 18 months."</div>
+      <div class="pull-quote-text">"Where developers build, users follow. By 12 to 18 months."</div>
       <div class="pull-quote-attr">Shayon Sengupta, Multicoin Capital · Ep. 4</div>
-    </div>
-
-    <div class="theme-body">
-      <p>The current window: AI infrastructure protocols, including Bittensor and comparable networks, are at a comparable stage to Solana in 2018 to 2019. Growing developer activity, increasing subnet registrations, and rising validator counts are the leading metrics. These precede price discovery. Institutions have not established meaningful positions yet. The window closes with the first major institutional announcement.</p>
     </div>
 
 
     <div class="theme-case">
       <div class="theme-case-header">The Case</div>
-      <div class="case-item open">
+      <div class="case-item">
         <button class="case-toggle" onclick="scToggleCase(this)">
           <span class="case-num">01</span>
           <span class="case-title">Most DePIN fails one test: a structural advantage over the centralized alternative.</span>
@@ -1023,7 +952,7 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
           <p>GitHub commits and hackathon participation consistently preceded Solana's price move by over a year. Developers build where the technical architecture is compelling, regardless of token price. Retail and institutions follow users, not developers. Tracking developer concentration gives you 12-18 months of lead time before the market prices it.</p>
         </div>
       </div>
-      <div class="case-item">
+      <div class="case-item open">
         <button class="case-toggle" onclick="scToggleCase(this)">
           <span class="case-num">03</span>
           <span class="case-title">AI infrastructure protocols are at Solana 2018. Institutions have not moved.</span>
@@ -1085,50 +1014,7 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
   </div>
 </footer>
 
-<script>
-(function(){
-  var EDGES = {
-    'v01': [['tao','subnet'],['tao','validator'],['tao','compute'],['tao','model'],['tao','miner'],['model','subnet'],['compute','model']],
-    'v02': [['hw','spatial'],['hw','task'],['hw','fleet'],['hw','own'],['hw','ai'],['ai','fleet'],['spatial','task']],
-    'v03': [['target','aimodel'],['target','molecule'],['target','alpha'],['aimodel','alpha'],['aimodel','molecule'],['alpha','clinical'],['target','opennet']],
-    'v04': [['agent','identity'],['agent','payment'],['agent','api'],['agent','protocol'],['agent','auth'],['protocol','identity'],['payment','api']],
-    'v05': [['proto','dev'],['proto','cap'],['proto','token'],['proto','infra'],['proto','net'],['dev','token'],['cap','infra']]
-  };
-  var isDark = function(){ return document.documentElement.getAttribute('data-theme')==='dark'; };
-  function getStroke(){ return isDark()?'rgba(255,255,255,.18)':'rgba(13,12,9,.13)'; }
-  function drawViz(viz){
-    var svg = viz.querySelector('svg.viz-lines');
-    if(!svg) return;
-    var id = viz.dataset.viz;
-    var edges = EDGES[id]||[];
-    var vr = viz.getBoundingClientRect();
-    svg.innerHTML='';
-    edges.forEach(function(pair){
-      var a = viz.querySelector('[data-id="'+pair[0]+'"]');
-      var b = viz.querySelector('[data-id="'+pair[1]+'"]');
-      if(!a||!b) return;
-      var ar=a.getBoundingClientRect(), br=b.getBoundingClientRect();
-      var x1=ar.left+ar.width/2-vr.left, y1=ar.top+ar.height/2-vr.top;
-      var x2=br.left+br.width/2-vr.left, y2=br.top+br.height/2-vr.top;
-      var line=document.createElementNS('http://www.w3.org/2000/svg','line');
-      line.setAttribute('x1',x1); line.setAttribute('y1',y1);
-      line.setAttribute('x2',x2); line.setAttribute('y2',y2);
-      line.setAttribute('stroke',getStroke());
-      line.setAttribute('stroke-width','1');
-      svg.appendChild(line);
-    });
-  }
-  function drawAll(){
-    document.querySelectorAll('.theme-viz').forEach(drawViz);
-    requestAnimationFrame(drawAll);
-  }
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded', function(){ setTimeout(drawAll, 100); });
-  } else { setTimeout(drawAll, 100); }
-  var orig = window.scUpdateIcon;
-  if(orig) window.scUpdateIcon = function(){ orig(); document.querySelectorAll('.theme-viz').forEach(drawViz); };
-})();
-</script>
+
 
 <script>
 function scUpdateIcon(){
