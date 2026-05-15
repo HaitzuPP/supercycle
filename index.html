@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Supercycle: Bittensor Research Podcast</title>
-  <meta name="description" content="Data-driven conversations with Bittensor subnet founders and fund managers. Every guest questioned against their live subnet data. Hosted by Jack Leung, TAO Institute. Free on YouTube and Spotify.">
+  <meta name="description" content="Data-driven conversations with Bittensor subnet founders. Every guest questioned against their live TAO Institute score. Hosted by Jack Leung. Free on YouTube and Spotify.">
   <meta property="og:title" content="Supercycle: Bittensor Research Podcast">
-  <meta property="og:description" content="Data-driven conversations with Bittensor subnet founders and fund managers. Every guest questioned against their live subnet data. Hosted by Jack Leung, TAO Institute.">
+  <meta property="og:description" content="Data-driven conversations with Bittensor subnet founders. Every guest questioned against their live TAO Institute score. Hosted by Jack Leung.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://haitzupp.github.io/supercycle/">
   <meta name="twitter:card" content="summary_large_image">
@@ -42,10 +42,9 @@
     }
 
     h1, h2, h3 { font-family: 'Georgia', 'Times New Roman', serif; }
-
     a { color: inherit; }
 
-    #episodes, #about, #subscribe { scroll-margin-top: 62px; }
+    #about, #subscribe { scroll-margin-top: 62px; }
 
     /* Skip link */
     .skip-link { position: absolute; top: -40px; left: 0; background: var(--black); color: var(--white); padding: 8px 16px; font-size: 11px; font-weight: 700; font-family: Arial, Helvetica, sans-serif; text-decoration: none; z-index: 200; transition: top 0.15s; }
@@ -64,20 +63,6 @@
       z-index: 100;
       height: 62px;
     }
-
-    .nav-cta {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: var(--white);
-      background: var(--black);
-      padding: 10px 22px;
-      transition: opacity 0.15s;
-    }
-    .nav-cta:hover { opacity: 0.8; }
 
     .wordmark {
       font-family: Arial, Helvetica, sans-serif;
@@ -107,17 +92,21 @@
     .nav-anchors a:hover,
     .nav-anchors a.active { color: var(--black); border-bottom-color: var(--black); }
 
-    /* ── HERO ── */
-    .hero-eyebrow {
+    .nav-cta {
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #555;
-      margin-bottom: 16px;
+      text-decoration: none;
+      color: var(--white);
+      background: var(--black);
+      padding: 10px 22px;
+      transition: opacity 0.15s;
     }
+    .nav-cta:hover { opacity: 0.8; }
 
+    /* ── HERO ── */
     .hero {
       padding: 80px 48px 72px;
       border-bottom: 1px solid var(--border);
@@ -132,13 +121,49 @@
 
     .hero-left { max-width: none; }
 
+    .hero h1 {
+      font-size: clamp(36px, 4.4vw, 60px);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em { font-style: italic; }
+
+    .hero-meta {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      color: var(--grey);
+      letter-spacing: 0.06em;
+      margin-bottom: 20px;
+    }
+
     .hero-desc {
       font-family: Arial, Helvetica, sans-serif;
       font-size: 14px;
       color: var(--mid-grey);
       line-height: 1.7;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
     }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--black);
+      color: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 28px;
+      transition: opacity 0.15s;
+    }
+
+    .btn-primary:hover { opacity: 0.8; }
 
     .hero-right {
       display: flex;
@@ -169,38 +194,8 @@
       font-family: Arial, Helvetica, sans-serif;
       font-size: 12px;
       color: var(--mid-grey);
-      line-height: 1.6;
       margin-top: 12px;
     }
-
-    .hero h1 {
-      font-size: clamp(36px, 4.4vw, 60px);
-      font-weight: 700;
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      margin-bottom: 28px;
-    }
-
-    .hero h1 em { font-style: italic; }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--black);
-      color: var(--white);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      padding: 14px 28px;
-      transition: opacity 0.15s;
-      align-self: flex-start;
-    }
-
-    .btn-primary:hover { opacity: 0.8; }
 
     .ep-iframe-wrap {
       width: 100%;
@@ -217,12 +212,12 @@
       height: 100%;
       display: block;
       border: none;
-      position: relative;
-      z-index: 1;
+      position: absolute;
+      top: 0; left: 0;
     }
 
     /* ── EPISODE STRIP ── */
-    #episodes { border-bottom: 1px solid var(--border); }
+    #recent-episodes { border-bottom: 1px solid var(--border); }
 
     .ep-strip { padding: 0 48px; }
 
@@ -244,7 +239,7 @@
       color: var(--grey);
       white-space: nowrap;
       flex-shrink: 0;
-      width: 220px;
+      width: 180px;
     }
 
     .ep-row-title {
@@ -316,8 +311,7 @@
       border-right: 1px solid var(--border);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      gap: 36px;
+      gap: 28px;
     }
 
     .about-left h2 {
@@ -327,6 +321,8 @@
     }
 
     .about-left h2 em { font-style: italic; }
+
+    .about-right { padding: 64px 48px 64px 56px; }
 
     .host-name {
       font-family: Arial, Helvetica, sans-serif;
@@ -344,14 +340,12 @@
       margin-bottom: 20px;
     }
 
-    .about-right { padding: 64px 48px 64px 56px; }
-
     /* ── SUBSCRIBE ── */
     #subscribe { border-top: 1px solid var(--border); }
 
     .subscribe-inner {
       padding: 64px 48px;
-      max-width: 560px;
+      max-width: 540px;
     }
 
     .subscribe-inner h2 {
@@ -484,7 +478,7 @@
       .ep-row-watch { order: 4; }
 
       #about { grid-template-columns: 1fr; }
-      .about-left { padding: 48px 24px 32px; border-right: none; border-bottom: 1px solid var(--border); gap: 28px; }
+      .about-left { padding: 48px 24px 32px; border-right: none; border-bottom: 1px solid var(--border); }
       .about-right { padding: 32px 24px 48px; }
 
       .subscribe-inner { padding: 48px 24px; max-width: none; }
@@ -501,13 +495,13 @@
   </style>
 </head>
 <body>
+<a href="#about" class="skip-link">Skip to content</a>
 
 <!-- NAV -->
 <nav>
   <a href="/" class="wordmark">Supercycle</a>
   <div class="nav-right">
     <ul class="nav-anchors">
-      <li><a href="#episodes">Episodes</a></li>
       <li><a href="#about">About</a></li>
     </ul>
     <a href="#subscribe" class="nav-cta">Get Alerts</a>
@@ -518,11 +512,10 @@
 <section class="hero">
   <div class="hero-grid">
     <div class="hero-left">
-      <p class="hero-eyebrow">Bittensor Research Podcast</p>
       <h1>Data before<br><em>narrative.</em></h1>
-      <p style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:var(--mid-grey);letter-spacing:0.06em;margin-bottom:20px;">52 episodes &nbsp;&middot;&nbsp; Monthly</p>
-      <p class="hero-desc">Jack opens every interview with the guest's live <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">TAO Institute</a> score. Unfiltered.</p>
-      <a href="#subscribe" class="btn-primary" style="margin-top:24px;">Get Episode Alerts &rarr;</a>
+      <p class="hero-meta">52 episodes &nbsp;&middot;&nbsp; Monthly &nbsp;&middot;&nbsp; Free on YouTube &amp; Spotify</p>
+      <p class="hero-desc">Each episode: Jack pulls the guest's live <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">TAO Institute</a> subnet score on camera and works through it with them, line by line.</p>
+      <a href="https://www.youtube.com/watch?v=py7DgwA1Tf4" target="_blank" rel="noopener" class="btn-primary">Watch Latest Episode &rarr;</a>
     </div>
     <div class="hero-right">
       <div class="hero-ep-label">Ep. 52 &nbsp;&middot;&nbsp; May 2025</div>
@@ -546,17 +539,17 @@
   </div>
 </section>
 
-<!-- EPISODES -->
-<section id="episodes">
+<!-- RECENT EPISODES -->
+<section id="recent-episodes">
   <div class="ep-strip">
     <div class="ep-row">
-      <span class="ep-row-meta">Ep. 52 &nbsp;&middot;&nbsp; 52 min &nbsp;&middot;&nbsp; May 2025</span>
+      <span class="ep-row-meta">Ep. 52 &nbsp;&middot;&nbsp; May 2025</span>
       <a class="ep-row-title" href="https://www.youtube.com/watch?v=py7DgwA1Tf4" target="_blank" rel="noopener">Nova's Bet: Drug Discovery on a Bittensor Subnet</a>
       <span class="ep-row-guest">Micaela Zanella, Co-Founder Nova</span>
       <a class="ep-row-watch" href="https://www.youtube.com/watch?v=py7DgwA1Tf4" target="_blank" rel="noopener">Watch &rarr;</a>
     </div>
     <div class="ep-row">
-      <span class="ep-row-meta">Ep. 51 &nbsp;&middot;&nbsp; 48 min &nbsp;&middot;&nbsp; Apr 2025</span>
+      <span class="ep-row-meta">Ep. 51 &nbsp;&middot;&nbsp; Apr 2025</span>
       <a class="ep-row-title" href="https://www.youtube.com/watch?v=AOJS1_zT-bs" target="_blank" rel="noopener">Yuma's Case Against Captured AI</a>
       <span class="ep-row-guest">Greg Waisman, CEO Yuma &nbsp;&middot;&nbsp; DCG</span>
       <a class="ep-row-watch" href="https://www.youtube.com/watch?v=AOJS1_zT-bs" target="_blank" rel="noopener">Watch &rarr;</a>
@@ -571,7 +564,7 @@
 <section id="about">
   <div class="about-left">
     <h2>Founders answer<br><em>to their own data.</em></h2>
-    <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:var(--mid-grey);line-height:1.82;"><a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">TAO Institute</a> scores every active Bittensor subnet daily. Supercycle is where founders answer for those scores.</p>
+    <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:var(--mid-grey);line-height:1.82;">Every active Bittensor subnet is scored daily by <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--border);">TAO Institute</a>. Supercycle brings subnet founders on to address those scores directly, with the live scorecard in front of them.</p>
   </div>
   <div class="about-right">
     <div style="margin-bottom:36px;">
@@ -581,7 +574,7 @@
     </div>
     <div>
       <a href="mailto:jack@pylon.partners" style="display:inline-block;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);border-bottom:1px solid var(--black);padding-bottom:1px;text-decoration:none;margin-bottom:6px;">Apply to be a guest &rarr;</a>
-      <p style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:var(--grey);">For active subnet founders and validators.</p>
+      <p style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:var(--grey);">Open to active subnet founders and validators.</p>
     </div>
   </div>
 </section>
@@ -608,10 +601,6 @@
         <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
         Spotify
       </a>
-      <a href="https://www.youtube.com/feeds/videos.xml?channel_id=UCPn_Qnlmfu5sx6dVACUJkjQ" target="_blank" rel="noopener" class="platform-inline">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20 4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
-        RSS
-      </a>
     </div>
   </div>
 </section>
@@ -633,13 +622,12 @@
     iframe.title = 'Supercycle Ep.52: Nova\'s Bet: Drug Discovery on a Bittensor Subnet';
     iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
     iframe.setAttribute('allowfullscreen', '');
-    iframe.style.cssText = 'width:100%;height:100%;display:block;border:none;position:absolute;top:0;left:0;';
     wrapper.innerHTML = '';
     wrapper.style.position = 'relative';
     wrapper.appendChild(iframe);
   }
 
-  const sectionIds = ['episodes', 'about', 'subscribe'];
+  const sectionIds = ['about', 'subscribe'];
   const navLinks = {};
   sectionIds.forEach(id => {
     const link = document.querySelector('.nav-anchors a[href="#' + id + '"]');
