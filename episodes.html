@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Episodes: Supercycle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F3EEE3;--parch:#EAE4D4;--ink:#0D0C09;--ink2:rgba(13,12,9,.78);--ink3:rgba(13,12,9,.58);--ink4:rgba(13,12,9,.10);--orange:#D94F2A;--cyan:#0A9FB8;--border:rgba(13,12,9,.14);--dark:#1C1914;--bask:'Baskervville',Georgia,serif;--crim:'Crimson Text',Georgia,serif;--geist:'Geist',-apple-system,sans-serif;--mono:'Geist Mono',monospace}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--crim);font-size:20px;line-height:1.65;background:var(--cream);color:var(--ink)}
+a{color:inherit;text-decoration:none}
+
+.topbar{position:sticky;top:0;height:52px;background:rgba(243,238,227,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:100}
+.topbar-logo{font-family:var(--bask);font-size:18px;letter-spacing:-.3px;color:var(--ink)}
+.topbar-logo span{color:var(--orange)}
+.topbar-nav{display:flex;align-items:center;gap:32px;list-style:none}
+.topbar-nav a{font-family:var(--geist);font-size:13px;color:var(--ink3);transition:color .15s}
+.topbar-nav a:hover,.topbar-nav a.active{color:var(--ink)}
+.topbar-cta{font-family:var(--geist);font-size:13px;font-weight:500;color:var(--cream);background:var(--ink);padding:7px 16px;border-radius:4px;transition:background .15s}
+.topbar-cta:hover{background:var(--orange)}
+
+/* PAGE HERO - dark */
+.page-hero{background:var(--dark);padding:72px 64px 60px;position:relative;overflow:hidden}
+.page-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(217,79,42,.08) 0%,transparent 60%);pointer-events:none}
+.page-hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.page-eyebrow{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+.page-hero h1{font-family:var(--bask);font-size:48px;font-weight:400;letter-spacing:-.4px;line-height:1.1;color:rgba(255,255,255,.9);margin-bottom:16px}
+.page-hero p{font-size:19px;color:rgba(255,255,255,.45);max-width:560px;line-height:1.6;margin-bottom:36px}
+.platform-row{display:flex;align-items:center;gap:12px}
+.platform-btn{font-family:var(--geist);font-size:13px;font-weight:500;padding:9px 18px;border-radius:4px;display:inline-flex;align-items:center;gap:8px;transition:opacity .15s}
+.platform-btn:hover{opacity:.8}
+.platform-btn.yt{background:var(--orange);color:#fff}
+.platform-btn.sp{background:rgba(255,255,255,.08);color:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.14)}
+.platform-btn.sp:hover{background:rgba(255,255,255,.14);color:rgba(255,255,255,.85)}
+
+/* MAIN */
+.episodes-main{padding:64px 64px 96px;max-width:1100px;margin:0 auto}
+
+.filter-bar{display:flex;align-items:center;gap:12px;margin-bottom:48px;flex-wrap:wrap}
+.filter-label{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink3);margin-right:4px}
+.filter-chip{font-family:var(--mono);font-size:11px;letter-spacing:.6px;padding:5px 14px;border-radius:20px;border:1px solid var(--border);color:var(--ink2);cursor:pointer;transition:all .15s;background:transparent;user-select:none}
+.filter-chip.active,.filter-chip:hover{border-color:var(--orange);color:var(--orange)}
+
+/* EPISODE LIST */
+.ep-list{display:flex;flex-direction:column}
+
+.ep-row{display:grid;grid-template-columns:90px 1fr auto;gap:28px;align-items:start;padding:32px 0;border-bottom:1px solid var(--border);transition:opacity .2s}
+.ep-row:first-child{border-top:1px solid var(--border)}
+.ep-row.hidden{display:none}
+
+.ep-num-col{padding-top:4px}
+.ep-num{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--ink3)}
+.ep-date{font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:.4px;margin-top:4px}
+
+.ep-content{}
+.ep-title{font-family:var(--bask);font-size:24px;font-weight:400;letter-spacing:-.2px;line-height:1.25;color:var(--ink);margin-bottom:8px}
+.ep-guest{font-family:var(--geist);font-size:13px;color:var(--ink3);margin-bottom:10px}
+.ep-desc{font-size:17px;color:var(--ink2);line-height:1.55;margin-bottom:14px}
+.ep-tags{display:flex;gap:8px;flex-wrap:wrap}
+.ep-tag{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;padding:3px 9px;border-radius:2px;background:var(--ink4);color:var(--ink2)}
+
+.ep-actions{display:flex;flex-direction:column;gap:10px;padding-top:6px;white-space:nowrap;min-width:130px}
+.ep-btn{font-family:var(--geist);font-size:12px;font-weight:500;padding:8px 14px;border-radius:4px;display:flex;align-items:center;justify-content:center;gap:6px;transition:opacity .15s}
+.ep-btn:hover{opacity:.8}
+.ep-btn.watch{background:var(--orange);color:#fff}
+.ep-btn.listen{background:var(--ink4);color:var(--ink2);border:1px solid var(--border)}
+.ep-btn.memo{background:transparent;color:var(--orange);font-size:12px;font-weight:500;padding:0;justify-content:flex-end;border:none}
+.ep-btn.memo:hover{opacity:.7}
+
+/* FOOTER */
+.footer{background:var(--dark);padding:40px 64px 32px}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.footer-brand{font-family:var(--bask);font-size:18px;color:rgba(255,255,255,.7)}
+.footer-brand span{color:var(--orange)}
+.footer-copy{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.22);letter-spacing:.4px}
+
+@media(max-width:900px){
+  .topbar{padding:0 24px}
+  .page-hero{padding:48px 28px 48px}
+  .page-hero h1{font-size:36px}
+  .episodes-main{padding:40px 28px 60px}
+  .ep-row{grid-template-columns:1fr;gap:16px}
+  .ep-num-col{display:flex;gap:12px;align-items:center}
+  .ep-actions{flex-direction:row;flex-wrap:wrap}
+  .footer{padding:32px 28px 24px}
+}
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <a href="index.html" class="topbar-logo">Super<span>cycle</span></a>
+  <ul class="topbar-nav">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="episodes.html" class="active" style="color:var(--ink)">Episodes</a></li>
+  </ul>
+  <a href="https://www.youtube.com/watch?v=oSFu8IZ5RaE" target="_blank" rel="noopener" class="topbar-cta">Watch Latest</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">Supercycle Episodes</div>
+    <h1>52 episodes.<br>No green room prep.</h1>
+    <p>Every founder and investor on this show faces the same format: direct questions, real data, no filter. Watch on YouTube or listen on Spotify.</p>
+    <div class="platform-row">
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="platform-btn yt">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14C4.5 20.4 12 20.4 12 20.4s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.13A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81z" fill="white"/><path d="M9.75 15.57V8.43L15.81 12l-6.06 3.57z" fill="#D94F2A"/></svg>
+        All episodes on YouTube
+      </a>
+      <a href="#" class="platform-btn sp">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="12" fill="rgba(255,255,255,0.15)"/><path d="M7 9.5c2.5-1 5.5-1 8 0M7.5 12c2-0.8 4.5-0.8 6.5 0M8 14.5c1.5-0.5 3.5-0.5 5 0" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Listen on Spotify
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="episodes-main">
+
+  <div class="filter-bar">
+    <span class="filter-label">Filter</span>
+    <span class="filter-chip active" data-filter="all">All</span>
+    <span class="filter-chip" data-filter="drug-discovery">Drug Discovery</span>
+    <span class="filter-chip" data-filter="ai-infrastructure">AI Infrastructure</span>
+    <span class="filter-chip" data-filter="fintech">FinTech</span>
+    <span class="filter-chip" data-filter="computer-vision">Computer Vision</span>
+  </div>
+
+  <div class="ep-list">
+
+    <!-- Ep. 52 -->
+    <div class="ep-row" data-sectors="drug-discovery">
+      <div class="ep-num-col">
+        <div class="ep-num">Ep. 52</div>
+        <div class="ep-date">May 2025</div>
+      </div>
+      <div class="ep-content">
+        <div class="ep-title">Nova's Bet: AI-Powered Drug Discovery</div>
+        <div class="ep-guest">Micaela Bazo, Co-Founder, Nova</div>
+        <p class="ep-desc">Isomorphic Labs raised $2B. No AI-discovered drug has cleared the FDA yet. Nova runs an open competition model for drug discovery and is closing in on lab validation.</p>
+        <div class="ep-tags">
+          <span class="ep-tag">Drug Discovery</span>
+          <span class="ep-tag">AI</span>
+          <span class="ep-tag">Biotech</span>
+        </div>
+      </div>
+      <div class="ep-actions">
+        <a href="https://www.youtube.com/watch?v=oSFu8IZ5RaE" target="_blank" rel="noopener" class="ep-btn watch">Watch &rarr;</a>
+        <a href="#" class="ep-btn listen">Listen</a>
+        <a href="ep-52-nova.html" class="ep-btn memo">Read memo &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Ep. 51 -->
+    <div class="ep-row" data-sectors="ai-infrastructure">
+      <div class="ep-num-col">
+        <div class="ep-num">Ep. 51</div>
+        <div class="ep-date">Apr 2025</div>
+      </div>
+      <div class="ep-content">
+        <div class="ep-title">Yuma's Case Against Captured AI</div>
+        <div class="ep-guest">Greg Schvey, Co-Founder, Yuma / DCG</div>
+        <p class="ep-desc">Greg built TradeBlock and Axani before joining DCG. His thesis: intelligence is moving toward non-human functions for the first time, and centralized AI is structurally captured. The credibility argument for decentralized AI infrastructure.</p>
+        <div class="ep-tags">
+          <span class="ep-tag">AI Infrastructure</span>
+          <span class="ep-tag">Decentralization</span>
+          <span class="ep-tag">DCG</span>
+        </div>
+      </div>
+      <div class="ep-actions">
+        <a href="#" class="ep-btn watch">Watch &rarr;</a>
+        <a href="#" class="ep-btn listen">Listen</a>
+        <a href="ep-51-yuma.html" class="ep-btn memo">Read memo &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Ep. 50 -->
+    <div class="ep-row" data-sectors="fintech">
+      <div class="ep-num-col">
+        <div class="ep-num">Ep. 50</div>
+        <div class="ep-date">Mar 2025</div>
+      </div>
+      <div class="ep-content">
+        <div class="ep-title">The Robot Money Thesis</div>
+        <div class="ep-guest">Lex Sokolin, Managing Partner, Generative Ventures</div>
+        <p class="ep-desc">Stripe wants to be robot money. Ethereum wants to be robot money. So does Solana, Visa, MasterCard, and BlackRock. Former chief economist at Consensys explains why financial infrastructure for the machine economy is the only real play, and why the differentiation window is closing fast.</p>
+        <div class="ep-tags">
+          <span class="ep-tag">FinTech</span>
+          <span class="ep-tag">Robot Money</span>
+          <span class="ep-tag">Machine Economy</span>
+        </div>
+      </div>
+      <div class="ep-actions">
+        <a href="#" class="ep-btn watch">Watch &rarr;</a>
+        <a href="#" class="ep-btn listen">Listen</a>
+        <a href="ep-lex.html" class="ep-btn memo">Read memo &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Ep. 49 -->
+    <div class="ep-row" data-sectors="computer-vision">
+      <div class="ep-num-col">
+        <div class="ep-num">Ep. 49</div>
+        <div class="ep-date">Feb 2025</div>
+      </div>
+      <div class="ep-content">
+        <div class="ep-title">Score: Computer Vision at Scale</div>
+        <div class="ep-guest">Max Sebti, CEO Mataco Labs; Wei, Reinforcement Learning Research</div>
+        <p class="ep-desc">Score converts CCTV and broadcast footage into structured, queryable data. PwC co-selling partnership live. A chocolate factory client about to go public at Viva Tech Paris. The question: can horizontal computer vision win when every major cloud provider already owns a vertical?</p>
+        <div class="ep-tags">
+          <span class="ep-tag">Computer Vision</span>
+          <span class="ep-tag">Manufacturing</span>
+          <span class="ep-tag">AI</span>
+        </div>
+      </div>
+      <div class="ep-actions">
+        <a href="#" class="ep-btn watch">Watch &rarr;</a>
+        <a href="#" class="ep-btn listen">Listen</a>
+        <a href="ep-max-wei.html" class="ep-btn memo">Read memo &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Archive note -->
+  <div style="margin-top:52px;padding-top:32px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+    <div>
+      <div style="font-family:var(--mono);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink3);margin-bottom:8px;">Full archive</div>
+      <p style="font-size:17px;color:var(--ink2);">All 52 episodes are available on YouTube and Spotify. Memos are published for recent episodes.</p>
+    </div>
+    <div style="display:flex;gap:12px;">
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" style="font-family:var(--geist);font-size:13px;font-weight:500;color:var(--orange);">YouTube channel &rarr;</a>
+      <a href="#" style="font-family:var(--geist);font-size:13px;font-weight:500;color:var(--ink3);">Spotify &rarr;</a>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">Super<span>cycle</span></div>
+    <span class="footer-copy">&copy; 2025 Supercycle. A <a href="https://pylon.partners" style="color:rgba(255,255,255,.38)">Pylon Partners</a> production.</span>
+  </div>
+</footer>
+
+<script>
+// Filter chips
+const chips = document.querySelectorAll('.filter-chip');
+const rows = document.querySelectorAll('.ep-row');
+
+chips.forEach(chip => {
+  chip.addEventListener('click', () => {
+    chips.forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    const filter = chip.dataset.filter;
+    rows.forEach(row => {
+      if (filter === 'all') {
+        row.classList.remove('hidden');
+      } else {
+        const sectors = (row.dataset.sectors || '').split(' ');
+        row.classList.toggle('hidden', !sectors.includes(filter));
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
