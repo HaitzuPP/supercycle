@@ -478,6 +478,65 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
   line-height: 1.3;
   display: block;
 }
+
+/* ── MOBILE NAV ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: var(--ink);
+  transition: transform .2s, opacity .2s;
+}
+.mobile-nav {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--cream);
+  z-index: 200;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-family: var(--bask);
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--ink);
+  text-decoration: none;
+}
+.mobile-nav a:hover { color: var(--orange); }
+.mobile-nav-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--ink3);
+  line-height: 1;
+}
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .topbar-nav, .topbar-platform { display: none; }
+  nav { padding: 0 20px; }
+  .hero { padding: 120px 24px 64px; }
+  .running { padding: 0 24px; }
+}
 </style>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9889;</text></svg>">
 </head>
@@ -493,6 +552,7 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
     <li><a href="research.html">Research</a></li>
   </ul>
   <div class="topbar-right">
+    <button class="hamburger" id="sc-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
     <div class="topbar-platform">
       <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="topbar-icon-btn" title="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FF0000" style="flex-shrink:0"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
@@ -500,6 +560,15 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
     </div>
   </div>
 </nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="sc-mobile-nav">
+  <button class="mobile-nav-close" id="sc-nav-close" aria-label="Close">&times;</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="episodes.html">Episodes</a>
+  <a href="research.html">Research</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -521,7 +590,7 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
         Themes
       </div>
       <div class="hero-stat">
-        <strong>2025</strong>
+        <strong>2026</strong>
         Vintage
       </div>
     </div>
@@ -533,7 +602,7 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
 
   <!-- Intro -->
   <div class="chapter-intro">
-    <p>Patterns that kept surfacing when founders and investors were asked to explain their bets in plain terms, with real numbers, on the record. Each has a companion research note.</p>
+    <p>Patterns that kept surfacing when founders and investors were asked to explain their bets in plain terms, with real numbers, on the record.</p>
   </div>
 
   <!-- ── 01 DECENTRALIZED AI ── -->
@@ -772,7 +841,7 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
 
   <!-- Episodes at bottom -->
   <div class="episodes-footer">
-    <h2>All 12 episodes</h2>
+    <h2>Recent episodes</h2>
     <div class="ep-grid">
       <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-row">
         <span class="ep-row-num">Ep. 12</span>
@@ -897,6 +966,19 @@ var ro = new IntersectionObserver(function(entries){
 revealEls.forEach(function(el){ ro.observe(el); });
 
 
+</script>
+
+<script>
+(function(){
+  var btn = document.getElementById('sc-hamburger');
+  var nav = document.getElementById('sc-mobile-nav');
+  var close = document.getElementById('sc-nav-close');
+  if(btn && nav){
+    btn.addEventListener('click', function(){ nav.classList.add('open'); });
+    close.addEventListener('click', function(){ nav.classList.remove('open'); });
+    nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ nav.classList.remove('open'); }); });
+  }
+})();
 </script>
 </body>
 </html>
