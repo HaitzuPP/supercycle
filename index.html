@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Supercycle – AI, Robotics &amp; Science</title>
 <meta name="description" content="Five investment themes drawn from twelve conversations with founders and investors at the frontier of AI, robotics, and science.">
-<meta property="og:title" content="Supercycle — AI, Robotics &amp; Science">
+<meta property="og:title" content="Supercycle: AI, Robotics &amp; Science">
 <meta property="og:description" content="Five investment themes from twelve conversations with founders and investors at the frontier of AI, robotics, and science.">
 <meta property="og:image" content="https://haitzupp.github.io/supercycle/og-image.jpg">
 <meta property="og:url" content="https://haitzupp.github.io/supercycle/">
@@ -537,6 +537,71 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
   .hero { padding: 120px 24px 64px; }
   .running { padding: 0 24px; }
 }
+
+/* ── ACCORDION / CASE SECTION ── */
+.theme-case {
+  margin: 36px 0 8px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.theme-case-header {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--ink4);
+  padding: 20px 0 16px;
+}
+.case-item {
+  border-top: 1px solid var(--border);
+}
+.case-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--ink);
+}
+.case-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--orange);
+  letter-spacing: 1px;
+  flex-shrink: 0;
+  width: 22px;
+}
+.case-title {
+  font-family: var(--geist);
+  font-size: 14px;
+  font-weight: 500;
+  flex: 1;
+  line-height: 1.4;
+}
+.case-plus {
+  font-family: var(--mono);
+  font-size: 18px;
+  color: var(--ink3);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+  line-height: 1;
+}
+.case-item.open .case-plus { transform: rotate(45deg); color: var(--orange); }
+.case-body {
+  display: none;
+  padding: 0 0 22px 38px;
+}
+.case-item.open .case-body { display: block; }
+.case-body p {
+  font-family: var(--crim);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink2);
+}
 </style>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9889;</text></svg>">
 </head>
@@ -549,7 +614,6 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
     <li><a href="index.html" class="active">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="episodes.html">Episodes</a></li>
-    <li><a href="research.html">Research</a></li>
   </ul>
   <div class="topbar-right">
     <button class="hamburger" id="sc-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -567,7 +631,6 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
   <a href="episodes.html">Episodes</a>
-  <a href="research.html">Research</a>
 </div>
 
 <!-- HERO -->
@@ -652,6 +715,41 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
       <p>The investment case is not that Bittensor replaces OpenAI. It is that the infrastructure layer beneath all large models is underpriced, because the market is still pricing TAO like speculative crypto rather than AI infrastructure. The comparable to early AWS holds: picks-and-shovels on a compute market that has not yet been valued as compute.</p>
     </div>
 
+
+    <div class="theme-case">
+      <div class="theme-case-header">The Case</div>
+      <div class="case-item">
+        <button class="case-toggle" onclick="scToggleCase(this)">
+          <span class="case-num">01</span>
+          <span class="case-title">The model layer race is over. The infrastructure race hasn't started.</span>
+          <span class="case-plus">+</span>
+        </button>
+        <div class="case-body">
+          <p>OpenAI, Anthropic, and Google have spent more on compute in 18 months than most governments spend on science. That race is decided for this cycle. The infrastructure underneath those models: incentive systems, validation, and edge compute routing. No incumbent exists yet. That is where the open opportunity sits.</p>
+        </div>
+      </div>
+      <div class="case-item">
+        <button class="case-toggle" onclick="scToggleCase(this)">
+          <span class="case-num">02</span>
+          <span class="case-title">Bittensor is priced as speculative crypto, not AI infrastructure.</span>
+          <span class="case-plus">+</span>
+        </button>
+        <div class="case-body">
+          <p>TAO trades in line with crypto sentiment, not AI infrastructure multiples. AWS, Azure, and GCP trade at 10-20x revenue. Bittensor's token mechanism directs economic rewards to validated compute performance. The market hasn't made that re-rating yet. Early AWS looked like speculative infrastructure too.</p>
+        </div>
+      </div>
+      <div class="case-item">
+        <button class="case-toggle" onclick="scToggleCase(this)">
+          <span class="case-num">03</span>
+          <span class="case-title">A 500k+ TAO registration cost is a feature, not a bug.</span>
+          <span class="case-plus">+</span>
+        </button>
+        <div class="case-body">
+          <p>High registration costs filter noise. Subnets that clear the bar have demonstrated enough conviction to put capital at risk. That self-selection mechanism concentrates quality in a way open permissionless systems typically can't. The cost is structural quality control.</p>
+        </div>
+      </div>
+    </div>
+
     <a href="research-decentralized-ai.html" class="theme-read-link">Full note: Decentralized AI &rarr;</a>
   </div>
 
@@ -696,6 +794,41 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
 
     <div class="theme-body">
       <p>The infrastructure picks: spatial computing networks (shared maps for robots operating in the same environment), on-chain ownership and task coordination protocols, and decentralized robot fleet financing. The market is pricing the humanoid robotics story as a 10-year outcome. The infrastructure enabling that story needs to be built in the next 3 years.</p>
+    </div>
+
+
+    <div class="theme-case">
+      <div class="theme-case-header">The Case</div>
+      <div class="case-item">
+        <button class="case-toggle" onclick="scToggleCase(this)">
+          <span class="case-num">01</span>
+          <span class="case-title">The hardware cost collapse is structural. It follows solar, LIDAR, and genomics.</span>
+          <span class="case-plus">+</span>
+        </button>
+        <div class="case-body">
+          <p>General-purpose robot units crossed below $100k this year. Five years ago the same capability cost over $1M. That 10x compression didn't happen because of one innovation. Motors, sensors, and compute all deflated simultaneously. The pattern matches solar panels in 2010 and genome sequencing in 2012. Neither reversed.</p>
+        </div>
+      </div>
+      <div class="case-item">
+        <button class="case-toggle" onclick="scToggleCase(this)">
+          <span class="case-num">02</span>
+          <span class="case-title">Centralized ownership means the upside accrues to Amazon and Tesla, not the deployer.</span>
+          <span class="case-plus">+</span>
+        </button>
+        <div class="case-body">
+          <p>When Amazon buys 100,000 robots, the economic return goes to Amazon equity. The robot operator captures labor cost savings; the robot maker captures margin. Decentralized ownership is a different architecture: productive robot infrastructure that individuals or collectives can own, deploy, and earn from directly. That model has no incumbent yet.</p>
+        </div>
+      </div>
+      <div class="case-item">
+        <button class="case-toggle" onclick="scToggleCase(this)">
+          <span class="case-num">03</span>
+          <span class="case-title">Spatial infrastructure needs to exist before the deployment wave, not after.</span>
+          <span class="case-plus">+</span>
+        </button>
+        <div class="case-body">
+          <p>Robots operating in shared environments (warehouses, streets, hospitals) need a shared map. Without it, every robot is running blind. Building that spatial layer after mass deployment is the hard way. The window to set the standard is now, while the fleet is still small enough that early protocols can become the default.</p>
+        </div>
+      </div>
     </div>
 
     <a href="research-robotics.html" class="theme-read-link">Full note: Robotics &rarr;</a>
@@ -748,6 +881,41 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
       <p>The open-competition model is the structural bet. Rather than spending $2B on internal researchers running the same process, an open network rewards contributors for results rather than effort. The economics are the same reason prediction markets consistently outperform expert panels. The question is whether the same principle holds when the validation moves from digital prediction to wet lab confirmation.</p>
     </div>
 
+
+    <div class="theme-case">
+      <div class="theme-case-header">The Case</div>
+      <div class="case-item">
+        <button class="case-toggle" onclick="scToggleCase(this)">
+          <span class="case-num">01</span>
+          <span class="case-title">AlphaFold removed the structural bottleneck. Candidate generation is the next one.</span>
+          <span class="case-plus">+</span>
+        </button>
+        <div class="case-body">
+          <p>200 million protein structures, resolved. That task used to take a PhD lab years per protein. AlphaFold2 did it in hours at scale. The bottleneck moved downstream: from knowing the structure to identifying candidate molecules worth synthesizing. That is exactly what competitive AI networks are now attacking.</p>
+        </div>
+      </div>
+      <div class="case-item">
+        <button class="case-toggle" onclick="scToggleCase(this)">
+          <span class="case-num">02</span>
+          <span class="case-title">The first FDA-cleared AI drug re-rates the entire category in one announcement.</span>
+          <span class="case-plus">+</span>
+        </button>
+        <div class="case-body">
+          <p>No AI-discovered compound has cleared Phase III. That binary risk is real. It is also the opportunity: investors who wait for FDA confirmation will pay a premium over current entry prices. Isomorphic Labs raised $2B on the bet that it happens within this decade. The question is who is positioned before the approval, not after.</p>
+        </div>
+      </div>
+      <div class="case-item">
+        <button class="case-toggle" onclick="scToggleCase(this)">
+          <span class="case-num">03</span>
+          <span class="case-title">Open competition beats closed research teams on search problems. Prediction markets proved it.</span>
+          <span class="case-plus">+</span>
+        </button>
+        <div class="case-body">
+          <p>NumerAI's open hedge fund consistently outperforms closed quant funds with larger teams and more data. The reason is the same: distributed signal beats concentrated effort when the problem is fundamentally one of search across a large possibility space. Drug candidate identification is that problem. An open network running millions of parallel evaluations will find better molecules than a 200-person research team running sequential experiments.</p>
+        </div>
+      </div>
+    </div>
+
     <a href="research-ai-biotech.html" class="theme-read-link">Full note: AI Biotech &rarr;</a>
   </div>
 
@@ -788,6 +956,41 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
 
     <div class="theme-body">
       <p>The infrastructure bets: agent identity (how does a service know which agent is calling, the SSL certificate equivalent), autonomous payment rails (an agent that cannot pay cannot act in the world), and agent-native APIs built for programmatic consumption with structured schemas and machine-readable documentation. The window to set these standards is the next two to three years.</p>
+    </div>
+
+
+    <div class="theme-case">
+      <div class="theme-case-header">The Case</div>
+      <div class="case-item">
+        <button class="case-toggle" onclick="scToggleCase(this)">
+          <span class="case-num">01</span>
+          <span class="case-title">Agent traffic already exceeds human traffic. The transition is not a forecast.</span>
+          <span class="case-plus">+</span>
+        </button>
+        <div class="case-body">
+          <p>Cloudflare's network data shows bot and agent traffic constitutes the majority of HTTP requests across the internet. Most of that traffic is hitting infrastructure built for browsers and human interaction. The friction compounds at every layer where the mismatch exists: authentication, payment, rate limiting, structured data return. Each friction point is a commercial opportunity.</p>
+        </div>
+      </div>
+      <div class="case-item">
+        <button class="case-toggle" onclick="scToggleCase(this)">
+          <span class="case-num">02</span>
+          <span class="case-title">Agent identity is the SSL certificate of the next internet. It doesn't exist yet.</span>
+          <span class="case-plus">+</span>
+        </button>
+        <div class="case-body">
+          <p>When a human visits a bank website, HTTPS verifies the server. When an AI agent calls a bank API, there is no standard for verifying which agent is calling, on whose behalf, with what authorizations. That infrastructure, covering agent identity, delegation, and revocation, is the SSL equivalent for the agent internet. The team that builds it sets the standard for a decade.</p>
+        </div>
+      </div>
+      <div class="case-item">
+        <button class="case-toggle" onclick="scToggleCase(this)">
+          <span class="case-num">03</span>
+          <span class="case-title">The standards window is 2-3 years. After that, Big Tech sets it by default.</span>
+          <span class="case-plus">+</span>
+        </button>
+        <div class="case-body">
+          <p>Stripe captured mobile payments because they shipped a mobile-native API before the banks realized mobile was the primary channel. Twilio captured mobile messaging the same way. The window exists because incumbents are slow to re-architect for new primary users. Microsoft, Google, and Apple are building agent infrastructure now. The window closes when one of them ships something good enough to become the default.</p>
+        </div>
+      </div>
     </div>
 
     <a href="research-agent-economy.html" class="theme-read-link">Full note: Agent Economy &rarr;</a>
@@ -834,6 +1037,41 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
 
     <div class="theme-body">
       <p>The current window: AI infrastructure protocols, including Bittensor and comparable networks, are at a comparable stage to Solana in 2018 to 2019. Growing developer activity, increasing subnet registrations, and rising validator counts are the leading metrics. These precede price discovery. Institutions have not established meaningful positions yet. The window closes with the first major institutional announcement.</p>
+    </div>
+
+
+    <div class="theme-case">
+      <div class="theme-case-header">The Case</div>
+      <div class="case-item">
+        <button class="case-toggle" onclick="scToggleCase(this)">
+          <span class="case-num">01</span>
+          <span class="case-title">Most DePIN fails one test: a structural advantage over the centralized alternative.</span>
+          <span class="case-plus">+</span>
+        </button>
+        <div class="case-body">
+          <p>Solana passed the test in 2018 because 50,000 transactions per second was a real, measurable advantage over Ethereum's 15. Most DePIN networks fail that test: they are decentralized for its own sake, with token economics that don't survive the arrival of a well-funded centralized competitor. The filter is simple and most projects don't clear it.</p>
+        </div>
+      </div>
+      <div class="case-item">
+        <button class="case-toggle" onclick="scToggleCase(this)">
+          <span class="case-num">02</span>
+          <span class="case-title">Developer activity leads price discovery by 12-18 months. That is the signal.</span>
+          <span class="case-plus">+</span>
+        </button>
+        <div class="case-body">
+          <p>GitHub commits and hackathon participation consistently preceded Solana's price move by over a year. Developers build where the technical architecture is compelling, regardless of token price. Retail and institutions follow users, not developers. Tracking developer concentration gives you 12-18 months of lead time before the market prices it.</p>
+        </div>
+      </div>
+      <div class="case-item">
+        <button class="case-toggle" onclick="scToggleCase(this)">
+          <span class="case-num">03</span>
+          <span class="case-title">AI infrastructure protocols are at Solana 2018. Institutions have not moved.</span>
+          <span class="case-plus">+</span>
+        </button>
+        <div class="case-body">
+          <p>Bittensor and comparable AI infrastructure networks have growing developer activity, rising validator counts, and increasing subnet registrations: the same leading metrics that preceded Solana's price discovery. Institutions with meaningful AI infrastructure positions are not yet visible. The entry window that Multicoin had in 2018 at $0.04 is the analogue. It closes with the first major institutional announcement.</p>
+        </div>
+      </div>
     </div>
 
     <a href="research-crypto-vc.html" class="theme-read-link">Full note: Crypto VC &rarr;</a>
@@ -979,6 +1217,19 @@ revealEls.forEach(function(el){ ro.observe(el); });
     nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ nav.classList.remove('open'); }); });
   }
 })();
+
+// Accordion toggle
+function scToggleCase(btn) {
+  var item = btn.parentElement;
+  var isOpen = item.classList.contains('open');
+  // Close all in same .theme-case
+  var parent = item.closest('.theme-case');
+  if (parent) {
+    parent.querySelectorAll('.case-item').forEach(function(i){ i.classList.remove('open'); });
+  }
+  if (!isOpen) { item.classList.add('open'); }
+}
+
 </script>
 </body>
 </html>
