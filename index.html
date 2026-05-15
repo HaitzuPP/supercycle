@@ -36,7 +36,7 @@
   --crim:  'Crimson Text', serif;
   --geist: 'Geist', sans-serif;
   --mono:  'Geist Mono', monospace;
-  --col:   680px;
+  --col:   820px;
 }
 html[data-theme="dark"] {
   --cream: #1a1814;
@@ -70,7 +70,7 @@ nav {
   backdrop-filter: blur(8px);
 }
 .topbar-brand {
-  font-family: var(--geist);
+  font-family: var(--bask);
   font-size: 14px;
   font-weight: 600;
   letter-spacing: -.2px;
@@ -198,6 +198,12 @@ nav {
 .theme-viz  { order: 4; margin-bottom: 32px; }
 .theme-body { order: 5; }
 .pull-quote { order: 6; }
+.theme-read-note {
+  color: var(--ink4);
+  font-style: italic;
+  cursor: default;
+  pointer-events: none;
+}
 .theme-read-link { order: 7; }
 .theme-h {
   font-family: var(--bask);
@@ -269,6 +275,12 @@ nav {
 }
 
 /* Read full link */
+.theme-read-note {
+  color: var(--ink4);
+  font-style: italic;
+  cursor: default;
+  pointer-events: none;
+}
 .theme-read-link {
   display: inline-flex;
   align-items: center;
@@ -646,15 +658,15 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
     <div class="hero-meta">
       <div class="hero-stat">
         <strong>12</strong>
-        Episodes
+        Conversations
       </div>
       <div class="hero-stat">
-        <strong>5</strong>
-        Themes
+        <strong>11+</strong>
+        Guests
       </div>
       <div class="hero-stat">
-        <strong>2026</strong>
-        Vintage
+        <strong>$6B+</strong>
+        AUM represented
       </div>
     </div>
   </div>
@@ -665,7 +677,7 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
 
   <!-- Intro -->
   <div class="chapter-intro">
-    <p>Patterns that kept surfacing when founders and investors were asked to explain their bets in plain terms, with real numbers, on the record.</p>
+    <p>Five bets on what the next decade of AI, robotics, and science actually looks like, drawn from twelve conversations with the people putting capital behind them.</p>
   </div>
 
   <!-- ── 01 DECENTRALIZED AI ── -->
@@ -690,31 +702,17 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
         <span class="signal-val">DCG</span>
         <span class="signal-lbl">Institutional backing via Yuma</span>
       </div>
-    </div>
-    <div class="theme-viz" data-viz="v01">
-      <svg class="viz-lines"></svg>
-      <div class="tn hub"    data-id="tao"       style="left:42%;top:45%;--dur:6s;--delay:0s">   <div class="tn-chip"><span class="tn-sym" style="color:var(--ink)">&#964;</span><span class="tn-lbl">Bittensor</span></div></div>
-      <div class="tn"        data-id="subnet"    style="left:18%;top:25%;--dur:5.2s;--delay:-1s"> <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#11041;</span><span class="tn-lbl">Subnet</span></div></div>
+    </div>      <div class="tn"        data-id="subnet"    style="left:18%;top:25%;--dur:5.2s;--delay:-1s"> <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#11041;</span><span class="tn-lbl">Subnet</span></div></div>
       <div class="tn"        data-id="validator" style="left:20%;top:70%;--dur:4.8s;--delay:-.5s"><div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#10568;</span><span class="tn-lbl">Validator</span></div></div>
       <div class="tn accent" data-id="compute"   style="left:66%;top:20%;--dur:5.5s;--delay:-2s"> <div class="tn-chip"><span class="tn-sym" style="color:#5b8dd9">&#9633;</span><span class="tn-lbl">Compute</span></div></div>
       <div class="tn accent" data-id="model"     style="left:76%;top:60%;--dur:5.8s;--delay:-.8s"><div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#9673;</span><span class="tn-lbl">Foundation<br>Model</span></div></div>
       <div class="tn"        data-id="miner"     style="left:55%;top:80%;--dur:5s;--delay:-1.5s"> <div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#9670;</span><span class="tn-lbl">Miner</span></div></div>
     </div>
 
-    <div class="theme-body">
-      <p>The model layer of AI is consolidating quickly. Three companies are spending more on compute than most governments spend on defense, and they are the ones who will own the foundation models. That race is largely run for this cycle.</p>
-      <p>The infrastructure underneath them is a different question. Compute at the edges, incentive systems for independent model developers, validation of AI outputs without trusting a single entity: none of this has a clear incumbent. Bittensor is the most developed attempt to build it, with a token mechanism that routes rewards to the best-performing subnets and a registration cost high enough to filter out noise.</p>
-    </div>
-
     <div class="pull-quote">
       <div class="pull-quote-text">"Intelligence is moving toward non-human functions for the first time in history. Centralized AI is structurally captured by the same corporate dynamics that captured cloud computing. The open incentive layer wins because it cannot be captured by any single entity."</div>
       <div class="pull-quote-attr">DCG / Yuma Group · Ep. 11</div>
     </div>
-
-    <div class="theme-body">
-      <p>The investment case is not that Bittensor replaces OpenAI. It is that the infrastructure layer beneath all large models is underpriced, because the market is still pricing TAO like speculative crypto rather than AI infrastructure. The comparable to early AWS holds: picks-and-shovels on a compute market that has not yet been valued as compute.</p>
-    </div>
-
 
     <div class="theme-case">
       <div class="theme-case-header">The Case</div>
@@ -750,16 +748,12 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
       </div>
     </div>
 
-    <a href="research-decentralized-ai.html" class="theme-read-link">Full note: Decentralized AI &rarr;</a>
+    <span class="theme-read-link theme-read-note">Research note: Decentralized AI, coming soon</span>
   </div>
 
   <!-- ── 02 ROBOTICS ── -->
   <div class="theme-section reveal" id="theme-02">
-    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="3" y="14" width="9" height="10" rx="1.5"/><rect x="12" y="9" width="8" height="7" rx="1.5"/><rect x="20" y="12" width="9" height="10" rx="1.5"/><line x1="12" y1="14" x2="20" y2="14"/><line x1="9" y1="22" x2="12" y2="22"/><line x1="20" y1="20" x2="23" y2="20"/><circle cx="6" cy="27" r="2"/><circle cx="26" cy="27" r="2"/></svg>02 · Robotics</div>
-    <div class="theme-viz" data-viz="v02">
-      <svg class="viz-lines"></svg>
-      <div class="tn hub"    data-id="hw"      style="left:42%;top:45%;--dur:6.2s;--delay:0s">    <div class="tn-chip"><span class="tn-sym" style="color:var(--ink)">&#9881;</span><span class="tn-lbl">Hardware</span></div></div>
-      <div class="tn accent" data-id="spatial" style="left:18%;top:26%;--dur:5.1s;--delay:-1.2s"> <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#9678;</span><span class="tn-lbl">Spatial<br>Map</span></div></div>
+    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="3" y="14" width="9" height="10" rx="1.5"/><rect x="12" y="9" width="8" height="7" rx="1.5"/><rect x="20" y="12" width="9" height="10" rx="1.5"/><line x1="12" y1="14" x2="20" y2="14"/><line x1="9" y1="22" x2="12" y2="22"/><line x1="20" y1="20" x2="23" y2="20"/><circle cx="6" cy="27" r="2"/><circle cx="26" cy="27" r="2"/></svg>02 · Robotics</div>      <div class="tn accent" data-id="spatial" style="left:18%;top:26%;--dur:5.1s;--delay:-1.2s"> <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#9678;</span><span class="tn-lbl">Spatial<br>Map</span></div></div>
       <div class="tn"        data-id="task"    style="left:18%;top:70%;--dur:4.9s;--delay:-.6s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#8801;</span><span class="tn-lbl">Task<br>Protocol</span></div></div>
       <div class="tn"        data-id="fleet"   style="left:66%;top:22%;--dur:5.4s;--delay:-1.8s"> <div class="tn-chip"><span class="tn-sym" style="color:#5b8dd9">&#9638;</span><span class="tn-lbl">Fleet</span></div></div>
       <div class="tn accent" data-id="own"     style="left:75%;top:58%;--dur:5.7s;--delay:-.4s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">$</span><span class="tn-lbl">Ownership</span></div></div>
@@ -780,11 +774,6 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
         <span class="signal-val">&lt;$100k</span>
         <span class="signal-lbl">General-purpose unit cost</span>
       </div>
-    </div>
-
-    <div class="theme-body">
-      <p>The hardware cost curve and the AI capability curve broke at the same time. Boston Dynamics, Agility, Figure, and 1X are all producing general-purpose robots at prices that make industrial deployment viable. Five years ago the same units cost over $1M. That deflationary pressure is structural, not cyclical: it follows the same pattern as solar panels, LIDAR, and genome sequencing.</p>
-      <p>The question that follows is not whether robots proliferate. It is who captures the economic upside when they do. Amazon, Tesla, and Foxconn buying robot fleets means the upside accrues to their equity holders. Decentralized robot ownership is a different architecture: productive robot infrastructure that individuals or collectives can own, deploy, and earn from.</p>
     </div>
 
     <div class="pull-quote">
@@ -831,16 +820,12 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
       </div>
     </div>
 
-    <a href="research-robotics.html" class="theme-read-link">Full note: Robotics &rarr;</a>
+    <span class="theme-read-link theme-read-note">Research note: Robotics, coming soon</span>
   </div>
 
   <!-- ── 03 AI BIOTECH ── -->
   <div class="theme-section reveal" id="theme-03">
-    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><path d="M11 3 Q20 9 11 16 Q2 23 11 29"/><path d="M21 3 Q12 9 21 16 Q30 23 21 29"/><line x1="11" y1="9" x2="21" y2="9"/><line x1="11" y1="16" x2="21" y2="16"/><line x1="11" y1="23" x2="21" y2="23"/></svg>03 · AI Biotech</div>
-    <div class="theme-viz" data-viz="v03">
-      <svg class="viz-lines"></svg>
-      <div class="tn hub"    data-id="target"   style="left:42%;top:45%;--dur:5.8s;--delay:0s">    <div class="tn-chip"><span class="tn-sym" style="color:var(--ink)">&#9678;</span><span class="tn-lbl">Drug<br>Target</span></div></div>
-      <div class="tn accent" data-id="aimodel"  style="left:18%;top:24%;--dur:5.3s;--delay:-.8s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#9673;</span><span class="tn-lbl">AI Model</span></div></div>
+    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><path d="M11 3 Q20 9 11 16 Q2 23 11 29"/><path d="M21 3 Q12 9 21 16 Q30 23 21 29"/><line x1="11" y1="9" x2="21" y2="9"/><line x1="11" y1="16" x2="21" y2="16"/><line x1="11" y1="23" x2="21" y2="23"/></svg>03 · AI Biotech</div>      <div class="tn accent" data-id="aimodel"  style="left:18%;top:24%;--dur:5.3s;--delay:-.8s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#9673;</span><span class="tn-lbl">AI Model</span></div></div>
       <div class="tn"        data-id="molecule" style="left:18%;top:70%;--dur:4.7s;--delay:-1.4s"> <div class="tn-chip"><span class="tn-sym" style="color:#5b8dd9">&#9670;</span><span class="tn-lbl">Molecule</span></div></div>
       <div class="tn accent" data-id="alpha"    style="left:66%;top:22%;--dur:5.6s;--delay:-2s">   <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">A</span><span class="tn-lbl">AlphaFold</span></div></div>
       <div class="tn"        data-id="clinical" style="left:74%;top:58%;--dur:5.2s;--delay:-.3s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#8801;</span><span class="tn-lbl">Clinical</span></div></div>
@@ -865,11 +850,6 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
         <span class="signal-val">2-3yr</span>
         <span class="signal-lbl">AI-compressed target</span>
       </div>
-    </div>
-
-    <div class="theme-body">
-      <p>The drug discovery pipeline has been structurally unchanged for 50 years. Screen millions of compounds, identify candidates, run trials, file for approval. The bottleneck has always been candidate identification, and that is exactly where AI has the clearest advantage. AlphaFold2's resolution of 200 million protein structures effectively removed the structural biology bottleneck. Candidate generation is next.</p>
-      <p>The binary risk is real and it is also the opportunity. No AI-discovered compound has cleared Phase III. The first one that does will shift the entire market's assessment of what AI drug discovery is worth. Investors who wait for that confirmation will pay a significant premium over current entry prices.</p>
     </div>
 
     <div class="pull-quote">
@@ -916,16 +896,12 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
       </div>
     </div>
 
-    <a href="research-ai-biotech.html" class="theme-read-link">Full note: AI Biotech &rarr;</a>
+    <span class="theme-read-link theme-read-note">Research note: AI Biotech, coming soon</span>
   </div>
 
   <!-- ── 04 AGENT ECONOMY ── -->
   <div class="theme-section reveal" id="theme-04">
-    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="11" y="11" width="10" height="10" rx="1.5"/><line x1="16" y1="3" x2="16" y2="11"/><line x1="16" y1="21" x2="16" y2="29"/><line x1="3" y1="16" x2="11" y2="16"/><line x1="21" y1="16" x2="29" y2="16"/><circle cx="16" cy="3" r="2"/><circle cx="16" cy="29" r="2"/><circle cx="3" cy="16" r="2"/><circle cx="29" cy="16" r="2"/></svg>04 · Agent Economy</div>
-    <div class="theme-viz" data-viz="v04">
-      <svg class="viz-lines"></svg>
-      <div class="tn hub"    data-id="agent"    style="left:42%;top:45%;--dur:6s;--delay:0s">      <div class="tn-chip"><span class="tn-sym" style="color:var(--ink)">&#9673;</span><span class="tn-lbl">AI Agent</span></div></div>
-      <div class="tn"        data-id="identity" style="left:18%;top:25%;--dur:5.1s;--delay:-1s">   <div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#9670;</span><span class="tn-lbl">Identity</span></div></div>
+    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="11" y="11" width="10" height="10" rx="1.5"/><line x1="16" y1="3" x2="16" y2="11"/><line x1="16" y1="21" x2="16" y2="29"/><line x1="3" y1="16" x2="11" y2="16"/><line x1="21" y1="16" x2="29" y2="16"/><circle cx="16" cy="3" r="2"/><circle cx="16" cy="29" r="2"/><circle cx="3" cy="16" r="2"/><circle cx="29" cy="16" r="2"/></svg>04 · Agent Economy</div>      <div class="tn"        data-id="identity" style="left:18%;top:25%;--dur:5.1s;--delay:-1s">   <div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#9670;</span><span class="tn-lbl">Identity</span></div></div>
       <div class="tn accent" data-id="payment"  style="left:20%;top:70%;--dur:4.8s;--delay:-.5s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">$</span><span class="tn-lbl">Payment</span></div></div>
       <div class="tn"        data-id="api"      style="left:66%;top:20%;--dur:5.5s;--delay:-2s">   <div class="tn-chip"><span class="tn-sym" style="color:#5b8dd9">&#8801;</span><span class="tn-lbl">API</span></div></div>
       <div class="tn accent" data-id="protocol" style="left:76%;top:60%;--dur:5.8s;--delay:-.8s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#11041;</span><span class="tn-lbl">Protocol</span></div></div>
@@ -942,11 +918,6 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
         <span class="signal-val">$2B+</span>
         <span class="signal-lbl">Agent infrastructure funding (2024)</span>
       </div>
-    </div>
-
-    <div class="theme-body">
-      <p>The shift is not coming. It is underway. Cloudflare's network data shows bot and agent traffic constitutes the majority of HTTP requests across the internet. Most of that traffic hits infrastructure designed for browsers, not programmatic clients. The friction is real and commercial at each layer where it exists.</p>
-      <p>The analogy to the early mobile internet is instructive. In 2008, web infrastructure was built for desktop browsers. The teams that built mobile-native infrastructure captured outsized value: Stripe for mobile payments, Twilio for mobile messaging. The constraint was not demand. It was the absence of the infrastructure itself.</p>
     </div>
 
     <div class="pull-quote">
@@ -993,16 +964,12 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
       </div>
     </div>
 
-    <a href="research-agent-economy.html" class="theme-read-link">Full note: Agent Economy &rarr;</a>
+    <span class="theme-read-link theme-read-note">Research note: Agent Economy, coming soon</span>
   </div>
 
   <!-- ── 05 CRYPTO VC ── -->
   <div class="theme-section reveal" id="theme-05">
-    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="2" y="11" width="11" height="10" rx="5"/><rect x="19" y="11" width="11" height="10" rx="5"/><line x1="13" y1="16" x2="19" y2="16"/><line x1="7" y1="11" x2="7" y2="6"/><line x1="25" y1="21" x2="25" y2="26"/></svg>05 · Crypto VC</div>
-    <div class="theme-viz" data-viz="v05">
-      <svg class="viz-lines"></svg>
-      <div class="tn hub"    data-id="proto"  style="left:42%;top:45%;--dur:6.1s;--delay:0s">     <div class="tn-chip"><span class="tn-sym" style="color:var(--ink)">P</span><span class="tn-lbl">Protocol</span></div></div>
-      <div class="tn"        data-id="dev"    style="left:18%;top:25%;--dur:5.2s;--delay:-1.1s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#9670;</span><span class="tn-lbl">Developers</span></div></div>
+    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="2" y="11" width="11" height="10" rx="5"/><rect x="19" y="11" width="11" height="10" rx="5"/><line x1="13" y1="16" x2="19" y2="16"/><line x1="7" y1="11" x2="7" y2="6"/><line x1="25" y1="21" x2="25" y2="26"/></svg>05 · Crypto VC</div>      <div class="tn"        data-id="dev"    style="left:18%;top:25%;--dur:5.2s;--delay:-1.1s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#9670;</span><span class="tn-lbl">Developers</span></div></div>
       <div class="tn accent" data-id="cap"    style="left:20%;top:70%;--dur:4.9s;--delay:-.7s">   <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">$</span><span class="tn-lbl">Capital</span></div></div>
       <div class="tn"        data-id="token"  style="left:66%;top:22%;--dur:5.4s;--delay:-1.8s">  <div class="tn-chip"><span class="tn-sym" style="color:#5b8dd9">&#11041;</span><span class="tn-lbl">Token</span></div></div>
       <div class="tn accent" data-id="infra"  style="left:74%;top:58%;--dur:5.7s;--delay:-.4s">   <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#9633;</span><span class="tn-lbl">Infra</span></div></div>
@@ -1023,11 +990,6 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
         <span class="signal-val">12-18mo</span>
         <span class="signal-lbl">Developer activity lead time</span>
       </div>
-    </div>
-
-    <div class="theme-body">
-      <p>Multicoin built $5.9B in AUM by making concentrated bets on protocol infrastructure before the market understood it. The Solana position started at $0.04 per token in 2018. The playbook is specific: find a protocol with a structural advantage over the centralized incumbent, size the position before institutions can move, and hold through the development cycle. Being early to the wrong protocol is not the same bet.</p>
-      <p>The filter Shayon uses for DePIN is direct: does this protocol have a structural advantage over the centralized alternative, or is it decentralization for its own sake? Most DePIN fails that test. The failure modes are speculative token economics, no path to adoption beyond the initial community, and no technical moat once a well-funded centralized competitor decides to compete. Solana passed the test because the throughput advantage over Ethereum was real and measurable before the market priced it.</p>
     </div>
 
     <div class="pull-quote">
@@ -1074,7 +1036,7 @@ html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color:
       </div>
     </div>
 
-    <a href="research-crypto-vc.html" class="theme-read-link">Full note: Crypto VC &rarr;</a>
+    <span class="theme-read-link theme-read-note">Research note: Crypto VC, coming soon</span>
   </div>
 
   <!-- Episodes at bottom -->
