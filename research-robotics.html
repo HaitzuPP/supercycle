@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var t=localStorage.getItem('sc-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Robotics Wave | Supercycle Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F3EEE3;
+  --parch: #EAE4D4;
+  --ink: #0D0C09;
+  --ink2: rgba(13,12,9,.78);
+  --ink3: rgba(13,12,9,.58);
+  --ink4: rgba(13,12,9,.10);
+  --orange: #D94F2A;
+  --dark: #1C1914;
+  --border: rgba(13,12,9,.14);
+  --bmed: rgba(13,12,9,.15);
+  --bask: 'Baskervville', Georgia, serif;
+  --crim: 'Crimson Text', Georgia, serif;
+  --geist: 'Geist', -apple-system, sans-serif;
+  --mono: 'Geist Mono', monospace;
+  --topbar-bg: rgba(243,238,227,.88);
+}
+
+html[data-theme="dark"] {
+  --cream: #0D0C09;
+  --parch: #161310;
+  --ink: rgba(255,255,255,.88);
+  --ink2: rgba(255,255,255,.65);
+  --ink3: rgba(255,255,255,.4);
+  --ink4: rgba(255,255,255,.08);
+  --border: rgba(255,255,255,.1);
+  --bmed: rgba(255,255,255,.1);
+  --topbar-bg: rgba(13,12,9,.92);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--crim);
+  font-size: 20px;
+  line-height: 1.65;
+  background: var(--cream);
+  color: var(--ink);
+}
+
+a { color: inherit; text-decoration: none; }
+
+.topbar {
+  position: sticky;
+  top: 0;
+  height: 52px;
+  background: var(--topbar-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  z-index: 100;
+}
+
+.topbar-logo {
+  font-family: var(--bask);
+  font-size: 18px;
+  letter-spacing: -.3px;
+  color: var(--ink);
+}
+
+.topbar-logo span { color: var(--orange); }
+
+.topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.topbar-nav a {
+  font-family: var(--geist);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink3);
+  letter-spacing: .2px;
+  transition: color .15s;
+}
+
+.topbar-nav a:hover,
+.topbar-nav a.active { color: var(--ink); }
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.topbar-cta {
+  font-family: var(--geist);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--cream);
+  background: var(--ink);
+  padding: 7px 16px;
+  border-radius: 4px;
+  letter-spacing: .2px;
+  transition: background .15s, transform .12s;
+}
+
+.topbar-cta:hover { background: var(--orange); transform: translateY(-1px); }
+
+.theme-toggle {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--ink3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: color .15s, background .15s;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover { color: var(--ink); background: var(--ink4); }
+
+.hero {
+  background: var(--dark);
+  padding: 96px 64px 88px;
+}
+
+.hero-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  font-family: var(--bask);
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -.6px;
+  color: rgba(255,255,255,.92);
+  margin-bottom: 28px;
+}
+
+.hero-thesis {
+  font-family: var(--crim);
+  font-size: 20px;
+  line-height: 1.65;
+  color: rgba(255,255,255,.52);
+  max-width: 680px;
+  margin-bottom: 40px;
+  font-style: italic;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-platform {
+  font-family: var(--geist);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 4px;
+  letter-spacing: .2px;
+  transition: background .15s, transform .12s, border-color .15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-platform:hover { transform: translateY(-1px); }
+
+.btn-yt {
+  background: var(--orange);
+  color: #fff;
+  border: 1px solid var(--orange);
+}
+
+.btn-yt:hover { background: #c2441f; border-color: #c2441f; }
+
+.btn-spotify {
+  background: transparent;
+  color: rgba(255,255,255,.72);
+  border: 1px solid rgba(255,255,255,.2);
+}
+
+.btn-spotify:hover { border-color: rgba(255,255,255,.5); color: rgba(255,255,255,.92); }
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 18px;
+}
+
+.thesis-section {
+  background: var(--parch);
+  padding: 88px 64px;
+  border-bottom: 1px solid var(--border);
+}
+
+.thesis-inner {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.thesis-inner h2 {
+  font-family: var(--bask);
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -.3px;
+  color: var(--ink);
+  margin-bottom: 32px;
+}
+
+.thesis-inner p {
+  font-size: 19px;
+  line-height: 1.72;
+  color: var(--ink2);
+  margin-bottom: 22px;
+}
+
+.thesis-inner p:last-child { margin-bottom: 0; }
+
+.signals-section {
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+}
+
+.signals-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.signal-cell {
+  padding: 44px 36px;
+  border-right: 1px solid var(--border);
+}
+
+.signal-cell:last-child { border-right: none; }
+
+.signal-num {
+  font-family: var(--bask);
+  font-size: 34px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 10px;
+  letter-spacing: -.3px;
+}
+
+.signal-label {
+  font-family: var(--geist);
+  font-size: 13px;
+  color: var(--ink3);
+  line-height: 1.45;
+}
+
+.conversations-section {
+  background: var(--cream);
+  padding: 88px 64px;
+  border-bottom: 1px solid var(--border);
+}
+
+.conversations-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.conversations-inner h2 {
+  font-family: var(--bask);
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: -.3px;
+  color: var(--ink);
+  margin-bottom: 48px;
+}
+
+.insight-block {
+  display: flex;
+  gap: 0;
+  margin-bottom: 36px;
+}
+
+.insight-block:last-child { margin-bottom: 0; }
+
+.insight-accent {
+  width: 3px;
+  background: var(--orange);
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-right: 28px;
+  align-self: stretch;
+}
+
+.insight-body {
+  flex: 1;
+  padding: 4px 0 8px;
+}
+
+.insight-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.insight-guest {
+  font-family: var(--geist);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.insight-ep {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: rgba(217,79,42,.09);
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+
+.insight-text {
+  font-family: var(--crim);
+  font-size: 19px;
+  line-height: 1.68;
+  color: var(--ink2);
+  margin-bottom: 14px;
+}
+
+.insight-link {
+  font-family: var(--geist);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--orange);
+  letter-spacing: .3px;
+  transition: opacity .15s;
+}
+
+.insight-link:hover { opacity: .7; }
+
+.opportunity-section {
+  background: var(--parch);
+  padding: 88px 64px;
+  border-bottom: 1px solid var(--border);
+}
+
+.opportunity-inner {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.opportunity-inner h2 {
+  font-family: var(--bask);
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: -.3px;
+  color: var(--ink);
+  margin-bottom: 40px;
+}
+
+.opportunity-item {
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.opportunity-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.opportunity-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+
+.opportunity-text {
+  font-family: var(--crim);
+  font-size: 19px;
+  line-height: 1.68;
+  color: var(--ink2);
+}
+
+.guests-section {
+  background: var(--dark);
+  padding: 64px;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+
+.guests-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.guests-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-bottom: 28px;
+}
+
+.guests-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.guest-card {
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 6px;
+  padding: 18px 16px 16px;
+  background: rgba(255,255,255,.03);
+  transition: border-color .2s, background .2s, transform .15s;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.guest-card:hover {
+  border-color: var(--orange);
+  background: rgba(217,79,42,.05);
+  transform: translateY(-2px);
+}
+
+.guest-card-ep {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.guest-card-name {
+  font-family: var(--geist);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,.82);
+  line-height: 1.35;
+}
+
+.guest-card-co {
+  font-family: var(--geist);
+  font-size: 11px;
+  color: rgba(255,255,255,.36);
+}
+
+.footer {
+  background: var(--dark);
+  padding: 48px 64px 36px;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+
+.footer-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 36px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  margin-bottom: 24px;
+}
+
+.footer-brand {
+  font-family: var(--bask);
+  font-size: 22px;
+  color: rgba(255,255,255,.8);
+}
+
+.footer-brand span { color: var(--orange); }
+
+.footer-brand p {
+  font-family: var(--crim);
+  font-size: 15px;
+  color: rgba(255,255,255,.32);
+  margin-top: 6px;
+  max-width: 260px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.footer-links {
+  display: flex;
+  gap: 48px;
+}
+
+.footer-col-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.28);
+  margin-bottom: 14px;
+}
+
+.footer-col a {
+  display: block;
+  font-family: var(--geist);
+  font-size: 13px;
+  color: rgba(255,255,255,.48);
+  margin-bottom: 9px;
+  transition: color .15s;
+}
+
+.footer-col a:hover { color: rgba(255,255,255,.85); }
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-copy {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: rgba(255,255,255,.22);
+  letter-spacing: .4px;
+}
+
+.footer-copy a { color: rgba(255,255,255,.38); }
+
+@media (max-width: 960px) {
+  .topbar { padding: 0 24px; }
+  .hero { padding: 64px 32px 56px; }
+  .hero h1 { font-size: 40px; }
+  .thesis-section, .conversations-section, .opportunity-section { padding: 64px 32px; }
+  .guests-section { padding: 48px 32px; }
+  .signals-strip { grid-template-columns: repeat(2, 1fr); }
+  .signal-cell:nth-child(2) { border-right: none; }
+  .guests-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer { padding: 40px 32px 28px; }
+  .footer-top { flex-direction: column; gap: 32px; }
+  .footer-links { gap: 28px; }
+}
+
+@media (max-width: 600px) {
+  .guests-grid { grid-template-columns: 1fr; }
+  .signals-strip { grid-template-columns: 1fr; }
+  .signal-cell { border-right: none; border-bottom: 1px solid var(--border); }
+  .signal-cell:last-child { border-bottom: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <a href="index.html" class="topbar-logo">Super<span>cycle</span></a>
+  <ul class="topbar-nav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="episodes.html">Episodes</a></li>
+    <li><a href="research.html" class="active">Research</a></li>
+  </ul>
+  <div class="topbar-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
+    <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="topbar-cta">Watch Latest</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Investment Opportunity</div>
+    <h1>Hardware costs just broke. The robotics window is open.</h1>
+    <p class="hero-thesis">Industrial robot costs have followed the same curve as solar panels and EV batteries, and the companies building the ownership and coordination infrastructure for robot fleets are 5 years ahead of where the capital is looking.</p>
+    <div class="hero-actions">
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="btn-platform btn-yt">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        Watch on YouTube
+      </a>
+      <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="btn-platform btn-spotify">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+        Listen on Spotify
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="thesis-section">
+  <div class="thesis-inner">
+    <div class="section-label">The Thesis</div>
+    <h2>Why this is investable now</h2>
+    <p>The deflationary pressure on hardware is real. Boston Dynamics, Agility Robotics, Figure, and 1X are all making humanoid robots viable at sub-$100k price points, a cost curve that sat above $1M five years ago. The AI layer, including computer vision, spatial computing, and autonomous decision-making, is now good enough to make general-purpose robots useful in constrained environments. Both curves broke at the same time. That is not a coincidence; it is the window.</p>
+    <p>The question is not whether robots proliferate. It is who owns them and on what terms. Centralized robot ownership by Amazon, Tesla, and Foxconn means the economic upside of robot labor accrues to equity holders of those companies. Decentralized robot ownership creates a new asset class: productive robot infrastructure that individual investors or collectives can own and deploy. The ownership structure determines who captures the value.</p>
+    <p>The spatial computing layer is the missing piece. For robots to coordinate in shared physical spaces, they need a persistent, low-latency map of the world. Auki is building that map as shared infrastructure. BitRobot is putting robot ownership on-chain. These are not competing bets; they are complementary infrastructure plays on the same underlying transition. One solves the coordination problem, the other solves the ownership problem.</p>
+  </div>
+</section>
+
+<section class="signals-section">
+  <div class="signals-strip">
+    <div class="signal-cell">
+      <div class="signal-num">553k</div>
+      <div class="signal-label">Industrial robot installations globally in 2023, per the International Federation of Robotics</div>
+    </div>
+    <div class="signal-cell">
+      <div class="signal-num">$38B</div>
+      <div class="signal-label">Projected humanoid robot market by 2035; still in single-digit billions today, per industry forecasts</div>
+    </div>
+    <div class="signal-cell">
+      <div class="signal-num">$675M</div>
+      <div class="signal-label">Figure AI raised at a $2.6B valuation in early 2024, signaling VC conviction in the hardware cost curve</div>
+    </div>
+    <div class="signal-cell">
+      <div class="signal-num">GR00T</div>
+      <div class="signal-label">Nvidia's humanoid foundation model: Jensen Huang's direct bet that humanoid robotics is the next computing platform</div>
+    </div>
+  </div>
+</section>
+
+<section class="conversations-section">
+  <div class="conversations-inner">
+    <div class="section-label">From Our Conversations</div>
+    <h2>What the builders and investors told us</h2>
+
+    <div class="insight-block">
+      <div class="insight-accent"></div>
+      <div class="insight-body">
+        <div class="insight-meta">
+          <span class="insight-guest">Mauricio (XMAQUINA) + Simon (Moonrock Capital)</span>
+          <span class="insight-ep">Ep. 9</span>
+        </div>
+        <p class="insight-text">Hardware costs are collapsing. XMAQUINA's bet is that decentralized robotics infrastructure captures what centralized players cannot: the long tail of deployment environments that Amazon and Tesla will never service. Moonrock's view is direct: capital is flowing into robotics because the hardware cost curve just broke, and the window to get in early on the infrastructure layer is 18 to 24 months. After that, the category gets crowded and priced.</p>
+        <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="insight-link">Watch episode &rarr;</a>
+      </div>
+    </div>
+
+    <div class="insight-block">
+      <div class="insight-accent"></div>
+      <div class="insight-body">
+        <div class="insight-meta">
+          <span class="insight-guest">Nils (Auki) + Michael (BitRobot)</span>
+          <span class="insight-ep">Ep. 3</span>
+        </div>
+        <p class="insight-text">Once robots can transact autonomously, centralized ownership becomes the bottleneck, not a feature. Auki builds spatial computing infrastructure: a shared, persistent map of physical environments that robots use to coordinate without central dispatching. BitRobot puts robot ownership on-chain, enabling fractional ownership of productive robot assets the same way REITs enable fractional ownership of real estate. Both argue that decentralized robotics is structural, not optional, once robots operate in shared spaces at scale.</p>
+        <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="insight-link">Watch episode &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="opportunity-section">
+  <div class="opportunity-inner">
+    <div class="section-label">The Opportunity</div>
+    <h2>What this means for investors</h2>
+
+    <div class="opportunity-item">
+      <div class="opportunity-num">01 / Decentralized robot ownership protocols</div>
+      <p class="opportunity-text">The closest analog is real estate investment trusts, but the productive asset is a robot, not a building. BitRobot's on-chain ownership model enables fractional investment in robot fleets that generate revenue from task completion. The total addressable base is every industrial and logistics environment that currently pays human labor for repetitive, structured tasks. That is not a niche.</p>
+    </div>
+
+    <div class="opportunity-item">
+      <div class="opportunity-num">02 / Spatial computing infrastructure</div>
+      <p class="opportunity-text">Auki's shared map is a picks-and-shovels play. Every robot deployment in a shared environment becomes a potential customer. The infrastructure layer earns from usage without needing to own or operate a single robot. As deployment density increases, the network effects of a shared map compound: more robots contribute data, which makes the map more accurate, which attracts more robots. The moat builds itself.</p>
+    </div>
+
+    <div class="opportunity-item">
+      <div class="opportunity-num">03 / On-chain coordination layers</div>
+      <p class="opportunity-text">Protocols that allow robot fleets to bid for tasks, settle payments, and log provenance without a central dispatcher create a new category of infrastructure. The economic model is closer to a marketplace than a SaaS product: take rates on task volume rather than fixed subscription revenue. As robot fleets scale, the marketplace economics become significant without requiring the protocol to own any of the underlying hardware.</p>
+    </div>
+
+    <div class="opportunity-item">
+      <div class="opportunity-num">04 / Entry timing</div>
+      <p class="opportunity-text">The market is pricing humanoid robotics as a 10-year story. The infrastructure enabling that story needs to be built in the next 3 years. Spatial computing networks, ownership protocols, and task coordination layers cannot be built after robots are already deployed at scale; they need to be in place before deployment density makes coordination necessary. That is where the asymmetry sits: the infrastructure is cheap now because the market is not looking at it yet.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="guests-section">
+  <div class="guests-inner">
+    <div class="guests-label">Guests in this category</div>
+    <div class="guests-grid">
+      <a href="episodes.html" class="guest-card">
+        <div class="guest-card-ep">Ep. 9</div>
+        <div class="guest-card-name">Mauricio</div>
+        <div class="guest-card-co">XMAQUINA</div>
+      </a>
+      <a href="episodes.html" class="guest-card">
+        <div class="guest-card-ep">Ep. 9</div>
+        <div class="guest-card-name">Simon</div>
+        <div class="guest-card-co">Moonrock Capital</div>
+      </a>
+      <a href="episodes.html" class="guest-card">
+        <div class="guest-card-ep">Ep. 3</div>
+        <div class="guest-card-name">Nils</div>
+        <div class="guest-card-co">Auki</div>
+      </a>
+      <a href="episodes.html" class="guest-card">
+        <div class="guest-card-ep">Ep. 3</div>
+        <div class="guest-card-name">Michael</div>
+        <div class="guest-card-co">BitRobot</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Super<span>cycle</span></div>
+        <div class="footer-brand"><p>A Pylon Partners production. Investor conversations at the frontier of AI, robotics, and science.</p></div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <div class="footer-col-label">Show</div>
+          <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener">Spotify</a>
+          <a href="https://twitter.com/supercyclepod" target="_blank" rel="noopener">X / Twitter</a>
+          <a href="research.html">Research</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-label">Pylon</div>
+          <a href="https://pylon.partners" target="_blank" rel="noopener">Pylon Partners</a>
+          <a href="https://pylon.partners" target="_blank" rel="noopener">About Pylon</a>
+          <a href="mailto:jack@pylon.partners">Contact</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-label">Navigate</div>
+          <a href="episodes.html">Episodes</a>
+          <a href="research.html">Research</a>
+          <a href="index.html#about">About</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2025 Supercycle. A <a href="https://pylon.partners">Pylon Partners</a> production.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+function scUpdateIcon(){
+  var d=document.documentElement.getAttribute('data-theme')==='dark';
+  var b=document.getElementById('themeToggle');
+  if(!b)return;
+  b.innerHTML=d
+    ?'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>'
+    :'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  b.title=d?'Light mode':'Dark mode';
+}
+document.addEventListener('DOMContentLoaded',function(){
+  scUpdateIcon();
+  var b=document.getElementById('themeToggle');
+  if(b)b.addEventListener('click',function(){
+    var d=document.documentElement.getAttribute('data-theme')==='dark';
+    document.documentElement.setAttribute('data-theme',d?'light':'dark');
+    localStorage.setItem('sc-theme',d?'light':'dark');
+    scUpdateIcon();
+  });
+});
+</script>
+</body>
+</html>
