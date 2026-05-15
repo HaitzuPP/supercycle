@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){var t=localStorage.getItem('sc-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Case for Decentralized AI | Supercycle Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F3EEE3;
+  --parch: #EAE4D4;
+  --ink: #0D0C09;
+  --ink2: rgba(13,12,9,.78);
+  --ink3: rgba(13,12,9,.58);
+  --ink4: rgba(13,12,9,.10);
+  --orange: #D94F2A;
+  --dark: #1C1914;
+  --border: rgba(13,12,9,.14);
+  --bmed: rgba(13,12,9,.15);
+  --bask: 'Baskervville', Georgia, serif;
+  --crim: 'Crimson Text', Georgia, serif;
+  --geist: 'Geist', -apple-system, sans-serif;
+  --mono: 'Geist Mono', monospace;
+  --topbar-bg: rgba(243,238,227,.88);
+}
+
+html[data-theme="dark"] {
+  --cream: #0D0C09;
+  --parch: #161310;
+  --ink: rgba(255,255,255,.88);
+  --ink2: rgba(255,255,255,.65);
+  --ink3: rgba(255,255,255,.4);
+  --ink4: rgba(255,255,255,.08);
+  --border: rgba(255,255,255,.1);
+  --bmed: rgba(255,255,255,.1);
+  --topbar-bg: rgba(13,12,9,.92);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--crim);
+  font-size: 20px;
+  line-height: 1.65;
+  background: var(--cream);
+  color: var(--ink);
+}
+
+a { color: inherit; text-decoration: none; }
+
+.topbar {
+  position: sticky;
+  top: 0;
+  height: 52px;
+  background: var(--topbar-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  z-index: 100;
+}
+
+.topbar-logo {
+  font-family: var(--bask);
+  font-size: 18px;
+  letter-spacing: -.3px;
+  color: var(--ink);
+}
+
+.topbar-logo span { color: var(--orange); }
+
+.topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.topbar-nav a {
+  font-family: var(--geist);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink3);
+  letter-spacing: .2px;
+  transition: color .15s;
+}
+
+.topbar-nav a:hover,
+.topbar-nav a.active { color: var(--ink); }
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.topbar-cta {
+  font-family: var(--geist);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--cream);
+  background: var(--ink);
+  padding: 7px 16px;
+  border-radius: 4px;
+  letter-spacing: .2px;
+  transition: background .15s, transform .12s;
+}
+
+.topbar-cta:hover { background: var(--orange); transform: translateY(-1px); }
+
+.theme-toggle {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--ink3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: color .15s, background .15s;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover { color: var(--ink); background: var(--ink4); }
+
+.hero {
+  background: var(--dark);
+  padding: 96px 64px 88px;
+}
+
+.hero-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  font-family: var(--bask);
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -.6px;
+  color: rgba(255,255,255,.92);
+  margin-bottom: 28px;
+}
+
+.hero-thesis {
+  font-family: var(--crim);
+  font-size: 20px;
+  line-height: 1.65;
+  color: rgba(255,255,255,.52);
+  max-width: 680px;
+  margin-bottom: 40px;
+  font-style: italic;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-platform {
+  font-family: var(--geist);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 4px;
+  letter-spacing: .2px;
+  transition: background .15s, transform .12s, border-color .15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-platform:hover { transform: translateY(-1px); }
+
+.btn-yt {
+  background: var(--orange);
+  color: #fff;
+  border: 1px solid var(--orange);
+}
+
+.btn-yt:hover { background: #c2441f; border-color: #c2441f; }
+
+.btn-spotify {
+  background: transparent;
+  color: rgba(255,255,255,.72);
+  border: 1px solid rgba(255,255,255,.2);
+}
+
+.btn-spotify:hover { border-color: rgba(255,255,255,.5); color: rgba(255,255,255,.92); }
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 18px;
+}
+
+.thesis-section {
+  background: var(--parch);
+  padding: 88px 64px;
+  border-bottom: 1px solid var(--border);
+}
+
+.thesis-inner {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.thesis-inner h2 {
+  font-family: var(--bask);
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -.3px;
+  color: var(--ink);
+  margin-bottom: 32px;
+}
+
+.thesis-inner p {
+  font-size: 19px;
+  line-height: 1.72;
+  color: var(--ink2);
+  margin-bottom: 22px;
+}
+
+.thesis-inner p:last-child { margin-bottom: 0; }
+
+.signals-section {
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+}
+
+.signals-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.signal-cell {
+  padding: 44px 36px;
+  border-right: 1px solid var(--border);
+}
+
+.signal-cell:last-child { border-right: none; }
+
+.signal-num {
+  font-family: var(--bask);
+  font-size: 34px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 10px;
+  letter-spacing: -.3px;
+}
+
+.signal-label {
+  font-family: var(--geist);
+  font-size: 13px;
+  color: var(--ink3);
+  line-height: 1.45;
+}
+
+.conversations-section {
+  background: var(--cream);
+  padding: 88px 64px;
+  border-bottom: 1px solid var(--border);
+}
+
+.conversations-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.conversations-inner h2 {
+  font-family: var(--bask);
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: -.3px;
+  color: var(--ink);
+  margin-bottom: 48px;
+}
+
+.insight-block {
+  display: flex;
+  gap: 0;
+  margin-bottom: 36px;
+}
+
+.insight-block:last-child { margin-bottom: 0; }
+
+.insight-accent {
+  width: 3px;
+  background: var(--orange);
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-right: 28px;
+  align-self: stretch;
+}
+
+.insight-body {
+  flex: 1;
+  padding: 4px 0 8px;
+}
+
+.insight-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.insight-guest {
+  font-family: var(--geist);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.insight-ep {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: rgba(217,79,42,.09);
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+
+.insight-text {
+  font-family: var(--crim);
+  font-size: 19px;
+  line-height: 1.68;
+  color: var(--ink2);
+  margin-bottom: 14px;
+}
+
+.insight-link {
+  font-family: var(--geist);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--orange);
+  letter-spacing: .3px;
+  transition: opacity .15s;
+}
+
+.insight-link:hover { opacity: .7; }
+
+.opportunity-section {
+  background: var(--parch);
+  padding: 88px 64px;
+  border-bottom: 1px solid var(--border);
+}
+
+.opportunity-inner {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.opportunity-inner h2 {
+  font-family: var(--bask);
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: -.3px;
+  color: var(--ink);
+  margin-bottom: 40px;
+}
+
+.opportunity-item {
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.opportunity-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.opportunity-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+
+.opportunity-text {
+  font-family: var(--crim);
+  font-size: 19px;
+  line-height: 1.68;
+  color: var(--ink2);
+}
+
+.guests-section {
+  background: var(--dark);
+  padding: 64px;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+
+.guests-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.guests-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-bottom: 28px;
+}
+
+.guests-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+}
+
+.guest-card {
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 6px;
+  padding: 18px 16px 16px;
+  background: rgba(255,255,255,.03);
+  transition: border-color .2s, background .2s, transform .15s;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.guest-card:hover {
+  border-color: var(--orange);
+  background: rgba(217,79,42,.05);
+  transform: translateY(-2px);
+}
+
+.guest-card-ep {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.guest-card-name {
+  font-family: var(--geist);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,.82);
+  line-height: 1.35;
+}
+
+.guest-card-co {
+  font-family: var(--geist);
+  font-size: 11px;
+  color: rgba(255,255,255,.36);
+}
+
+.footer {
+  background: var(--dark);
+  padding: 48px 64px 36px;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+
+.footer-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 36px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  margin-bottom: 24px;
+}
+
+.footer-brand {
+  font-family: var(--bask);
+  font-size: 22px;
+  color: rgba(255,255,255,.8);
+}
+
+.footer-brand span { color: var(--orange); }
+
+.footer-brand p {
+  font-family: var(--crim);
+  font-size: 15px;
+  color: rgba(255,255,255,.32);
+  margin-top: 6px;
+  max-width: 260px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.footer-links {
+  display: flex;
+  gap: 48px;
+}
+
+.footer-col-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.28);
+  margin-bottom: 14px;
+}
+
+.footer-col a {
+  display: block;
+  font-family: var(--geist);
+  font-size: 13px;
+  color: rgba(255,255,255,.48);
+  margin-bottom: 9px;
+  transition: color .15s;
+}
+
+.footer-col a:hover { color: rgba(255,255,255,.85); }
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-copy {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: rgba(255,255,255,.22);
+  letter-spacing: .4px;
+}
+
+.footer-copy a { color: rgba(255,255,255,.38); }
+
+@media (max-width: 960px) {
+  .topbar { padding: 0 24px; }
+  .hero { padding: 64px 32px 56px; }
+  .hero h1 { font-size: 40px; }
+  .thesis-section, .conversations-section, .opportunity-section { padding: 64px 32px; }
+  .guests-section { padding: 48px 32px; }
+  .signals-strip { grid-template-columns: repeat(2, 1fr); }
+  .signal-cell:nth-child(2) { border-right: none; }
+  .guests-grid { grid-template-columns: repeat(3, 1fr); }
+  .footer { padding: 40px 32px 28px; }
+  .footer-top { flex-direction: column; gap: 32px; }
+  .footer-links { gap: 28px; }
+}
+
+@media (max-width: 600px) {
+  .guests-grid { grid-template-columns: repeat(2, 1fr); }
+  .signals-strip { grid-template-columns: 1fr; }
+  .signal-cell { border-right: none; border-bottom: 1px solid var(--border); }
+  .signal-cell:last-child { border-bottom: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <a href="index.html" class="topbar-logo">Super<span>cycle</span></a>
+  <ul class="topbar-nav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="episodes.html">Episodes</a></li>
+    <li><a href="research.html" class="active">Research</a></li>
+  </ul>
+  <div class="topbar-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
+    <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="topbar-cta">Watch Latest</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Investment Opportunity</div>
+    <h1>Centralized AI is captured. The infrastructure layer is open.</h1>
+    <p class="hero-thesis">Anthropic, OpenAI, and Google own the model layer, but the compute, incentive, and validation infrastructure beneath them is still being built, and Bittensor is the leading attempt to build it in the open.</p>
+    <div class="hero-actions">
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="btn-platform btn-yt">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        Watch on YouTube
+      </a>
+      <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="btn-platform btn-spotify">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+        Listen on Spotify
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="thesis-section">
+  <div class="thesis-inner">
+    <div class="section-label">The Thesis</div>
+    <h2>Why this is investable now</h2>
+    <p>Centralized AI companies are structurally beholden to their corporate backers. Their outputs are shaped by liability, brand safety, and competitive positioning, not truth-seeking. Anthropic answers to Amazon. OpenAI answers to Microsoft. This creates a persistent and growing demand for AI that cannot be censored, throttled, or aligned to corporate interest. That demand does not go away as the models get better; it compounds.</p>
+    <p>Bittensor solves the coordination problem: how do you incentivize independent compute providers and model developers without a central entity? The answer is TAO, a token that routes rewards to the best-performing subnets. It is the first credible attempt to build an open market for AI outputs where performance, not politics, determines what gets funded. The incentive design is the product.</p>
+    <p>The registration cost signal matters. When it costs 500,000+ TAO to register a new subnet, the network is self-selecting for operators who are serious and capitalized. High friction at the entry point is not a growth problem; it is a moat. Incumbents who built subnets when registration was near-zero now sit on structurally protected positions. That window is closed.</p>
+  </div>
+</section>
+
+<section class="signals-section">
+  <div class="signals-strip">
+    <div class="signal-cell">
+      <div class="signal-num">$18B+</div>
+      <div class="signal-label">Peak TAO market cap reached in 2024, establishing Bittensor as a tier-one crypto asset</div>
+    </div>
+    <div class="signal-cell">
+      <div class="signal-num">50+</div>
+      <div class="signal-label">Active subnets building specialized AI outputs across inference, training, and data</div>
+    </div>
+    <div class="signal-cell">
+      <div class="signal-num">DCG</div>
+      <div class="signal-label">Digital Currency Group, the largest crypto asset manager, backs Bittensor via Yuma Group accelerator</div>
+    </div>
+    <div class="signal-cell">
+      <div class="signal-num">500k+</div>
+      <div class="signal-label">TAO required to register a new subnet as of early 2025, up from near-zero in 2023</div>
+    </div>
+  </div>
+</section>
+
+<section class="conversations-section">
+  <div class="conversations-inner">
+    <div class="section-label">From Our Conversations</div>
+    <h2>What the builders and investors told us</h2>
+
+    <div class="insight-block">
+      <div class="insight-accent"></div>
+      <div class="insight-body">
+        <div class="insight-meta">
+          <span class="insight-guest">Evan, Yuma / DCG</span>
+          <span class="insight-ep">Ep. 11</span>
+        </div>
+        <p class="insight-text">Yuma is DCG's dedicated Bittensor accelerator, and the thesis is explicit: intelligence is moving toward non-human functions for the first time in history. Centralized AI is structurally captured by the same corporate dynamics that captured cloud computing. DCG's bet is that the open incentive layer wins because it cannot be captured by any single entity, including DCG itself. The architecture is the defense.</p>
+        <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="insight-link">Watch episode &rarr;</a>
+      </div>
+    </div>
+
+    <div class="insight-block">
+      <div class="insight-accent"></div>
+      <div class="insight-body">
+        <div class="insight-meta">
+          <span class="insight-guest">Wei Xie, NRN Agents</span>
+          <span class="insight-ep">Ep. 8</span>
+        </div>
+        <p class="insight-text">Decentralized AI competes on outputs where centralized providers cannot: speed at the edges, cost for commodity inference, and censorship resistance. NRN is building reinforcement learning infrastructure on Bittensor. The bet is that RL training becomes the dominant AI paradigm and the network captures that demand before the hyperscalers can replicate the incentive structure, which they structurally cannot.</p>
+        <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="insight-link">Watch episode &rarr;</a>
+      </div>
+    </div>
+
+    <div class="insight-block">
+      <div class="insight-accent"></div>
+      <div class="insight-body">
+        <div class="insight-meta">
+          <span class="insight-guest">Stillcore</span>
+          <span class="insight-ep">Ep. 7</span>
+        </div>
+        <p class="insight-text">TAO trades at a discount to comparable AI infrastructure plays when valued on a network-activity basis. The market has not priced AI fundamentals into the token; it is still pricing it like speculative crypto. The mispricing exists because of market structure, not fundamentals. That gap is the investment thesis, and it is unlikely to persist as institutional flows into crypto AI infrastructure accelerate.</p>
+        <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="insight-link">Watch episode &rarr;</a>
+      </div>
+    </div>
+
+    <div class="insight-block">
+      <div class="insight-accent"></div>
+      <div class="insight-body">
+        <div class="insight-meta">
+          <span class="insight-guest">Eric Yang, Gradient Network</span>
+          <span class="insight-ep">Ep. 6</span>
+        </div>
+        <p class="insight-text">The megacorps control inference today. But the distributed compute layer, where models actually run at the edges, is still open. Gradient is building that layer before the window closes. The window is closing because Amazon, Google, and Microsoft are all moving down-stack. The question is not whether they close it, but how much of the market gets captured in open infrastructure before they do.</p>
+        <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="insight-link">Watch episode &rarr;</a>
+      </div>
+    </div>
+
+    <div class="insight-block">
+      <div class="insight-accent"></div>
+      <div class="insight-body">
+        <div class="insight-meta">
+          <span class="insight-guest">Michael White, Karis Capital</span>
+          <span class="insight-ep">Ep. 12</span>
+        </div>
+        <p class="insight-text">The 500,000+ registration cost is not a barrier. It is a signal. It means the network has accumulated value worth defending, and that the economics have shifted from permissionless participation to competitive selection. Early subnet operators who registered at near-zero cost now hold positions with a structural advantage that cannot be replicated without significant capital commitment.</p>
+        <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="insight-link">Watch episode &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="opportunity-section">
+  <div class="opportunity-inner">
+    <div class="section-label">The Opportunity</div>
+    <h2>What this means for investors</h2>
+
+    <div class="opportunity-item">
+      <div class="opportunity-num">01 / Subnet infrastructure</div>
+      <p class="opportunity-text">Subnet operators with genuine AI outputs, not synthetic or benchmark-gaming, are the infrastructure picks of this cycle. The parallel to early AWS holds: these are picks-and-shovels plays on a compute market that has not yet been valued as compute. The registration cost creates a natural selection filter that has already done part of the due diligence work.</p>
+    </div>
+
+    <div class="opportunity-item">
+      <div class="opportunity-num">02 / TAO as base-layer exposure</div>
+      <p class="opportunity-text">If Bittensor becomes the default open AI marketplace, the base token captures value from every subnet's activity. This is analogous to owning ETH if Ethereum becomes the settlement layer for decentralized finance. The upside is asymmetric relative to individual subnet bets, but the downside is full protocol risk. Position sizing should reflect that.</p>
+    </div>
+
+    <div class="opportunity-item">
+      <div class="opportunity-num">03 / Infrastructure adjacent plays</div>
+      <p class="opportunity-text">Validators, compute providers, and tooling companies that make subnet development easier are the least-discussed category with some of the most defensible business models. They earn from network activity without taking on subnet-level execution risk. As the network grows, their take rate compounds. Gradient Network is the clearest example of this positioning.</p>
+    </div>
+
+    <div class="opportunity-item">
+      <div class="opportunity-num">04 / The valuation mismatch</div>
+      <p class="opportunity-text">Bittensor's network activity per dollar of market cap compares favorably to centralized AI infrastructure plays at similar stages. The discount exists because of crypto market structure and retail-dominated price discovery, not because of a fundamental problem with the network. As institutional allocation to crypto AI infrastructure increases, that discount should compress. The timing is the question, not the direction.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="guests-section">
+  <div class="guests-inner">
+    <div class="guests-label">Guests in this category</div>
+    <div class="guests-grid">
+      <a href="episodes.html" class="guest-card">
+        <div class="guest-card-ep">Ep. 12</div>
+        <div class="guest-card-name">Michael White</div>
+        <div class="guest-card-co">Karis Capital</div>
+      </a>
+      <a href="episodes.html" class="guest-card">
+        <div class="guest-card-ep">Ep. 11</div>
+        <div class="guest-card-name">Evan</div>
+        <div class="guest-card-co">Yuma / DCG</div>
+      </a>
+      <a href="episodes.html" class="guest-card">
+        <div class="guest-card-ep">Ep. 10</div>
+        <div class="guest-card-name">Max + Gyles</div>
+        <div class="guest-card-co">Score / Tensora</div>
+      </a>
+      <a href="episodes.html" class="guest-card">
+        <div class="guest-card-ep">Ep. 8</div>
+        <div class="guest-card-name">Wei Xie</div>
+        <div class="guest-card-co">NRN Agents</div>
+      </a>
+      <a href="episodes.html" class="guest-card">
+        <div class="guest-card-ep">Ep. 7</div>
+        <div class="guest-card-name">Stillcore</div>
+        <div class="guest-card-co">Research</div>
+      </a>
+      <a href="episodes.html" class="guest-card">
+        <div class="guest-card-ep">Ep. 6</div>
+        <div class="guest-card-name">Eric Yang</div>
+        <div class="guest-card-co">Gradient Network</div>
+      </a>
+      <a href="episodes.html" class="guest-card">
+        <div class="guest-card-ep">Ep. 2</div>
+        <div class="guest-card-name">Max Sebti + Wei Xie</div>
+        <div class="guest-card-co">Bittensor Ecosystem</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Super<span>cycle</span></div>
+        <div class="footer-brand"><p>A Pylon Partners production. Investor conversations at the frontier of AI, robotics, and science.</p></div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <div class="footer-col-label">Show</div>
+          <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener">Spotify</a>
+          <a href="https://twitter.com/supercyclepod" target="_blank" rel="noopener">X / Twitter</a>
+          <a href="research.html">Research</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-label">Pylon</div>
+          <a href="https://pylon.partners" target="_blank" rel="noopener">Pylon Partners</a>
+          <a href="https://pylon.partners" target="_blank" rel="noopener">About Pylon</a>
+          <a href="mailto:jack@pylon.partners">Contact</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-label">Navigate</div>
+          <a href="episodes.html">Episodes</a>
+          <a href="research.html">Research</a>
+          <a href="index.html#about">About</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2025 Supercycle. A <a href="https://pylon.partners">Pylon Partners</a> production.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+function scUpdateIcon(){
+  var d=document.documentElement.getAttribute('data-theme')==='dark';
+  var b=document.getElementById('themeToggle');
+  if(!b)return;
+  b.innerHTML=d
+    ?'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>'
+    :'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  b.title=d?'Light mode':'Dark mode';
+}
+document.addEventListener('DOMContentLoaded',function(){
+  scUpdateIcon();
+  var b=document.getElementById('themeToggle');
+  if(b)b.addEventListener('click',function(){
+    var d=document.documentElement.getAttribute('data-theme')==='dark';
+    document.documentElement.setAttribute('data-theme',d?'light':'dark');
+    localStorage.setItem('sc-theme',d?'light':'dark');
+    scUpdateIcon();
+  });
+});
+</script>
+</body>
+</html>
