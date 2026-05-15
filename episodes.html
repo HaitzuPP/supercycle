@@ -274,7 +274,17 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<div class="episodes-main"><div class="ep-list">
+<div class="episodes-main"><div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--border);">
+  <div class="filter-bar" style="margin-bottom:0;">
+    <span class="filter-label">Filter</span>
+    <span class="filter-chip active" data-filter="all">All</span>
+    <span class="filter-chip" data-filter="ai-infrastructure">AI Infrastructure</span>
+    <span class="filter-chip" data-filter="robotics">Robotics</span>
+  </div>
+  <input id="epSearch" type="search" placeholder="Search episodes..." oninput="scSearch(this.value)"
+    style="font-family:var(--geist);font-size:13px;padding:7px 14px;border:1px solid var(--border);border-radius:20px;background:transparent;color:var(--ink);outline:none;min-width:180px;">
+</div>
+<div class="ep-list">
 
     <!-- Ep. 12 -->
     <div class="ep-row reveal" data-sectors="ai-infrastructure">
@@ -507,6 +517,7 @@ a{color:inherit;text-decoration:none}
 
 
 </div><!-- /ep-list -->
+</div><!-- /episodes-main-inner -->
 
   <!-- Archive note -->
   <div style="margin-top:52px;padding-top:32px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
