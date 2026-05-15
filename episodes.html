@@ -176,6 +176,47 @@ a{color:inherit;text-decoration:none}
   gap: 6px !important;
 }
 
+
+.hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  padding: 4px; color: var(--ink3); flex-direction: column;
+  justify-content: center; align-items: center; gap: 5px;
+}
+.hamburger span {
+  display: block; width: 20px; height: 1.5px; background: currentColor;
+  transition: transform .2s, opacity .2s;
+}
+.mobile-nav {
+  display: none; position: fixed; inset: 52px 0 0;
+  background: var(--cream); z-index: 99;
+  flex-direction: column; padding: 32px 24px; gap: 4px;
+  border-top: 1px solid var(--border);
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-family: var(--geist); font-size: 22px; font-weight: 500;
+  color: var(--ink); padding: 14px 0; border-bottom: 1px solid var(--border);
+  text-decoration: none;
+}
+.mobile-nav-platforms { display: flex; gap: 12px; margin-top: 24px; }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+@media(max-width:640px){
+  .page-hero{padding:90px 20px 48px}
+  .page-hero h1{font-size:32px}
+  .episodes-main{padding:32px 16px 64px}
+  .ep-card-inner{grid-template-columns:1fr;gap:12px}
+  .ep-thumb{display:none}
+  .ep-actions{flex-direction:row;flex-wrap:wrap;min-width:unset}
+  .ep-btn{padding:8px 14px;font-size:11px}
+  nav{padding:0 16px}
+  .topbar-nav{display:none}
+  .hamburger{display:flex}
+  .topbar-icon-btn{display:none}
+}
+
 </style>
 </head>
 <body>
@@ -188,6 +229,9 @@ a{color:inherit;text-decoration:none}
     <li><a href="research.html">Themes</a></li>
   </ul>
   <div class="topbar-right">
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
     <div class="topbar-platform">
     <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="topbar-icon-btn" title="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FF0000" style="flex-shrink:0"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
@@ -195,6 +239,15 @@ a{color:inherit;text-decoration:none}
   </div>
   </div>
 </nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="episodes.html">Episodes</a>
+  <a href="research.html">Themes</a>
+  <div class="mobile-nav-platforms">
+    <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="platform-btn-yt" style="font-size:13px;padding:10px 16px;">YouTube</a>
+    <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="platform-btn-sp" style="font-size:13px;padding:10px 16px;">Spotify</a>
+  </div>
+</div>
 
 <div class="page-hero">
   <div class="page-hero-inner">
@@ -225,7 +278,7 @@ a{color:inherit;text-decoration:none}
   <div class="ep-list">
 
     <!-- Ep. 12 -->
-    <div class="ep-row" data-sectors="ai-infrastructure">
+    <div class="ep-row reveal" data-sectors="ai-infrastructure">
       <img class="ep-thumb" src="https://image-cdn-ak.spotifycdn.com/image/ab6772ab000015beed64432a7e5163abbd7a34c1" alt="Episode 12 thumbnail" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 12 &middot; May 2025 &middot; 38 min</div>
@@ -244,7 +297,7 @@ a{color:inherit;text-decoration:none}
     </div>
 
     <!-- Ep. 11 -->
-    <div class="ep-row" data-sectors="ai-infrastructure">
+    <div class="ep-row reveal" data-sectors="ai-infrastructure">
       <img class="ep-thumb" src="https://image-cdn-ak.spotifycdn.com/image/ab6772ab000015be023583a9ab24811ea1aee332" alt="Episode 11 thumbnail" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 11 &middot; May 2025 &middot; 1h 8min</div>
@@ -263,7 +316,7 @@ a{color:inherit;text-decoration:none}
     </div>
 
     <!-- Ep. 10 -->
-    <div class="ep-row" data-sectors="ai-infrastructure">
+    <div class="ep-row reveal" data-sectors="ai-infrastructure">
       <img class="ep-thumb" src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015be5e96a34a71ff8deaea505283" alt="Episode 10 thumbnail" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 10 &middot; Apr 2025 &middot; 33 min</div>
@@ -282,7 +335,7 @@ a{color:inherit;text-decoration:none}
     </div>
 
     <!-- Ep. 9 -->
-    <div class="ep-row" data-sectors="robotics">
+    <div class="ep-row reveal" data-sectors="robotics">
       <img class="ep-thumb" src="https://image-cdn-ak.spotifycdn.com/image/ab6772ab000015be2f574497db30765ab6793da5" alt="Episode 9 thumbnail" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 9 &middot; Apr 2025 &middot; 1h 10min</div>
@@ -301,7 +354,7 @@ a{color:inherit;text-decoration:none}
     </div>
 
     <!-- Ep. 8 -->
-    <div class="ep-row" data-sectors="ai-infrastructure">
+    <div class="ep-row reveal" data-sectors="ai-infrastructure">
       <img class="ep-thumb" src="https://image-cdn-ak.spotifycdn.com/image/ab6772ab000015be9fdd8bb0c3f2596fb15bb48d" alt="Episode 8 thumbnail" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 8 &middot; Apr 2025 &middot; 1h 14min</div>
@@ -320,7 +373,7 @@ a{color:inherit;text-decoration:none}
     </div>
 
     <!-- Ep. 7 -->
-    <div class="ep-row" data-sectors="ai-infrastructure">
+    <div class="ep-row reveal" data-sectors="ai-infrastructure">
       <img class="ep-thumb" src="https://image-cdn-ak.spotifycdn.com/image/ab6772ab000015be6458d6b19aaffb573bfca634" alt="Episode 7 thumbnail" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 7 &middot; Mar 2025 &middot; 57 min</div>
@@ -339,7 +392,7 @@ a{color:inherit;text-decoration:none}
     </div>
 
     <!-- Ep. 6 -->
-    <div class="ep-row" data-sectors="ai-infrastructure">
+    <div class="ep-row reveal" data-sectors="ai-infrastructure">
       <img class="ep-thumb" src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015beaa36d3f7e2c83790a509d354" alt="Episode 6 thumbnail" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 6 &middot; Mar 2025 &middot; 1h 1min</div>
@@ -358,7 +411,7 @@ a{color:inherit;text-decoration:none}
     </div>
 
     <!-- Ep. 5 -->
-    <div class="ep-row" data-sectors="ai-infrastructure">
+    <div class="ep-row reveal" data-sectors="ai-infrastructure">
       <img class="ep-thumb" src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015bec95a3b28410885e15cc7c914" alt="Episode 5 thumbnail" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 5 &middot; Feb 2025 &middot; 51 min</div>
@@ -377,7 +430,7 @@ a{color:inherit;text-decoration:none}
     </div>
 
     <!-- Ep. 4 -->
-    <div class="ep-row" data-sectors="fintech">
+    <div class="ep-row reveal" data-sectors="fintech">
       <img class="ep-thumb" src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015be9312b46b8eaf3dccff38a42c" alt="Episode 4 thumbnail" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 4 &middot; Jan 2025 &middot; 52 min</div>
@@ -396,7 +449,7 @@ a{color:inherit;text-decoration:none}
     </div>
 
     <!-- Ep. 3 -->
-    <div class="ep-row" data-sectors="robotics">
+    <div class="ep-row reveal" data-sectors="robotics">
       <img class="ep-thumb" src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015be2f6150582a4dde95626c6d22" alt="Episode 3 thumbnail" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 3 &middot; Jan 2025 &middot; 1h 10min</div>
@@ -415,7 +468,7 @@ a{color:inherit;text-decoration:none}
     </div>
 
     <!-- Ep. 2 -->
-    <div class="ep-row" data-sectors="ai-infrastructure">
+    <div class="ep-row reveal" data-sectors="ai-infrastructure">
       <img class="ep-thumb" src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015bef02b06d8f0083f304fea0ea7" alt="Episode 2 thumbnail" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 2 &middot; Jan 2025 &middot; 37 min</div>
@@ -435,7 +488,7 @@ a{color:inherit;text-decoration:none}
     </div>
 
     <!-- Ep. 1 -->
-    <div class="ep-row" data-sectors="ai-agents">
+    <div class="ep-row reveal" data-sectors="ai-agents">
       <img class="ep-thumb" src="https://image-cdn-ak.spotifycdn.com/image/ab6772ab000015be4b84daafd3c015e9cbaeaef8" alt="Episode 1 thumbnail" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 1 &middot; Jan 2025 &middot; 48 min</div>
@@ -533,6 +586,19 @@ document.addEventListener('DOMContentLoaded',function(){
     s.addEventListener('blur',function(){this.style.borderColor='var(--border)';});
   }
 });
+
+var hb=document.getElementById('hamburger');
+var mn=document.getElementById('mobileNav');
+if(hb&&mn){hb.addEventListener('click',function(){
+  mn.classList.toggle('open');
+  hb.setAttribute('aria-expanded',mn.classList.contains('open'));
+});}
+
+var revealEls = document.querySelectorAll('.reveal');
+var ro = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); ro.unobserve(e.target); }});
+},{threshold:0.12});
+revealEls.forEach(function(el){ ro.observe(el); });
 </script>
 
 </body>
