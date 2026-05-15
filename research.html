@@ -377,9 +377,49 @@ footer {
   .footer-inner { flex-direction: column; gap: 24px; }
   .footer-links { text-align: left; }
 }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+.section-dots {
+  position: fixed; right: 28px; top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 10px; z-index: 50;
+}
+.section-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--border); transition: background .2s, transform .2s;
+  cursor: pointer;
+}
+.section-dot.active { background: var(--orange); transform: scale(1.5); }
+@media (max-width: 768px) { .section-dots { display: none; } }
+
+@media (max-width: 640px) {
+  nav { padding: 0 16px; }
+  .hero { padding: 90px 20px 56px; }
+  .hero h1 { font-size: clamp(28px, 7vw, 40px); }
+  .hero-deck { font-size: 16px; }
+  .hero-meta { gap: 24px; flex-wrap: wrap; }
+  .running { padding: 0 20px; }
+  .theme-signals { gap: 20px; }
+  .ep-grid { grid-template-columns: 1fr; }
+  .pull-quote { padding: 20px; }
+  footer { padding: 40px 20px; }
+  .footer-inner { flex-direction: column; gap: 20px; }
+  .footer-links { text-align: left; }
+  .section-dots { display: none; }
+}
+
 </style>
 </head>
 <body>
+<div id="sc-progress" style="position:fixed;top:0;left:0;height:2px;width:0%;background:var(--orange);z-index:9999;transition:width .1s linear;"></div>
+<nav class="section-dots" aria-label="Sections">
+  <div class="section-dot active" data-target="theme-01" title="Decentralized AI"></div>
+  <div class="section-dot" data-target="theme-02" title="Robotics"></div>
+  <div class="section-dot" data-target="theme-03" title="AI Biotech"></div>
+  <div class="section-dot" data-target="theme-04" title="Agent Economy"></div>
+  <div class="section-dot" data-target="theme-05" title="Crypto VC"></div>
+</nav>
 
 <!-- TOPBAR -->
 <nav>
@@ -431,7 +471,7 @@ footer {
   </div>
 
   <!-- ── 01 DECENTRALIZED AI ── -->
-  <div class="theme-section">
+  <div class="theme-section reveal" id="theme-01">
     <div class="theme-num">01 · Decentralized AI</div>
     <h2 class="theme-h">The major labs have locked up the model layer. The infrastructure beneath it is still open.</h2>
 
@@ -472,7 +512,7 @@ footer {
   </div>
 
   <!-- ── 02 ROBOTICS ── -->
-  <div class="theme-section">
+  <div class="theme-section reveal" id="theme-02">
     <div class="theme-num">02 · Robotics</div>
     <h2 class="theme-h">Robot hardware has fallen from $1M to under $100k in five years. The ownership infrastructure has not been built.</h2>
 
@@ -509,7 +549,7 @@ footer {
   </div>
 
   <!-- ── 03 AI BIOTECH ── -->
-  <div class="theme-section">
+  <div class="theme-section reveal" id="theme-03">
     <div class="theme-num">03 · AI Biotech</div>
     <h2 class="theme-h">No AI-discovered drug has cleared the FDA. The first that does re-rates the entire category.</h2>
 
@@ -550,7 +590,7 @@ footer {
   </div>
 
   <!-- ── 04 AGENT ECONOMY ── -->
-  <div class="theme-section">
+  <div class="theme-section reveal" id="theme-04">
     <div class="theme-num">04 · Agent Economy</div>
     <h2 class="theme-h">AI agents generate the majority of internet traffic. The infrastructure was built for browsers.</h2>
 
@@ -583,7 +623,7 @@ footer {
   </div>
 
   <!-- ── 05 CRYPTO VC ── -->
-  <div class="theme-section">
+  <div class="theme-section reveal" id="theme-05">
     <div class="theme-num">05 · Crypto VC</div>
     <h2 class="theme-h">Most DePIN has no structural advantage over centralized alternatives. Early protocol infrastructure is a different bet.</h2>
 
@@ -725,6 +765,41 @@ document.addEventListener('DOMContentLoaded',function(){
     scUpdateIcon();
   });
 });
+
+window.addEventListener('scroll',function(){
+  var s=document.documentElement,b=document.body;
+  var pct=(s.scrollTop||b.scrollTop)/((s.scrollHeight||b.scrollHeight)-s.clientHeight)*100;
+  var el=document.getElementById('sc-progress');
+  if(el)el.style.width=Math.min(pct,100)+'%';
+});
+
+var revealEls = document.querySelectorAll('.reveal');
+var ro = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); ro.unobserve(e.target); }});
+},{threshold:0.12});
+revealEls.forEach(function(el){ ro.observe(el); });
+
+(function(){
+  var dots=document.querySelectorAll('.section-dot');
+  var sections=['theme-01','theme-02','theme-03','theme-04','theme-05'];
+  dots.forEach(function(d,i){
+    d.addEventListener('click',function(){
+      var el=document.getElementById(sections[i]);
+      if(el)el.scrollIntoView({behavior:'smooth'});
+    });
+  });
+  var io2=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var id=e.target.id;
+        dots.forEach(function(d){ d.classList.remove('active'); });
+        var idx=sections.indexOf(id);
+        if(idx>=0)dots[idx].classList.add('active');
+      }
+    });
+  },{threshold:0.4});
+  sections.forEach(function(s){var el=document.getElementById(s);if(el)io2.observe(el);});
+})();
 </script>
 </body>
 </html>
