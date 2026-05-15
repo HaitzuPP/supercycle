@@ -870,6 +870,58 @@ html[data-theme="dark"] .ep-stack-more:hover { background: rgba(255,255,255,.04)
 .btn-primary, .btn-ghost { transition: background .15s, transform .12s; }
 .btn-primary:hover { transform: translateY(-1px); }
 .btn-ghost:hover { transform: translateY(-1px); }
+
+/* Platform branded buttons */
+.platform-btn-yt, .platform-btn-sp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 4px;
+  font-family: var(--geist);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .2px;
+  text-decoration: none;
+  transition: opacity .15s, transform .12s;
+  white-space: nowrap;
+}
+.platform-btn-yt:hover, .platform-btn-sp:hover { opacity: .82; transform: translateY(-1px); }
+.platform-btn-yt {
+  background: #fff;
+  color: #0d0c09;
+  border: 1.5px solid #e5e5e5;
+}
+.platform-btn-sp {
+  background: #1DB954;
+  color: #fff;
+  border: 1.5px solid transparent;
+}
+.topbar-platform {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.topbar-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  transition: opacity .15s;
+  text-decoration: none;
+}
+.topbar-icon-btn:hover { opacity: .7; }
+/* Override ep-btn styles */
+.ep-btn.watch, .ep-btn.listen {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
 </style>
 </head>
 <body>
@@ -884,7 +936,10 @@ html[data-theme="dark"] .ep-stack-more:hover { background: rgba(255,255,255,.04)
   </ul>
   <div class="topbar-right">
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
-    <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="topbar-cta">Watch Latest</a>
+    <div class="topbar-platform">
+    <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="topbar-icon-btn" title="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FF0000" style="flex-shrink:0"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+    <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="topbar-icon-btn" title="Spotify"><svg width="16" height="16" viewBox="0 0 24 24" fill="#1DB954" style="flex-shrink:0"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
+  </div>
   </div>
 </nav>
 
@@ -895,7 +950,8 @@ html[data-theme="dark"] .ep-stack-more:hover { background: rgba(255,255,255,.04)
     <h1>Every founder<br>answers to <em>the data.</em></h1>
     <p class="hero-deck">No green room prep. Founders and investors at the frontier of AI, robotics, and science answer to the data in real time.</p>
     <div class="hero-actions">
-      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="btn-primary">Watch Latest &rarr;</a>
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="platform-btn-yt"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FF0000" style="flex-shrink:0"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</a>
+      <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="platform-btn-sp"><svg width="16" height="16" viewBox="0 0 24 24" fill="#1DB954" style="flex-shrink:0"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</a>
       <a href="research.html" class="btn-ghost">Browse Research</a>
     </div>
   </div>
@@ -1034,32 +1090,32 @@ html[data-theme="dark"] .ep-stack-more:hover { background: rgba(255,255,255,.04)
         <div class="ep-card-num">Ep. 12 &middot; May 2025</div>
         <div class="ep-card-title">Bittensor Subnets Cost 500k+ to Register</div>
         <div class="ep-card-guest">Michael White, Karis Capital</div>
-        <span class="ep-card-watch">Watch &rarr;</span>
+        <span class="ep-card-watch"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FF0000" style="flex-shrink:0"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</span>
       </a>
       <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-card">
         <div class="ep-card-num">Ep. 11 &middot; May 2025</div>
         <div class="ep-card-title">Market Speedrun: Bittensor, Situational Awareness and Sports RWAs</div>
         <div class="ep-card-guest">Wei Xie + Jack Leung</div>
-        <span class="ep-card-watch">Watch &rarr;</span>
+        <span class="ep-card-watch"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FF0000" style="flex-shrink:0"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</span>
       </a>
       <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-card">
         <div class="ep-card-num">Ep. 10 &middot; Apr 2025</div>
         <div class="ep-card-title">Can One Subnet Destroy Bittensor's Ecosystem?</div>
         <div class="ep-card-guest">Max (Score), Gyles (Tensora Group)</div>
-        <span class="ep-card-watch">Watch &rarr;</span>
+        <span class="ep-card-watch"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FF0000" style="flex-shrink:0"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</span>
       </a>
       <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-card">
         <div class="ep-card-num">Ep. 9 &middot; Apr 2025</div>
         <div class="ep-card-title">Why the Robotics Gold Rush is Just Getting Started</div>
         <div class="ep-card-guest">Mauricio (XMAQUINA), Simon (Moonrock Capital)</div>
-        <span class="ep-card-watch">Watch &rarr;</span>
+        <span class="ep-card-watch"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FF0000" style="flex-shrink:0"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</span>
       </a>
     </div>
     <div class="ep-strip-footer">
-      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-archive-link">All 12 episodes on YouTube &rarr;</a>
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-archive-link" style="display:inline-flex;align-items:center;gap:7px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FF0000" style="flex-shrink:0"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> All 12 episodes on YouTube &rarr;</a>
       <div class="ep-platforms">
-        <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="platform-pill">YouTube</a>
-        <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="platform-pill">Spotify</a>
+        <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="platform-btn-yt"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FF0000" style="flex-shrink:0"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</a>
+        <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="platform-btn-sp"><svg width="16" height="16" viewBox="0 0 24 24" fill="#1DB954" style="flex-shrink:0"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</a>
       </div>
     </div>
   </div>
