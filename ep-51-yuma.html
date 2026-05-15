@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yuma's Case Against Captured AI - Supercycle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F3EEE3;--parch:#EAE4D4;--ink:#0D0C09;--ink2:rgba(13,12,9,.78);--ink3:rgba(13,12,9,.58);--ink4:rgba(13,12,9,.10);--orange:#D94F2A;--cyan:#0A9FB8;--border:rgba(13,12,9,.14);--dark:#1C1914;--bask:'Baskervville',Georgia,serif;--crim:'Crimson Text',Georgia,serif;--geist:'Geist',-apple-system,sans-serif;--mono:'Geist Mono',monospace}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--crim);font-size:20px;line-height:1.7;background:var(--cream);color:var(--ink)}
+a{color:inherit;text-decoration:none}
+#progress{position:fixed;top:0;left:0;height:2px;background:var(--orange);width:0%;z-index:200;transition:width .1s}
+.topbar{position:sticky;top:0;height:52px;background:rgba(243,238,227,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:100}
+.topbar-logo{font-family:var(--bask);font-size:18px;letter-spacing:-.3px}
+.topbar-logo span{color:var(--orange)}
+.topbar-back{font-family:var(--geist);font-size:13px;color:var(--ink3)}
+.topbar-back:hover{color:var(--ink)}
+.article-hero{background:var(--dark);padding:72px 64px 64px;position:relative;overflow:hidden}
+.article-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(10,159,184,.1) 0%,transparent 60%);pointer-events:none}
+.hero-inner{max-width:1000px;margin:0 auto;position:relative;z-index:1}
+.hero-eyebrow{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+.hero-title{font-family:var(--bask);font-size:52px;font-weight:400;letter-spacing:-.5px;line-height:1.1;color:rgba(255,255,255,.9);margin-bottom:20px;max-width:700px}
+.hero-deck{font-size:20px;color:rgba(255,255,255,.55);line-height:1.6;max-width:600px;margin-bottom:40px}
+.hero-meta{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.hero-meta-item{display:flex;align-items:center;gap:8px}
+.hero-meta-label{font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.28)}
+.hero-meta-val{font-family:var(--geist);font-size:13px;color:rgba(255,255,255,.55)}
+.hero-divider{width:1px;height:20px;background:rgba(255,255,255,.12)}
+.stats-bar{background:var(--orange);padding:20px 64px}
+.stats-bar-inner{max-width:1000px;margin:0 auto;display:flex;gap:48px;flex-wrap:wrap}
+.stat-item .stat-num{font-family:var(--bask);font-size:28px;color:rgba(255,255,255,.9)}
+.stat-item .stat-label{font-family:var(--mono);font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:2px}
+.article-layout{display:grid;grid-template-columns:220px 1fr;gap:64px;max-width:1000px;margin:0 auto;padding:56px 64px 80px;align-items:start}
+.toc{position:sticky;top:72px}
+.toc-label{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink3);margin-bottom:16px}
+.toc a{display:block;font-family:var(--geist);font-size:13px;color:var(--ink3);padding:6px 0 6px 12px;border-left:2px solid transparent;line-height:1.4;transition:color .15s,border-color .15s;margin-bottom:2px}
+.toc a:hover,.toc a.active{color:var(--orange);border-left-color:var(--orange)}
+.toc-back{font-family:var(--geist);font-size:12px;color:var(--ink3);margin-top:28px;padding-top:20px;border-top:1px solid var(--border)}
+.toc-back a:hover{color:var(--orange)}
+.article-body h2{font-family:var(--bask);font-size:30px;font-weight:400;letter-spacing:-.2px;line-height:1.2;color:var(--ink);margin:48px 0 16px;scroll-margin-top:80px}
+.article-body h3{font-family:var(--bask);font-size:22px;font-weight:400;color:var(--ink);margin:32px 0 12px}
+.article-body p{margin-bottom:20px;color:var(--ink2)}
+.article-body strong{color:var(--ink);font-weight:600}
+.article-body a{color:var(--orange);border-bottom:1px solid rgba(217,79,42,.25)}
+.article-body a:hover{border-bottom-color:var(--orange)}
+.takeaways{background:var(--dark);border-radius:6px;margin:40px 0;overflow:hidden}
+.takeaways-header{padding:16px 24px;background:rgba(0,0,0,.2)}
+.takeaways-header h3{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.45);margin:0}
+.takeaways-body{padding:24px 24px 20px}
+.takeaway-item{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start}
+.takeaway-item:last-child{margin-bottom:0}
+.takeaway-num{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--orange);min-width:20px;padding-top:2px}
+.takeaway-text{font-family:var(--crim);font-size:17px;color:rgba(255,255,255,.72);line-height:1.55}
+.note-box{background:var(--parch);border-left:3px solid var(--orange);padding:18px 20px;border-radius:0 4px 4px 0;margin:28px 0}
+.note-box p{margin:0;font-size:17px;color:var(--ink2)}
+.note-label{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+.pullquote{border-left:3px solid var(--orange);padding:12px 0 12px 24px;margin:32px 0}
+.pullquote p{font-family:var(--bask);font-size:24px;font-style:italic;color:var(--ink);line-height:1.35;margin:0}
+.pullquote cite{display:block;font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.6px;margin-top:10px}
+.footer{background:var(--dark);padding:40px 64px 32px}
+.footer-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.footer-brand{font-family:var(--bask);font-size:18px;color:rgba(255,255,255,.7)}
+.footer-brand span{color:var(--orange)}
+.footer-copy{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.22)}
+@media(max-width:900px){.article-layout{grid-template-columns:1fr;padding:40px 28px 60px}.toc{display:none}.article-hero{padding:48px 28px}.hero-title{font-size:36px}.stats-bar{padding:20px 28px}.stats-bar-inner{gap:24px}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<nav class="topbar">
+  <a href="/" class="topbar-logo">Super<span>cycle</span></a>
+  <a href="/research.html" class="topbar-back">&larr; All memos</a>
+</nav>
+
+<div class="article-hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Episode 51 &middot; AI Infrastructure &middot; April 2025</div>
+    <h1 class="hero-title">Yuma's Case Against Captured AI</h1>
+    <p class="hero-deck">DCG's operating arm inside Bittensor. Greg Waisman built TradeBlock and Axani before joining DCG. His thesis: AI centralization is the defining risk of this technological moment.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span class="hero-meta-label">Guest</span><span class="hero-meta-val">Greg Waisman, CEO Yuma / DCG</span></div>
+      <div class="hero-divider"></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Duration</span><span class="hero-meta-val">~45 min</span></div>
+      <div class="hero-divider"></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Background</span><span class="hero-meta-val">Wall Street, TradeBlock, Axani</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stat-item"><div class="stat-num">2013</div><div class="stat-label">TradeBlock founded</div></div>
+    <div class="stat-item"><div class="stat-num">LSE</div><div class="stat-label">Axani acquirer</div></div>
+    <div class="stat-item"><div class="stat-num">DCG</div><div class="stat-label">Operating in Bittensor</div></div>
+    <div class="stat-item"><div class="stat-num">First</div><div class="stat-label">Credible decentralized AI alt.</div></div>
+  </div>
+</div>
+
+<div class="article-layout">
+  <nav class="toc">
+    <div class="toc-label">Contents</div>
+    <a href="#thesis">The core thesis</a>
+    <a href="#background">Background: TradeBlock and Axani</a>
+    <a href="#capture">Capture defined</a>
+    <a href="#bittensor">Why Bittensor</a>
+    <a href="#crypto-role">Role of crypto</a>
+    <a href="#view">The investor view</a>
+    <div class="toc-back"><a href="/research.html">&larr; All memos</a></div>
+  </nav>
+
+  <div class="article-body">
+
+    <div class="takeaways">
+      <div class="takeaways-header"><h3>Key takeaways</h3></div>
+      <div class="takeaways-body">
+        <div class="takeaway-item"><span class="takeaway-num">01</span><span class="takeaway-text">Intelligence is for the first time moving toward non-human functions. This is Waisman's framing. The implications for control and concentration of power are structural, not speculative.</span></div>
+        <div class="takeaway-item"><span class="takeaway-num">02</span><span class="takeaway-text">Centralized AI is "captured" in the same way regulated industries get captured: by the combination of regulatory relationships, compute ownership, and distribution networks that only incumbents can access.</span></div>
+        <div class="takeaway-item"><span class="takeaway-num">03</span><span class="takeaway-text">Waisman's credibility is built on two exits: TradeBlock (institutional crypto data and OTC, sold to DCG / CoinDesk 2019-2020) and Axani (post-trade infrastructure, sold to the London Stock Exchange 2024).</span></div>
+        <div class="takeaway-item"><span class="takeaway-num">04</span><span class="takeaway-text">Bittensor is, in his view, the only credible decentralized alternative to centralized AI development currently in existence.</span></div>
+        <div class="takeaway-item"><span class="takeaway-num">05</span><span class="takeaway-text">The crypto component of Bittensor is "almost an afterthought." It is a pragmatic coordination mechanism, not the point of the network.</span></div>
+      </div>
+    </div>
+
+    <h2 id="thesis">The core thesis</h2>
+
+    <p><a href="https://www.dcg.co" target="_blank" rel="noopener">DCG</a> sent Greg Waisman into the Bittensor ecosystem about two years ago, after Barry Silbert's attention was drawn to the network at a DCG Summit. What Waisman found there, and what he presented at a subsequent state-of-Bittensor address, was a framing of the problem that goes beyond subnet economics or token performance.</p>
+
+    <p>The argument is as follows: for the first time in history, intelligence itself is being produced at scale by non-human systems. That changes the distribution of power in ways that centralized control makes catastrophic. If the entities that own and control the infrastructure for producing intelligence are also the entities with existing regulatory relationships, compute access, and distribution networks, the outcome is a level of concentration with no historical precedent.</p>
+
+    <div class="pullquote">
+      <p>"Intelligence itself is for the first time something moving toward non-human functions. We have to align everybody towards the importance of what we're doing here, and not just for ourselves but for humanity."</p>
+      <cite>Greg Waisman, CEO Yuma / DCG</cite>
+    </div>
+
+    <p>This is what Waisman means by "captured AI." Not that any individual lab is bad-faith. It is that the structural conditions of centralization produce capture as a default outcome, regardless of intent.</p>
+
+    <h2 id="background">Background: TradeBlock and Axani</h2>
+
+    <p>Waisman started his career on Wall Street before founding <a href="https://tradeblock.com" target="_blank" rel="noopener">TradeBlock</a> in 2013. TradeBlock built institutional-grade crypto data infrastructure and an OTC trading platform. DCG and CoinDesk acquired it in 2019-2020. The sale was a proof-of-concept for institutional demand for crypto infrastructure.</p>
+
+    <p>After TradeBlock, Waisman founded <strong>Axani</strong>, focused on post-trade infrastructure for crypto markets. The London Stock Exchange acquired Axani in 2024. Two exits in the infrastructure layer of crypto, both to institutions that represent the traditional finance ecosystem trying to absorb crypto rails.</p>
+
+    <div class="note-box">
+      <div class="note-label">Why this matters</div>
+      <p>Waisman's thesis on Bittensor is not the thesis of a pure crypto believer. It is the thesis of someone who has watched traditional institutions acquire crypto infrastructure twice. He knows what captured infrastructure looks like from the inside.</p>
+    </div>
+
+    <h2 id="capture">Capture defined</h2>
+
+    <p>In financial markets, capture means that the regulated entity controls the regulator. The pattern repeats across industries: energy, healthcare, telecommunications. The mechanism is the same: regulatory relationships, lobbying, and incumbent distribution networks create barriers that new entrants cannot clear, even with superior technology.</p>
+
+    <p>In AI, the capture vectors are compute (a small number of companies own the GPUs needed to train frontier models), data (proprietary datasets accumulated by existing internet platforms), and regulatory relationships (AI governance is being written in dialogue with the labs, not despite them). Open source compresses the model side of the equation. It does not address compute or data or regulatory capture.</p>
+
+    <p>Waisman's argument is that Bittensor represents the only current attempt to build AI infrastructure that is structurally resistant to all three capture vectors simultaneously.</p>
+
+    <h2 id="bittensor">Why Bittensor</h2>
+
+    <p><a href="https://bittensor.com" target="_blank" rel="noopener">Bittensor</a> distributes both the production of AI outputs (via mining) and the governance of those outputs (via the subnet architecture and the validator network). No single entity controls the network. No single entity can redirect the incentives. The TAO token creates coordination without requiring trust in a central counterparty.</p>
+
+    <p>Yuma, DCG's operating entity inside the network, is focused on building the human coordination layer around that infrastructure: the relationships, the analysis, and the capital allocation that turns a technical network into a functioning ecosystem for real AI development.</p>
+
+    <h2 id="crypto-role">The role of crypto</h2>
+
+    <p>Waisman's framing here is worth noting explicitly. The crypto component of Bittensor, the TAO token, the subnet emission schedules, the economic incentives for mining, these are not the point. They are the mechanism that makes decentralized coordination possible without requiring a trusted intermediary.</p>
+
+    <p>This is a materially different framing from most crypto-native arguments about Bittensor. It does not require belief in crypto as an asset class. It requires only that you accept that trustless coordination at scale is useful for building AI infrastructure that is resistant to capture. The token is the implementation detail, not the investment thesis.</p>
+
+    <h2 id="view">The investor view</h2>
+
+    <p>The episode does not go deep on Yuma's specific financial position or portfolio. What it does establish is the credibility of the operator making the argument. Two infrastructure exits, both to traditional financial institutions, give Waisman a perspective on centralization risk that is grounded in commercial reality rather than ideology.</p>
+
+    <p>The state-of-Bittensor presentation that prompted this episode was framed explicitly as an alignment exercise for the most important people in the Bittensor network in one room. Waisman was trying to orient a room of diverse actors around a shared risk model for the moment they are operating in. That is what network builders do when they are serious.</p>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">Super<span>cycle</span></div>
+    <span class="footer-copy">&copy; 2025 Supercycle. A Pylon Partners production.</span>
+  </div>
+</footer>
+<script>
+const bar=document.getElementById('progress');
+const tocLinks=document.querySelectorAll('.toc a');
+const sections=document.querySelectorAll('.article-body h2');
+window.addEventListener('scroll',()=>{
+  const total=document.documentElement.scrollHeight-window.innerHeight;
+  bar.style.width=(window.scrollY/total*100)+'%';
+  sections.forEach((s,i)=>{if(window.scrollY>=s.offsetTop-100){tocLinks.forEach(a=>a.classList.remove('active'));if(tocLinks[i])tocLinks[i].classList.add('active')}});
+});
+</script>
+</body>
+</html>
