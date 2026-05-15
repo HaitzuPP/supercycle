@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Robot Money Thesis - Supercycle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F3EEE3;--parch:#EAE4D4;--ink:#0D0C09;--ink2:rgba(13,12,9,.78);--ink3:rgba(13,12,9,.58);--ink4:rgba(13,12,9,.10);--orange:#D94F2A;--cyan:#0A9FB8;--border:rgba(13,12,9,.14);--dark:#1C1914;--bask:'Baskervville',Georgia,serif;--crim:'Crimson Text',Georgia,serif;--geist:'Geist',-apple-system,sans-serif;--mono:'Geist Mono',monospace}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--crim);font-size:20px;line-height:1.7;background:var(--cream);color:var(--ink)}
+a{color:inherit;text-decoration:none}
+#progress{position:fixed;top:0;left:0;height:2px;background:var(--orange);width:0%;z-index:200;transition:width .1s}
+.topbar{position:sticky;top:0;height:52px;background:rgba(243,238,227,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:100}
+.topbar-logo{font-family:var(--bask);font-size:18px;letter-spacing:-.3px}
+.topbar-logo span{color:var(--orange)}
+.topbar-back{font-family:var(--geist);font-size:13px;color:var(--ink3)}
+.topbar-back:hover{color:var(--ink)}
+.article-hero{background:var(--dark);padding:72px 64px 64px;position:relative;overflow:hidden}
+.article-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(10,159,184,.12) 0%,transparent 60%);pointer-events:none}
+.hero-inner{max-width:1000px;margin:0 auto;position:relative;z-index:1}
+.hero-eyebrow{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+.hero-title{font-family:var(--bask);font-size:52px;font-weight:400;letter-spacing:-.5px;line-height:1.1;color:rgba(255,255,255,.9);margin-bottom:20px;max-width:700px}
+.hero-deck{font-size:20px;color:rgba(255,255,255,.55);line-height:1.6;max-width:600px;margin-bottom:40px}
+.hero-meta{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.hero-meta-item{display:flex;align-items:center;gap:8px}
+.hero-meta-label{font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.28)}
+.hero-meta-val{font-family:var(--geist);font-size:13px;color:rgba(255,255,255,.55)}
+.hero-divider{width:1px;height:20px;background:rgba(255,255,255,.12)}
+.stats-bar{background:var(--cyan);padding:20px 64px}
+.stats-bar-inner{max-width:1000px;margin:0 auto;display:flex;gap:48px;flex-wrap:wrap}
+.stat-item .stat-num{font-family:var(--bask);font-size:28px;color:rgba(255,255,255,.9)}
+.stat-item .stat-label{font-family:var(--mono);font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:2px}
+.article-layout{display:grid;grid-template-columns:220px 1fr;gap:64px;max-width:1000px;margin:0 auto;padding:56px 64px 80px;align-items:start}
+.toc{position:sticky;top:72px}
+.toc-label{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink3);margin-bottom:16px}
+.toc a{display:block;font-family:var(--geist);font-size:13px;color:var(--ink3);padding:6px 0 6px 12px;border-left:2px solid transparent;transition:color .15s,border-color .15s;margin-bottom:2px}
+.toc a:hover,.toc a.active{color:var(--orange);border-left-color:var(--orange)}
+.toc-back{font-family:var(--geist);font-size:12px;color:var(--ink3);margin-top:28px;padding-top:20px;border-top:1px solid var(--border)}
+.toc-back a:hover{color:var(--orange)}
+.article-body h2{font-family:var(--bask);font-size:30px;font-weight:400;letter-spacing:-.2px;line-height:1.2;color:var(--ink);margin:48px 0 16px;scroll-margin-top:80px}
+.article-body p{margin-bottom:20px;color:var(--ink2)}
+.article-body strong{color:var(--ink);font-weight:600}
+.article-body a{color:var(--orange);border-bottom:1px solid rgba(217,79,42,.25)}
+.article-body a:hover{border-bottom-color:var(--orange)}
+.takeaways{background:var(--dark);border-radius:6px;margin:40px 0;overflow:hidden}
+.takeaways-header{padding:16px 24px;background:rgba(0,0,0,.2)}
+.takeaways-header h3{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.45);margin:0}
+.takeaways-body{padding:24px 24px 20px}
+.takeaway-item{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start}
+.takeaway-item:last-child{margin-bottom:0}
+.takeaway-num{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--orange);min-width:20px;padding-top:2px}
+.takeaway-text{font-family:var(--crim);font-size:17px;color:rgba(255,255,255,.72);line-height:1.55}
+.note-box{background:var(--parch);border-left:3px solid var(--orange);padding:18px 20px;border-radius:0 4px 4px 0;margin:28px 0}
+.note-box p{margin:0;font-size:17px;color:var(--ink2)}
+.note-label{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+.pullquote{border-left:3px solid var(--orange);padding:12px 0 12px 24px;margin:32px 0}
+.pullquote p{font-family:var(--bask);font-size:24px;font-style:italic;color:var(--ink);line-height:1.35;margin:0}
+.pullquote cite{display:block;font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.6px;margin-top:10px}
+.footer{background:var(--dark);padding:40px 64px 32px}
+.footer-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.footer-brand{font-family:var(--bask);font-size:18px;color:rgba(255,255,255,.7)}
+.footer-brand span{color:var(--orange)}
+.footer-copy{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.22)}
+@media(max-width:900px){.article-layout{grid-template-columns:1fr;padding:40px 28px 60px}.toc{display:none}.article-hero{padding:48px 28px}.hero-title{font-size:36px}.stats-bar{padding:20px 28px}.stats-bar-inner{gap:24px}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<nav class="topbar">
+  <a href="/" class="topbar-logo">Super<span>cycle</span></a>
+  <a href="/research.html" class="topbar-back">&larr; All memos</a>
+</nav>
+
+<div class="article-hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Episode 50 &middot; FinTech / Venture &middot; March 2025</div>
+    <h1 class="hero-title">The Robot Money Thesis</h1>
+    <p class="hero-deck">Stripe, Ethereum, Solana, Visa, MasterCard, and BlackRock all want to be robot money. Lex Sokolin explains why, and why the differentiation window is already closing.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span class="hero-meta-label">Guest</span><span class="hero-meta-val">Lex Sokolin, Generative Ventures</span></div>
+      <div class="hero-divider"></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Background</span><span class="hero-meta-val">Chief Economist, Consensys</span></div>
+      <div class="hero-divider"></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Fund</span><span class="hero-meta-val">Seed to Series A, FinTech/AI/Web3</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stat-item"><div class="stat-num">$1B</div><div class="stat-label">Han Ventures AI crypto raise</div></div>
+    <div class="stat-item"><div class="stat-num">3 yr</div><div class="stat-label">Fund vintage (post-FTX)</div></div>
+    <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Asset class tensions tracked</div></div>
+    <div class="stat-item"><div class="stat-num">100+</div><div class="stat-label">Companies tracked quarterly</div></div>
+  </div>
+</div>
+
+<div class="article-layout">
+  <nav class="toc">
+    <div class="toc-label">Contents</div>
+    <a href="#thesis">The robot money thesis</a>
+    <a href="#consensus">Consensus position</a>
+    <a href="#asset-classes">Three asset class problem</a>
+    <a href="#compression">Differentiation compression</a>
+    <a href="#exits">Exit landscape</a>
+    <a href="#robotics">Robotics footnote</a>
+    <div class="toc-back"><a href="/research.html">&larr; All memos</a></div>
+  </nav>
+
+  <div class="article-body">
+
+    <div class="takeaways">
+      <div class="takeaways-header"><h3>Key takeaways</h3></div>
+      <div class="takeaways-body">
+        <div class="takeaway-item"><span class="takeaway-num">01</span><span class="takeaway-text">The robot money thesis: economic activity is migrating to machines. Financial infrastructure for that machine economy is the durable investment category. Stripe, Coinbase, Visa, BlackRock, and Anthropic are all converging on it.</span></div>
+        <div class="takeaway-item"><span class="takeaway-num">02</span><span class="takeaway-text">The thesis is now consensus. Han Ventures raised $1B for an AI crypto fund. The differentiation window that existed three years ago is closed. Startups have materially less time than they did.</span></div>
+        <div class="takeaway-item"><span class="takeaway-num">03</span><span class="takeaway-text">Returns to scale have inverted. Historically, small is fast. Now large companies with existing distribution can deploy agentic workflows faster than startups can build. Anthropic is destroying scores of startups every week, per Sokolin.</span></div>
+        <div class="takeaway-item"><span class="takeaway-num">04</span><span class="takeaway-text">Early-stage token markets are structurally broken as an exit path. TGE-plus-market-maker is a known failure mode. On-chain liquidity for finding the signal in 5 million tokens does not exist.</span></div>
+        <div class="takeaway-item"><span class="takeaway-num">05</span><span class="takeaway-text">The viable paths for crypto venture are: M+A from large incumbents (Stripe, JP Morgan, Visa, MasterCard), standalone revenue generation, or IPO. Everything else is financial engineering on the exit, not value creation.</span></div>
+      </div>
+    </div>
+
+    <h2 id="thesis">The robot money thesis</h2>
+
+    <p><a href="https://generative.vc" target="_blank" rel="noopener">Generative Ventures</a> launched three years ago, just after the FTX collapse, with a specific framing: economic activity is going to come from robots. Software AI agents, hardware robots, and humans so augmented by agents that their labor persists in an automated fashion. Financial infrastructure for that new class of economic actor is the durable opportunity.</p>
+
+    <p>Sokolin, formerly chief economist at <a href="https://consensys.io" target="_blank" rel="noopener">Consensys</a> and an early founder in the roboadvice space (FinTech 1.0), saw this from his vantage point across three markets simultaneously: the US, Asia, and the intersection of crypto and traditional finance. His partner is Asia-based, giving the fund a view into what the large labs in different jurisdictions are actually building, not just what they are announcing.</p>
+
+    <p>The thesis was early. It pulled teeth to get the fund going in 2022. It is now entirely mainstream.</p>
+
+    <div class="pullquote">
+      <p>"These days I call the thesis robot money. Stripe wants to be robot money. Ethereum wants to be robot money. Solana and Visa and MasterCard and BlackRock with its tokenized fund, everybody wants to be robot money."</p>
+      <cite>Lex Sokolin, Managing Partner, Generative Ventures</cite>
+    </div>
+
+    <h2 id="consensus">The consensus problem</h2>
+
+    <p>The validation of a thesis is also its death as a differentiation strategy. <a href="https://hanventures.com" target="_blank" rel="noopener">Han Ventures</a> raised $1B for an AI crypto fund targeting the same thesis. Stripe, Coinbase, OpenAI, and Anthropic are all sitting on it. In Asia, Ant Financial and WeChat are already there. The window that existed three years ago is closed or closing very fast.</p>
+
+    <p>For a startup, this means the time between identifying a product insight and having that insight commoditized by a large incumbent has compressed dramatically. Sokolin's framing is precise: it is not that the thesis is wrong. It is that being right about a thesis is no longer sufficient to build a company around it.</p>
+
+    <div class="note-box">
+      <div class="note-label">The implication</div>
+      <p>If large companies can deploy agentic workflows into existing distribution footprints faster than startups can acquire users, the startup advantage shifts to narrow problems incumbents cannot or will not solve, and to geographies and verticals where existing distribution does not reach.</p>
+    </div>
+
+    <h2 id="asset-classes">The three asset class problem</h2>
+
+    <p>Sokolin tracks approximately 100 companies quarterly across public equities, private equity, and token markets, using Claude for analysis. His read on the current state of each market as of early 2025:</p>
+
+    <p><strong>Public equities:</strong> Big tech and energy have done well. AI-adjacent infrastructure (chips, memory, compute) has outperformed because it captures the capex cycle of the large labs. Applications-layer companies, particularly SaaS, have been repriced down because AI commoditizes their core value proposition. Adobe generates more revenue than before, at a lower multiple. The gap between revenue performance and market valuation reflects expected disruption, not current disruption.</p>
+
+    <p><strong>Private equity:</strong> Late-stage has done well. Early-stage has bled out in both token markets and private markets. The capital influx from large tech balance sheets ($100B-$300B in cash being redeployed into AI) went primarily to infrastructure, then to inference providers and labs, not to early-stage applications.</p>
+
+    <p><strong>Token markets:</strong> Structurally broken at the early stage. No meaningful on-chain capital is systematically evaluating which of 5 million tokens represent real value. TGE-plus-market-maker is widely understood as a mechanism for exiting into retail, not creating returns.</p>
+
+    <h2 id="compression">Differentiation compression</h2>
+
+    <p>The historical VC model assumes that small companies can move faster than large ones. Returns to scale level off; agility is the startup advantage. Sokolin's observation is that this relationship has inverted in the current environment. Large companies with existing distribution, regulatory relationships, and customer data can deploy agentic workflows into their installed base faster than startups can acquire users from scratch.</p>
+
+    <p><a href="https://stripe.com" target="_blank" rel="noopener">Stripe</a> acquiring agent payment infrastructure is faster than a startup building agent payment infrastructure and acquiring Stripe's customers. <a href="https://anthropic.com" target="_blank" rel="noopener">Anthropic</a> building a product feature is faster than a startup building the same feature and acquiring Anthropic's user base. The crowding-out dynamic is real and accelerating.</p>
+
+    <h2 id="exits">The exit landscape</h2>
+
+    <p>Sokolin's framing for where viable exits exist in the current market: M+A from incumbents that have capital and distribution but lack specific technology. Stripe, JP Morgan, PayPal, Ramp, Brex, Visa, and MasterCard are all potential acquirers of well-positioned fintech-adjacent companies. <a href="https://bvnk.com" target="_blank" rel="noopener">BVNK</a>, <a href="https://zerohash.com" target="_blank" rel="noopener">Zerohash</a>, and <a href="https://securitize.io" target="_blank" rel="noopener">Securitize</a> received M+A interest earlier in 2025.</p>
+
+    <p>Standalone IPO remains viable for companies generating real revenue. Coinbase is the reference point for what a standalone crypto-adjacent public company looks like: primarily a transaction revenue story, expensive to hold through low-volume periods, but real.</p>
+
+    <h2 id="robotics">The robotics footnote</h2>
+
+    <p>Sokolin draws a direct parallel between the current robotics investment cycle and the augmented/virtual reality cycle of 2018. Same hardware story, same exponential shipment projections, same concentration of capital into a small number of companies. AR/VR peaked at approximately 10 million headsets per year and did not produce the consumer transformation it promised. Robotics shipments today: approximately 5,000 Unitree units in 2024. The gap between narrative and deployment reality deserves tracking.</p>
+
+    <p>The investable version of robotics exposure, in his view, is infrastructure: compute, memory, energy, and manufacturing capacity. The same lesson that applied to AI models (invest in the picks and shovels, not the gold rush) applies to physical robots.</p>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">Super<span>cycle</span></div>
+    <span class="footer-copy">&copy; 2025 Supercycle. A Pylon Partners production.</span>
+  </div>
+</footer>
+<script>
+const bar=document.getElementById('progress');
+const tocLinks=document.querySelectorAll('.toc a');
+const sections=document.querySelectorAll('.article-body h2');
+window.addEventListener('scroll',()=>{
+  const total=document.documentElement.scrollHeight-window.innerHeight;
+  bar.style.width=(window.scrollY/total*100)+'%';
+  sections.forEach((s,i)=>{if(window.scrollY>=s.offsetTop-100){tocLinks.forEach(a=>a.classList.remove('active'));if(tocLinks[i])tocLinks[i].classList.add('active')}});
+});
+</script>
+</body>
+</html>
