@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>(function(){var t=localStorage.getItem('sc-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Supercycle: AI · Robotics · Science</title>
@@ -26,6 +27,22 @@
   --mono: 'Geist Mono', monospace;
 }
 
+/* Dark mode */
+:root {
+  --topbar-bg: rgba(243,238,227,.88);
+}
+html[data-theme="dark"] {
+  --cream: #0D0C09;
+  --parch: #161310;
+  --ink: rgba(255,255,255,.88);
+  --ink2: rgba(255,255,255,.65);
+  --ink3: rgba(255,255,255,.4);
+  --ink4: rgba(255,255,255,.08);
+  --border: rgba(255,255,255,.1);
+  --bmed: rgba(255,255,255,.1);
+  --topbar-bg: rgba(13,12,9,.92);
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; }
@@ -45,7 +62,7 @@ a { color: inherit; text-decoration: none; }
   position: sticky;
   top: 0;
   height: 52px;
-  background: rgba(243,238,227,.88);
+  background: var(--topbar-bg);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
@@ -183,94 +200,87 @@ a { color: inherit; text-decoration: none; }
 
 .btn-ghost:hover { border-color: var(--ink3); color: var(--ink); }
 
-/* EPISODE VIZ */
-.ep-viz-wrap {
-  position: relative;
-  height: 440px;
+/* EPISODE STACK (replaces viz nodes) */
+.ep-stack {
   background: var(--parch);
-  border-radius: 8px;
   border: 1px solid var(--border);
+  border-radius: 8px;
   overflow: hidden;
 }
-
-.ep-viz-wrap::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 50%, rgba(217,79,42,.06) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.ep-node {
-  position: absolute;
+.ep-stack-label {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 500;
-  padding: 6px 12px;
-  border-radius: 20px;
-  background: var(--cream);
-  border: 1px solid var(--border);
-  color: var(--ink2);
-  white-space: nowrap;
-  animation: ep-float var(--dur, 7s) ease-in-out infinite;
-  animation-delay: var(--del, 0s);
-  cursor: default;
-  transition: border-color .2s, color .2s;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--ink3);
+  padding: 18px 22px 14px;
+  border-bottom: 1px solid var(--border);
 }
-
-.ep-node:hover {
-  border-color: var(--orange);
+.ep-stack-row {
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--border);
+  transition: background .15s;
+  cursor: pointer;
+}
+.ep-stack-row:hover { background: var(--cream); }
+html[data-theme="dark"] .ep-stack-row:hover { background: rgba(255,255,255,.04); }
+.ep-stack-meta { display: flex; flex-direction: column; gap: 2px; }
+.ep-stack-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   color: var(--orange);
 }
-
-.ep-node.accent {
-  background: var(--orange);
-  color: var(--cream);
-  border-color: var(--orange);
-  font-size: 12px;
+.ep-stack-date {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink3);
+  letter-spacing: .4px;
 }
-
-.ep-node.cyan {
-  border-color: var(--cyan);
-  color: var(--cyan);
-}
-
-@keyframes ep-float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  33% { transform: translateY(-10px) rotate(1.5deg); }
-  66% { transform: translateY(-5px) rotate(-1deg); }
-}
-
-.ep-central {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
+.ep-stack-title {
   font-family: var(--bask);
   font-size: 15px;
-  font-style: italic;
-  color: var(--ink3);
-  text-align: center;
-  pointer-events: none;
-}
-
-.ep-central strong {
-  display: block;
-  font-family: var(--mono);
-  font-size: 28px;
-  font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--ink);
-  letter-spacing: -1px;
+  line-height: 1.3;
+  margin-bottom: 3px;
 }
-
-/* SVG connectors */
-.ep-viz-svg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: .35;
+.ep-stack-guest {
+  font-family: var(--geist);
+  font-size: 12px;
+  color: var(--ink3);
 }
+.ep-stack-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+  background: var(--ink4);
+  color: var(--ink3);
+  white-space: nowrap;
+}
+.ep-stack-more {
+  display: block;
+  font-family: var(--geist);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--orange);
+  padding: 14px 22px;
+  text-align: center;
+  transition: background .15s;
+}
+.ep-stack-more:hover { background: var(--cream); }
+html[data-theme="dark"] .ep-stack-more:hover { background: rgba(255,255,255,.04); }
 
 /* THESIS SECTION */
 .thesis {
@@ -819,7 +829,6 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 960px) {
   .hero { grid-template-columns: 1fr; padding: 56px 32px 48px; gap: 40px; }
   .hero h1 { font-size: 40px; }
-  .ep-viz-wrap { height: 320px; }
   .stats-strip { grid-template-columns: repeat(2, 1fr); }
   .stats-strip .stat-item:nth-child(2) { border-right: none; }
   .research-grid { grid-template-columns: 1fr; }
@@ -830,6 +839,37 @@ a { color: inherit; text-decoration: none; }
   .footer { padding: 40px 32px 28px; }
   .footer-links { gap: 32px; }
 }
+
+/* Theme toggle */
+.theme-toggle {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--ink3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: color .15s, background .15s;
+  padding: 0;
+  flex-shrink: 0;
+}
+.theme-toggle:hover { color: var(--ink); background: var(--ink4); }
+
+.topbar-right { display: flex; align-items: center; gap: 20px; }
+
+/* Micro-animations */
+.research-card-featured { transition: border-color .2s, transform .2s, box-shadow .2s; }
+.research-card-featured:hover { border-color: var(--orange); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.08); }
+.queue-card { transition: border-color .2s, background .2s, transform .15s; }
+.queue-card:hover { border-color: var(--orange); background: var(--parch); transform: translateY(-1px); }
+.ep-card { transition: border-color .2s, background .2s, transform .15s; }
+.ep-card:hover { border-color: var(--orange); background: rgba(217,79,42,.05); transform: translateY(-2px); }
+.btn-primary, .btn-ghost { transition: background .15s, transform .12s; }
+.btn-primary:hover { transform: translateY(-1px); }
+.btn-ghost:hover { transform: translateY(-1px); }
 </style>
 </head>
 <body>
@@ -837,12 +877,8 @@ a { color: inherit; text-decoration: none; }
 <!-- TOPBAR -->
 <nav class="topbar">
   <a href="index.html" class="topbar-logo">Super<span>cycle</span></a>
-  <ul class="topbar-nav">
-    <li><a href="#about">About</a></li>
-    <li><a href="research.html">Research</a></li>
-    <li><a href="episodes.html">Episodes</a></li>
-  </ul>
-  <div class="topbar-right">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
     <a href="https://www.youtube.com/watch?v=oSFu8IZ5RaE" target="_blank" rel="noopener" class="topbar-cta">Watch Latest</a>
   </div>
 </nav>
@@ -859,33 +895,42 @@ a { color: inherit; text-decoration: none; }
     </div>
   </div>
   <div class="hero-right">
-    <div class="ep-viz-wrap">
-      <svg class="ep-viz-svg" viewBox="0 0 480 440" xmlns="http://www.w3.org/2000/svg">
-        <line x1="240" y1="220" x2="90" y2="90" stroke="rgba(13,12,9,.12)" stroke-width="1"/>
-        <line x1="240" y1="220" x2="390" y2="100" stroke="rgba(13,12,9,.12)" stroke-width="1"/>
-        <line x1="240" y1="220" x2="70" y2="330" stroke="rgba(13,12,9,.12)" stroke-width="1"/>
-        <line x1="240" y1="220" x2="400" y2="340" stroke="rgba(13,12,9,.12)" stroke-width="1"/>
-        <line x1="240" y1="220" x2="200" y2="380" stroke="rgba(13,12,9,.12)" stroke-width="1"/>
-        <line x1="240" y1="220" x2="350" y2="200" stroke="rgba(13,12,9,.08)" stroke-width="1"/>
-        <line x1="240" y1="220" x2="130" y2="180" stroke="rgba(13,12,9,.08)" stroke-width="1"/>
-      </svg>
-
-      <!-- Center -->
-      <div class="ep-central">
-        <strong>52</strong>
-        episodes
-      </div>
-
-      <!-- Nodes -->
-      <div class="ep-node accent" style="top:10%;left:12%;--dur:6.8s;--del:0s">Drug Discovery</div>
-      <div class="ep-node" style="top:8%;right:10%;--dur:7.4s;--del:-1.2s">Captured AI</div>
-      <div class="ep-node cyan" style="top:42%;left:4%;--dur:8s;--del:-2.5s">Robot Money</div>
-      <div class="ep-node" style="bottom:20%;left:8%;--dur:7.2s;--del:-0.8s">Computer Vision</div>
-      <div class="ep-node" style="bottom:10%;right:15%;--dur:6.5s;--del:-3s">Biotech</div>
-      <div class="ep-node" style="top:28%;right:5%;--dur:7.8s;--del:-1.8s">AI Agents</div>
-      <div class="ep-node" style="bottom:35%;right:10%;--dur:6.2s;--del:-0.4s">Open Source</div>
-      <div class="ep-node" style="top:68%;left:30%;--dur:7.6s;--del:-2s">Machine Learning</div>
-      <div class="ep-node" style="top:18%;left:38%;--dur:8.2s;--del:-1.5s">Robotics</div>
+    <div class="ep-stack">
+      <div class="ep-stack-label">Latest episodes</div>
+      <a href="ep-52-nova.html" class="ep-stack-row">
+        <div class="ep-stack-meta">
+          <span class="ep-stack-num">Ep. 52</span>
+          <span class="ep-stack-date">May 2025</span>
+        </div>
+        <div class="ep-stack-body">
+          <div class="ep-stack-title">Nova's Bet: AI-Powered Drug Discovery</div>
+          <div class="ep-stack-guest">Micaela Bazo, Nova</div>
+        </div>
+        <span class="ep-stack-tag">Drug Discovery</span>
+      </a>
+      <a href="ep-51-yuma.html" class="ep-stack-row">
+        <div class="ep-stack-meta">
+          <span class="ep-stack-num">Ep. 51</span>
+          <span class="ep-stack-date">Apr 2025</span>
+        </div>
+        <div class="ep-stack-body">
+          <div class="ep-stack-title">Yuma's Case Against Captured AI</div>
+          <div class="ep-stack-guest">Greg Schvey, Yuma / DCG</div>
+        </div>
+        <span class="ep-stack-tag">AI Infrastructure</span>
+      </a>
+      <a href="ep-lex.html" class="ep-stack-row">
+        <div class="ep-stack-meta">
+          <span class="ep-stack-num">Ep. 50</span>
+          <span class="ep-stack-date">Mar 2025</span>
+        </div>
+        <div class="ep-stack-body">
+          <div class="ep-stack-title">The Robot Money Thesis</div>
+          <div class="ep-stack-guest">Lex Sokolin, Generative Ventures</div>
+        </div>
+        <span class="ep-stack-tag">FinTech</span>
+      </a>
+      <a href="episodes.html" class="ep-stack-more">All 52 episodes &rarr;</a>
     </div>
   </div>
 </section>
@@ -1065,6 +1110,12 @@ a { color: inherit; text-decoration: none; }
           <a href="https://pylon.partners" target="_blank" rel="noopener">About Pylon</a>
           <a href="mailto:jack@pylon.partners">Contact</a>
         </div>
+        <div class="footer-col">
+          <div class="footer-col-label">Navigate</div>
+          <a href="episodes.html">Episodes</a>
+          <a href="research.html">Research</a>
+          <a href="index.html#about">About</a>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
@@ -1073,5 +1124,26 @@ a { color: inherit; text-decoration: none; }
   </div>
 </footer>
 
+<script>
+function scUpdateIcon(){
+  var d=document.documentElement.getAttribute('data-theme')==='dark';
+  var b=document.getElementById('themeToggle');
+  if(!b)return;
+  b.innerHTML=d
+    ?'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>'
+    :'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  b.title=d?'Light mode':'Dark mode';
+}
+document.addEventListener('DOMContentLoaded',function(){
+  scUpdateIcon();
+  var b=document.getElementById('themeToggle');
+  if(b)b.addEventListener('click',function(){
+    var d=document.documentElement.getAttribute('data-theme')==='dark';
+    document.documentElement.setAttribute('data-theme',d?'light':'dark');
+    localStorage.setItem('sc-theme',d?'light':'dark');
+    scUpdateIcon();
+  });
+});
+</script>
 </body>
 </html>
