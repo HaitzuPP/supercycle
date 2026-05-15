@@ -402,6 +402,74 @@ footer {
   
 }
 
+
+/* __ Network Viz __ */
+.theme-viz {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  margin: 24px 0 32px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: rgba(243,238,227,.5);
+}
+html[data-theme="dark"] .theme-viz { background: rgba(28,25,20,.4); }
+.theme-viz svg.viz-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.tn {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  transform: translate(-50%, -50%);
+  animation: tn-float var(--dur, 5s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  z-index: 5;
+  cursor: default;
+}
+@keyframes tn-float {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50%       { transform: translate(-50%, -50%) translateY(-6px); }
+}
+.tn-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60px; height: 60px;
+  border: 1px solid var(--border);
+  background: rgba(243,238,227,.92);
+  gap: 2px;
+  transition: border-color .2s;
+}
+html[data-theme="dark"] .tn-chip { background: rgba(28,25,20,.85); border-color: rgba(255,255,255,.12); }
+.tn:hover .tn-chip { border-color: var(--orange); }
+.tn.hub .tn-chip { width: 76px; height: 76px; border-color: rgba(13,12,9,.2); }
+.tn.accent .tn-chip { border-color: rgba(217,79,42,.25); background: rgba(217,79,42,.04); }
+.tn-sym {
+  font-family: var(--bask);
+  font-size: 22px;
+  line-height: 1;
+  display: block;
+}
+.tn.hub .tn-sym { font-size: 28px; }
+.tn-lbl {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  text-align: center;
+  line-height: 1.3;
+  display: block;
+}
 </style>
 </head>
 <body>
@@ -410,7 +478,7 @@ footer {
 <nav>
   <a href="index.html" class="topbar-brand">Super<span>cycle</span></a>
   <ul class="topbar-nav">
-    <li><a href="index.html" class="active">Themes</a></li>
+    <li><a href="index.html" class="active">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="episodes.html">Episodes</a></li>
   </ul>
@@ -458,6 +526,15 @@ footer {
   <!-- ── 01 DECENTRALIZED AI ── -->
   <div class="theme-section reveal" id="theme-01">
     <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><circle cx="16" cy="6" r="2.5"/><circle cx="5" cy="26" r="2.5"/><circle cx="27" cy="26" r="2.5"/><circle cx="16" cy="16" r="2"/><line x1="16" y1="8.5" x2="16" y2="14"/><line x1="14.2" y1="17.5" x2="7" y2="23.5"/><line x1="17.8" y1="17.5" x2="25" y2="23.5"/><line x1="7.5" y1="26" x2="24.5" y2="26"/></svg>01 · Decentralized AI</div>
+    <div class="theme-viz" data-viz="v01">
+      <svg class="viz-lines"></svg>
+      <div class="tn hub"    data-id="tao"       style="left:42%;top:45%;--dur:6s;--delay:0s">   <div class="tn-chip"><span class="tn-sym" style="color:var(--ink)">&#964;</span><span class="tn-lbl">Bittensor</span></div></div>
+      <div class="tn"        data-id="subnet"    style="left:18%;top:25%;--dur:5.2s;--delay:-1s"> <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#11041;</span><span class="tn-lbl">Subnet</span></div></div>
+      <div class="tn"        data-id="validator" style="left:20%;top:70%;--dur:4.8s;--delay:-.5s"><div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#10568;</span><span class="tn-lbl">Validator</span></div></div>
+      <div class="tn accent" data-id="compute"   style="left:66%;top:20%;--dur:5.5s;--delay:-2s"> <div class="tn-chip"><span class="tn-sym" style="color:#5b8dd9">&#9633;</span><span class="tn-lbl">Compute</span></div></div>
+      <div class="tn accent" data-id="model"     style="left:76%;top:60%;--dur:5.8s;--delay:-.8s"><div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#9673;</span><span class="tn-lbl">Foundation<br>Model</span></div></div>
+      <div class="tn"        data-id="miner"     style="left:55%;top:80%;--dur:5s;--delay:-1.5s"> <div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#9670;</span><span class="tn-lbl">Miner</span></div></div>
+    </div>
     <h2 class="theme-h">The major labs have locked up the model layer. The infrastructure beneath it is still open.</h2>
 
     <div class="theme-signals">
@@ -499,6 +576,15 @@ footer {
   <!-- ── 02 ROBOTICS ── -->
   <div class="theme-section reveal" id="theme-02">
     <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="3" y="14" width="9" height="10" rx="1.5"/><rect x="12" y="9" width="8" height="7" rx="1.5"/><rect x="20" y="12" width="9" height="10" rx="1.5"/><line x1="12" y1="14" x2="20" y2="14"/><line x1="9" y1="22" x2="12" y2="22"/><line x1="20" y1="20" x2="23" y2="20"/><circle cx="6" cy="27" r="2"/><circle cx="26" cy="27" r="2"/></svg>02 · Robotics</div>
+    <div class="theme-viz" data-viz="v02">
+      <svg class="viz-lines"></svg>
+      <div class="tn hub"    data-id="hw"      style="left:42%;top:45%;--dur:6.2s;--delay:0s">    <div class="tn-chip"><span class="tn-sym" style="color:var(--ink)">&#9881;</span><span class="tn-lbl">Hardware</span></div></div>
+      <div class="tn accent" data-id="spatial" style="left:18%;top:26%;--dur:5.1s;--delay:-1.2s"> <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#9678;</span><span class="tn-lbl">Spatial<br>Map</span></div></div>
+      <div class="tn"        data-id="task"    style="left:18%;top:70%;--dur:4.9s;--delay:-.6s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#8801;</span><span class="tn-lbl">Task<br>Protocol</span></div></div>
+      <div class="tn"        data-id="fleet"   style="left:66%;top:22%;--dur:5.4s;--delay:-1.8s"> <div class="tn-chip"><span class="tn-sym" style="color:#5b8dd9">&#9638;</span><span class="tn-lbl">Fleet</span></div></div>
+      <div class="tn accent" data-id="own"     style="left:75%;top:58%;--dur:5.7s;--delay:-.4s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">$</span><span class="tn-lbl">Ownership</span></div></div>
+      <div class="tn"        data-id="ai"      style="left:62%;top:78%;--dur:5.3s;--delay:-2.2s"> <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#9673;</span><span class="tn-lbl">AI Layer</span></div></div>
+    </div>
     <h2 class="theme-h">Robot hardware has fallen from $1M to under $100k in five years. The ownership infrastructure has not been built.</h2>
 
     <div class="theme-signals">
@@ -536,6 +622,15 @@ footer {
   <!-- ── 03 AI BIOTECH ── -->
   <div class="theme-section reveal" id="theme-03">
     <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><path d="M11 3 Q20 9 11 16 Q2 23 11 29"/><path d="M21 3 Q12 9 21 16 Q30 23 21 29"/><line x1="11" y1="9" x2="21" y2="9"/><line x1="11" y1="16" x2="21" y2="16"/><line x1="11" y1="23" x2="21" y2="23"/></svg>03 · AI Biotech</div>
+    <div class="theme-viz" data-viz="v03">
+      <svg class="viz-lines"></svg>
+      <div class="tn hub"    data-id="target"   style="left:42%;top:45%;--dur:5.8s;--delay:0s">    <div class="tn-chip"><span class="tn-sym" style="color:var(--ink)">&#9678;</span><span class="tn-lbl">Drug<br>Target</span></div></div>
+      <div class="tn accent" data-id="aimodel"  style="left:18%;top:24%;--dur:5.3s;--delay:-.8s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#9673;</span><span class="tn-lbl">AI Model</span></div></div>
+      <div class="tn"        data-id="molecule" style="left:18%;top:70%;--dur:4.7s;--delay:-1.4s"> <div class="tn-chip"><span class="tn-sym" style="color:#5b8dd9">&#9670;</span><span class="tn-lbl">Molecule</span></div></div>
+      <div class="tn accent" data-id="alpha"    style="left:66%;top:22%;--dur:5.6s;--delay:-2s">   <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">A</span><span class="tn-lbl">AlphaFold</span></div></div>
+      <div class="tn"        data-id="clinical" style="left:74%;top:58%;--dur:5.2s;--delay:-.3s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#8801;</span><span class="tn-lbl">Clinical</span></div></div>
+      <div class="tn accent" data-id="opennet"  style="left:58%;top:78%;--dur:5.9s;--delay:-1.7s"> <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#11041;</span><span class="tn-lbl">Open Net</span></div></div>
+    </div>
     <h2 class="theme-h">No AI-discovered drug has cleared the FDA. The first that does re-rates the entire category.</h2>
 
     <div class="theme-signals">
@@ -577,6 +672,15 @@ footer {
   <!-- ── 04 AGENT ECONOMY ── -->
   <div class="theme-section reveal" id="theme-04">
     <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="11" y="11" width="10" height="10" rx="1.5"/><line x1="16" y1="3" x2="16" y2="11"/><line x1="16" y1="21" x2="16" y2="29"/><line x1="3" y1="16" x2="11" y2="16"/><line x1="21" y1="16" x2="29" y2="16"/><circle cx="16" cy="3" r="2"/><circle cx="16" cy="29" r="2"/><circle cx="3" cy="16" r="2"/><circle cx="29" cy="16" r="2"/></svg>04 · Agent Economy</div>
+    <div class="theme-viz" data-viz="v04">
+      <svg class="viz-lines"></svg>
+      <div class="tn hub"    data-id="agent"    style="left:42%;top:45%;--dur:6s;--delay:0s">      <div class="tn-chip"><span class="tn-sym" style="color:var(--ink)">&#9673;</span><span class="tn-lbl">AI Agent</span></div></div>
+      <div class="tn"        data-id="identity" style="left:18%;top:25%;--dur:5.1s;--delay:-1s">   <div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#9670;</span><span class="tn-lbl">Identity</span></div></div>
+      <div class="tn accent" data-id="payment"  style="left:20%;top:70%;--dur:4.8s;--delay:-.5s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">$</span><span class="tn-lbl">Payment</span></div></div>
+      <div class="tn"        data-id="api"      style="left:66%;top:20%;--dur:5.5s;--delay:-2s">   <div class="tn-chip"><span class="tn-sym" style="color:#5b8dd9">&#8801;</span><span class="tn-lbl">API</span></div></div>
+      <div class="tn accent" data-id="protocol" style="left:76%;top:60%;--dur:5.8s;--delay:-.8s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#11041;</span><span class="tn-lbl">Protocol</span></div></div>
+      <div class="tn"        data-id="auth"     style="left:55%;top:80%;--dur:5s;--delay:-1.5s">   <div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#10568;</span><span class="tn-lbl">Auth</span></div></div>
+    </div>
     <h2 class="theme-h">AI agents generate the majority of internet traffic. The infrastructure was built for browsers.</h2>
 
     <div class="theme-signals">
@@ -610,6 +714,15 @@ footer {
   <!-- ── 05 CRYPTO VC ── -->
   <div class="theme-section reveal" id="theme-05">
     <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="2" y="11" width="11" height="10" rx="5"/><rect x="19" y="11" width="11" height="10" rx="5"/><line x1="13" y1="16" x2="19" y2="16"/><line x1="7" y1="11" x2="7" y2="6"/><line x1="25" y1="21" x2="25" y2="26"/></svg>05 · Crypto VC</div>
+    <div class="theme-viz" data-viz="v05">
+      <svg class="viz-lines"></svg>
+      <div class="tn hub"    data-id="proto"  style="left:42%;top:45%;--dur:6.1s;--delay:0s">     <div class="tn-chip"><span class="tn-sym" style="color:var(--ink)">P</span><span class="tn-lbl">Protocol</span></div></div>
+      <div class="tn"        data-id="dev"    style="left:18%;top:25%;--dur:5.2s;--delay:-1.1s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#9670;</span><span class="tn-lbl">Developers</span></div></div>
+      <div class="tn accent" data-id="cap"    style="left:20%;top:70%;--dur:4.9s;--delay:-.7s">   <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">$</span><span class="tn-lbl">Capital</span></div></div>
+      <div class="tn"        data-id="token"  style="left:66%;top:22%;--dur:5.4s;--delay:-1.8s">  <div class="tn-chip"><span class="tn-sym" style="color:#5b8dd9">&#11041;</span><span class="tn-lbl">Token</span></div></div>
+      <div class="tn accent" data-id="infra"  style="left:74%;top:58%;--dur:5.7s;--delay:-.4s">   <div class="tn-chip"><span class="tn-sym" style="color:var(--orange)">&#9633;</span><span class="tn-lbl">Infra</span></div></div>
+      <div class="tn"        data-id="net"    style="left:58%;top:78%;--dur:5.3s;--delay:-2.1s">  <div class="tn-chip"><span class="tn-sym" style="color:var(--ink3)">&#9678;</span><span class="tn-lbl">Network</span></div></div>
+    </div>
     <h2 class="theme-h">Most DePIN has no structural advantage over centralized alternatives. Early protocol infrastructure is a different bet.</h2>
 
     <div class="theme-signals">
@@ -724,11 +837,56 @@ footer {
       <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">YouTube</a>
       <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener">Spotify</a>
       <a href="episodes.html">Episodes</a>
-      <a href="index.html">Themes</a>
+      <a href="index.html">Home</a>
       <a href="https://pylon.partners" target="_blank" rel="noopener">Pylon Partners</a>
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var EDGES = {
+    'v01': [['tao','subnet'],['tao','validator'],['tao','compute'],['tao','model'],['tao','miner'],['model','subnet'],['compute','model']],
+    'v02': [['hw','spatial'],['hw','task'],['hw','fleet'],['hw','own'],['hw','ai'],['ai','fleet'],['spatial','task']],
+    'v03': [['target','aimodel'],['target','molecule'],['target','alpha'],['aimodel','alpha'],['aimodel','molecule'],['alpha','clinical'],['target','opennet']],
+    'v04': [['agent','identity'],['agent','payment'],['agent','api'],['agent','protocol'],['agent','auth'],['protocol','identity'],['payment','api']],
+    'v05': [['proto','dev'],['proto','cap'],['proto','token'],['proto','infra'],['proto','net'],['dev','token'],['cap','infra']]
+  };
+  var isDark = function(){ return document.documentElement.getAttribute('data-theme')==='dark'; };
+  function getStroke(){ return isDark()?'rgba(255,255,255,.18)':'rgba(13,12,9,.13)'; }
+  function drawViz(viz){
+    var svg = viz.querySelector('svg.viz-lines');
+    if(!svg) return;
+    var id = viz.dataset.viz;
+    var edges = EDGES[id]||[];
+    var vr = viz.getBoundingClientRect();
+    svg.innerHTML='';
+    edges.forEach(function(pair){
+      var a = viz.querySelector('[data-id="'+pair[0]+'"]');
+      var b = viz.querySelector('[data-id="'+pair[1]+'"]');
+      if(!a||!b) return;
+      var ar=a.getBoundingClientRect(), br=b.getBoundingClientRect();
+      var x1=ar.left+ar.width/2-vr.left, y1=ar.top+ar.height/2-vr.top;
+      var x2=br.left+br.width/2-vr.left, y2=br.top+br.height/2-vr.top;
+      var line=document.createElementNS('http://www.w3.org/2000/svg','line');
+      line.setAttribute('x1',x1); line.setAttribute('y1',y1);
+      line.setAttribute('x2',x2); line.setAttribute('y2',y2);
+      line.setAttribute('stroke',getStroke());
+      line.setAttribute('stroke-width','1');
+      svg.appendChild(line);
+    });
+  }
+  function drawAll(){
+    document.querySelectorAll('.theme-viz').forEach(drawViz);
+    requestAnimationFrame(drawAll);
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(drawAll, 100); });
+  } else { setTimeout(drawAll, 100); }
+  var orig = window.scUpdateIcon;
+  if(orig) window.scUpdateIcon = function(){ orig(); document.querySelectorAll('.theme-viz').forEach(drawViz); };
+})();
+</script>
 
 <script>
 function scUpdateIcon(){
