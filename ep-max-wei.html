@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Score SN44: Computer Vision at Scale - Supercycle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F3EEE3;--parch:#EAE4D4;--ink:#0D0C09;--ink2:rgba(13,12,9,.78);--ink3:rgba(13,12,9,.58);--ink4:rgba(13,12,9,.10);--orange:#D94F2A;--cyan:#0A9FB8;--border:rgba(13,12,9,.14);--dark:#1C1914;--bask:'Baskervville',Georgia,serif;--crim:'Crimson Text',Georgia,serif;--geist:'Geist',-apple-system,sans-serif;--mono:'Geist Mono',monospace}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--crim);font-size:20px;line-height:1.7;background:var(--cream);color:var(--ink)}
+a{color:inherit;text-decoration:none}
+#progress{position:fixed;top:0;left:0;height:2px;background:var(--orange);width:0%;z-index:200;transition:width .1s}
+.topbar{position:sticky;top:0;height:52px;background:rgba(243,238,227,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:100}
+.topbar-logo{font-family:var(--bask);font-size:18px;letter-spacing:-.3px}
+.topbar-logo span{color:var(--orange)}
+.topbar-back{font-family:var(--geist);font-size:13px;color:var(--ink3)}
+.topbar-back:hover{color:var(--ink)}
+.article-hero{background:var(--dark);padding:72px 64px 64px;position:relative;overflow:hidden}
+.article-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 70%,rgba(217,79,42,.1) 0%,transparent 60%);pointer-events:none}
+.hero-inner{max-width:1000px;margin:0 auto;position:relative;z-index:1}
+.hero-eyebrow{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+.hero-title{font-family:var(--bask);font-size:52px;font-weight:400;letter-spacing:-.5px;line-height:1.1;color:rgba(255,255,255,.9);margin-bottom:20px;max-width:700px}
+.hero-deck{font-size:20px;color:rgba(255,255,255,.55);line-height:1.6;max-width:600px;margin-bottom:40px}
+.hero-meta{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.hero-meta-item{display:flex;align-items:center;gap:8px}
+.hero-meta-label{font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.28)}
+.hero-meta-val{font-family:var(--geist);font-size:13px;color:rgba(255,255,255,.55)}
+.hero-divider{width:1px;height:20px;background:rgba(255,255,255,.12)}
+.stats-bar{background:var(--orange);padding:20px 64px}
+.stats-bar-inner{max-width:1000px;margin:0 auto;display:flex;gap:48px;flex-wrap:wrap}
+.stat-item .stat-num{font-family:var(--bask);font-size:28px;color:rgba(255,255,255,.9)}
+.stat-item .stat-label{font-family:var(--mono);font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:2px}
+.article-layout{display:grid;grid-template-columns:220px 1fr;gap:64px;max-width:1000px;margin:0 auto;padding:56px 64px 80px;align-items:start}
+.toc{position:sticky;top:72px}
+.toc-label{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink3);margin-bottom:16px}
+.toc a{display:block;font-family:var(--geist);font-size:13px;color:var(--ink3);padding:6px 0 6px 12px;border-left:2px solid transparent;transition:color .15s,border-color .15s;margin-bottom:2px}
+.toc a:hover,.toc a.active{color:var(--orange);border-left-color:var(--orange)}
+.toc-back{font-family:var(--geist);font-size:12px;color:var(--ink3);margin-top:28px;padding-top:20px;border-top:1px solid var(--border)}
+.toc-back a:hover{color:var(--orange)}
+.article-body h2{font-family:var(--bask);font-size:30px;font-weight:400;letter-spacing:-.2px;line-height:1.2;color:var(--ink);margin:48px 0 16px;scroll-margin-top:80px}
+.article-body p{margin-bottom:20px;color:var(--ink2)}
+.article-body strong{color:var(--ink);font-weight:600}
+.article-body a{color:var(--orange);border-bottom:1px solid rgba(217,79,42,.25)}
+.article-body a:hover{border-bottom-color:var(--orange)}
+.takeaways{background:var(--dark);border-radius:6px;margin:40px 0;overflow:hidden}
+.takeaways-header{padding:16px 24px;background:rgba(0,0,0,.2)}
+.takeaways-header h3{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.45);margin:0}
+.takeaways-body{padding:24px 24px 20px}
+.takeaway-item{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start}
+.takeaway-item:last-child{margin-bottom:0}
+.takeaway-num{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--orange);min-width:20px;padding-top:2px}
+.takeaway-text{font-family:var(--crim);font-size:17px;color:rgba(255,255,255,.72);line-height:1.55}
+.note-box{background:var(--parch);border-left:3px solid var(--orange);padding:18px 20px;border-radius:0 4px 4px 0;margin:28px 0}
+.note-box p{margin:0;font-size:17px;color:var(--ink2)}
+.note-label{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+.pullquote{border-left:3px solid var(--orange);padding:12px 0 12px 24px;margin:32px 0}
+.pullquote p{font-family:var(--bask);font-size:24px;font-style:italic;color:var(--ink);line-height:1.35;margin:0}
+.pullquote cite{display:block;font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.6px;margin-top:10px}
+.footer{background:var(--dark);padding:40px 64px 32px}
+.footer-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.footer-brand{font-family:var(--bask);font-size:18px;color:rgba(255,255,255,.7)}
+.footer-brand span{color:var(--orange)}
+.footer-copy{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.22)}
+@media(max-width:900px){.article-layout{grid-template-columns:1fr;padding:40px 28px 60px}.toc{display:none}.article-hero{padding:48px 28px}.hero-title{font-size:36px}.stats-bar{padding:20px 28px}.stats-bar-inner{gap:24px}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<nav class="topbar">
+  <a href="/" class="topbar-logo">Super<span>cycle</span></a>
+  <a href="/research.html" class="topbar-back">&larr; All memos</a>
+</nav>
+
+<div class="article-hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Episode 49 &middot; Computer Vision &middot; February 2025</div>
+    <h1 class="hero-title">Score SN44: Computer Vision at Scale</h1>
+    <p class="hero-deck">Mataco Labs converts CCTV and broadcast footage into structured, queryable data. PwC co-sell live. A chocolate factory client on stage at Viva Tech Paris in June. The horizontal vs. vertical question.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span class="hero-meta-label">Guests</span><span class="hero-meta-val">Max, CEO Mataco Labs; Wei, RL Research</span></div>
+      <div class="hero-divider"></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Subnet</span><span class="hero-meta-val">Score, SN44</span></div>
+      <div class="hero-divider"></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Partnership</span><span class="hero-meta-val">PwC co-selling</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stat-item"><div class="stat-num">SN44</div><div class="stat-label">Subnet number</div></div>
+    <div class="stat-item"><div class="stat-num">$2B</div><div class="stat-label">Chocolate client turnover</div></div>
+    <div class="stat-item"><div class="stat-num">90%</div><div class="stat-label">Clients above $1B revenue</div></div>
+    <div class="stat-item"><div class="stat-num">PwC</div><div class="stat-label">Co-selling partner</div></div>
+  </div>
+</div>
+
+<div class="article-layout">
+  <nav class="toc">
+    <div class="toc-label">Contents</div>
+    <a href="#setup">The setup</a>
+    <a href="#problem">The deployment problem</a>
+    <a href="#horizontal">Horizontal vs. vertical</a>
+    <a href="#pwc">PwC and client profile</a>
+    <a href="#subnet">Role of SN44</a>
+    <a href="#market">Market view</a>
+    <div class="toc-back"><a href="/research.html">&larr; All memos</a></div>
+  </nav>
+
+  <div class="article-body">
+
+    <div class="takeaways">
+      <div class="takeaways-header"><h3>Key takeaways</h3></div>
+      <div class="takeaways-body">
+        <div class="takeaway-item"><span class="takeaway-num">01</span><span class="takeaway-text">Mataco Labs converted their sport vertical origin into a horizontal computer vision platform. The original problem (extracting broadcast data without buying TV rights) became the architecture for a general-purpose vision pipeline.</span></div>
+        <div class="takeaway-item"><span class="takeaway-num">02</span><span class="takeaway-text">The key commercial unlock: model distillation. Running compressed expert models on a client's existing CPUs removes the GPU procurement barrier. 90% of target clients are above $1B in revenue and already own the camera infrastructure.</span></div>
+        <div class="takeaway-item"><span class="takeaway-num">03</span><span class="takeaway-text">A PwC co-selling partnership is live and already producing client meetings. An undisclosed chocolate manufacturer with $2B in revenue is the first named client, to be announced on stage at Viva Tech Paris in June 2025.</span></div>
+        <div class="takeaway-item"><span class="takeaway-num">04</span><span class="takeaway-text">The competitive gap is not model quality. Google AutoML and AWS Rekognition are strong vertically. Nobody has tackled the problem horizontally: same camera, multiple use cases (loss prevention, stock monitoring, marketing analytics) from one deployment.</span></div>
+        <div class="takeaway-item"><span class="takeaway-num">05</span><span class="takeaway-text">Venice token approaching $1B market cap at time of recording, with a 5x copycat in one week. Wei's read: post-April-lows risk appetite is returning on-chain. The sentiment context for the episode matters.</span></div>
+      </div>
+    </div>
+
+    <h2 id="setup">The setup</h2>
+
+    <p>Max is the CEO of <a href="https://mataco.ai" target="_blank" rel="noopener">Mataco Labs</a> and the founder behind Subnet 44 (Score) on Bittensor. Score is a computer vision subnet. The mission: convert CCTV footage and broadcast video into structured, queryable data at scale, without requiring clients to buy new hardware or GPU infrastructure.</p>
+
+    <p>The origin is sports. Max was previously at a data science company, wanted to explore the sports vertical, and left to start his own operation. To extract meaningful data from broadcast content without purchasing rights from TV channels, the team needed computer vision. That constraint became the foundation for the product.</p>
+
+    <p>The original sports focus is now secondary. The core architecture transfers to any industry that produces raw video and wants structured intelligence from it. Manufacturing, retail, fuel stations, logistics. The first commercial client is a chocolate manufacturer. The advisor is Brian McDermott, former manager of Reading FC, whose club also has a head of AI.</p>
+
+    <h2 id="problem">The deployment problem</h2>
+
+    <p>The question every enterprise client asks first: do I need to buy compute to run your solution? The answer from most computer vision companies has been yes: buy H100s, one per site, at scale. For a company with 4,000 fuel stations, that is not a viable conversation. The meeting ends.</p>
+
+    <p>Mataco's answer is model distillation. They run distillation on state-of-the-art models (including Meta's SAM 3, the leading segmentation model) to extract compressed expert models that run on the client's existing CPUs. No new hardware. The camera infrastructure the client already owns becomes sufficient.</p>
+
+    <div class="pullquote">
+      <p>"The biggest breakthrough we went through from a commercial perspective is when we decided to distill vision. We can run those tiny models on site on our clients' CPUs. We don't need them to buy any compute."</p>
+      <cite>Max, CEO Mataco Labs</cite>
+    </div>
+
+    <div class="note-box">
+      <div class="note-label">Technical note</div>
+      <p>Meta's SAM 3 (Segment Anything Model) is the current state-of-the-art for segmentation and detection across general computer vision tasks. Running it at full scale requires significant GPU compute. Distilled versions trade some accuracy for orders-of-magnitude reduction in inference cost.</p>
+    </div>
+
+    <h2 id="horizontal">Horizontal vs. vertical</h2>
+
+    <p>The competitive landscape in computer vision is dominated by vertical solutions. <a href="https://cloud.google.com/automl" target="_blank" rel="noopener">Google AutoML Vision</a> is strong at detection. <a href="https://aws.amazon.com/rekognition/" target="_blank" rel="noopener">AWS Rekognition</a> handles facial recognition and object detection. These are purpose-built tools for specific tasks.</p>
+
+    <p>The gap Mataco is targeting: no company currently offers a horizontal solution where a single camera deployment supports multiple simultaneous use cases. In retail, that means loss prevention, stock monitoring, and marketing attribution from the same hardware and the same camera stream. Switching between use cases today requires switching vendors, redeploying infrastructure, or building in-house.</p>
+
+    <p>Building horizontally requires a computer vision team, a DevOps team, GPU procurement for training, and on-site deployment expertise. That combination of capabilities is what Mataco is assembling and packaging as a managed platform, built on top of a continuously improving open-source model library generated by SN44 miners.</p>
+
+    <h2 id="pwc">PwC and the client profile</h2>
+
+    <p><a href="https://www.pwc.com" target="_blank" rel="noopener">PwC</a> is co-selling Mataco's platform. The partnership is live and already generating client introductions. The first named client is a chocolate manufacturer with approximately $2B in annual revenue, to be revealed publicly at <a href="https://vivatechnology.com" target="_blank" rel="noopener">Viva Tech Paris</a> in June 2025, where Max will present on stage with the client.</p>
+
+    <p>The use case in manufacturing: computer vision identifying product defects, wastage, and quality control issues in real time on the factory floor. Max's framing: tens of tons of chocolate per factory that would otherwise go to waste. Real value, measurable, auditable, not speculative.</p>
+
+    <p>90% of current Mataco conversations are with companies above $1B in annual revenue. The enterprise orientation is deliberate: these organizations already own camera infrastructure, have IT budgets, and have existing relationships with PwC that create a warm introduction path. The bottleneck is not demand; it is the deployment friction around compute, which distillation has now addressed.</p>
+
+    <h2 id="subnet">The role of SN44</h2>
+
+    <p>Score started on Bittensor to bootstrap R+D. Miners on SN44 train and improve computer vision models by competing on specific vision tasks. Early on, the incentive mechanism was rough: miners gamed it, the team got exploited, and they had to rebuild the scoring function. That is the standard subnet operator journey. The reward comes when the incentive mechanism is good enough for the flywheel to run.</p>
+
+    <p>The current relationship between Mataco Labs and SN44 is evolving. As the commercial product matures and the team internalizes more of the model development, the dependency on miners for core R+D decreases. Miners remain valuable for expanding the model library and handling novel task types. But the critical path for enterprise deployment is now largely internal.</p>
+
+    <p>Wei, who spent significant time studying reinforcement learning in robotics, made the point that Bittensor's incentive mechanism framework is broadly applicable to any problem that can be formulated as a search or optimization task. Robotics subnets have not yet materialized in meaningful numbers, despite the obvious parallel. Wei attended Proof of Talk in Paris the prior year and discussed the framework with Max in person.</p>
+
+    <h2 id="market">Market context</h2>
+
+    <p>The episode opens with Venice token approaching $1B market cap, and a copycat token going 5x in one week. Wei's read on the broader market: post-April-lows, risk appetite is returning on-chain. His investment advice, delivered without irony: buy semiconductors, lever 3x, and wait. The S+P was at all-time highs. The sentiment was optimistic.</p>
+
+    <p>Max's read on whether the AI market is toppy: no. The value creation is real, not just narrative. Tens of tons of chocolate saved per factory per year is the grounding data point. Capital will follow demonstrable efficiency gains. The concern is speed of selection: investors are moving fast to find winners, and founders who can show real results and generate community attention will attract capital before the window closes.</p>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">Super<span>cycle</span></div>
+    <span class="footer-copy">&copy; 2025 Supercycle. A Pylon Partners production.</span>
+  </div>
+</footer>
+<script>
+const bar=document.getElementById('progress');
+const tocLinks=document.querySelectorAll('.toc a');
+const sections=document.querySelectorAll('.article-body h2');
+window.addEventListener('scroll',()=>{
+  const total=document.documentElement.scrollHeight-window.innerHeight;
+  bar.style.width=(window.scrollY/total*100)+'%';
+  sections.forEach((s,i)=>{if(window.scrollY>=s.offsetTop-100){tocLinks.forEach(a=>a.classList.remove('active'));if(tocLinks[i])tocLinks[i].classList.add('active')}});
+});
+</script>
+</body>
+</html>
