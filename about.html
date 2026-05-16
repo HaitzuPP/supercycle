@@ -1,94 +1,185 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-<script>(function(){var t=localStorage.getItem('sc-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About: Supercycle</title>
-<meta name="description" content="Supercycle is a podcast about the investment theses at the frontier of AI, robotics, and science. Hosted by Jack Leung of Pylon Partners.">
+<meta name="description" content="Supercycle is a podcast for investors tracking the frontier of AI, robotics, and health sciences. Every founder answers to the data.">
 <meta property="og:title" content="About: Supercycle">
-<meta property="og:description" content="Token market research with the founders and fund managers building the open economy. Hosted by Jack Leung, Pylon Partners.">
+<meta property="og:description" content="Supercycle is a podcast for investors tracking the frontier of AI, robotics, and health sciences.">
 <meta property="og:image" content="https://haitzupp.github.io/supercycle/og-image.jpg">
 <meta property="og:url" content="https://haitzupp.github.io/supercycle/about.html">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://haitzupp.github.io/supercycle/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+(function(){
+  var t=localStorage.getItem('sc-theme');
+  if(t==='light'){document.documentElement.setAttribute('data-theme','light');}
+  else{document.documentElement.setAttribute('data-theme','dark');}
+})();
+</script>
 <style>
-:root{--cream:#F3EEE3;--parch:#EAE4D4;--ink:#0D0C09;--ink2:rgba(13,12,9,.78);--ink3:rgba(13,12,9,.48);--ink4:rgba(13,12,9,.14);--orange:#D94F2A;--dark:#1C1914;--border:rgba(13,12,9,.12);--bask:'Baskervville',Georgia,serif;--crim:'Crimson Text',Georgia,serif;--geist:'Geist',-apple-system,sans-serif;--mono:'Geist Mono',monospace;--col:720px}
-html[data-theme="dark"]{--cream:#1a1814;--parch:#141210;--ink:rgba(255,255,255,.88);--ink2:rgba(255,255,255,.65);--ink3:rgba(255,255,255,.4);--ink4:rgba(255,255,255,.1);--border:rgba(255,255,255,.1);--dark:#0d0c09}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--crim);font-size:20px;line-height:1.65;background:var(--cream);color:var(--ink)}
-a{color:inherit;text-decoration:none}
+:root {
+  --bg:    #0D0C09;
+  --bg2:   #141210;
+  --bg3:   #1C1914;
+  --ink:   rgba(255,255,255,0.90);
+  --ink2:  rgba(255,255,255,0.60);
+  --ink3:  rgba(255,255,255,0.35);
+  --ink4:  rgba(255,255,255,0.10);
+  --border: rgba(255,255,255,0.08);
+  --border2: rgba(255,255,255,0.14);
+  --orange: #D94F2A;
+  --orange-dim: rgba(217,79,42,0.12);
+  --bask:   'Baskervville', serif;
+  --crim:   'Crimson Text', serif;
+  --geist:  'Geist', sans-serif;
+  --mono:   'Geist Mono', monospace;
+  --col:    760px;
+}
+html[data-theme="light"] {
+  --bg:    #F3EEE3;
+  --bg2:   #EAE4D4;
+  --bg3:   #DDD8C8;
+  --ink:   rgba(13,12,9,0.90);
+  --ink2:  rgba(13,12,9,0.65);
+  --ink3:  rgba(13,12,9,0.40);
+  --ink4:  rgba(13,12,9,0.08);
+  --border: rgba(13,12,9,0.10);
+  --border2: rgba(13,12,9,0.18);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--crim);line-height:1.75;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
 
-nav{position:sticky;top:0;height:52px;background:rgba(243,238,227,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 48px;z-index:100}
-html[data-theme="dark"] nav{background:rgba(26,24,20,.92)}
-.topbar-brand{font-family:var(--bask);font-size:18px;letter-spacing:-.3px;color:var(--ink)}
-.topbar-brand span{color:var(--orange)}
-.topbar-nav{display:flex;align-items:center;gap:32px;list-style:none}
-.topbar-nav a{font-family:var(--geist);font-size:13px;color:var(--ink3);transition:color .15s}
-.topbar-nav a:hover,.topbar-nav a.active{color:var(--ink)}
-.topbar-right{display:flex;align-items:center;gap:16px}
-.theme-toggle{width:32px;height:32px;border:none;background:transparent;cursor:pointer;color:var(--ink3);display:flex;align-items:center;justify-content:center;border-radius:4px;transition:color .15s,background .15s}
-.theme-toggle:hover{color:var(--ink);background:var(--ink4)}
-.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:none;cursor:pointer;padding:4px}
-.hamburger span{display:block;width:20px;height:1.5px;background:var(--ink);transition:transform .2s,opacity .2s}
-.mobile-nav{display:none;position:fixed;inset:0;background:var(--cream);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:32px}
-.mobile-nav.open{display:flex}
-.mobile-nav a{font-family:var(--bask);font-size:32px;font-weight:400;color:var(--ink);text-decoration:none}
-.mobile-nav a:hover{color:var(--orange)}
-.mobile-nav-close{position:absolute;top:16px;right:20px;background:none;border:none;font-size:28px;cursor:pointer;color:var(--ink3);line-height:1}
-@media(max-width:768px){.hamburger{display:flex}.topbar-nav{display:none}nav{padding:0 20px}}
+/* NAV */
+nav{
+  position:sticky;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;height:52px;
+  background:rgba(13,12,9,0.92);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+html[data-theme="light"] nav{background:rgba(243,238,227,0.92);}
+.nav-brand{font-family:var(--bask);font-size:15px;font-weight:400;color:var(--ink);text-decoration:none;}
+.nav-brand span{color:var(--orange);}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{font-family:var(--geist);font-size:13px;font-weight:500;color:var(--ink3);transition:color .15s;}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.theme-toggle{background:none;border:1px solid var(--border);border-radius:4px;width:30px;height:30px;cursor:pointer;color:var(--ink3);display:flex;align-items:center;justify-content:center;transition:color .15s;}
+.theme-toggle:hover{color:var(--ink);}
+.nav-icon-btn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:4px;border:1.5px solid var(--border);background:transparent;transition:opacity .15s;text-decoration:none;}
+.nav-icon-btn:hover{opacity:.7;}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:20px;height:1.5px;background:var(--ink);transition:transform .2s,opacity .2s;}
+.mobile-nav{display:none;position:fixed;inset:0;background:var(--bg);z-index:300;flex-direction:column;align-items:center;justify-content:center;gap:32px;}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{font-family:var(--bask);font-size:32px;font-weight:400;color:var(--ink);text-decoration:none;}
+.mobile-nav a:hover{color:var(--orange);}
+.mobile-nav-close{position:absolute;top:16px;right:20px;background:none;border:none;font-size:28px;cursor:pointer;color:var(--ink3);line-height:1;}
 
-.page-hero{background:var(--dark);padding:96px 48px 80px;position:relative;overflow:hidden}
-.page-hero::after{content:'';position:absolute;inset:0;pointer-events:none}
-.page-hero-inner{max-width:var(--col);margin:0 auto;position:relative;z-index:1}
-.hero-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
-.page-hero h1{font-family:var(--bask);font-size:clamp(32px,4vw,52px);font-weight:400;line-height:1.1;color:rgba(255,255,255,.9);margin-bottom:20px}
-.page-hero p{font-size:18px;color:rgba(255,255,255,.45);max-width:500px;line-height:1.65}
+/* HERO */
+.page-hero{background:var(--bg3);padding:80px 40px 64px;position:relative;overflow:hidden;}
+.page-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 60%,rgba(217,79,42,.07) 0%,transparent 55%);pointer-events:none;}
+.page-hero-inner{max-width:var(--col);margin:0 auto;position:relative;z-index:1;}
+.eyebrow{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--orange);margin-bottom:16px;}
+.page-hero h1{font-family:var(--bask);font-size:clamp(32px,5vw,52px);font-weight:400;line-height:1.1;color:var(--ink);margin-bottom:20px;}
+.page-hero p{font-family:var(--crim);font-size:19px;color:var(--ink2);max-width:540px;line-height:1.65;}
 
-.about-body{max-width:var(--col);margin:0 auto;padding:72px 48px 96px}
-.about-section{border-top:1px solid var(--border);padding:48px 0}
-.about-section:last-child{border-bottom:1px solid var(--border)}
-.section-label{font-family:var(--mono);font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:var(--ink3);margin-bottom:24px;display:block}
-.about-section h2{font-family:var(--bask);font-size:clamp(22px,2.4vw,30px);font-weight:400;line-height:1.22;margin-bottom:20px}
-.about-section p{font-family:var(--crim);font-size:19px;color:var(--ink2);line-height:1.7;margin-bottom:16px}
-.about-section p:last-child{margin-bottom:0}
-.host-card{display:flex;flex-direction:column;gap:6px;margin-top:28px;padding:24px;border:1px solid var(--border)}
-.host-name{font-family:var(--geist);font-size:14px;font-weight:600;color:var(--ink)}
-.host-cred{font-family:var(--geist);font-size:13px;color:var(--ink3)}
-.host-links{display:flex;gap:16px;margin-top:12px;flex-wrap:wrap}
-.host-link{font-family:var(--geist);font-size:12px;font-weight:500;color:var(--orange);border-bottom:1px solid rgba(217,79,42,.3);padding-bottom:1px}
-.pitch-block{margin-top:32px;padding:24px;border:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.pitch-block p{font-family:var(--geist);font-size:14px;color:var(--ink2);margin:0}
-.pitch-btn{font-family:var(--geist);font-size:13px;font-weight:600;padding:10px 20px;background:var(--ink);color:var(--cream);border:none;cursor:pointer;text-decoration:none;display:inline-block;white-space:nowrap;transition:opacity .15s}
-.pitch-btn:hover{opacity:.8}
+/* CONTENT */
+.content{max-width:var(--col);margin:0 auto;padding:0 40px;}
 
-footer{background:var(--dark);padding:40px 48px 32px}
-.footer-inner{max-width:var(--col);margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-.footer-brand{font-family:var(--bask);font-size:18px;color:rgba(255,255,255,.7)}
-.footer-brand span{color:var(--orange)}
-.footer-copy{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.22);letter-spacing:.4px}
-@media(max-width:640px){.about-body{padding:48px 20px 64px}.page-hero{padding:80px 20px 64px}.pitch-block{flex-direction:column;align-items:flex-start}.footer-inner{flex-direction:column}}
+/* SECTION */
+.about-section{padding:72px 0;border-top:1px solid var(--border);}
+.about-section h2{font-family:var(--bask);font-size:28px;font-weight:400;color:var(--ink);margin-bottom:32px;}
+.about-section p{font-family:var(--crim);font-size:18px;line-height:1.75;color:var(--ink2);}
+.about-section p+p{margin-top:16px;}
+
+/* FORMAT COLUMNS */
+.format-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--border);}
+.format-col{padding:32px 32px 32px 0;border-right:1px solid var(--border);}
+.format-col:last-child{border-right:none;padding-right:0;}
+.format-col:not(:first-child){padding-left:32px;}
+.format-col-num{font-family:var(--mono);font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:var(--orange);margin-bottom:14px;}
+.format-col h3{font-family:var(--bask);font-size:18px;font-weight:400;color:var(--ink);margin-bottom:12px;line-height:1.3;}
+.format-col p{font-family:var(--crim);font-size:16px;line-height:1.65;color:var(--ink2);}
+
+/* HOST CARD */
+.host-card{padding:32px;background:var(--bg2);border:1px solid var(--border);border-radius:4px;}
+.host-name{font-family:var(--bask);font-size:22px;font-weight:400;color:var(--ink);margin-bottom:4px;}
+.host-title{font-family:var(--geist);font-size:13px;color:var(--ink3);margin-bottom:4px;}
+.host-email{font-family:var(--mono);font-size:11px;color:var(--orange);margin-bottom:20px;}
+.host-email a{color:var(--orange);text-decoration:none;}
+.host-bio{font-family:var(--crim);font-size:17px;line-height:1.65;color:var(--ink2);}
+
+/* PLATFORM CARDS */
+.platform-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:32px;}
+.platform-card{display:flex;align-items:center;gap:16px;padding:24px 28px;background:var(--bg2);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color .15s,background .15s;}
+.platform-card:hover{border-color:var(--border2);background:var(--bg3);}
+.platform-card-icon{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.platform-card-label{font-family:var(--mono);font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink3);margin-bottom:4px;}
+.platform-card-name{font-family:var(--geist);font-size:15px;font-weight:500;color:var(--ink);}
+.platform-card-url{font-family:var(--mono);font-size:10px;color:var(--ink3);margin-top:2px;}
+
+/* FOOTER */
+footer{background:var(--bg3);padding:64px 40px;border-top:1px solid var(--border);}
+.footer-inner{max-width:var(--col);margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:40px;}
+.footer-brand{font-family:var(--bask);font-size:18px;font-weight:400;color:var(--ink);}
+.footer-brand span{color:var(--orange);}
+.footer-sub{font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);margin-top:8px;}
+.footer-links{display:flex;flex-direction:column;gap:10px;text-align:right;}
+.footer-links a{font-family:var(--geist);font-size:13px;color:var(--ink3);text-decoration:none;transition:color .15s;}
+.footer-links a:hover{color:var(--ink);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:0 20px;}
+  .nav-links,.nav-right .nav-icon-btn{display:none;}
+  .hamburger{display:flex;}
+  .page-hero{padding:90px 24px 56px;}
+  .content{padding:0 24px;}
+  .format-cols{grid-template-columns:1fr;}
+  .format-col{border-right:none;border-top:1px solid var(--border);padding:28px 0;}
+  .format-col:first-child{border-top:none;}
+  .format-col:not(:first-child){padding-left:0;}
+  .platform-cards{grid-template-columns:1fr;}
+  footer{padding:48px 20px;}
+  .footer-inner{flex-direction:column;gap:24px;}
+  .footer-links{text-align:left;}
+}
 </style>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9889;</text></svg>">
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <a href="index.html" class="topbar-brand">Super<span>cycle</span></a>
-  <ul class="topbar-nav">
+  <a href="index.html" class="nav-brand">Super<span>cycle</span></a>
+  <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html" class="active">About</a></li>
     <li><a href="episodes.html">Episodes</a></li>
   </ul>
-  <div class="topbar-right">
+  <div class="nav-right">
     <button class="hamburger" id="sc-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"></button>
+    <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="nav-icon-btn" title="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+    <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="nav-icon-btn" title="Spotify"><svg width="16" height="16" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
   </div>
 </nav>
 
+<!-- MOBILE NAV -->
 <div class="mobile-nav" id="sc-mobile-nav">
   <button class="mobile-nav-close" id="sc-nav-close" aria-label="Close">&times;</button>
   <a href="index.html">Home</a>
@@ -96,58 +187,80 @@ footer{background:var(--dark);padding:40px 48px 32px}
   <a href="episodes.html">Episodes</a>
 </div>
 
+<!-- HERO -->
 <div class="page-hero">
   <div class="page-hero-inner">
-    <div class="hero-eyebrow">The show</div>
-    <h1>Every founder answers<br>to the data.</h1>
-    <p>No prepared deck. No PR filter. Real questions, real numbers, on the record.</p>
+    <div class="eyebrow">THE SHOW</div>
+    <h1>Every founder answers to the data.</h1>
+    <p>Supercycle is a podcast for investors tracking the frontier of AI, robotics, and health sciences. No PR filter. No prepared deck.</p>
   </div>
 </div>
 
-<div class="about-body">
+<div class="content">
 
-  <div class="about-section">
-    <span class="section-label">Format</span>
-    <h2>Built from live due diligence.</h2>
-    <p>Supercycle is a research podcast. Every guest is a founder or fund manager Jack is either backing or actively evaluating. Conversations start from a position in the market, not a PR brief. Guests are asked to defend their thesis with numbers, not narrative.</p>
-    <p>Each episode is structured around the investment question: what has to be true for this bet to work, and what would prove it wrong. Guests who can't answer that question clearly don't come on the show.</p>
-  </div>
-
-  <div class="about-section">
-    <span class="section-label">Host</span>
-    <h2>Jack Leung</h2>
-    <p>Jack is Managing Partner at Pylon Partners and Founder of TAO Institute, which independently scores 60+ active Bittensor subnets for institutional risk. He has been investing in the Bittensor ecosystem since 2022.</p>
-    <p>The research behind the questions comes from TAO Institute's subnet scoring methodology, live positions, and ongoing due diligence on founders building in the space.</p>
-    <div class="host-card">
-      <div class="host-name">Jack Leung</div>
-      <div class="host-cred">Managing Partner, Pylon Partners &nbsp;&middot;&nbsp; Founder, TAO Institute</div>
-      <div class="host-links">
-        <a href="https://pylon.partners" target="_blank" rel="noopener" class="host-link">Pylon Partners</a>
-        <a href="https://taoinstitute.xyz" target="_blank" rel="noopener" class="host-link">TAO Institute</a>
-        <a href="mailto:jack@pylon.partners" class="host-link">jack@pylon.partners</a>
+  <!-- FORMAT -->
+  <div class="about-section reveal">
+    <h2>How it works</h2>
+    <div class="format-cols">
+      <div class="format-col">
+        <div class="format-col-num">01</div>
+        <h3>Guest arrives with a thesis</h3>
+        <p>Founders and fund managers bring a specific investment thesis, not a pitch deck. A view on where capital is going and why, with data behind it.</p>
+      </div>
+      <div class="format-col">
+        <div class="format-col-num">02</div>
+        <h3>We test it against data in real time</h3>
+        <p>Signals, comparable transactions, and contradicting evidence are surfaced live. Guests answer to the numbers, not around them.</p>
+      </div>
+      <div class="format-col">
+        <div class="format-col-num">03</div>
+        <h3>The claim goes on the ledger</h3>
+        <p>Falsifiable predictions are logged publicly and tracked quarterly. The ledger is updated as signals arrive. No claim disappears.</p>
       </div>
     </div>
   </div>
 
-  <div class="about-section">
-    <span class="section-label">Guest criteria</span>
-    <h2>Who gets on the show.</h2>
-    <p>Founders building on Bittensor or comparable AI infrastructure protocols. Fund managers with a live position in token markets. Researchers with a specific, falsifiable thesis.</p>
-    <p>No paid placements. No PR-managed slots. Guests are sourced exclusively from Pylon's deal pipeline and the TAO Institute research network.</p>
-    <div class="pitch-block">
-      <p>Building in the Bittensor ecosystem or have a live position worth defending?</p>
-      <a href="mailto:jack@pylon.partners?subject=Supercycle pitch" class="pitch-btn">Pitch your episode &rarr;</a>
+  <!-- HOST -->
+  <div class="about-section reveal">
+    <h2>Host</h2>
+    <div class="host-card">
+      <div class="host-name">Jack Leung</div>
+      <div class="host-title">Managing Partner, Pylon Partners</div>
+      <div class="host-email"><a href="mailto:jack@pylon.partners">jack@pylon.partners</a></div>
+      <p class="host-bio">Jack Leung is Managing Partner at Pylon Partners, a Hong Kong-based investment group with businesses across AI infrastructure research, sports private equity media, and frontier technology. Supercycle is his public ledger for thesis validation.</p>
     </div>
   </div>
 
-  <div class="about-section">
-    <span class="section-label">Distribution</span>
-    <h2>Where to find the show.</h2>
-    <p>Supercycle publishes weekly on YouTube and Spotify. Each episode is accompanied by a companion research note from TAO Institute, covering the investment thesis in depth with comparable transactions and risk factors.</p>
-    <div class="host-links" style="margin-top:20px;">
-      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="host-link">YouTube</a>
-      <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="host-link">Spotify</a>
-      <a href="episodes.html" class="host-link">All episodes</a>
+  <!-- GUEST CRITERIA -->
+  <div class="about-section reveal">
+    <h2>Who we have on</h2>
+    <p>Guests are fund managers, founders, or operators with a specific, defensible view on one of Supercycle's five investment themes. Prepared talking points are not the show. If you have capital behind a thesis and are willing to be held accountable to it, reach out: <a href="mailto:jack@pylon.partners" style="color:var(--orange);">jack@pylon.partners</a></p>
+  </div>
+
+  <!-- DISTRIBUTION -->
+  <div class="about-section reveal">
+    <h2>Where to listen</h2>
+    <div class="platform-cards">
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="platform-card">
+        <div class="platform-card-icon" style="background:#FF0000;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </div>
+        <div>
+          <div class="platform-card-label">Video</div>
+          <div class="platform-card-name">YouTube</div>
+          <div class="platform-card-url">youtube.com/@supercyclepod</div>
+        </div>
+      </a>
+      <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="platform-card">
+        <div class="platform-card-icon" style="background:#1DB954;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+        </div>
+        <div>
+          <div class="platform-card-label">Audio</div>
+          <div class="platform-card-name">Spotify</div>
+          <div class="platform-card-url">open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK</div>
+        </div>
+      </a>
     </div>
   </div>
 
@@ -155,41 +268,59 @@ footer{background:var(--dark);padding:40px 48px 32px}
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-brand">Super<span>cycle</span></div>
-    <span class="footer-copy">&copy; 2026 Supercycle. A <a href="https://pylon.partners" style="color:rgba(255,255,255,.38)">Pylon Partners</a> production.</span>
+    <div>
+      <div class="footer-brand">Super<span>cycle</span></div>
+      <div class="footer-sub">A Pylon Partners production</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener">Spotify</a>
+      <a href="https://pylon.partners" target="_blank" rel="noopener">Pylon Partners</a>
+    </div>
   </div>
 </footer>
 
 <script>
-function scUpdateIcon(){
-  var d=document.documentElement.getAttribute('data-theme')==='dark';
-  var b=document.getElementById('themeToggle');
-  if(!b)return;
-  b.innerHTML=d
+// Theme
+function scUpdateThemeIcon(){
+  var dark=document.documentElement.getAttribute('data-theme')==='dark';
+  var btn=document.getElementById('themeToggle');
+  if(!btn)return;
+  btn.innerHTML=dark
     ?'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>'
     :'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-  b.title=d?'Light mode':'Dark mode';
+  btn.title=dark?'Switch to light mode':'Switch to dark mode';
 }
 document.addEventListener('DOMContentLoaded',function(){
-  scUpdateIcon();
-  var b=document.getElementById('themeToggle');
-  if(b)b.addEventListener('click',function(){
-    var d=document.documentElement.getAttribute('data-theme')==='dark';
-    document.documentElement.setAttribute('data-theme',d?'light':'dark');
-    localStorage.setItem('sc-theme',d?'light':'dark');
-    scUpdateIcon();
+  scUpdateThemeIcon();
+  var btn=document.getElementById('themeToggle');
+  if(btn)btn.addEventListener('click',function(){
+    var dark=document.documentElement.getAttribute('data-theme')==='dark';
+    var next=dark?'light':'dark';
+    document.documentElement.setAttribute('data-theme',next);
+    localStorage.setItem('sc-theme',next);
+    scUpdateThemeIcon();
   });
 });
+
+// Mobile nav
 (function(){
   var btn=document.getElementById('sc-hamburger');
   var nav=document.getElementById('sc-mobile-nav');
   var close=document.getElementById('sc-nav-close');
   if(btn&&nav){
     btn.addEventListener('click',function(){nav.classList.add('open');});
-    close.addEventListener('click',function(){nav.classList.remove('open');});
+    if(close)close.addEventListener('click',function(){nav.classList.remove('open');});
     nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');});});
   }
 })();
+
+// Reveal
+var revealEls=document.querySelectorAll('.reveal');
+var ro=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);}});
+},{threshold:0.12});
+revealEls.forEach(function(el){ro.observe(el);});
 </script>
 </body>
 </html>
