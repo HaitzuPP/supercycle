@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-<script>(function(){var t=localStorage.getItem('sc-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Episodes: Supercycle</title>
+<meta name="description" content="Twelve conversations with founders and fund managers at the frontier of AI, robotics, and health sciences. Every guest answers to data in real time.">
 <meta property="og:title" content="Episodes: Supercycle">
-<meta property="og:description" content="Twelve conversations with founders and fund managers at the frontier of AI, robotics, and science. Every guest answers to data in real time.">
+<meta property="og:description" content="Twelve conversations with founders and fund managers at the frontier of AI, robotics, and health sciences.">
 <meta property="og:image" content="https://haitzupp.github.io/supercycle/og-image.jpg">
 <meta property="og:url" content="https://haitzupp.github.io/supercycle/episodes.html">
 <meta property="og:type" content="website">
@@ -15,291 +15,226 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+(function(){
+  var t=localStorage.getItem('sc-theme');
+  if(t==='light'){document.documentElement.setAttribute('data-theme','light');}
+  else{document.documentElement.setAttribute('data-theme','dark');}
+})();
+</script>
 <style>
-:root{--cream:#F3EEE3;--parch:#EAE4D4;--ink:#0D0C09;--ink2:rgba(13,12,9,.78);--ink3:rgba(13,12,9,.58);--ink4:rgba(13,12,9,.10);--orange:#D94F2A;--cyan:#0A9FB8;--border:rgba(13,12,9,.14);--dark:#1C1914;--bask:'Baskervville',Georgia,serif;--crim:'Crimson Text',Georgia,serif;--geist:'Geist',-apple-system,sans-serif;--mono:'Geist Mono',monospace}
-
-/* Dark mode */
-:root { --topbar-bg: rgba(243,238,227,.88); }
-html[data-theme="dark"] {
-  --cream: #0D0C09;
-  --parch: #161310;
-  --ink: rgba(255,255,255,.88);
-  --ink2: rgba(255,255,255,.65);
-  --ink3: rgba(255,255,255,.4);
-  --ink4: rgba(255,255,255,.08);
-  --border: rgba(255,255,255,.1);
-  --bmed: rgba(255,255,255,.1);
-  --topbar-bg: rgba(13,12,9,.92);
+:root {
+  --bg:    #0D0C09;
+  --bg2:   #141210;
+  --bg3:   #1C1914;
+  --ink:   rgba(255,255,255,0.90);
+  --ink2:  rgba(255,255,255,0.60);
+  --ink3:  rgba(255,255,255,0.35);
+  --ink4:  rgba(255,255,255,0.10);
+  --border: rgba(255,255,255,0.08);
+  --border2: rgba(255,255,255,0.14);
+  --orange: #D94F2A;
+  --orange-dim: rgba(217,79,42,0.12);
+  --green:  #22C55E;
+  --green-dim: rgba(34,197,94,0.10);
+  --amber:  #E5A030;
+  --amber-dim: rgba(229,160,48,0.10);
+  --red:    #EF4444;
+  --bask:   'Baskervville', serif;
+  --crim:   'Crimson Text', serif;
+  --geist:  'Geist', sans-serif;
+  --mono:   'Geist Mono', monospace;
+  --col:    860px;
 }
+html[data-theme="light"] {
+  --bg:    #F3EEE3;
+  --bg2:   #EAE4D4;
+  --bg3:   #DDD8C8;
+  --ink:   rgba(13,12,9,0.90);
+  --ink2:  rgba(13,12,9,0.65);
+  --ink3:  rgba(13,12,9,0.40);
+  --ink4:  rgba(13,12,9,0.08);
+  --border: rgba(13,12,9,0.10);
+  --border2: rgba(13,12,9,0.18);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--crim);line-height:1.75;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
 
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--crim);font-size:20px;line-height:1.65;background:var(--cream);color:var(--ink)}
-a{color:inherit;text-decoration:none}
+/* NAV */
+nav{
+  position:sticky;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;height:52px;
+  background:rgba(13,12,9,0.92);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+html[data-theme="light"] nav{background:rgba(243,238,227,0.92);}
+.nav-brand{font-family:var(--bask);font-size:15px;font-weight:400;color:var(--ink);text-decoration:none;}
+.nav-brand span{color:var(--orange);}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{font-family:var(--geist);font-size:13px;font-weight:500;color:var(--ink3);transition:color .15s;}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.theme-toggle{background:none;border:1px solid var(--border);border-radius:4px;width:30px;height:30px;cursor:pointer;color:var(--ink3);display:flex;align-items:center;justify-content:center;transition:color .15s;}
+.theme-toggle:hover{color:var(--ink);}
+.nav-icon-btn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:4px;border:1.5px solid var(--border);background:transparent;transition:opacity .15s;text-decoration:none;}
+.nav-icon-btn:hover{opacity:.7;}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:20px;height:1.5px;background:var(--ink);transition:transform .2s,opacity .2s;}
+.mobile-nav{display:none;position:fixed;inset:0;background:var(--bg);z-index:300;flex-direction:column;align-items:center;justify-content:center;gap:32px;}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{font-family:var(--bask);font-size:32px;font-weight:400;color:var(--ink);text-decoration:none;}
+.mobile-nav a:hover{color:var(--orange);}
+.mobile-nav-close{position:absolute;top:16px;right:20px;background:none;border:none;font-size:28px;cursor:pointer;color:var(--ink3);line-height:1;}
 
-.topbar{position:sticky;top:0;height:52px;background:var(--topbar-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:100}
-.topbar-logo{font-family:var(--bask);font-size:18px;letter-spacing:-.3px;color:var(--ink)}
-.topbar-logo span{color:var(--orange)}
-.topbar-nav{display:flex;align-items:center;gap:32px;list-style:none}
-.topbar-nav a{font-family:var(--geist);font-size:13px;color:var(--ink3);transition:color .15s}
-.topbar-nav a:hover,.topbar-nav a.active{color:var(--ink)}
-.topbar-cta{font-family:var(--geist);font-size:13px;font-weight:500;color:var(--cream);background:var(--ink);padding:7px 16px;border-radius:4px;transition:background .15s}
-.topbar-cta:hover{background:var(--orange)}
-
-/* PAGE HERO - dark */
-.page-hero{background:var(--dark);padding:72px 64px 60px;position:relative;overflow:hidden}
-.page-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(217,79,42,.08) 0%,transparent 60%);pointer-events:none}
-.page-hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
-.page-eyebrow{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
-.page-hero h1{font-family:var(--bask);font-size:48px;font-weight:400;letter-spacing:-.4px;line-height:1.1;color:rgba(255,255,255,.9);margin-bottom:16px}
-.page-hero p{font-size:19px;color:rgba(255,255,255,.45);max-width:560px;line-height:1.6;margin-bottom:36px}
-.platform-row{display:flex;align-items:center;gap:12px}
-.platform-btn{font-family:var(--geist);font-size:13px;font-weight:500;padding:9px 18px;border-radius:4px;display:inline-flex;align-items:center;gap:8px;transition:opacity .15s}
-.platform-btn:hover{opacity:.8}
-.platform-btn.yt{background:var(--orange);color:#fff}
-.platform-btn.sp{background:rgba(255,255,255,.08);color:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.14)}
-.platform-btn.sp:hover{background:rgba(255,255,255,.14);color:rgba(255,255,255,.85)}
+/* HERO */
+.page-hero{background:var(--bg3);padding:72px 40px 56px;position:relative;overflow:hidden;}
+.page-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(217,79,42,.08) 0%,transparent 60%);pointer-events:none;}
+.page-hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+.eyebrow{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--orange);margin-bottom:16px;}
+.page-hero h1{font-family:var(--bask);font-size:clamp(32px,5vw,48px);font-weight:400;line-height:1.1;color:var(--ink);margin-bottom:16px;}
+.page-hero p{font-family:var(--crim);font-size:18px;color:var(--ink2);max-width:560px;line-height:1.6;}
 
 /* MAIN */
-.episodes-main{padding:64px 64px 96px;max-width:1100px;margin:0 auto}
+.episodes-main{padding:56px 40px 96px;max-width:1100px;margin:0 auto;}
 
-.filter-bar{display:flex;align-items:center;gap:12px;margin-bottom:48px;flex-wrap:wrap}
-.filter-label{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink3);margin-right:4px}
-.filter-chip{font-family:var(--mono);font-size:11px;letter-spacing:.6px;padding:5px 14px;border-radius:20px;border:1px solid var(--border);color:var(--ink2);cursor:pointer;transition:all .15s;background:transparent;user-select:none}
-.filter-chip.active,.filter-chip:hover{border-color:var(--orange);color:var(--orange)}
+/* FILTER BAR */
+.filter-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+.filter-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.filter-label{font-family:var(--mono);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink3);margin-right:4px;}
+.filter-chip{font-family:var(--mono);font-size:11px;letter-spacing:.6px;padding:5px 14px;border-radius:20px;border:1px solid var(--border);color:var(--ink2);cursor:pointer;transition:all .15s;background:transparent;user-select:none;}
+.filter-chip.active,.filter-chip:hover{border-color:var(--orange);color:var(--orange);}
+.ep-search{font-family:var(--geist);font-size:13px;padding:7px 14px;border:1px solid var(--border);border-radius:20px;background:transparent;color:var(--ink);outline:none;min-width:180px;}
+.ep-search::placeholder{color:var(--ink3);}
+.ep-search:focus{border-color:var(--orange);}
 
 /* EPISODE LIST */
-.ep-list{display:flex;flex-direction:column}
+.ep-list{display:flex;flex-direction:column;}
+.ep-row{display:grid;grid-template-columns:96px 1fr;gap:28px;align-items:start;padding:32px 0;border-bottom:1px solid var(--border);transition:background .15s;}
+.ep-row:first-child{border-top:1px solid var(--border);}
+.ep-row:hover{background:var(--bg2);margin:0 -16px;padding:32px 16px;}
+.ep-row.hidden{display:none;}
+.ep-thumb{width:96px;height:96px;border-radius:6px;object-fit:cover;flex-shrink:0;display:block;background:var(--bg2);}
+.ep-meta{font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:.6px;margin-bottom:8px;}
+.ep-title{font-family:var(--bask);font-size:24px;font-weight:400;letter-spacing:-.2px;line-height:1.25;color:var(--ink);margin-bottom:6px;}
+.ep-guest{font-family:var(--geist);font-size:13px;color:var(--ink3);margin-bottom:10px;}
+.ep-desc{font-family:var(--crim);font-size:17px;color:var(--ink2);line-height:1.55;margin-bottom:14px;}
+.ep-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+.ep-tag{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;padding:3px 9px;border-radius:2px;background:var(--ink4);color:var(--ink2);}
+.claim-badge-ep{display:inline-flex;align-items:center;font-family:var(--mono);font-size:10px;letter-spacing:.6px;padding:3px 9px;border-radius:2px;background:var(--amber-dim);border:1px solid rgba(229,160,48,0.2);color:var(--amber);margin-bottom:14px;}
+.ep-inline-actions{display:flex;gap:10px;margin-top:4px;flex-wrap:wrap;}
+.ep-inline-actions a{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:4px;font-family:var(--geist);font-size:12px;font-weight:600;text-decoration:none;transition:opacity .15s;}
+.ia-yt{background:#FF0000;color:#fff;}
+.ia-sp{background:#1DB954;color:#fff;}
+.ia-memo{color:var(--orange);padding:7px 0;font-weight:600;background:transparent;}
+.ep-inline-actions a:hover{opacity:.8;}
 
-.ep-row{display:grid;grid-template-columns:96px 1fr;gap:28px;align-items:start;padding:32px 0;border-bottom:1px solid var(--border);transition:background .15s}
-.ep-row:first-child{border-top:1px solid var(--border)}
-.ep-row:hover{background:var(--parch)}
-.ep-row.hidden{display:none}
-
-/* Thumbnail */
-.ep-thumb{width:96px;height:96px;border-radius:6px;object-fit:cover;flex-shrink:0;display:block;background:var(--parch)}
-
-/* Meta line */
-.ep-meta{font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:.6px;margin-bottom:8px}
-
-.ep-content{}
-.ep-title{font-family:var(--bask);font-size:24px;font-weight:400;letter-spacing:-.2px;line-height:1.25;color:var(--ink);margin-bottom:6px}
-.ep-guest{font-family:var(--geist);font-size:13px;color:var(--ink3);margin-bottom:10px}
-.ep-desc{font-size:17px;color:var(--ink2);line-height:1.55;margin-bottom:14px}
-.ep-tags{display:flex;gap:8px;flex-wrap:wrap}
-.ep-tag{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;padding:3px 9px;border-radius:2px;background:var(--ink4);color:var(--ink2)}
-
-.ep-actions{display:flex;flex-direction:column;gap:10px;padding-top:6px;white-space:nowrap;min-width:120px}
-.ep-btn{font-family:var(--geist);font-size:12px;font-weight:500;padding:8px 14px;border-radius:4px;display:flex;align-items:center;justify-content:center;gap:6px;transition:opacity .15s,transform .12s}
-.ep-btn:hover{opacity:.8}
-.ep-btn.watch{background:var(--orange);color:#fff}
-.ep-btn.watch:hover{transform:translateY(-1px);opacity:.9}
-.ep-btn.listen{background:var(--ink4);color:var(--ink2);border:1px solid var(--border)}
-.ep-btn.memo{background:transparent;color:var(--orange);font-size:12px;font-weight:500;padding:0;justify-content:flex-end;border:none}
-.ep-btn.memo:hover{opacity:.7}
+/* ARCHIVE NOTE */
+.archive-note{margin-top:52px;padding-top:32px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.archive-note-label{font-family:var(--mono);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink3);margin-bottom:8px;}
+.archive-note-text{font-family:var(--crim);font-size:17px;color:var(--ink2);}
+.archive-links{display:flex;gap:12px;}
+.archive-links a{font-family:var(--geist);font-size:13px;font-weight:500;}
+.archive-links a:first-child{color:var(--orange);}
+.archive-links a:last-child{color:var(--ink3);}
 
 /* FOOTER */
-.footer{background:var(--dark);padding:40px 64px 32px}
-.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
-.footer-brand{font-family:var(--bask);font-size:18px;color:rgba(255,255,255,.7)}
-.footer-brand span{color:var(--orange)}
-.footer-copy{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.22);letter-spacing:.4px}
+footer{background:var(--bg3);padding:64px 40px;border-top:1px solid var(--border);}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:40px;}
+.footer-brand{font-family:var(--bask);font-size:18px;font-weight:400;color:var(--ink);}
+.footer-brand span{color:var(--orange);}
+.footer-sub{font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);margin-top:8px;}
+.footer-links{display:flex;flex-direction:column;gap:10px;text-align:right;}
+.footer-links a{font-family:var(--geist);font-size:13px;color:var(--ink3);text-decoration:none;transition:color .15s;}
+.footer-links a:hover{color:var(--ink);}
 
-@media(max-width:900px){
-  .topbar{padding:0 24px}
-  .page-hero{padding:48px 28px 48px}
-  .page-hero h1{font-size:36px}
-  .episodes-main{padding:40px 28px 60px}
-  .ep-row{grid-template-columns:72px 1fr;gap:16px}
-  .ep-actions{flex-direction:row;flex-wrap:wrap;grid-column:1/-1}
-  .footer{padding:32px 28px 24px}
-}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.visible{opacity:1;transform:none;}
 
-/* Theme toggle */
-.theme-toggle {
-  width: 32px;
-  height: 32px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  color: var(--ink3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  transition: color .15s, background .15s;
-  padding: 0;
-  flex-shrink: 0;
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:0 20px;}
+  .nav-links,.nav-right .nav-icon-btn{display:none;}
+  .hamburger{display:flex;}
+  .page-hero{padding:90px 24px 48px;}
+  .episodes-main{padding:40px 20px 64px;}
+  .ep-row{grid-template-columns:72px 1fr;gap:16px;}
+  .ep-row:hover{margin:0;padding:32px 0;}
+  footer{padding:48px 20px;}
+  .footer-inner{flex-direction:column;gap:24px;}
+  .footer-links{text-align:left;}
 }
-.theme-toggle:hover { color: var(--ink); background: var(--ink4); }
-.topbar-right { display: flex; align-items: center; gap: 20px; }
-
-/* Platform branded buttons */
-.platform-btn-yt, .platform-btn-sp {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
-  border-radius: 4px;
-  font-family: var(--geist);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: .2px;
-  text-decoration: none;
-  transition: opacity .15s, transform .12s;
-  white-space: nowrap;
+@media(max-width:480px){
+  .ep-thumb{display:none;}
+  .ep-row{grid-template-columns:1fr;}
+  .ep-title{font-size:20px;}
 }
-.platform-btn-yt:hover, .platform-btn-sp:hover { opacity: .82; transform: translateY(-1px); }
-.platform-btn-yt {
-  background: #fff;
-  color: #0d0c09;
-  border: 1.5px solid #ddd;
-}
-.platform-btn-sp {
-  background: #1DB954;
-  color: #fff;
-  border: 1.5px solid transparent;
-}
-.topbar-platform {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.topbar-icon-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 4px;
-  border: 1.5px solid var(--border, #ddd);
-  background: transparent;
-  transition: opacity .15s;
-  text-decoration: none;
-}
-.topbar-icon-btn:hover { opacity: .7; }
-.ep-btn.watch, .ep-btn.listen {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 6px !important;
-}
-
-
-.hamburger {
-  display: none; background: none; border: none; cursor: pointer;
-  padding: 4px; color: var(--ink3); flex-direction: column;
-  justify-content: center; align-items: center; gap: 5px;
-}
-.hamburger span {
-  display: block; width: 20px; height: 1.5px; background: currentColor;
-  transition: transform .2s, opacity .2s;
-}
-.mobile-nav {
-  display: none; position: fixed; inset: 52px 0 0;
-  background: var(--cream); z-index: 99;
-  flex-direction: column; padding: 32px 24px; gap: 4px;
-  border-top: 1px solid var(--border);
-}
-.mobile-nav.open { display: flex; }
-.mobile-nav a {
-  font-family: var(--geist); font-size: 22px; font-weight: 500;
-  color: var(--ink); padding: 14px 0; border-bottom: 1px solid var(--border);
-  text-decoration: none;
-}
-.mobile-nav-platforms { display: flex; gap: 12px; margin-top: 24px; }
-
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
-.reveal.visible { opacity: 1; transform: none; }
-
-@media(max-width:640px){
-  .page-hero{padding:90px 20px 48px}
-  .page-hero h1{font-size:32px}
-  .episodes-main{padding:32px 16px 64px}
-  .ep-card-inner{grid-template-columns:1fr;gap:12px}
-  .ep-thumb{display:none}
-  .ep-actions{flex-direction:row;flex-wrap:wrap;min-width:unset}
-  .ep-btn{padding:8px 14px;font-size:11px}
-  nav{padding:0 16px}
-  .topbar-nav{display:none}
-  .hamburger{display:flex}
-  .topbar-icon-btn{display:none}
-}
-
-
-.ep-inline-actions { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
-.ep-inline-actions a { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 4px; font-family: var(--geist); font-size: 12px; font-weight: 600; text-decoration: none; transition: opacity .15s; }
-.ep-inline-actions .ia-yt { background: #FF0000; color: #fff; }
-.ep-inline-actions .ia-sp { background: #1DB954; color: #fff; }
-.ep-inline-actions .ia-memo { color: var(--orange); padding: 7px 0; font-weight: 600; }
-.ep-inline-actions a:hover { opacity: .8; }
 </style>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9889;</text></svg>">
 </head>
 <body>
 
-<nav class="topbar">
-  <a href="index.html" class="topbar-logo">Super<span>cycle</span></a>
-  <ul class="topbar-nav">
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-brand">Super<span>cycle</span></a>
+  <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="episodes.html" class="active">Episodes</a></li>
   </ul>
-  <div class="topbar-right">
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
-    <div class="topbar-platform">
-    <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="topbar-icon-btn" title="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FF0000" style="flex-shrink:0"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-    <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="topbar-icon-btn" title="Spotify"><svg width="16" height="16" viewBox="0 0 24 24" fill="#1DB954" style="flex-shrink:0"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
-  </div>
+  <div class="nav-right">
+    <button class="hamburger" id="sc-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"></button>
+    <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="nav-icon-btn" title="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+    <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="nav-icon-btn" title="Spotify"><svg width="16" height="16" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
   </div>
 </nav>
-<div class="mobile-nav" id="mobileNav">
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="sc-mobile-nav">
+  <button class="mobile-nav-close" id="sc-nav-close" aria-label="Close">&times;</button>
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
   <a href="episodes.html">Episodes</a>
-  <div class="mobile-nav-platforms">
-    <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="platform-btn-yt" style="font-size:13px;padding:10px 16px;">YouTube</a>
-    <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="platform-btn-sp" style="font-size:13px;padding:10px 16px;">Spotify</a>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="eyebrow">12 EPISODES &middot; 2025</div>
+    <h1>No prepared deck. No PR filter.</h1>
+    <p>Twelve conversations with founders and fund managers. Every guest answers to data in real time.</p>
   </div>
 </div>
 
-<!-- PAGE HEADER -->
-<div style="background:var(--dark);padding:72px 64px 56px;position:relative;overflow:hidden;">
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(217,79,42,.08) 0%,transparent 60%);pointer-events:none;"></div>
-  <div style="max-width:1100px;margin:0 auto;position:relative;z-index:1;">
-    <div style="font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--orange);margin-bottom:16px;">12 Episodes · 2025</div>
-    <h1 style="font-family:var(--bask);font-size:clamp(32px,5vw,48px);font-weight:400;line-height:1.1;color:rgba(255,255,255,.9);margin-bottom:16px;">No prepared deck. No PR filter.</h1>
-    <p style="font-size:18px;color:rgba(255,255,255,.45);max-width:520px;line-height:1.6;">Twelve conversations with founders and fund managers. Every guest answers to data in real time.</p>
+<div class="episodes-main">
+  <div class="filter-row">
+    <div class="filter-bar">
+      <span class="filter-label">Filter</span>
+      <span class="filter-chip active" data-filter="all">All</span>
+      <span class="filter-chip" data-filter="ai-infrastructure">AI Infrastructure</span>
+      <span class="filter-chip" data-filter="robotics">Robotics</span>
+      <span class="filter-chip" data-filter="ai-agents">AI Agents</span>
+      <span class="filter-chip" data-filter="crypto-vc">Crypto VC</span>
+    </div>
+    <input id="epSearch" type="search" placeholder="Search episodes..." class="ep-search" oninput="scSearch(this.value)">
   </div>
-</div>
 
-<div class="episodes-main"><div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--border);">
-  <div class="filter-bar" style="margin-bottom:0;">
-    <span class="filter-label">Filter</span>
-    <span class="filter-chip active" data-filter="all">All</span>
-    <span class="filter-chip" data-filter="ai-infrastructure">AI Infrastructure</span>
-    <span class="filter-chip" data-filter="robotics">Robotics</span>
-    <span class="filter-chip" data-filter="ai-agents">AI Agents</span>
-    <span class="filter-chip" data-filter="crypto-vc">Crypto VC</span>
-  </div>
-  <input id="epSearch" type="search" placeholder="Search episodes..." oninput="scSearch(this.value)"
-    style="font-family:var(--geist);font-size:13px;padding:7px 14px;border:1px solid var(--border);border-radius:20px;background:transparent;color:var(--ink);outline:none;min-width:180px;">
-</div>
-<div class="ep-list">
+  <div class="ep-list">
 
     <!-- Ep. 12 -->
     <div class="ep-row reveal" data-sectors="ai-infrastructure">
-      <img class="ep-thumb" src="https://image-cdn-ak.spotifycdn.com/image/ab6772ab000015be023583a9ab24811ea1aee332" alt="Episode 12 thumbnail" loading="lazy">
+      <img class="ep-thumb" src="https://image-cdn-ak.spotifycdn.com/image/ab6772ab000015be023583a9ab24811ea1aee332" alt="Episode 12" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 12 &middot; May 2025 &middot; 45 min</div>
         <div class="ep-title">Bittensor Subnets Cost 500k+ to Register</div>
         <div class="ep-guest">Karis Capital</div>
         <p class="ep-desc">Registration costs on Bittensor now exceed 500,000 TAO. Karis Capital breaks down what that signal means for subnet quality, token economics, and where the network is heading as a result.</p>
-        <div class="ep-tags">
-          <span class="ep-tag">AI Infrastructure</span>
-          <span class="ep-tag">Bittensor</span>
-        </div>
+        <div class="ep-tags"><span class="ep-tag">AI Infrastructure</span><span class="ep-tag">Bittensor</span></div>
         <div class="ep-inline-actions">
           <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ia-yt"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</a>
           <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="ia-sp"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</a>
@@ -309,16 +244,13 @@ a{color:inherit;text-decoration:none}
 
     <!-- Ep. 11 -->
     <div class="ep-row reveal" data-sectors="ai-infrastructure">
-      <img class="ep-thumb" src="https://image-cdn-ak.spotifycdn.com/image/ab6772ab000015be023583a9ab24811ea1aee332" alt="Episode 11 thumbnail" loading="lazy">
+      <img class="ep-thumb" src="https://image-cdn-ak.spotifycdn.com/image/ab6772ab000015be023583a9ab24811ea1aee332" alt="Episode 11" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 11 &middot; May 2025 &middot; 1h 8min</div>
         <div class="ep-title">Market Speedrun: Bittensor, Situational Awareness and Sports RWAs</div>
         <div class="ep-guest">Wei Xie + Jack Leung</div>
         <p class="ep-desc">A market sweep covering TAO price action, situational awareness in AI, and the emerging case for sports real-world assets. Wei and Jack run through the week's biggest signals.</p>
-        <div class="ep-tags">
-          <span class="ep-tag">AI Infrastructure</span>
-          <span class="ep-tag">Market Intel</span>
-        </div>
+        <div class="ep-tags"><span class="ep-tag">AI Infrastructure</span><span class="ep-tag">Market Intel</span></div>
         <div class="ep-inline-actions">
           <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ia-yt"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</a>
           <a href="https://open.spotify.com/episode/5dQNBLCN2OA2q9mu6Ge1BZ" target="_blank" rel="noopener" class="ia-sp"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</a>
@@ -328,16 +260,13 @@ a{color:inherit;text-decoration:none}
 
     <!-- Ep. 10 -->
     <div class="ep-row reveal" data-sectors="ai-infrastructure">
-      <img class="ep-thumb" src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015be5e96a34a71ff8deaea505283" alt="Episode 10 thumbnail" loading="lazy">
+      <img class="ep-thumb" src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015be5e96a34a71ff8deaea505283" alt="Episode 10" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 10 &middot; Apr 2025 &middot; 33 min</div>
         <div class="ep-title">Can One Subnet Destroy Bittensor's Ecosystem?</div>
         <div class="ep-guest">Max (Score), Gyles (Tensora Group)</div>
         <p class="ep-desc">If one subnet goes rogue, what happens to the network? They examine the systemic risk question the Bittensor community has been avoiding.</p>
-        <div class="ep-tags">
-          <span class="ep-tag">AI Infrastructure</span>
-          <span class="ep-tag">Risk</span>
-        </div>
+        <div class="ep-tags"><span class="ep-tag">AI Infrastructure</span><span class="ep-tag">Risk</span></div>
         <div class="ep-inline-actions">
           <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ia-yt"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</a>
           <a href="https://open.spotify.com/episode/0VUBE1fyo4Vw34jogahLcX" target="_blank" rel="noopener" class="ia-sp"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</a>
@@ -347,16 +276,14 @@ a{color:inherit;text-decoration:none}
 
     <!-- Ep. 9 -->
     <div class="ep-row reveal" data-sectors="robotics">
-      <img class="ep-thumb" src="https://image-cdn-ak.spotifycdn.com/image/ab6772ab000015be2f574497db30765ab6793da5" alt="Episode 9 thumbnail" loading="lazy">
+      <img class="ep-thumb" src="https://image-cdn-ak.spotifycdn.com/image/ab6772ab000015be2f574497db30765ab6793da5" alt="Episode 9" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 9 &middot; Apr 2025 &middot; 1h 10min</div>
         <div class="ep-title">Why the Robotics Gold Rush is Just Getting Started</div>
         <div class="ep-guest">Mauricio (XMAQUINA), Simon (Moonrock Capital)</div>
-        <p class="ep-desc">Hardware costs are collapsing. XMAQUINA is betting that decentralized robotics infrastructure captures what centralized players can't. Moonrock Capital on where capital is flowing and why the window is open now.</p>
-        <div class="ep-tags">
-          <span class="ep-tag">Robotics</span>
-          <span class="ep-tag">Infrastructure</span>
-        </div>
+        <p class="ep-desc">Hardware costs are collapsing. XMAQUINA is betting that decentralized robotics infrastructure captures what centralized players cannot. Moonrock Capital on where capital is flowing and why the window is open now.</p>
+        <div class="ep-tags"><span class="ep-tag">Robotics</span><span class="ep-tag">Infrastructure</span></div>
+        <span class="claim-badge-ep">1 claim on record</span>
         <div class="ep-inline-actions">
           <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ia-yt"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</a>
           <a href="https://open.spotify.com/episode/1GVU1y6ULaomwowaMJLzTi" target="_blank" rel="noopener" class="ia-sp"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</a>
@@ -366,16 +293,13 @@ a{color:inherit;text-decoration:none}
 
     <!-- Ep. 8 -->
     <div class="ep-row reveal" data-sectors="ai-infrastructure">
-      <img class="ep-thumb" src="https://image-cdn-ak.spotifycdn.com/image/ab6772ab000015be9fdd8bb0c3f2596fb15bb48d" alt="Episode 8 thumbnail" loading="lazy">
+      <img class="ep-thumb" src="https://image-cdn-ak.spotifycdn.com/image/ab6772ab000015be9fdd8bb0c3f2596fb15bb48d" alt="Episode 8" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 8 &middot; Apr 2025 &middot; 1h 14min</div>
         <div class="ep-title">How Bittensor is Challenging the AI Status Quo</div>
         <div class="ep-guest">Wei Xie, NRN Agents</div>
         <p class="ep-desc">Anthropic, OpenAI, and Google own the model layer. Wei Xie makes the case that decentralized AI networks can compete on outputs where centralized providers cannot: speed, cost, and censorship resistance.</p>
-        <div class="ep-tags">
-          <span class="ep-tag">AI Infrastructure</span>
-          <span class="ep-tag">Decentralization</span>
-        </div>
+        <div class="ep-tags"><span class="ep-tag">AI Infrastructure</span><span class="ep-tag">Decentralization</span></div>
         <div class="ep-inline-actions">
           <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ia-yt"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</a>
           <a href="https://open.spotify.com/episode/4wZA1Axm5wOFuhwrFkD8Lx" target="_blank" rel="noopener" class="ia-sp"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</a>
@@ -385,16 +309,14 @@ a{color:inherit;text-decoration:none}
 
     <!-- Ep. 7 -->
     <div class="ep-row reveal" data-sectors="ai-infrastructure">
-      <img class="ep-thumb" src="https://image-cdn-ak.spotifycdn.com/image/ab6772ab000015be6458d6b19aaffb573bfca634" alt="Episode 7 thumbnail" loading="lazy">
+      <img class="ep-thumb" src="https://image-cdn-ak.spotifycdn.com/image/ab6772ab000015be6458d6b19aaffb573bfca634" alt="Episode 7" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 7 &middot; Mar 2025 &middot; 57 min</div>
         <div class="ep-title">The Valuation Mismatch of Bittensor</div>
         <div class="ep-guest">Stillcore</div>
         <p class="ep-desc">TAO is undervalued relative to comparable AI infrastructure plays. Stillcore walks through the valuation framework: what the market is missing, where the comps break down, and what the thesis requires to be true.</p>
-        <div class="ep-tags">
-          <span class="ep-tag">AI Infrastructure</span>
-          <span class="ep-tag">Valuation</span>
-        </div>
+        <div class="ep-tags"><span class="ep-tag">AI Infrastructure</span><span class="ep-tag">Valuation</span></div>
+        <span class="claim-badge-ep">1 claim on record</span>
         <div class="ep-inline-actions">
           <a href="https://www.youtube.com/watch?v=CTAR-C7QXu4" target="_blank" rel="noopener" class="ia-yt"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</a>
           <a href="https://open.spotify.com/episode/1bGk10GRU7fn4qCDk8zKsJ" target="_blank" rel="noopener" class="ia-sp"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</a>
@@ -404,16 +326,14 @@ a{color:inherit;text-decoration:none}
 
     <!-- Ep. 6 -->
     <div class="ep-row reveal" data-sectors="ai-infrastructure">
-      <img class="ep-thumb" src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015beaa36d3f7e2c83790a509d354" alt="Episode 6 thumbnail" loading="lazy">
+      <img class="ep-thumb" src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015beaa36d3f7e2c83790a509d354" alt="Episode 6" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 6 &middot; Mar 2025 &middot; 1h 1min</div>
         <div class="ep-title">Taking AI Back from the Megacorps</div>
         <div class="ep-guest">Eric Yang, Gradient Network</div>
         <p class="ep-desc">Gradient is building infrastructure for distributed AI compute. Eric Yang's argument: the megacorps control inference, but the network layer is still open. Where that window closes and what has to happen before it does.</p>
-        <div class="ep-tags">
-          <span class="ep-tag">AI Infrastructure</span>
-          <span class="ep-tag">Compute</span>
-        </div>
+        <div class="ep-tags"><span class="ep-tag">AI Infrastructure</span><span class="ep-tag">Compute</span></div>
+        <span class="claim-badge-ep">1 claim on record</span>
         <div class="ep-inline-actions">
           <a href="https://www.youtube.com/watch?v=46SGE01NO0Q" target="_blank" rel="noopener" class="ia-yt"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</a>
           <a href="https://open.spotify.com/episode/27g6GOLQIe52pPBZtyUpss" target="_blank" rel="noopener" class="ia-sp"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</a>
@@ -423,16 +343,14 @@ a{color:inherit;text-decoration:none}
 
     <!-- Ep. 5 -->
     <div class="ep-row reveal" data-sectors="ai-infrastructure">
-      <img class="ep-thumb" src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015bec95a3b28410885e15cc7c914" alt="Episode 5 thumbnail" loading="lazy">
+      <img class="ep-thumb" src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015bec95a3b28410885e15cc7c914" alt="Episode 5" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 5 &middot; Feb 2025 &middot; 51 min</div>
         <div class="ep-title">Yuma Group, Bittensor's Acceleration Engine</div>
         <div class="ep-guest">Evan, Yuma / DCG</div>
         <p class="ep-desc">Yuma is DCG's bet on Bittensor acceleration. Evan breaks down what the group is building, how it picks which subnets to back, and why the Bittensor ecosystem needs a dedicated accelerator rather than general-purpose capital.</p>
-        <div class="ep-tags">
-          <span class="ep-tag">AI Infrastructure</span>
-          <span class="ep-tag">DCG</span>
-        </div>
+        <div class="ep-tags"><span class="ep-tag">AI Infrastructure</span><span class="ep-tag">DCG</span></div>
+        <span class="claim-badge-ep">1 claim on record</span>
         <div class="ep-inline-actions">
           <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ia-yt"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</a>
           <a href="https://open.spotify.com/episode/1ZGIwXcQIGkHrXk1mguhHi" target="_blank" rel="noopener" class="ia-sp"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</a>
@@ -442,16 +360,14 @@ a{color:inherit;text-decoration:none}
 
     <!-- Ep. 4 -->
     <div class="ep-row reveal" data-sectors="crypto-vc">
-      <img class="ep-thumb" src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015be9312b46b8eaf3dccff38a42c" alt="Episode 4 thumbnail" loading="lazy">
+      <img class="ep-thumb" src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015be9312b46b8eaf3dccff38a42c" alt="Episode 4" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 4 &middot; Jan 2025 &middot; 52 min</div>
         <div class="ep-title">Inside Multicoin's $5.9B Crypto Investment Playbook</div>
         <div class="ep-guest">Shayon, Multicoin Capital</div>
         <p class="ep-desc">Multicoin has $5.9B AUM and a track record that includes early Solana. Shayon walks through how the fund evaluates crypto infrastructure plays, why most DePIN is uninvestable, and where the fund is looking now.</p>
-        <div class="ep-tags">
-          <span class="ep-tag">Crypto VC</span>
-          <span class="ep-tag">Venture Capital</span>
-        </div>
+        <div class="ep-tags"><span class="ep-tag">Crypto VC</span><span class="ep-tag">Venture Capital</span></div>
+        <span class="claim-badge-ep">1 claim on record</span>
         <div class="ep-inline-actions">
           <a href="https://www.youtube.com/watch?v=lXxyZaduCNA" target="_blank" rel="noopener" class="ia-yt"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</a>
           <a href="https://open.spotify.com/episode/2GNqHrc5VGbGb83umFQu6n" target="_blank" rel="noopener" class="ia-sp"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</a>
@@ -461,16 +377,13 @@ a{color:inherit;text-decoration:none}
 
     <!-- Ep. 3 -->
     <div class="ep-row reveal" data-sectors="robotics">
-      <img class="ep-thumb" src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015be2f6150582a4dde95626c6d22" alt="Episode 3 thumbnail" loading="lazy">
+      <img class="ep-thumb" src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015be2f6150582a4dde95626c6d22" alt="Episode 3" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 3 &middot; Jan 2025 &middot; 1h 10min</div>
-        <div class="ep-title">Bitrobot and Auki on why DeRobotics is Inevitable</div>
+        <div class="ep-title">Bitrobot and Auki on Why DeRobotics is Inevitable</div>
         <div class="ep-guest">Nils (Auki), Michael (BitRobot)</div>
         <p class="ep-desc">Auki builds spatial computing infrastructure. BitRobot is putting robotics on-chain. Their shared argument: once robots can transact autonomously, centralized ownership becomes the bottleneck. Why decentralized robotics is structural, not optional.</p>
-        <div class="ep-tags">
-          <span class="ep-tag">Robotics</span>
-          <span class="ep-tag">DeRobotics</span>
-        </div>
+        <div class="ep-tags"><span class="ep-tag">Robotics</span><span class="ep-tag">DeRobotics</span></div>
         <div class="ep-inline-actions">
           <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ia-yt"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</a>
           <a href="https://open.spotify.com/episode/3YpdBVpwU9BEPOqxxtpQhn" target="_blank" rel="noopener" class="ia-sp"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</a>
@@ -480,16 +393,13 @@ a{color:inherit;text-decoration:none}
 
     <!-- Ep. 2 -->
     <div class="ep-row reveal" data-sectors="ai-infrastructure">
-      <img class="ep-thumb" src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015bef02b06d8f0083f304fea0ea7" alt="Episode 2 thumbnail" loading="lazy">
+      <img class="ep-thumb" src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015bef02b06d8f0083f304fea0ea7" alt="Episode 2" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 2 &middot; Jan 2025 &middot; 37 min</div>
         <div class="ep-title">Bittensor, NumerAI and Web3 AI</div>
         <div class="ep-guest">Max Sebti (Score / SIRE), Wei Xie (NRN)</div>
         <p class="ep-desc">Score converts video data into queryable intelligence. NRN is building reinforcement learning infrastructure on Bittensor. Max and Wei compare the NumerAI model to the Bittensor architecture and why the incentive layer is the thesis.</p>
-        <div class="ep-tags">
-          <span class="ep-tag">AI Infrastructure</span>
-          <span class="ep-tag">Computer Vision</span>
-        </div>
+        <div class="ep-tags"><span class="ep-tag">AI Infrastructure</span><span class="ep-tag">Computer Vision</span></div>
         <div class="ep-inline-actions">
           <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ia-yt"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</a>
           <a href="https://open.spotify.com/episode/4zDsRPB7ADACuB0Vj8Nf5Q" target="_blank" rel="noopener" class="ia-sp"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</a>
@@ -500,16 +410,14 @@ a{color:inherit;text-decoration:none}
 
     <!-- Ep. 1 -->
     <div class="ep-row reveal" data-sectors="ai-agents">
-      <img class="ep-thumb" src="https://image-cdn-ak.spotifycdn.com/image/ab6772ab000015be4b84daafd3c015e9cbaeaef8" alt="Episode 1 thumbnail" loading="lazy">
+      <img class="ep-thumb" src="https://image-cdn-ak.spotifycdn.com/image/ab6772ab000015be4b84daafd3c015e9cbaeaef8" alt="Episode 1" loading="lazy">
       <div class="ep-content">
         <div class="ep-meta">Ep. 1 &middot; Jan 2025 &middot; 48 min</div>
         <div class="ep-title">The Internet Is Shifting From Humans to Agents</div>
         <div class="ep-guest">0xSammy</div>
         <p class="ep-desc">Web traffic is becoming agent traffic. 0xSammy makes the case that most internet infrastructure is built for human interaction, and the protocols that survive the transition will be those that assume agents are the primary user.</p>
-        <div class="ep-tags">
-          <span class="ep-tag">AI Agents</span>
-          <span class="ep-tag">Infrastructure</span>
-        </div>
+        <div class="ep-tags"><span class="ep-tag">AI Agents</span><span class="ep-tag">Infrastructure</span></div>
+        <span class="claim-badge-ep">1 claim on record</span>
         <div class="ep-inline-actions">
           <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ia-yt"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</a>
           <a href="https://open.spotify.com/episode/1p8GoVOQ49KNYLvrETwJoj" target="_blank" rel="noopener" class="ia-sp"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</a>
@@ -517,28 +425,31 @@ a{color:inherit;text-decoration:none}
       </div>
     </div>
 
+  </div><!-- /ep-list -->
 
-</div><!-- /ep-list -->
-</div><!-- /episodes-main-inner -->
-
-  <!-- Archive note -->
-  <div style="margin-top:52px;padding-top:32px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+  <div class="archive-note">
     <div>
-      <div style="font-family:var(--mono);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink3);margin-bottom:8px;">Full archive</div>
-      <p style="font-size:17px;color:var(--ink2);">All 12 episodes on YouTube and Spotify. New episodes publish weekly.</p>
+      <div class="archive-note-label">Full archive</div>
+      <p class="archive-note-text">All 12 episodes on YouTube and Spotify. New episodes publish weekly.</p>
     </div>
-    <div style="display:flex;gap:12px;">
-      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" style="font-family:var(--geist);font-size:13px;font-weight:500;color:var(--orange);">YouTube channel &rarr;</a>
-      <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" style="font-family:var(--geist);font-size:13px;font-weight:500;color:var(--ink3);">Spotify &rarr;</a>
+    <div class="archive-links">
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">YouTube channel &rarr;</a>
+      <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener">Spotify &rarr;</a>
     </div>
   </div>
-
 </div>
 
-<footer class="footer">
+<footer>
   <div class="footer-inner">
-    <div class="footer-brand">Super<span>cycle</span></div>
-    <span class="footer-copy">&copy; 2025 Supercycle. A <a href="https://pylon.partners" style="color:rgba(255,255,255,.38)">Pylon Partners</a> production.</span>
+    <div>
+      <div class="footer-brand">Super<span>cycle</span></div>
+      <div class="footer-sub">A Pylon Partners production</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener">Spotify</a>
+      <a href="https://pylon.partners" target="_blank" rel="noopener">Pylon Partners</a>
+    </div>
   </div>
 </footer>
 
@@ -548,7 +459,6 @@ var chips=document.querySelectorAll('.filter-chip');
 var rows=document.querySelectorAll('.ep-row');
 var activeFilter='all';
 var activeSearch='';
-
 chips.forEach(function(chip){
   chip.addEventListener('click',function(){
     chips.forEach(function(c){c.classList.remove('active');});
@@ -557,62 +467,57 @@ chips.forEach(function(chip){
     scApplyFilters();
   });
 });
-
-function scSearch(val){
-  activeSearch=val.toLowerCase().trim();
-  scApplyFilters();
-}
-
+function scSearch(val){activeSearch=val.toLowerCase().trim();scApplyFilters();}
 function scApplyFilters(){
   rows.forEach(function(row){
-    var sectorMatch = activeFilter==='all' || (row.dataset.sectors||'').split(' ').includes(activeFilter);
-    var title = (row.querySelector('.ep-title')||{}).textContent||'';
-    var guest = (row.querySelector('.ep-guest')||{}).textContent||'';
-    var searchMatch = !activeSearch || title.toLowerCase().includes(activeSearch) || guest.toLowerCase().includes(activeSearch);
-    row.classList.toggle('hidden', !(sectorMatch && searchMatch));
+    var sectorMatch=activeFilter==='all'||(row.dataset.sectors||'').split(' ').includes(activeFilter);
+    var title=(row.querySelector('.ep-title')||{}).textContent||'';
+    var guest=(row.querySelector('.ep-guest')||{}).textContent||'';
+    var searchMatch=!activeSearch||title.toLowerCase().includes(activeSearch)||guest.toLowerCase().includes(activeSearch);
+    row.classList.toggle('hidden',!(sectorMatch&&searchMatch));
   });
 }
 
 // Theme
-function scUpdateIcon(){
-  var d=document.documentElement.getAttribute('data-theme')==='dark';
-  var b=document.getElementById('themeToggle');
-  if(!b)return;
-  b.innerHTML=d
+function scUpdateThemeIcon(){
+  var dark=document.documentElement.getAttribute('data-theme')==='dark';
+  var btn=document.getElementById('themeToggle');
+  if(!btn)return;
+  btn.innerHTML=dark
     ?'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>'
     :'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-  b.title=d?'Light mode':'Dark mode';
+  btn.title=dark?'Switch to light mode':'Switch to dark mode';
 }
 document.addEventListener('DOMContentLoaded',function(){
-  scUpdateIcon();
-  var b=document.getElementById('themeToggle');
-  if(b)b.addEventListener('click',function(){
-    var d=document.documentElement.getAttribute('data-theme')==='dark';
-    document.documentElement.setAttribute('data-theme',d?'light':'dark');
-    localStorage.setItem('sc-theme',d?'light':'dark');
-    scUpdateIcon();
+  scUpdateThemeIcon();
+  var btn=document.getElementById('themeToggle');
+  if(btn)btn.addEventListener('click',function(){
+    var dark=document.documentElement.getAttribute('data-theme')==='dark';
+    var next=dark?'light':'dark';
+    document.documentElement.setAttribute('data-theme',next);
+    localStorage.setItem('sc-theme',next);
+    scUpdateThemeIcon();
   });
-  // Focus search styling
-  var s=document.getElementById('epSearch');
-  if(s){
-    s.addEventListener('focus',function(){this.style.borderColor='var(--orange)';});
-    s.addEventListener('blur',function(){this.style.borderColor='var(--border)';});
-  }
 });
 
-var hb=document.getElementById('hamburger');
-var mn=document.getElementById('mobileNav');
-if(hb&&mn){hb.addEventListener('click',function(){
-  mn.classList.toggle('open');
-  hb.setAttribute('aria-expanded',mn.classList.contains('open'));
-});}
+// Mobile nav
+(function(){
+  var btn=document.getElementById('sc-hamburger');
+  var nav=document.getElementById('sc-mobile-nav');
+  var close=document.getElementById('sc-nav-close');
+  if(btn&&nav){
+    btn.addEventListener('click',function(){nav.classList.add('open');});
+    if(close)close.addEventListener('click',function(){nav.classList.remove('open');});
+    nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');});});
+  }
+})();
 
-var revealEls = document.querySelectorAll('.reveal');
-var ro = new IntersectionObserver(function(entries){
-  entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); ro.unobserve(e.target); }});
+// Reveal
+var revealEls=document.querySelectorAll('.reveal');
+var ro=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);}});
 },{threshold:0.12});
-revealEls.forEach(function(el){ ro.observe(el); });
+revealEls.forEach(function(el){ro.observe(el);});
 </script>
-
 </body>
 </html>
