@@ -1,568 +1,301 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Supercycle – AI, Robotics &amp; Science</title>
-<meta name="description" content="Five investment themes drawn from twelve conversations with founders and investors at the frontier of AI, robotics, and science.">
-<meta property="og:title" content="Supercycle: AI, Robotics &amp; Science">
-<meta property="og:description" content="Five investment themes from twelve conversations with founders and investors at the frontier of AI, robotics, and science.">
+<title>Supercycle: AI, Robotics and Health Sciences</title>
+<meta name="description" content="Five investment themes drawn from twelve conversations with founders and investors at the frontier of AI, robotics, and health sciences.">
+<meta property="og:title" content="Supercycle: AI, Robotics and Health Sciences">
+<meta property="og:description" content="Five investment themes from twelve conversations with founders and investors at the frontier of AI, robotics, and health sciences.">
 <meta property="og:image" content="https://haitzupp.github.io/supercycle/og-image.jpg">
 <meta property="og:url" content="https://haitzupp.github.io/supercycle/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://haitzupp.github.io/supercycle/og-image.jpg">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-
 <script>
-(function(){var t=localStorage.getItem('sc-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+(function(){
+  var t=localStorage.getItem('sc-theme');
+  if(t==='light'){document.documentElement.setAttribute('data-theme','light');}
+  else{document.documentElement.setAttribute('data-theme','dark');}
+})();
 </script>
-
 <style>
 :root {
-  --cream: #F3EEE3;
-  --parch: #EAE4D4;
-  --ink:   #0D0C09;
-  --ink2:  #1C1914;
-  --ink3:  #5a5650;
-  --ink4:  #8a8680;
-  --orange:#D94F2A;
-  --dark:  #1C1914;
-  --border:#ddd8cc;
-  --bask:  'Baskervville', serif;
-  --crim:  'Crimson Text', serif;
-  --geist: 'Geist', sans-serif;
-  --mono:  'Geist Mono', monospace;
-  --col:   820px;
+  --bg:    #0D0C09;
+  --bg2:   #141210;
+  --bg3:   #1C1914;
+  --ink:   rgba(255,255,255,0.90);
+  --ink2:  rgba(255,255,255,0.60);
+  --ink3:  rgba(255,255,255,0.35);
+  --ink4:  rgba(255,255,255,0.10);
+  --border: rgba(255,255,255,0.08);
+  --border2: rgba(255,255,255,0.14);
+  --orange: #D94F2A;
+  --orange-dim: rgba(217,79,42,0.12);
+  --green:  #22C55E;
+  --green-dim: rgba(34,197,94,0.10);
+  --amber:  #E5A030;
+  --amber-dim: rgba(229,160,48,0.10);
+  --red:    #EF4444;
+  --red-dim: rgba(239,68,68,0.10);
+  --bask:   'Baskervville', serif;
+  --crim:   'Crimson Text', serif;
+  --geist:  'Geist', sans-serif;
+  --mono:   'Geist Mono', monospace;
+  --col:    860px;
 }
-html[data-theme="dark"] {
-  --cream: #1a1814;
-  --parch: #141210;
-  --ink:   #ede8df;
-  --ink2:  #c8c2b8;
-  --ink3:  #8a8480;
-  --ink4:  #5a5550;
-  --dark:  #0d0c09;
-  --border:#2e2b26;
+html[data-theme="light"] {
+  --bg:    #F3EEE3;
+  --bg2:   #EAE4D4;
+  --bg3:   #DDD8C8;
+  --ink:   rgba(13,12,9,0.90);
+  --ink2:  rgba(13,12,9,0.65);
+  --ink3:  rgba(13,12,9,0.40);
+  --ink4:  rgba(13,12,9,0.08);
+  --border: rgba(13,12,9,0.10);
+  --border2: rgba(13,12,9,0.18);
 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--crim);line-height:1.75;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { font-size: 16px; scroll-behavior: smooth; }
-body {
-  background: var(--cream);
-  color: var(--ink);
-  font-family: var(--crim);
-  line-height: 1.75;
-  -webkit-font-smoothing: antialiased;
+/* NAV */
+nav{
+  position:sticky;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;height:52px;
+  background:rgba(13,12,9,0.92);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  transition:background .2s;
 }
-a { color: inherit; text-decoration: none; }
+html[data-theme="light"] nav{background:rgba(243,238,227,0.92);}
+.nav-brand{font-family:var(--bask);font-size:15px;font-weight:400;color:var(--ink);text-decoration:none;}
+.nav-brand span{color:var(--orange);}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{font-family:var(--geist);font-size:13px;font-weight:500;color:var(--ink3);transition:color .15s;}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.theme-toggle{background:none;border:1px solid var(--border);border-radius:4px;width:30px;height:30px;cursor:pointer;color:var(--ink3);display:flex;align-items:center;justify-content:center;transition:color .15s;}
+.theme-toggle:hover{color:var(--ink);}
+.nav-icon-btn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:4px;border:1.5px solid var(--border);background:transparent;transition:opacity .15s;text-decoration:none;}
+.nav-icon-btn:hover{opacity:.7;}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:20px;height:1.5px;background:var(--ink);transition:transform .2s,opacity .2s;}
+.mobile-nav{display:none;position:fixed;inset:0;background:var(--bg);z-index:300;flex-direction:column;align-items:center;justify-content:center;gap:32px;}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{font-family:var(--bask);font-size:32px;font-weight:400;color:var(--ink);text-decoration:none;}
+.mobile-nav a:hover{color:var(--orange);}
+.mobile-nav-close{position:absolute;top:16px;right:20px;background:none;border:none;font-size:28px;cursor:pointer;color:var(--ink3);line-height:1;}
 
-/* ── TOPBAR ── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 40px; height: 52px;
-  background: var(--cream);
-  border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(8px);
-}
-.topbar-brand {
-  font-family: var(--bask);
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: -.2px;
-  color: var(--ink);
-  text-decoration: none;
-}
-.topbar-brand span { color: var(--orange); }
-.topbar-nav { display: flex; gap: 28px; list-style: none; }
-.topbar-nav a {
-  font-family: var(--geist);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--ink3);
-  text-decoration: none;
-  transition: color .15s;
-}
-.topbar-nav a:hover, .topbar-nav a.active { color: var(--ink); }
-.topbar-right { display: flex; align-items: center; gap: 10px; }
-.theme-toggle {
-  background: none; border: 1px solid var(--border); border-radius: 4px;
-  width: 30px; height: 30px; cursor: pointer; color: var(--ink3);
-  display: flex; align-items: center; justify-content: center;
-  transition: color .15s;
-}
-.theme-toggle:hover { color: var(--ink); }
-.topbar-platform { display: flex; align-items: center; gap: 8px; }
-.topbar-icon-btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 32px; height: 32px; border-radius: 4px;
-  border: 1.5px solid var(--border); background: transparent;
-  transition: opacity .15s; text-decoration: none;
-}
-.topbar-icon-btn:hover { opacity: .7; }
+/* PROGRESS */
+#sc-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--orange);z-index:9999;transition:width .1s linear;}
 
-/* ── HERO ── */
-.hero {
-  background: var(--dark);
-  padding: 140px 40px 96px;
-  min-height: 58vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  position: relative;
-  overflow: hidden;
-}
-.hero-inner {
-  max-width: var(--col);
-  margin: 0 auto;
-  width: 100%;
-}
-.hero-eyebrow {
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 1.6px;
-  text-transform: uppercase;
-  color: var(--orange);
-  margin-bottom: 24px;
-}
-.hero h1 {
-  font-family: var(--bask);
-  font-size: clamp(36px, 5vw, 56px);
-  font-weight: 400;
-  line-height: 1.1;
-  color: #ede8df;
-  margin-bottom: 28px;
-}
-.hero-deck {
-  font-family: var(--crim);
-  font-size: 18px;
-  line-height: 1.65;
-  color: rgba(237,232,223,.7);
-  max-width: 540px;
-}
-.hero-meta {
-  margin-top: 40px;
-  padding-top: 32px;
-  border-top: 1px solid rgba(237,232,223,.12);
-  display: flex;
-  gap: 40px;
-}
-.hero-stat {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: rgba(237,232,223,.45);
-}
-.hero-stat strong {
-  display: block;
-  font-family: var(--bask);
-  font-size: 24px;
-  font-weight: 400;
-  letter-spacing: -.5px;
-  color: rgba(237,232,223,.88);
-  margin-bottom: 4px;
-  font-style: italic;
-}
+/* HERO */
+.hero{background:var(--bg);padding:140px 40px 96px;min-height:60vh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;}
+.hero-inner{max-width:var(--col);margin:0 auto;width:100%;position:relative;z-index:1;}
+.eyebrow{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--orange);margin-bottom:24px;}
+.hero h1{font-family:var(--bask);font-size:clamp(36px,5vw,56px);font-weight:400;line-height:1.1;color:var(--ink);margin-bottom:28px;}
+.hero-deck{font-family:var(--crim);font-size:18px;line-height:1.65;color:var(--ink2);max-width:520px;}
+.hero-ctas{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap;}
+.btn-yt{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:#FF0000;color:#fff;font-family:var(--geist);font-size:13px;font-weight:600;border-radius:4px;text-decoration:none;}
+.btn-sp{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:#1DB954;color:#fff;font-family:var(--geist);font-size:13px;font-weight:600;border-radius:4px;text-decoration:none;}
+.btn-yt:hover,.btn-sp:hover{opacity:.85;}
+.hero-form{display:flex;gap:0;margin-top:20px;max-width:340px;}
+.hero-form input{flex:1;padding:10px 14px;border:1px solid var(--border2);background:var(--ink4);color:var(--ink);font-family:var(--geist);font-size:13px;border-radius:4px 0 0 4px;outline:none;min-width:0;}
+.hero-form input::placeholder{color:var(--ink3);}
+.hero-form button{padding:10px 16px;background:var(--orange);color:#fff;border:none;font-family:var(--geist);font-size:13px;font-weight:600;cursor:pointer;border-radius:0 4px 4px 0;white-space:nowrap;}
+.hero-stats{margin-top:40px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.10);display:flex;gap:40px;}
+html[data-theme="light"] .hero-stats{border-top-color:rgba(13,12,9,0.10);}
+.hero-stat strong{display:block;font-family:var(--bask);font-size:24px;font-weight:400;font-style:italic;color:var(--ink);margin-bottom:4px;}
+.hero-stat{font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);}
 
-/* ── RUNNING PAGE ── */
-.running {
-  max-width: var(--col);
-  margin: 0 auto;
-  padding: 0 40px;
-}
+/* SECTION WRAPPER */
+.section{max-width:var(--col);margin:0 auto;padding:80px 40px;}
+.section-border{border-top:1px solid var(--border);}
+.section-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:var(--orange);margin-bottom:16px;}
+.section-h{font-family:var(--bask);font-size:32px;font-weight:400;color:var(--ink);margin-bottom:12px;}
+.section-sub{font-family:var(--crim);font-size:17px;color:var(--ink2);margin-bottom:40px;}
 
+/* TABS */
+.tab-bar{display:flex;border-bottom:1px solid var(--border);margin-bottom:0;}
+.tab-btn{font-family:var(--geist);font-size:12px;padding:14px 20px;background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;color:var(--ink3);transition:color .15s,border-color .15s;margin-bottom:-1px;white-space:nowrap;}
+.tab-btn.active{border-bottom-color:var(--orange);color:var(--ink);}
+.tab-btn:hover{color:var(--ink2);}
+.tab-pane{display:none;}
+.tab-pane.active{display:block;}
 
-/* Theme sections */
-.theme-section {
-  padding: 80px 0;
-  border-top: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-}
-.theme-num  { order: 1; font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink4); margin-bottom: 12px; }
-.theme-h    { order: 2; }
-.theme-signals { order: 3; }
+/* CONFIDENCE STRIP */
+.conf-strip{padding:28px 0 0;border-top:1px solid var(--border);}
+.conf-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
+.conf-label{font-family:var(--mono);font-size:10px;color:var(--ink3);}
+.conf-pct{font-family:var(--bask);font-size:28px;font-style:italic;color:var(--orange);}
+.conf-track{width:100%;height:4px;background:var(--ink4);border-radius:2px;margin-bottom:8px;}
+.conf-fill{height:4px;background:var(--orange);border-radius:2px;}
+.conf-signals{font-family:var(--mono);font-size:10px;color:var(--ink3);}
 
-.theme-body { order: 5; }
-.pull-quote { order: 6; }
-.theme-read-note {
-  color: var(--ink3);
-  font-style: italic;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  cursor: default;
-  pointer-events: none;
-  display: block;
-  padding: 16px 0 4px;
-  opacity: 0.6;
-}
-.theme-read-link { order: 7; }
-.theme-h {
-  font-family: var(--bask);
-  font-size: clamp(28px, 3.5vw, 40px);
-  font-weight: 400;
-  line-height: 1.2;
-  color: var(--ink);
-  margin-bottom: 32px;
-}
-.theme-body {
-  font-family: var(--crim);
-  font-size: 17px;
-  line-height: 1.8;
-  color: var(--ink);
-}
-.theme-body p + p { margin-top: 22px; }
+/* THEME HEADLINE */
+.theme-h{font-family:var(--bask);font-size:clamp(24px,3vw,36px);font-weight:400;color:var(--ink);margin-top:32px;margin-bottom:0;line-height:1.2;}
 
-/* Pull quote */
-.pull-quote {
-  margin: 40px 0;
-  padding: 28px 32px;
-  border-left: 3px solid var(--orange);
-  background: var(--parch);
-}
-.pull-quote-text {
-  font-family: var(--bask);
-  font-size: 17px;
-  line-height: 1.5;
-  font-style: italic;
-  color: var(--ink);
-  margin-bottom: 12px;
-}
-.pull-quote-attr {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: var(--ink3);
-}
+/* SIGNALS STRIP */
+.signals{display:flex;gap:32px;flex-wrap:wrap;margin:28px 0;padding:24px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.signal-item{display:flex;flex-direction:column;gap:4px;}
+.signal-val{font-family:var(--bask);font-size:24px;font-weight:400;font-style:italic;color:var(--ink);}
+.signal-lbl{font-family:var(--mono);font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--ink3);}
 
-/* Signals strip inline */
-.theme-signals {
-  display: flex;
-  gap: 32px;
-  flex-wrap: wrap;
-  margin: 36px 0;
-  padding: 24px 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-.theme-signal-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.signal-val {
-  font-family: var(--bask);
-  font-size: 24px;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--ink);
-}
-.signal-lbl {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: var(--ink4);
-}
+/* PULL QUOTE */
+.pull-quote{margin:0 0 28px;padding:24px 28px;border-left:3px solid var(--orange);background:var(--bg2);border-radius:0 4px 4px 0;}
+.pull-quote-text{font-family:var(--bask);font-size:17px;line-height:1.5;font-style:italic;color:var(--ink);margin-bottom:10px;}
+.pull-quote-attr{font-family:var(--mono);font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--ink3);}
 
-/* Read full link */
+/* ACCORDION */
+.theme-case{margin:0 0 8px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.theme-case-header{font-family:var(--mono);font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:var(--ink3);padding:20px 0 16px;}
+.case-item{border-top:1px solid var(--border);}
+.case-toggle{width:100%;display:flex;align-items:center;gap:16px;padding:18px 0;background:none;border:none;cursor:pointer;text-align:left;color:var(--ink);}
+.case-num{font-family:var(--mono);font-size:11px;color:var(--orange);letter-spacing:1px;flex-shrink:0;width:22px;}
+.case-title{font-family:var(--geist);font-size:14px;font-weight:500;flex:1;line-height:1.4;color:var(--ink);}
+.case-plus{font-family:var(--mono);font-size:18px;color:var(--ink3);flex-shrink:0;transition:transform .2s ease;line-height:1;}
+.case-item.open .case-plus{transform:rotate(45deg);color:var(--orange);}
+.case-body{display:none;padding:0 0 22px 38px;}
+.case-item.open .case-body{display:block;}
+.case-body p{font-family:var(--crim);font-size:17px;line-height:1.65;color:var(--ink2);}
 
-.theme-read-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 32px;
-  font-family: var(--geist);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: .3px;
-  color: var(--orange);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color .15s;
-}
-.theme-read-link:hover { border-bottom-color: var(--orange); }
+/* LATEST SIGNAL */
+.latest-signal{margin-top:28px;padding:16px 20px;background:var(--bg2);border-left:2px solid var(--amber);border-radius:4px;}
+.latest-signal-label{font-family:var(--mono);font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:var(--amber);margin-bottom:6px;}
+.latest-signal-text{font-family:var(--geist);font-size:13px;color:var(--ink2);margin-bottom:4px;}
+.latest-signal-date{font-family:var(--mono);font-size:10px;color:var(--ink3);}
 
-/* Episodes grid at bottom */
-.episodes-footer {
-  border-top: 1px solid var(--border);
-  padding: 80px 0 100px;
-}
-.episodes-footer h2 {
-  font-family: var(--bask);
-  font-size: 32px;
-  font-weight: 400;
-  margin-bottom: 40px;
-  color: var(--ink);
-}
-.ep-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  border: 1px solid var(--border);
-}
-.ep-row {
-  display: grid;
-  grid-template-columns: 56px 1fr auto;
-  gap: 16px;
-  align-items: center;
-  padding: 18px 20px;
-  border-bottom: 1px solid var(--border);
-  text-decoration: none;
-  color: var(--ink);
-  transition: background .15s;
-}
-.ep-row:hover { background: var(--parch); }
-.ep-row-num {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 1px;
-  color: var(--ink4);
-}
-.ep-row-title {
-  font-family: var(--geist);
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 1.4;
-}
-.ep-row-arrow {
-  font-size: 12px;
-  color: var(--ink4);
-}
+/* CONTRADICTING SIGNAL */
+.contra-signal{margin-top:12px;padding:12px 16px;background:var(--red-dim);border-left:2px solid var(--red);border-radius:4px;}
+.contra-signal-label{font-family:var(--mono);font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:var(--red);margin-bottom:4px;}
+.contra-signal-text{font-family:var(--geist);font-size:13px;color:var(--ink2);}
 
-/* Footer */
-footer {
-  background: var(--dark);
-  padding: 64px 40px;
-}
-.footer-inner {
-  max-width: var(--col);
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
-}
-.footer-brand {
-  font-family: var(--geist);
-  font-size: 18px;
-  font-weight: 700;
-  color: rgba(237,232,223,.88);
-}
-.footer-brand span { color: var(--orange); }
-.footer-sub {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: rgba(237,232,223,.35);
-  margin-top: 8px;
-}
-.footer-links {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  text-align: right;
-}
-.footer-links a {
-  font-family: var(--geist);
-  font-size: 13px;
-  color: rgba(237,232,223,.5);
-  text-decoration: none;
-  transition: color .15s;
-}
-.footer-links a:hover { color: rgba(237,232,223,.88); }
+/* POSITION DISCLOSURE */
+.position-disc{margin-top:16px;padding:12px 16px;border:1px solid var(--border);border-radius:4px;background:var(--bg);display:flex;align-items:center;gap:10px;}
+.position-disc-label{font-family:var(--mono);font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink3);}
+.position-disc-text{font-family:var(--geist);font-size:13px;color:var(--ink3);font-style:italic;}
 
-@media (max-width: 680px) {
-  nav { padding: 0 20px; }
-  .hero { padding: 100px 20px 64px; }
-  .running { padding: 0 20px; }
-  .hero-meta { flex-direction: column; gap: 20px; }
-  .ep-grid { grid-template-columns: 1fr; }
-  footer { padding: 48px 20px; }
-  .footer-inner { flex-direction: column; gap: 24px; }
-  .footer-links { text-align: left; }
-}
+/* ON-RECORD BOARD */
+.claim-counter-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+.claim-badge{font-family:var(--mono);font-size:11px;padding:6px 14px;border-radius:2px;border:1px solid var(--border);background:var(--ink4);color:var(--ink3);}
+.claim-badge.proven{background:var(--green-dim);border-color:rgba(34,197,94,0.2);color:var(--green);}
+.claim-badge.pending{background:var(--amber-dim);border-color:rgba(229,160,48,0.2);color:var(--amber);}
+.claim-badge.zero{color:var(--ink3);}
+.claims-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:32px;}
+.claim-card{background:var(--bg);padding:28px;display:flex;flex-direction:column;gap:16px;}
+.claim-status{display:inline-flex;align-items:center;font-family:var(--geist);font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:2px;border:1px solid transparent;width:fit-content;}
+.claim-status.proven{color:var(--green);background:var(--green-dim);border-color:rgba(34,197,94,0.2);}
+.claim-status.pending{color:var(--amber);background:var(--amber-dim);border-color:rgba(229,160,48,0.2);}
+.claim-status.tracking{color:var(--ink3);background:var(--ink4);border-color:var(--border);}
+.claim-text{font-family:var(--bask);font-size:17px;font-style:italic;line-height:1.5;color:var(--ink);}
+.claim-attr{font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:.5px;}
+.claim-context{font-family:var(--geist);font-size:13px;color:var(--ink3);border-top:1px solid var(--border);padding-top:12px;}
 
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
-.reveal.visible { opacity: 1; transform: none; }
+/* CAPITAL TABLE */
+.cap-table{margin-top:32px;}
+.cap-table-header{display:grid;grid-template-columns:2fr 1fr 80px 140px;gap:16px;padding:12px 0;border-bottom:2px solid var(--border2);font-family:var(--mono);font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink3);}
+.cap-row{display:grid;grid-template-columns:2fr 1fr 80px 140px;gap:16px;padding:14px 0;border-bottom:1px solid var(--border);align-items:center;transition:background .15s;}
+.cap-row:hover{background:var(--bg2);margin:0 -16px;padding:14px 16px;}
+.cap-org{font-family:var(--geist);font-size:14px;font-weight:500;color:var(--ink);}
+.cap-guest{font-family:var(--geist);font-size:13px;color:var(--ink2);}
+.cap-ep{font-family:var(--mono);font-size:10px;color:var(--ink3);}
+.cap-aum{font-family:var(--mono);font-size:11px;}
+.cap-aum.money{color:var(--orange);}
+.cap-aum.undisclosed{color:var(--ink3);}
+.cap-aum.operator{color:var(--ink3);font-style:italic;}
 
+/* VERDICT BOARD */
+.verdict-grid{margin-top:32px;}
+.verdict-header{display:grid;grid-template-columns:2fr 80px 80px 80px 110px;gap:12px;padding:12px 0;border-bottom:2px solid var(--border2);font-family:var(--mono);font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink3);}
+.verdict-row{display:grid;grid-template-columns:2fr 80px 80px 80px 110px;gap:12px;padding:16px 0;border-bottom:1px solid var(--border);align-items:center;}
+.verdict-theme{font-family:var(--geist);font-size:14px;font-weight:500;color:var(--ink);}
+.verdict-count{font-family:var(--mono);font-size:13px;color:var(--ink2);}
+.verdict-count.green{color:var(--green);}
+.verdict-count.amber{color:var(--amber);}
+.verdict-count.red{color:var(--red);}
+.verdict-count.zero{color:var(--ink3);}
+.verdict-summary{display:flex;gap:32px;padding:20px 0;flex-wrap:wrap;}
+.verdict-summary-item{display:flex;flex-direction:column;gap:4px;}
+.verdict-summary-num{font-family:var(--mono);font-size:14px;font-weight:500;}
+.verdict-summary-num.green{color:var(--green);}
+.verdict-summary-num.amber{color:var(--amber);}
+.verdict-summary-num.red{color:var(--red);}
+.verdict-summary-label{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:1.2px;color:var(--ink3);}
 
+/* EPISODES FOOTER */
+.ep-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
+.ep-row{display:grid;grid-template-columns:56px 1fr auto;gap:16px;align-items:center;padding:18px 20px;background:var(--bg);text-decoration:none;color:var(--ink);transition:background .15s;}
+.ep-row:hover{background:var(--bg2);}
+.ep-row-num{font-family:var(--mono);font-size:11px;letter-spacing:1px;color:var(--ink3);}
+.ep-row-title{font-family:var(--geist);font-size:13px;font-weight:500;line-height:1.4;color:var(--ink);}
+.ep-row-arrow{font-size:12px;color:var(--ink3);}
 
+/* FOOTER */
+footer{background:var(--bg3);padding:64px 40px;border-top:1px solid var(--border);}
+.footer-inner{max-width:var(--col);margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:40px;}
+.footer-brand{font-family:var(--bask);font-size:18px;font-weight:400;color:var(--ink);}
+.footer-brand span{color:var(--orange);}
+.footer-sub{font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);margin-top:8px;}
+.footer-links{display:flex;flex-direction:column;gap:10px;text-align:right;}
+.footer-links a{font-family:var(--geist);font-size:13px;color:var(--ink3);text-decoration:none;transition:color .15s;}
+.footer-links a:hover{color:var(--ink);}
 
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.visible{opacity:1;transform:none;}
 
-@media (max-width: 640px) {
-  nav { padding: 0 16px; }
-  .hero { padding: 90px 20px 56px; }
-  .hero h1 { font-size: clamp(28px, 7vw, 40px); }
-  .hero-deck { font-size: 16px; }
-  .hero-meta { gap: 24px; flex-wrap: wrap; }
-  .running { padding: 0 20px; }
-  .theme-signals { gap: 20px; }
-  .ep-grid { grid-template-columns: 1fr; }
-  .pull-quote { padding: 20px; }
-  footer { padding: 40px 20px; }
-  .footer-inner { flex-direction: column; gap: 20px; }
-  .footer-links { text-align: left; }
-  
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:0 20px;}
+  .nav-links,.nav-right .nav-icon-btn{display:none;}
+  .hamburger{display:flex;}
+  .hero{padding:120px 24px 64px;}
+  .section{padding:60px 24px;}
+  .tab-btn{padding:12px 12px;font-size:11px;}
+  .ep-grid{grid-template-columns:1fr;}
+  .claims-grid{grid-template-columns:1fr;}
+  .cap-table-header,.cap-row{grid-template-columns:2fr 1fr 80px;}
+  .cap-table-header .cap-aum,.cap-row .cap-aum{display:none;}
+  .verdict-header,.verdict-row{grid-template-columns:2fr 80px 80px;}
+  .verdict-header .verdict-count:nth-child(4),.verdict-row .verdict-count:nth-child(4),
+  .verdict-header .verdict-count:nth-child(5),.verdict-row .verdict-count:nth-child(5){display:none;}
+  footer{padding:48px 20px;}
+  .footer-inner{flex-direction:column;gap:24px;}
+  .footer-links{text-align:left;}
+  .hero-stats{flex-wrap:wrap;gap:24px;}
 }
-
-
-
-/* ── MOBILE NAV ── */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 32px;
-  height: 32px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
+@media(max-width:480px){
+  .tab-bar{overflow-x:auto;flex-wrap:nowrap;}
+  .tab-btn{flex-shrink:0;}
+  .signals{gap:16px;}
+  .claim-counter-row{gap:8px;}
 }
-.hamburger span {
-  display: block;
-  width: 20px;
-  height: 1.5px;
-  background: var(--ink);
-  transition: transform .2s, opacity .2s;
-}
-.mobile-nav {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: var(--cream);
-  z-index: 200;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
-}
-.mobile-nav.open { display: flex; }
-.mobile-nav a {
-  font-family: var(--bask);
-  font-size: 32px;
-  font-weight: 400;
-  color: var(--ink);
-  text-decoration: none;
-}
-.mobile-nav a:hover { color: var(--orange); }
-.mobile-nav-close {
-  position: absolute;
-  top: 16px;
-  right: 20px;
-  background: none;
-  border: none;
-  font-size: 28px;
-  cursor: pointer;
-  color: var(--ink3);
-  line-height: 1;
-}
-@media (max-width: 768px) {
-  .hamburger { display: flex; }
-  .topbar-nav, .topbar-platform { display: none; }
-  nav { padding: 0 20px; }
-  .hero { padding: 120px 24px 64px; }
-  .running { padding: 0 24px; }
-}
-
-/* ── ACCORDION / CASE SECTION ── */
-.theme-case {
-  margin: 36px 0 8px;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-.theme-case-header {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 1.8px;
-  text-transform: uppercase;
-  color: var(--ink4);
-  padding: 20px 0 16px;
-}
-.case-item {
-  border-top: 1px solid var(--border);
-}
-.case-toggle {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 18px 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  color: var(--ink);
-}
-.case-num {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--orange);
-  letter-spacing: 1px;
-  flex-shrink: 0;
-  width: 22px;
-}
-.case-title {
-  font-family: var(--geist);
-  font-size: 14px;
-  font-weight: 500;
-  flex: 1;
-  line-height: 1.4;
-}
-.case-plus {
-  font-family: var(--mono);
-  font-size: 18px;
-  color: var(--ink3);
-  flex-shrink: 0;
-  transition: transform 0.2s ease;
-  line-height: 1;
-}
-.case-item.open .case-plus { transform: rotate(45deg); color: var(--orange); }
-.case-body {
-  display: none;
-  padding: 0 0 22px 38px;
-}
-.case-item.open .case-body { display: block; }
-.case-body p {
-  font-family: var(--crim);
-  font-size: 17px;
-  line-height: 1.65;
-  color: var(--ink2);
-}
-
-/* ── PARTICLE CANVAS ── */
-#sc-particle-canvas { display: block; }
 </style>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9889;</text></svg>">
 </head>
 <body>
-<div id="sc-progress" style="position:fixed;top:0;left:0;height:2px;width:0%;background:var(--orange);z-index:9999;transition:width .1s linear;"></div>
-<!-- TOPBAR -->
+
+<div id="sc-progress"></div>
+
+<!-- NAV -->
 <nav>
-  <a href="index.html" class="topbar-brand">Super<span>cycle</span></a>
-  <ul class="topbar-nav">
+  <a href="index.html" class="nav-brand">Super<span>cycle</span></a>
+  <ul class="nav-links">
     <li><a href="index.html" class="active">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="episodes.html">Episodes</a></li>
   </ul>
-  <div class="topbar-right">
+  <div class="nav-right">
     <button class="hamburger" id="sc-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
-    <div class="topbar-platform">
-      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="topbar-icon-btn" title="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FF0000" style="flex-shrink:0"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-      <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="topbar-icon-btn" title="Spotify"><svg width="16" height="16" viewBox="0 0 24 24" fill="#1DB954" style="flex-shrink:0"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
-    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"></button>
+    <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="nav-icon-btn" title="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+    <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="nav-icon-btn" title="Spotify"><svg width="16" height="16" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
   </div>
 </nav>
 
@@ -577,82 +310,73 @@ footer {
 <!-- HERO -->
 <section class="hero">
   <canvas id="sc-particle-canvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
-  <div class="hero-inner" style="position:relative;z-index:1;">
-    <div class="hero-eyebrow">AI &middot; Robotics &middot; Science</div>
+  <div class="hero-inner">
+    <div class="eyebrow">AI &middot; ROBOTICS &middot; HEALTH SCIENCES</div>
     <h1>Conversations with builders of the next frontier.</h1>
     <p class="hero-deck">Major macro trends in AI, robotics, and health sciences. On the record, with those in the arena.</p>
-    <div class="hero-ctas" style="display:flex;gap:12px;margin-top:32px;flex-wrap:wrap;">
-      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:#FF0000;color:#fff;font-family:var(--geist);font-size:13px;font-weight:600;border-radius:4px;text-decoration:none;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>YouTube</a>
-      <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:#1DB954;color:#fff;font-family:var(--geist);font-size:13px;font-weight:600;border-radius:4px;text-decoration:none;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>Spotify</a>
+    <div class="hero-ctas">
+      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="btn-yt"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>YouTube</a>
+      <a href="https://open.spotify.com/show/5rRPFMhJiH3bEcbqYVieAK" target="_blank" rel="noopener" class="btn-sp"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>Spotify</a>
     </div>
-    <form style="display:flex;gap:0;margin-top:20px;max-width:340px;" action="https://formsubmit.co/jack@pylon.partners" method="POST">
+    <form class="hero-form" action="https://formsubmit.co/jack@pylon.partners" method="POST">
       <input type="hidden" name="_subject" value="Supercycle Subscribe">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_next" value="https://haitzupp.github.io/supercycle/">
-      <input type="email" name="email" placeholder="Get new episode alerts" required
-        style="flex:1;padding:10px 14px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;font-family:var(--geist);font-size:13px;border-radius:4px 0 0 4px;outline:none;min-width:0;">
-      <button type="submit" style="padding:10px 16px;background:var(--orange);color:#fff;border:none;font-family:var(--geist);font-size:13px;font-weight:600;cursor:pointer;border-radius:0 4px 4px 0;white-space:nowrap;">Subscribe</button>
+      <input type="email" name="email" placeholder="Get new episode alerts" required>
+      <button type="submit">Subscribe</button>
     </form>
-    <div class="hero-meta">
-      <div class="hero-stat">
-        <strong>12</strong>
-        Conversations
-      </div>
-      <div class="hero-stat">
-        <strong>12</strong>
-        Guests
-      </div>
-      <div class="hero-stat">
-        <strong>$6B+</strong>
-        AUM represented
-      </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>12</strong>Conversations</div>
+      <div class="hero-stat"><strong>12</strong>Guests</div>
+      <div class="hero-stat"><strong>$6B+</strong>AUM represented</div>
     </div>
   </div>
 </section>
 
-<!-- RUNNING PAGE -->
-<div class="running">
+<!-- THESIS TRACKER -->
+<div class="section section-border reveal">
+  <div class="section-eyebrow">LIVE THESIS TRACKER</div>
+  <h2 class="section-h">Five public bets. Tracked in real time.</h2>
+  <p class="section-sub">Each theme is a thesis built from conversations. As signals arrive, we update the record.</p>
 
-  <!-- ── 01 DECENTRALIZED AI ── -->
-  <div class="theme-section reveal" id="theme-01">
-    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--ink3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><circle cx="16" cy="6" r="2.5"/><circle cx="5" cy="26" r="2.5"/><circle cx="27" cy="26" r="2.5"/><circle cx="16" cy="16" r="2"/><line x1="16" y1="8.5" x2="16" y2="14"/><line x1="14.2" y1="17.5" x2="7" y2="23.5"/><line x1="17.8" y1="17.5" x2="25" y2="23.5"/><line x1="7.5" y1="26" x2="24.5" y2="26"/></svg>01 · Decentralized AI</div>
-    <h2 class="theme-h">The major labs have locked up the model layer. The infrastructure beneath it is still open.</h2>
+  <div class="tab-bar">
+    <button class="tab-btn active" data-tab="1" onclick="scTab(1)">01 Decentralized AI</button>
+    <button class="tab-btn" data-tab="2" onclick="scTab(2)">02 Robotics</button>
+    <button class="tab-btn" data-tab="3" onclick="scTab(3)">03 AI Biotech</button>
+    <button class="tab-btn" data-tab="4" onclick="scTab(4)">04 Agent Economy</button>
+    <button class="tab-btn" data-tab="5" onclick="scTab(5)">05 Crypto VC</button>
+  </div>
 
-    <div class="theme-signals">
-      <div class="theme-signal-item">
-        <span class="signal-val">$18B+</span>
-        <span class="signal-lbl">TAO peak market cap</span>
+  <!-- TAB 01 -->
+  <div class="tab-pane active" data-pane="1">
+    <div class="conf-strip">
+      <div class="conf-header">
+        <span class="conf-label">Thesis confidence</span>
+        <span class="conf-pct">84%</span>
       </div>
-      <div class="theme-signal-item">
-        <span class="signal-val">50+</span>
-        <span class="signal-lbl">Active subnets</span>
-      </div>
-      <div class="theme-signal-item">
-        <span class="signal-val">500k+</span>
-        <span class="signal-lbl">TAO to register a subnet</span>
-      </div>
-      <div class="theme-signal-item">
-        <span class="signal-val">$21B</span>
-        <span class="signal-lbl">DCG AUM (Grayscale, Genesis)</span>
-      </div>
+      <div class="conf-track"><div class="conf-fill" style="width:84%;"></div></div>
+      <div class="conf-signals">4 supporting signals &middot; 0 contradicting</div>
     </div>
-
+    <h3 class="theme-h">The major labs have locked up the model layer. The infrastructure beneath it is still open.</h3>
+    <div class="signals">
+      <div class="signal-item"><span class="signal-val">$18B+</span><span class="signal-lbl">TAO peak market cap</span></div>
+      <div class="signal-item"><span class="signal-val">50+</span><span class="signal-lbl">Active subnets</span></div>
+      <div class="signal-item"><span class="signal-val">500k+</span><span class="signal-lbl">TAO to register a subnet</span></div>
+      <div class="signal-item"><span class="signal-val">$21B</span><span class="signal-lbl">DCG AUM</span></div>
+    </div>
     <div class="pull-quote">
       <div class="pull-quote-text">"The open incentive layer wins because it cannot be captured by any single entity."</div>
-      <div class="pull-quote-attr">DCG / Yuma Group · Ep. 11</div>
+      <div class="pull-quote-attr">DCG / Yuma Group, Ep. 11</div>
     </div>
-
     <div class="theme-case">
       <div class="theme-case-header">The Case</div>
       <div class="case-item open">
         <button class="case-toggle" onclick="scToggleCase(this)">
           <span class="case-num">01</span>
-          <span class="case-title">The model layer race is over. The infrastructure race hasn't started.</span>
+          <span class="case-title">The model layer race is over. The infrastructure race has not started.</span>
           <span class="case-plus">+</span>
         </button>
-        <div class="case-body">
-          <p>OpenAI, Anthropic, and Google each spent more than $10B on compute in 2024 alone. That race is decided for this cycle. The infrastructure underneath those models: incentive systems, validation, and edge compute routing. No incumbent exists yet. That is where the open opportunity sits.</p>
-        </div>
+        <div class="case-body"><p>OpenAI, Anthropic, and Google each spent more than $10B on compute in 2024 alone. That race is decided for this cycle. The infrastructure underneath those models: incentive systems, validation, and edge compute routing. No incumbent exists yet. That is where the open opportunity sits.</p></div>
       </div>
       <div class="case-item">
         <button class="case-toggle" onclick="scToggleCase(this)">
@@ -660,9 +384,7 @@ footer {
           <span class="case-title">Bittensor is priced as speculative crypto, not AI infrastructure.</span>
           <span class="case-plus">+</span>
         </button>
-        <div class="case-body">
-          <p>TAO trades in line with crypto sentiment, not AI infrastructure multiples. AWS, Azure, and GCP trade at 10-20x revenue. Bittensor's token mechanism directs economic rewards to validated compute performance. The market hasn't made that re-rating yet. Early AWS looked like speculative infrastructure too.</p>
-        </div>
+        <div class="case-body"><p>TAO trades in line with crypto sentiment, not AI infrastructure multiples. AWS, Azure, and GCP trade at 10-20x revenue. Bittensor's token mechanism directs economic rewards to validated compute performance. The market has not made that re-rating yet. Early AWS looked like speculative infrastructure too.</p></div>
       </div>
       <div class="case-item">
         <button class="case-toggle" onclick="scToggleCase(this)">
@@ -670,42 +392,40 @@ footer {
           <span class="case-title">A 500k+ TAO registration cost is a feature, not a bug.</span>
           <span class="case-plus">+</span>
         </button>
-        <div class="case-body">
-          <p>High registration costs filter noise. Subnets that clear the bar have demonstrated enough conviction to put capital at risk. That self-selection mechanism concentrates quality in a way open permissionless systems typically can't. The cost is structural quality control.</p>
-        </div>
+        <div class="case-body"><p>High registration costs filter noise. Subnets that clear the bar have demonstrated enough conviction to put capital at risk. That self-selection mechanism concentrates quality in a way open permissionless systems typically cannot.</p></div>
       </div>
     </div>
-
-    <span class="theme-read-note">Research note: Decentralized AI, coming soon</span>
+    <div class="latest-signal">
+      <div class="latest-signal-label">Latest Signal</div>
+      <div class="latest-signal-text">TAO subnet registration cost exceeded 500k+, confirming the quality-filter thesis. Higher cost, lower noise.</div>
+      <div class="latest-signal-date">May 2025</div>
+    </div>
+    <div class="position-disc">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ink3);flex-shrink:0;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <div><div class="position-disc-label">Pylon Position</div><div class="position-disc-text">Not yet disclosed</div></div>
+    </div>
   </div>
 
-  <!-- ── 02 ROBOTICS ── -->
-  <div class="theme-section reveal" id="theme-02">
-    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--ink3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="3" y="14" width="9" height="10" rx="1.5"/><rect x="12" y="9" width="8" height="7" rx="1.5"/><rect x="20" y="12" width="9" height="10" rx="1.5"/><line x1="12" y1="14" x2="20" y2="14"/><line x1="9" y1="22" x2="12" y2="22"/><line x1="20" y1="20" x2="23" y2="20"/><circle cx="6" cy="27" r="2"/><circle cx="26" cy="27" r="2"/></svg>02 · Robotics</div>
-
-    <h2 class="theme-h">Robot hardware has fallen from $1M to under $100k in five years. The ownership infrastructure has not been built.</h2>
-
-    <div class="theme-signals">
-      <div class="theme-signal-item">
-        <span class="signal-val">553k</span>
-        <span class="signal-lbl">Robot installations (IFR 2023)</span>
+  <!-- TAB 02 -->
+  <div class="tab-pane" data-pane="2">
+    <div class="conf-strip">
+      <div class="conf-header">
+        <span class="conf-label">Thesis confidence</span>
+        <span class="conf-pct">72%</span>
       </div>
-      <div class="theme-signal-item">
-        <span class="signal-val">$675M</span>
-        <span class="signal-lbl">Figure AI Series B</span>
-      </div>
-      <div class="theme-signal-item">
-        <span class="signal-val">&lt;$100k</span>
-        <span class="signal-lbl">General-purpose unit cost</span>
-      </div>
+      <div class="conf-track"><div class="conf-fill" style="width:72%;"></div></div>
+      <div class="conf-signals">3 supporting signals &middot; 0 contradicting</div>
     </div>
-
+    <h3 class="theme-h">Robot hardware has fallen from $1M to under $100k in five years. The ownership infrastructure has not been built.</h3>
+    <div class="signals">
+      <div class="signal-item"><span class="signal-val">553k</span><span class="signal-lbl">Robot installations (IFR 2023)</span></div>
+      <div class="signal-item"><span class="signal-val">$675M</span><span class="signal-lbl">Figure AI Series B</span></div>
+      <div class="signal-item"><span class="signal-val">&lt;$100k</span><span class="signal-lbl">General-purpose unit cost</span></div>
+    </div>
     <div class="pull-quote">
       <div class="pull-quote-text">"Without a shared map, every robot is working blind."</div>
-      <div class="pull-quote-attr">Auki Labs · Ep. 3</div>
+      <div class="pull-quote-attr">Auki Labs, Ep. 3</div>
     </div>
-
-
     <div class="theme-case">
       <div class="theme-case-header">The Case</div>
       <div class="case-item open">
@@ -714,9 +434,7 @@ footer {
           <span class="case-title">The hardware cost collapse is structural. It follows solar, LIDAR, and genomics.</span>
           <span class="case-plus">+</span>
         </button>
-        <div class="case-body">
-          <p>General-purpose robot units crossed below $100k this year. Five years ago the same capability cost over $1M. That 10x compression didn't happen because of one innovation. Motors, sensors, and compute all deflated simultaneously. The pattern matches solar panels in 2010 and genome sequencing in 2012. Neither reversed.</p>
-        </div>
+        <div class="case-body"><p>General-purpose robot units crossed below $100k this year. Five years ago the same capability cost over $1M. That 10x compression did not happen because of one innovation. Motors, sensors, and compute all deflated simultaneously. The pattern matches solar panels in 2010 and genome sequencing in 2012. Neither reversed.</p></div>
       </div>
       <div class="case-item">
         <button class="case-toggle" onclick="scToggleCase(this)">
@@ -724,9 +442,7 @@ footer {
           <span class="case-title">Centralized ownership means the upside accrues to Amazon and Tesla, not the deployer.</span>
           <span class="case-plus">+</span>
         </button>
-        <div class="case-body">
-          <p>When Amazon buys 100,000 robots, the economic return goes to Amazon equity. The robot operator captures labor cost savings; the robot maker captures margin. Decentralized ownership is a different architecture: productive robot infrastructure that individuals or collectives can own, deploy, and earn from directly. That model has no incumbent yet.</p>
-        </div>
+        <div class="case-body"><p>When Amazon buys 100,000 robots, the economic return goes to Amazon equity. Decentralized ownership is a different architecture: productive robot infrastructure that individuals or collectives can own, deploy, and earn from directly. That model has no incumbent yet.</p></div>
       </div>
       <div class="case-item">
         <button class="case-toggle" onclick="scToggleCase(this)">
@@ -734,46 +450,41 @@ footer {
           <span class="case-title">Spatial infrastructure needs to exist before the deployment wave, not after.</span>
           <span class="case-plus">+</span>
         </button>
-        <div class="case-body">
-          <p>Robots operating in shared environments (warehouses, streets, hospitals) need a shared map. Without it, every robot is running blind. Building that spatial layer after mass deployment is the hard way. The window to set the standard is now, while the fleet is still small enough that early protocols can become the default.</p>
-        </div>
+        <div class="case-body"><p>Robots operating in shared environments need a shared map. Without it, every robot is running blind. Building that spatial layer after mass deployment is the hard way. The window to set the standard is now, while the fleet is still small enough that early protocols can become the default.</p></div>
       </div>
     </div>
-
-    <span class="theme-read-note">Research note: Robotics, coming soon</span>
+    <div class="latest-signal">
+      <div class="latest-signal-label">Latest Signal</div>
+      <div class="latest-signal-text">Figure AI closed a $675M Series B at implied $2.6B valuation. Hardware cost compression accelerating.</div>
+      <div class="latest-signal-date">Apr 2025</div>
+    </div>
+    <div class="position-disc">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ink3);flex-shrink:0;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <div><div class="position-disc-label">Pylon Position</div><div class="position-disc-text">Not yet disclosed</div></div>
+    </div>
   </div>
 
-  <!-- ── 03 AI BIOTECH ── -->
-  <div class="theme-section reveal" id="theme-03">
-    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--ink3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><path d="M11 3 Q20 9 11 16 Q2 23 11 29"/><path d="M21 3 Q12 9 21 16 Q30 23 21 29"/><line x1="11" y1="9" x2="21" y2="9"/><line x1="11" y1="16" x2="21" y2="16"/><line x1="11" y1="23" x2="21" y2="23"/></svg>03 · AI Biotech</div>
-
-    <h2 class="theme-h">No AI-discovered drug has cleared the FDA. The first that does re-rates the entire category.</h2>
-
-    <div class="theme-signals">
-      <div class="theme-signal-item">
-        <span class="signal-val">$2B</span>
-        <span class="signal-lbl">Isomorphic Labs raise</span>
+  <!-- TAB 03 -->
+  <div class="tab-pane" data-pane="3">
+    <div class="conf-strip">
+      <div class="conf-header">
+        <span class="conf-label">Thesis confidence</span>
+        <span class="conf-pct">65%</span>
       </div>
-      <div class="theme-signal-item">
-        <span class="signal-val">200M+</span>
-        <span class="signal-lbl">AlphaFold2 protein structures</span>
-      </div>
-      <div class="theme-signal-item">
-        <span class="signal-val">12-15yr</span>
-        <span class="signal-lbl">Traditional discovery timeline</span>
-      </div>
-      <div class="theme-signal-item">
-        <span class="signal-val">2-3yr</span>
-        <span class="signal-lbl">AI-compressed target</span>
-      </div>
+      <div class="conf-track"><div class="conf-fill" style="width:65%;"></div></div>
+      <div class="conf-signals">2 supporting signals &middot; 1 contradicting</div>
     </div>
-
+    <h3 class="theme-h">No AI-discovered drug has cleared the FDA. The first that does re-rates the entire category.</h3>
+    <div class="signals">
+      <div class="signal-item"><span class="signal-val">$2B</span><span class="signal-lbl">Isomorphic Labs raise</span></div>
+      <div class="signal-item"><span class="signal-val">200M+</span><span class="signal-lbl">AlphaFold2 protein structures</span></div>
+      <div class="signal-item"><span class="signal-val">12-15yr</span><span class="signal-lbl">Traditional discovery timeline</span></div>
+      <div class="signal-item"><span class="signal-val">2-3yr</span><span class="signal-lbl">AI-compressed target</span></div>
+    </div>
     <div class="pull-quote">
       <div class="pull-quote-text">"An open-competition network for molecule candidates produces better predictions than any closed team at a fraction of the cost."</div>
-      <div class="pull-quote-attr">Nova · AI Drug Discovery</div>
+      <div class="pull-quote-attr">Nova, AI Drug Discovery</div>
     </div>
-
-
     <div class="theme-case">
       <div class="theme-case-header">The Case</div>
       <div class="case-item open">
@@ -782,9 +493,7 @@ footer {
           <span class="case-title">AlphaFold removed the structural bottleneck. Candidate generation is the next one.</span>
           <span class="case-plus">+</span>
         </button>
-        <div class="case-body">
-          <p>200 million protein structures, resolved. That task used to take a PhD lab years per protein. AlphaFold2 did it in hours at scale. The bottleneck moved downstream: from knowing the structure to identifying candidate molecules worth synthesizing. That is exactly what competitive AI networks are now attacking.</p>
-        </div>
+        <div class="case-body"><p>200 million protein structures, resolved. That task used to take a PhD lab years per protein. AlphaFold2 did it in hours at scale. The bottleneck moved downstream: from knowing the structure to identifying candidate molecules worth synthesizing. That is exactly what competitive AI networks are now attacking.</p></div>
       </div>
       <div class="case-item">
         <button class="case-toggle" onclick="scToggleCase(this)">
@@ -792,9 +501,7 @@ footer {
           <span class="case-title">The first FDA-cleared AI drug re-rates the entire category in one announcement.</span>
           <span class="case-plus">+</span>
         </button>
-        <div class="case-body">
-          <p>No AI-discovered compound has cleared Phase III. That binary risk is real. It is also the opportunity: investors who wait for FDA confirmation will pay a premium over current entry prices. Isomorphic Labs raised $2B on the bet that it happens within this decade. The question is who is positioned before the approval, not after.</p>
-        </div>
+        <div class="case-body"><p>No AI-discovered compound has cleared Phase III. That binary risk is real. It is also the opportunity: investors who wait for FDA confirmation will pay a premium over current entry prices. Isomorphic Labs raised $2B on the bet that it happens within this decade.</p></div>
       </div>
       <div class="case-item">
         <button class="case-toggle" onclick="scToggleCase(this)">
@@ -802,38 +509,43 @@ footer {
           <span class="case-title">Open competition beats closed research teams on search problems. Prediction markets proved it.</span>
           <span class="case-plus">+</span>
         </button>
-        <div class="case-body">
-          <p>NumerAI's open hedge fund consistently outperforms closed quant funds with larger teams and more data. The reason is the same: distributed signal beats concentrated effort when the problem is fundamentally one of search across a large possibility space. Drug candidate identification is that problem. An open network running millions of parallel evaluations will find better molecules than a 200-person research team running sequential experiments.</p>
-        </div>
+        <div class="case-body"><p>NumerAI's tournament model consistently outperforms closed quant funds on the same data. Drug candidate identification is the same type of problem: distributed signal beats concentrated effort when the problem is fundamentally a search across a large possibility space.</p></div>
       </div>
     </div>
-
-    <span class="theme-read-note">Research note: AI Biotech, coming soon</span>
+    <div class="latest-signal">
+      <div class="latest-signal-label">Latest Signal</div>
+      <div class="latest-signal-text">Isomorphic Labs closed $2B raise for AI drug discovery platform. Binary FDA risk remains the key gating factor.</div>
+      <div class="latest-signal-date">Mar 2025</div>
+    </div>
+    <div class="contra-signal">
+      <div class="contra-signal-label">Contradicting Signal</div>
+      <div class="contra-signal-text">No AI-discovered compound has cleared FDA Phase III as of Q2 2025.</div>
+    </div>
+    <div class="position-disc">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ink3);flex-shrink:0;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <div><div class="position-disc-label">Pylon Position</div><div class="position-disc-text">Not yet disclosed</div></div>
+    </div>
   </div>
 
-  <!-- ── 04 AGENT ECONOMY ── -->
-  <div class="theme-section reveal" id="theme-04">
-    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--ink3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="11" y="11" width="10" height="10" rx="1.5"/><line x1="16" y1="3" x2="16" y2="11"/><line x1="16" y1="21" x2="16" y2="29"/><line x1="3" y1="16" x2="11" y2="16"/><line x1="21" y1="16" x2="29" y2="16"/><circle cx="16" cy="3" r="2"/><circle cx="16" cy="29" r="2"/><circle cx="3" cy="16" r="2"/><circle cx="29" cy="16" r="2"/></svg>04 · Agent Economy</div>
-
-    <h2 class="theme-h">AI agents generate the majority of internet traffic. The infrastructure was built for browsers.</h2>
-
-    <div class="theme-signals">
-      <div class="theme-signal-item">
-        <span class="signal-val">50%+</span>
-        <span class="signal-lbl">Non-human internet traffic (Cloudflare)</span>
+  <!-- TAB 04 -->
+  <div class="tab-pane" data-pane="4">
+    <div class="conf-strip">
+      <div class="conf-header">
+        <span class="conf-label">Thesis confidence</span>
+        <span class="conf-pct">81%</span>
       </div>
-      <div class="theme-signal-item">
-        <span class="signal-val">$2B+</span>
-        <span class="signal-lbl">Agent infrastructure funding (2024)</span>
-      </div>
+      <div class="conf-track"><div class="conf-fill" style="width:81%;"></div></div>
+      <div class="conf-signals">3 supporting signals &middot; 0 contradicting</div>
     </div>
-
+    <h3 class="theme-h">AI agents generate the majority of internet traffic. The infrastructure was built for browsers.</h3>
+    <div class="signals">
+      <div class="signal-item"><span class="signal-val">50%+</span><span class="signal-lbl">Non-human internet traffic (Cloudflare)</span></div>
+      <div class="signal-item"><span class="signal-val">$2B+</span><span class="signal-lbl">Agent infrastructure funding (2024)</span></div>
+    </div>
     <div class="pull-quote">
       <div class="pull-quote-text">"The protocols that survive will be those that assume agents are the primary user, not a special case."</div>
-      <div class="pull-quote-attr">0xSammy · Ep. 1</div>
+      <div class="pull-quote-attr">0xSammy, Ep. 1</div>
     </div>
-
-
     <div class="theme-case">
       <div class="theme-case-header">The Case</div>
       <div class="case-item open">
@@ -842,19 +554,15 @@ footer {
           <span class="case-title">Agent traffic already exceeds human traffic. The transition is not a forecast.</span>
           <span class="case-plus">+</span>
         </button>
-        <div class="case-body">
-          <p>Cloudflare's network data shows bot and agent traffic constitutes the majority of HTTP requests across the internet. Most of that traffic is hitting infrastructure built for browsers and human interaction. The friction compounds at every layer where the mismatch exists: authentication, payment, rate limiting, structured data return. Each friction point is a commercial opportunity.</p>
-        </div>
+        <div class="case-body"><p>Cloudflare's network data shows bot and agent traffic constitutes the majority of HTTP requests across the internet. Most of that traffic is hitting infrastructure built for browsers and human interaction. The friction compounds at every layer where the mismatch exists: authentication, payment, rate limiting, structured data return. Each friction point is a commercial opportunity.</p></div>
       </div>
       <div class="case-item">
         <button class="case-toggle" onclick="scToggleCase(this)">
           <span class="case-num">02</span>
-          <span class="case-title">Agent identity is the SSL certificate of the next internet. It doesn't exist yet.</span>
+          <span class="case-title">Agent identity is the SSL certificate of the next internet. It does not exist yet.</span>
           <span class="case-plus">+</span>
         </button>
-        <div class="case-body">
-          <p>When a human visits a bank website, HTTPS verifies the server. When an AI agent calls a bank API, there is no standard for verifying which agent is calling, on whose behalf, with what authorizations. That infrastructure, covering agent identity, delegation, and revocation, is the SSL equivalent for the agent internet. The team that builds it sets the standard for a decade.</p>
-        </div>
+        <div class="case-body"><p>When a human visits a bank website, HTTPS verifies the server. When an AI agent calls a bank API, there is no standard for verifying which agent is calling, on whose behalf, with what authorizations. The team that builds that standard sets the default for a decade.</p></div>
       </div>
       <div class="case-item">
         <button class="case-toggle" onclick="scToggleCase(this)">
@@ -862,53 +570,49 @@ footer {
           <span class="case-title">The standards window is 2-3 years. After that, Big Tech sets it by default.</span>
           <span class="case-plus">+</span>
         </button>
-        <div class="case-body">
-          <p>Stripe captured mobile payments because they shipped a mobile-native API before the banks realized mobile was the primary channel. Twilio captured mobile messaging the same way. The window exists because incumbents are slow to re-architect for new primary users. Microsoft, Google, and Apple are building agent infrastructure now. The window closes when one of them ships something good enough to become the default.</p>
-        </div>
+        <div class="case-body"><p>Stripe captured mobile payments because they shipped a mobile-native API before the banks realized mobile was the primary channel. The window exists because incumbents are slow to re-architect for new primary users. Microsoft, Google, and Apple are building agent infrastructure now. The window closes when one of them ships something good enough to become the default.</p></div>
       </div>
     </div>
-
-    <span class="theme-read-note">Research note: Agent Economy, coming soon</span>
+    <div class="latest-signal">
+      <div class="latest-signal-label">Latest Signal</div>
+      <div class="latest-signal-text">Cloudflare confirms agent and bot traffic exceeded 50% of HTTP requests globally. Q1 2025 network data.</div>
+      <div class="latest-signal-date">Mar 2025</div>
+    </div>
+    <div class="position-disc">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ink3);flex-shrink:0;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <div><div class="position-disc-label">Pylon Position</div><div class="position-disc-text">Not yet disclosed</div></div>
+    </div>
   </div>
 
-  <!-- ── 05 CRYPTO VC ── -->
-  <div class="theme-section reveal" id="theme-05">
-    <div class="theme-num"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--ink3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.6;margin-bottom:14px;display:block;"><rect x="2" y="11" width="11" height="10" rx="5"/><rect x="19" y="11" width="11" height="10" rx="5"/><line x1="13" y1="16" x2="19" y2="16"/><line x1="7" y1="11" x2="7" y2="6"/><line x1="25" y1="21" x2="25" y2="26"/></svg>05 · Crypto VC</div>
-
-    <h2 class="theme-h">Most DePIN has no structural advantage over centralized alternatives. Early protocol infrastructure is a different bet.</h2>
-
-    <div class="theme-signals">
-      <div class="theme-signal-item">
-        <span class="signal-val">$5.9B</span>
-        <span class="signal-lbl">Multicoin AUM</span>
+  <!-- TAB 05 -->
+  <div class="tab-pane" data-pane="5">
+    <div class="conf-strip">
+      <div class="conf-header">
+        <span class="conf-label">Thesis confidence</span>
+        <span class="conf-pct">69%</span>
       </div>
-      <div class="theme-signal-item">
-        <span class="signal-val">$0.04</span>
-        <span class="signal-lbl">Early Solana seed price</span>
-      </div>
-      <div class="theme-signal-item">
-        <span class="signal-val">12-18mo</span>
-        <span class="signal-lbl">Developer activity lead time</span>
-      </div>
+      <div class="conf-track"><div class="conf-fill" style="width:69%;"></div></div>
+      <div class="conf-signals">2 supporting signals &middot; 1 contradicting</div>
     </div>
-
+    <h3 class="theme-h">Most DePIN has no structural advantage over centralized alternatives. Early protocol infrastructure is a different bet.</h3>
+    <div class="signals">
+      <div class="signal-item"><span class="signal-val">$5.9B</span><span class="signal-lbl">Multicoin AUM</span></div>
+      <div class="signal-item"><span class="signal-val">$0.04</span><span class="signal-lbl">Early Solana seed price</span></div>
+      <div class="signal-item"><span class="signal-val">12-18mo</span><span class="signal-lbl">Developer activity lead time</span></div>
+    </div>
     <div class="pull-quote">
       <div class="pull-quote-text">"Where developers build, users follow. By 12 to 18 months."</div>
-      <div class="pull-quote-attr">Shayon Sengupta, Multicoin Capital · Ep. 4</div>
+      <div class="pull-quote-attr">Shayon Sengupta, Multicoin Capital, Ep. 4</div>
     </div>
-
-
     <div class="theme-case">
       <div class="theme-case-header">The Case</div>
-      <div class="case-item">
+      <div class="case-item open">
         <button class="case-toggle" onclick="scToggleCase(this)">
           <span class="case-num">01</span>
           <span class="case-title">Most DePIN fails one test: a structural advantage over the centralized alternative.</span>
           <span class="case-plus">+</span>
         </button>
-        <div class="case-body">
-          <p>Solana passed the test in 2018 because 50,000 transactions per second was a real, measurable advantage over Ethereum's 15. Most DePIN networks fail that test: they are decentralized for its own sake, with token economics that don't survive the arrival of a well-funded centralized competitor. The filter is simple and most projects don't clear it.</p>
-        </div>
+        <div class="case-body"><p>Solana passed the test in 2018 because 50,000 transactions per second was a real, measurable advantage over Ethereum's 15. Most DePIN networks fail that test: they are decentralized for its own sake, with token economics that do not survive the arrival of a well-funded centralized competitor.</p></div>
       </div>
       <div class="case-item">
         <button class="case-toggle" onclick="scToggleCase(this)">
@@ -916,9 +620,7 @@ footer {
           <span class="case-title">Developer activity leads price discovery by 12-18 months. That is the signal.</span>
           <span class="case-plus">+</span>
         </button>
-        <div class="case-body">
-          <p>GitHub commits and hackathon participation consistently preceded Solana's price move by over a year. Developers build where the technical architecture is compelling, regardless of token price. Retail and institutions follow users, not developers. Tracking developer concentration gives you 12-18 months of lead time before the market prices it.</p>
-        </div>
+        <div class="case-body"><p>GitHub commits and hackathon participation consistently preceded Solana's price move by over a year. Developers build where the technical architecture is compelling, regardless of token price. Tracking developer concentration gives you 12-18 months of lead time before the market prices it.</p></div>
       </div>
       <div class="case-item open">
         <button class="case-toggle" onclick="scToggleCase(this)">
@@ -926,43 +628,192 @@ footer {
           <span class="case-title">AI infrastructure protocols are at Solana 2018. Institutions have not moved.</span>
           <span class="case-plus">+</span>
         </button>
-        <div class="case-body">
-          <p>Bittensor and comparable AI infrastructure networks have growing developer activity, rising validator counts, and increasing subnet registrations: the same leading metrics that preceded Solana's price discovery. Institutions with meaningful AI infrastructure positions are not yet visible. The entry window that Multicoin had in 2018 at $0.04 is the analogue. It closes with the first major institutional announcement.</p>
-        </div>
+        <div class="case-body"><p>Bittensor and comparable AI infrastructure networks have growing developer activity, rising validator counts, and increasing subnet registrations: the same leading metrics that preceded Solana's price discovery. Institutions with meaningful AI infrastructure positions are not yet visible. The entry window that Multicoin had in 2018 at $0.04 is the analogue. It closes with the first major institutional announcement.</p></div>
       </div>
     </div>
-
-    <span class="theme-read-note">Research note: Crypto VC, coming soon</span>
-  </div>
-
-  <!-- Episodes at bottom -->
-  <div class="episodes-footer">
-    <h2>Recent episodes</h2>
-    <div class="ep-grid">
-      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-row">
-        <span class="ep-row-num">Ep. 12</span>
-        <span class="ep-row-title">Bittensor Subnets Cost 500k+ to Register · Karis Capital</span>
-        <span class="ep-row-arrow">↗</span>
-      </a>
-      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-row">
-        <span class="ep-row-num">Ep. 11</span>
-        <span class="ep-row-title">Market Speedrun: Bittensor, Situational Awareness &amp; Sports RWAs</span>
-        <span class="ep-row-arrow">↗</span>
-      </a>
-      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-row">
-        <span class="ep-row-num">Ep. 10</span>
-        <span class="ep-row-title">Can One Subnet Destroy Bittensor? · Score, Tensora Group</span>
-        <span class="ep-row-arrow">↗</span>
-      </a>
-      <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-row">
-        <span class="ep-row-num">Ep. 9</span>
-        <span class="ep-row-title">Why the Robotics Gold Rush Is Just Starting · XMAQUINA, Moonrock</span>
-        <span class="ep-row-arrow">↗</span>
-      </a>
+    <div class="latest-signal">
+      <div class="latest-signal-label">Latest Signal</div>
+      <div class="latest-signal-text">AI infrastructure developer activity up 340% versus Q1 2024. Institutional allocation remains below 2% of most LP portfolios.</div>
+      <div class="latest-signal-date">Apr 2025</div>
     </div>
-    <a href="episodes.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:20px;font-family:var(--geist);font-size:13px;font-weight:600;color:var(--orange);">All 12 episodes &rarr;</a>
+    <div class="contra-signal">
+      <div class="contra-signal-label">Contradicting Signal</div>
+      <div class="contra-signal-text">Institutional crypto allocations remain below 2% of portfolio for most major LPs. Adoption lag persists.</div>
+    </div>
+    <div class="position-disc">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ink3);flex-shrink:0;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <div><div class="position-disc-label">Pylon Position</div><div class="position-disc-text">Not yet disclosed</div></div>
+    </div>
   </div>
+</div>
 
+<!-- ON-RECORD BOARD -->
+<div class="section section-border reveal">
+  <div class="section-eyebrow">ON RECORD</div>
+  <h2 class="section-h">Claims made. Tracked publicly.</h2>
+  <p class="section-sub">Every guest speaks to data in real time. We keep the ledger.</p>
+  <div class="claim-counter-row">
+    <span class="claim-badge">6 CLAIMS</span>
+    <span class="claim-badge proven">1 PROVEN</span>
+    <span class="claim-badge pending">5 PENDING</span>
+    <span class="claim-badge zero">0 CONTRADICTED</span>
+  </div>
+  <div class="claims-grid">
+    <div class="claim-card">
+      <span class="claim-status proven">Proven</span>
+      <div class="claim-text">"Agent traffic will constitute the majority of internet requests."</div>
+      <div class="claim-attr">0xSammy &middot; Independent &middot; Ep. 1 &middot; Jan 2025</div>
+      <div class="claim-context">Cloudflare confirmed agent and bot traffic exceeded 50% of global HTTP requests, Q1 2025.</div>
+    </div>
+    <div class="claim-card">
+      <span class="claim-status pending">Pending</span>
+      <div class="claim-text">"Developer activity leads price discovery by 12 to 18 months."</div>
+      <div class="claim-attr">Shayon Sengupta &middot; Multicoin Capital &middot; Ep. 4 &middot; Jan 2025</div>
+      <div class="claim-context">AI infrastructure developer activity up 340% YoY. Price discovery has not yet followed. Thesis window: Jan 2026.</div>
+    </div>
+    <div class="claim-card">
+      <span class="claim-status pending">Pending</span>
+      <div class="claim-text">"Higher registration costs improve subnet quality. The barrier is a feature."</div>
+      <div class="claim-attr">Evan &middot; Yuma / DCG &middot; Ep. 5 &middot; Feb 2025</div>
+      <div class="claim-context">Registration costs crossed 500k+. Subnet quality metrics under active tracking.</div>
+    </div>
+    <div class="claim-card">
+      <span class="claim-status pending">Pending</span>
+      <div class="claim-text">"TAO is mispriced relative to comparable AI infrastructure assets."</div>
+      <div class="claim-attr">Stillcore &middot; Undisclosed &middot; Ep. 7 &middot; Mar 2025</div>
+      <div class="claim-context">AWS, Azure, GCP trade at 10-20x revenue. TAO valuation framework in development at TAO Institute.</div>
+    </div>
+    <div class="claim-card">
+      <span class="claim-status pending">Pending</span>
+      <div class="claim-text">"Robotics unit cost will cross $50k by 2026. The deflation is structural."</div>
+      <div class="claim-attr">Mauricio &middot; XMAQUINA &middot; Ep. 9 &middot; Apr 2025</div>
+      <div class="claim-context">Current floor: sub-$100k. IFR 2025 data pending. Thesis checks at year-end.</div>
+    </div>
+    <div class="claim-card">
+      <span class="claim-status pending">Pending</span>
+      <div class="claim-text">"The inference layer is still open. Distributed compute cannot be captured by the megacorps."</div>
+      <div class="claim-attr">Eric Yang &middot; Gradient Network &middot; Ep. 6 &middot; Mar 2025</div>
+      <div class="claim-context">Gradient expanding distributed inference nodes. Centralized provider market share under tracking.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CAPITAL AT THE TABLE -->
+<div class="section section-border reveal">
+  <div class="section-eyebrow">CAPITAL AT THE TABLE</div>
+  <h2 class="section-h">$6B+ AUM across 12 conversations.</h2>
+  <p class="section-sub">The organizations behind the theses.</p>
+  <div class="cap-table">
+    <div class="cap-table-header">
+      <span>Organization</span>
+      <span>Guest</span>
+      <span>Episode</span>
+      <span>AUM / Stage</span>
+    </div>
+    <div class="cap-row"><span class="cap-org">Digital Currency Group / Yuma</span><span class="cap-guest">Evan</span><span class="cap-ep">Ep. 5</span><span class="cap-aum money">$21B AUM</span></div>
+    <div class="cap-row"><span class="cap-org">Multicoin Capital</span><span class="cap-guest">Shayon Sengupta</span><span class="cap-ep">Ep. 4</span><span class="cap-aum money">$5.9B AUM</span></div>
+    <div class="cap-row"><span class="cap-org">Moonrock Capital</span><span class="cap-guest">Simon</span><span class="cap-ep">Ep. 9</span><span class="cap-aum undisclosed">Undisclosed</span></div>
+    <div class="cap-row"><span class="cap-org">Karis Capital</span><span class="cap-guest" style="color:var(--ink3);font-style:italic;">n/a</span><span class="cap-ep">Ep. 12</span><span class="cap-aum undisclosed">Undisclosed</span></div>
+    <div class="cap-row"><span class="cap-org">Stillcore</span><span class="cap-guest">Stillcore</span><span class="cap-ep">Ep. 7</span><span class="cap-aum undisclosed">Undisclosed</span></div>
+    <div class="cap-row"><span class="cap-org">XMAQUINA</span><span class="cap-guest">Mauricio</span><span class="cap-ep">Ep. 9</span><span class="cap-aum operator">Operator</span></div>
+    <div class="cap-row"><span class="cap-org">Gradient Network</span><span class="cap-guest">Eric Yang</span><span class="cap-ep">Ep. 6</span><span class="cap-aum operator">Builder</span></div>
+    <div class="cap-row"><span class="cap-org">Auki Labs</span><span class="cap-guest">Nils</span><span class="cap-ep">Ep. 3</span><span class="cap-aum operator">Builder</span></div>
+    <div class="cap-row"><span class="cap-org">Score / SIRE</span><span class="cap-guest">Max Sebti</span><span class="cap-ep">Ep. 2 &amp; 10</span><span class="cap-aum operator">Builder</span></div>
+    <div class="cap-row"><span class="cap-org">NRN Agents</span><span class="cap-guest">Wei Xie</span><span class="cap-ep">Ep. 2 &amp; 8</span><span class="cap-aum operator">Builder</span></div>
+  </div>
+</div>
+
+<!-- VERDICT BOARD -->
+<div class="section section-border reveal">
+  <div class="section-eyebrow">VERDICT BOARD</div>
+  <h2 class="section-h">Q2 2025 Thesis Report</h2>
+  <p class="section-sub">Updated quarterly. The last update: May 2025.</p>
+  <div class="verdict-grid">
+    <div class="verdict-header">
+      <span>Theme</span>
+      <span>Tracked</span>
+      <span>Proven</span>
+      <span>Pending</span>
+      <span>Contradicted</span>
+    </div>
+    <div class="verdict-row">
+      <span class="verdict-theme">01 Decentralized AI</span>
+      <span class="verdict-count">3</span>
+      <span class="verdict-count zero">0</span>
+      <span class="verdict-count amber">3</span>
+      <span class="verdict-count zero">0</span>
+    </div>
+    <div class="verdict-row">
+      <span class="verdict-theme">02 Robotics</span>
+      <span class="verdict-count">2</span>
+      <span class="verdict-count zero">0</span>
+      <span class="verdict-count amber">2</span>
+      <span class="verdict-count zero">0</span>
+    </div>
+    <div class="verdict-row">
+      <span class="verdict-theme">03 AI Biotech</span>
+      <span class="verdict-count">2</span>
+      <span class="verdict-count zero">0</span>
+      <span class="verdict-count amber">1</span>
+      <span class="verdict-count red">1</span>
+    </div>
+    <div class="verdict-row">
+      <span class="verdict-theme">04 Agent Economy</span>
+      <span class="verdict-count">1</span>
+      <span class="verdict-count green">1</span>
+      <span class="verdict-count zero">0</span>
+      <span class="verdict-count zero">0</span>
+    </div>
+    <div class="verdict-row">
+      <span class="verdict-theme">05 Crypto VC</span>
+      <span class="verdict-count">2</span>
+      <span class="verdict-count zero">0</span>
+      <span class="verdict-count amber">1</span>
+      <span class="verdict-count red">1</span>
+    </div>
+  </div>
+  <div class="verdict-summary">
+    <div class="verdict-summary-item">
+      <span class="verdict-summary-num green">1 proven</span>
+      <span class="verdict-summary-label">as of Q2 2025</span>
+    </div>
+    <div class="verdict-summary-item">
+      <span class="verdict-summary-num amber">7 pending</span>
+      <span class="verdict-summary-label">tracking</span>
+    </div>
+    <div class="verdict-summary-item">
+      <span class="verdict-summary-num red">2 contradicted</span>
+      <span class="verdict-summary-label">on record</span>
+    </div>
+  </div>
+</div>
+
+<!-- RECENT EPISODES -->
+<div class="section section-border reveal">
+  <h2 class="section-h">Recent episodes</h2>
+  <div class="ep-grid">
+    <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-row">
+      <span class="ep-row-num">Ep. 12</span>
+      <span class="ep-row-title">Bittensor Subnets Cost 500k+ to Register &middot; Karis Capital</span>
+      <span class="ep-row-arrow">&#8599;</span>
+    </a>
+    <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-row">
+      <span class="ep-row-num">Ep. 11</span>
+      <span class="ep-row-title">Market Speedrun: Bittensor, Situational Awareness and Sports RWAs</span>
+      <span class="ep-row-arrow">&#8599;</span>
+    </a>
+    <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-row">
+      <span class="ep-row-num">Ep. 10</span>
+      <span class="ep-row-title">Can One Subnet Destroy Bittensor? &middot; Score, Tensora Group</span>
+      <span class="ep-row-arrow">&#8599;</span>
+    </a>
+    <a href="https://www.youtube.com/@supercyclepod" target="_blank" rel="noopener" class="ep-row">
+      <span class="ep-row-num">Ep. 9</span>
+      <span class="ep-row-title">Why the Robotics Gold Rush Is Just Starting &middot; XMAQUINA, Moonrock</span>
+      <span class="ep-row-arrow">&#8599;</span>
+    </a>
+  </div>
+  <a href="episodes.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:20px;font-family:var(--geist);font-size:13px;font-weight:600;color:var(--orange);">All 12 episodes &rarr;</a>
 </div>
 
 <!-- FOOTER -->
@@ -980,29 +831,30 @@ footer {
   </div>
 </footer>
 
-
-
 <script>
-function scUpdateIcon(){
-  var d=document.documentElement.getAttribute('data-theme')==='dark';
-  var b=document.getElementById('themeToggle');
-  if(!b)return;
-  b.innerHTML=d
+// Theme toggle
+function scUpdateThemeIcon(){
+  var dark=document.documentElement.getAttribute('data-theme')==='dark';
+  var btn=document.getElementById('themeToggle');
+  if(!btn)return;
+  btn.innerHTML=dark
     ?'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>'
     :'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-  b.title=d?'Light mode':'Dark mode';
+  btn.title=dark?'Switch to light mode':'Switch to dark mode';
 }
 document.addEventListener('DOMContentLoaded',function(){
-  scUpdateIcon();
-  var b=document.getElementById('themeToggle');
-  if(b)b.addEventListener('click',function(){
-    var d=document.documentElement.getAttribute('data-theme')==='dark';
-    document.documentElement.setAttribute('data-theme',d?'light':'dark');
-    localStorage.setItem('sc-theme',d?'light':'dark');
-    scUpdateIcon();
+  scUpdateThemeIcon();
+  var btn=document.getElementById('themeToggle');
+  if(btn)btn.addEventListener('click',function(){
+    var dark=document.documentElement.getAttribute('data-theme')==='dark';
+    var next=dark?'light':'dark';
+    document.documentElement.setAttribute('data-theme',next);
+    localStorage.setItem('sc-theme',next);
+    scUpdateThemeIcon();
   });
 });
 
+// Progress bar
 window.addEventListener('scroll',function(){
   var s=document.documentElement,b=document.body;
   var pct=(s.scrollTop||b.scrollTop)/((s.scrollHeight||b.scrollHeight)-s.clientHeight)*100;
@@ -1010,150 +862,70 @@ window.addEventListener('scroll',function(){
   if(el)el.style.width=Math.min(pct,100)+'%';
 });
 
-var revealEls = document.querySelectorAll('.reveal');
-var ro = new IntersectionObserver(function(entries){
-  entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); ro.unobserve(e.target); }});
+// Scroll reveal
+var revealEls=document.querySelectorAll('.reveal');
+var ro=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);}});
 },{threshold:0.12});
-revealEls.forEach(function(el){ ro.observe(el); });
+revealEls.forEach(function(el){ro.observe(el);});
 
-
-</script>
-
-<script>
+// Mobile nav
 (function(){
-  var btn = document.getElementById('sc-hamburger');
-  var nav = document.getElementById('sc-mobile-nav');
-  var close = document.getElementById('sc-nav-close');
-  if(btn && nav){
-    btn.addEventListener('click', function(){ nav.classList.add('open'); });
-    close.addEventListener('click', function(){ nav.classList.remove('open'); });
-    nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ nav.classList.remove('open'); }); });
+  var btn=document.getElementById('sc-hamburger');
+  var nav=document.getElementById('sc-mobile-nav');
+  var close=document.getElementById('sc-nav-close');
+  if(btn&&nav){
+    btn.addEventListener('click',function(){nav.classList.add('open');});
+    if(close)close.addEventListener('click',function(){nav.classList.remove('open');});
+    nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');});});
   }
 })();
 
-// Accordion toggle
-function scToggleCase(btn) {
-  var item = btn.parentElement;
-  var isOpen = item.classList.contains('open');
-  // Close all in same .theme-case
-  var parent = item.closest('.theme-case');
-  if (parent) {
-    parent.querySelectorAll('.case-item').forEach(function(i){ i.classList.remove('open'); });
-  }
-  if (!isOpen) { item.classList.add('open'); }
+// Tabs
+function scTab(n){
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+  document.querySelectorAll('.tab-pane').forEach(function(p){p.classList.remove('active');});
+  document.querySelector('.tab-btn[data-tab="'+n+'"]').classList.add('active');
+  document.querySelector('.tab-pane[data-pane="'+n+'"]').classList.add('active');
 }
 
+// Accordion
+function scToggleCase(btn){
+  var item=btn.parentElement;
+  var isOpen=item.classList.contains('open');
+  var parent=item.closest('.theme-case');
+  if(parent)parent.querySelectorAll('.case-item').forEach(function(i){i.classList.remove('open');});
+  if(!isOpen)item.classList.add('open');
+}
 </script>
 
 <script>
+// Particle canvas
 (function(){
-  var canvas = document.getElementById('sc-particle-canvas');
-  if (!canvas) return;
-  var ctx = canvas.getContext('2d');
+  var canvas=document.getElementById('sc-particle-canvas');
+  if(!canvas)return;
+  var ctx=canvas.getContext('2d');
+  var W,H,nodes,RAF;
+  var NODE_COUNT=55;
+  var MAX_DIST=160;
+  var ORANGE='rgba(217,79,42,';
+  var CREAM='rgba(237,232,223,';
 
-  var W, H, nodes, RAF;
-  var NODE_COUNT = 55;
-  var MAX_DIST = 160;
-  var ORANGE = 'rgba(217,79,42,';
-  var CREAM = 'rgba(237,232,223,';
-
-  function resize() {
-    W = canvas.width = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
+  function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight;}
+  function makeNode(){return{x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*1.8+.8,pulse:Math.random()*Math.PI*2,pulseSpeed:.012+Math.random()*.018,isOrange:Math.random()<.12};}
+  function init(){resize();nodes=[];for(var i=0;i<NODE_COUNT;i++)nodes.push(makeNode());}
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    var grd=ctx.createRadialGradient(W*.72,H*.45,0,W*.72,H*.45,W*.55);
+    grd.addColorStop(0,'rgba(217,79,42,0.07)');grd.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=grd;ctx.fillRect(0,0,W,H);
+    for(var i=0;i<nodes.length;i++){for(var j=i+1;j<nodes.length;j++){var dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<MAX_DIST){var alpha=(1-dist/MAX_DIST)*.18,useO=nodes[i].isOrange||nodes[j].isOrange;ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.strokeStyle=useO?ORANGE+alpha*1.8+')':CREAM+alpha+')';ctx.lineWidth=useO?.8:.5;ctx.stroke();}}}
+    for(var i=0;i<nodes.length;i++){var n=nodes[i];n.pulse+=n.pulseSpeed;var pf=.85+Math.sin(n.pulse)*.15,r=n.r*pf;ctx.beginPath();ctx.arc(n.x,n.y,r,0,Math.PI*2);ctx.fillStyle=n.isOrange?'rgba(217,79,42,0.7)':CREAM+(.28+Math.sin(n.pulse)*.1)+')';ctx.fill();n.x+=n.vx;n.y+=n.vy;if(n.x<-20)n.x=W+20;if(n.x>W+20)n.x=-20;if(n.y<-20)n.y=H+20;if(n.y>H+20)n.y=-20;}
+    RAF=requestAnimationFrame(draw);
   }
-
-  function makeNode() {
-    return {
-      x: Math.random() * W,
-      y: Math.random() * H,
-      vx: (Math.random() - 0.5) * 0.35,
-      vy: (Math.random() - 0.5) * 0.35,
-      r: Math.random() * 1.8 + 0.8,
-      pulse: Math.random() * Math.PI * 2,
-      pulseSpeed: 0.012 + Math.random() * 0.018,
-      isOrange: Math.random() < 0.12
-    };
-  }
-
-  function init() {
-    resize();
-    nodes = [];
-    for (var i = 0; i < NODE_COUNT; i++) nodes.push(makeNode());
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-
-    // Subtle radial glow
-    var grd = ctx.createRadialGradient(W * 0.72, H * 0.45, 0, W * 0.72, H * 0.45, W * 0.55);
-    grd.addColorStop(0, 'rgba(217,79,42,0.07)');
-    grd.addColorStop(1, 'rgba(0,0,0,0)');
-    ctx.fillStyle = grd;
-    ctx.fillRect(0, 0, W, H);
-
-    // Connections
-    for (var i = 0; i < nodes.length; i++) {
-      for (var j = i + 1; j < nodes.length; j++) {
-        var dx = nodes[i].x - nodes[j].x;
-        var dy = nodes[i].y - nodes[j].y;
-        var dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < MAX_DIST) {
-          var alpha = (1 - dist / MAX_DIST) * 0.18;
-          var useOrange = nodes[i].isOrange || nodes[j].isOrange;
-          ctx.beginPath();
-          ctx.moveTo(nodes[i].x, nodes[i].y);
-          ctx.lineTo(nodes[j].x, nodes[j].y);
-          ctx.strokeStyle = useOrange ? ORANGE + alpha * 1.8 + ')' : CREAM + alpha + ')';
-          ctx.lineWidth = useOrange ? 0.8 : 0.5;
-          ctx.stroke();
-        }
-      }
-    }
-
-    // Nodes
-    for (var i = 0; i < nodes.length; i++) {
-      var n = nodes[i];
-      n.pulse += n.pulseSpeed;
-      var pulseFactor = 0.85 + Math.sin(n.pulse) * 0.15;
-      var r = n.r * pulseFactor;
-
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
-      if (n.isOrange) {
-        ctx.fillStyle = 'rgba(217,79,42,0.7)';
-      } else {
-        ctx.fillStyle = CREAM + (0.28 + Math.sin(n.pulse) * 0.1) + ')';
-      }
-      ctx.fill();
-
-      // Move
-      n.x += n.vx;
-      n.y += n.vy;
-      if (n.x < -20) n.x = W + 20;
-      if (n.x > W + 20) n.x = -20;
-      if (n.y < -20) n.y = H + 20;
-      if (n.y > H + 20) n.y = -20;
-    }
-
-    RAF = requestAnimationFrame(draw);
-  }
-
-  init();
-  draw();
-
-  var resizeTimer;
-  window.addEventListener('resize', function() {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function() {
-      resize();
-    }, 150);
-  });
-
-  // Pause when tab hidden (battery/perf)
-  document.addEventListener('visibilitychange', function() {
-    if (document.hidden) { cancelAnimationFrame(RAF); }
-    else { draw(); }
-  });
+  init();draw();
+  var resizeTimer;window.addEventListener('resize',function(){clearTimeout(resizeTimer);resizeTimer=setTimeout(resize,150);});
+  document.addEventListener('visibilitychange',function(){if(document.hidden){cancelAnimationFrame(RAF);}else{draw();}});
 })();
 </script>
 </body>
